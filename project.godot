@@ -12,4 +12,29 @@ config_version=5
 
 config/name="tfjam23"
 config/features=PackedStringArray("4.1", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://src/Globals.gd"
+Events="*res://src/Events.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"
+
+[rendering]
+
+anti_aliasing/quality/use_taa=true
