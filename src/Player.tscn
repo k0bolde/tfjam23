@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6yo5u3syjaij"]
+[gd_scene load_steps=7 format=3 uid="uid://c6yo5u3syjaij"]
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
+[ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oslmi"]
 radius = 0.25
+
+[sub_resource type="PrismMesh" id="PrismMesh_ta04k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2eru2"]
 radius = 0.25
@@ -23,14 +26,29 @@ shape = SubResource("CapsuleShape3D_y7b03")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_oslmi")
 
-[node name="RotationHelper" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73276, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-1.74846e-08, -1.74846e-08, 0.4, -0.4, -1.74846e-08, -1.74846e-08, 1.74846e-08, -0.4, -1.74846e-08, 0, 0.623776, -0.322019)
+mesh = SubResource("PrismMesh_ta04k")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="RotationHelper"]
+[node name="Gimbal" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+top_level = true
+
+[node name="RotationHelper" type="Node3D" parent="Gimbal"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Gimbal/RotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+collision_mask = 3
 shape = SubResource("SphereShape3D_2eru2")
 spring_length = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="RotationHelper/SpringArm3D"]
+[node name="InterpolatedCamera3D" type="Camera3D" parent="Gimbal/RotationHelper/SpringArm3D" node_paths=PackedStringArray("target")]
+top_level = true
+current = true
+script = ExtResource("2_chnxt")
+translate_speed = 0.98
+rotate_speed = 0.98
+target = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
