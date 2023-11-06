@@ -31,3 +31,13 @@ shape = SubResource("SphereShape3D_2eru2")
 spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="RotationHelper/SpringArm3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
