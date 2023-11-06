@@ -19,6 +19,7 @@ var last_vdir := Vector3()
 var vel := Vector3()
 var zoom_tween : Tween
 var jump_requested := false
+var target_spring_length := 2.0
 
 var curr_form := "knight"
 var forms := ["knight", "cow", "anteater", "messenger"]
@@ -100,17 +101,17 @@ func _unhandled_input(event):
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
 	if event.is_action_pressed("scroll_up"):
-		var curr_len = rotation_helper.get_node("SpringArm3D").spring_length
-		if curr_len > 1.0:
-			curr_len -= 1
+#		var curr_len = rotation_helper.get_node("SpringArm3D").spring_length
+		if target_spring_length > 1.0:
+			target_spring_length -= 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
-		zoom_tween.tween_property(springarm, "spring_length", curr_len, 0.25)
+		zoom_tween.tween_property(springarm, "spring_length", target_spring_length, 0.25)
 	if event.is_action_pressed("scroll_down"):
-		var curr_len = rotation_helper.get_node("SpringArm3D").spring_length
-		if curr_len < 6.0:
-			curr_len += 1
+#		var curr_len = rotation_helper.get_node("SpringArm3D").spring_length
+		if target_spring_length < 6.0:
+			target_spring_length += 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
-		zoom_tween.tween_property(springarm, "spring_length", curr_len, 0.25)
+		zoom_tween.tween_property(springarm, "spring_length", target_spring_length, 0.25)
 	if event.is_action_pressed("jump"):
 		jump_requested = true
 	#TODO inventory open/close

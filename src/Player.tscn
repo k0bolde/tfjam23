@@ -45,9 +45,9 @@ spring_length = 2.0
 
 [node name="InterpolatedCamera3D" type="Camera3D" parent="Gimbal/RotationHelper/SpringArm3D" node_paths=PackedStringArray("target")]
 top_level = true
+doppler_tracking = 2
 current = true
 script = ExtResource("2_chnxt")
-translate_speed = 0.98
 rotate_speed = 0.98
 target = NodePath("..")
 
