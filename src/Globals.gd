@@ -4,6 +4,10 @@ var main
 var player
 
 
+func _ready():
+	get_viewport().scaling_3d_scale = 1.0
+
+
 func _unhandled_input(event):
 	if event.is_action_pressed("quit"):
 		get_tree().quit()

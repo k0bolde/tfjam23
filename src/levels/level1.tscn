@@ -6,6 +6,12 @@
 
 [node name="level1" instance=ExtResource("1_6ste0")]
 
-[node name="room_straight" parent="." index="2"]
+[node name="room_straight" parent="." index="4"]
 surface_material_override/0 = ExtResource("2_4mnbo")
 surface_material_override/1 = ExtResource("3_bipcs")
+
+[node name="barrier" parent="." index="8"]
+collision_layer = 4
+
+[node name="dockbarrier" parent="." index="9"]
+collision_layer = 4

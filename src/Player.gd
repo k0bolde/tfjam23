@@ -8,12 +8,15 @@ extends CharacterBody3D
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.1
-var speed := 10.0
+var max_speed := 10.0
+const ACCEL := 0.05
+const DEACCEL := 0.1
 var jump_speed := 12.0
 var input_movement_vector : Vector2
 var player_dir := Vector3()
 var vdir := Vector3()
 var last_vdir := Vector3()
+var vel := Vector3()
 var zoom_tween : Tween
 var jump_requested := false
 
@@ -32,15 +35,29 @@ func _physics_process(delta):
 	dir += -cam_xform.basis.z * clamped_move_vec.y
 	dir += cam_xform.basis.x * clamped_move_vec.x
 	dir.y = 0.0
-	if not is_on_floor():
-		dir.y -= 1
+	if is_on_floor():
+		if jump_requested:
+			jump_requested = false
+			vel.y += jump_speed
+		else:
+			vel.y = 0.0
 	else:
-		dir.y = 0.0
-	if jump_requested:
-		jump_requested = false
-		if is_on_floor():
-			dir.y += jump_speed
+		vel.y -= 1.0
 		
+	var hvel := vel
+	hvel.y = 0
+	var target := dir * max_speed
+	var accel: float
+	#dot product tells us if we're going faster than max speed or not
+	if dir.dot(hvel) > 0:
+		accel = ACCEL
+	else:
+		accel = DEACCEL
+
+	hvel = hvel.lerp(target, accel)
+	vel.x = hvel.x
+	vel.z = hvel.z		
+
 	var curr_vel := last_vdir
 	curr_vel.y = 0.0
 	curr_vel = curr_vel.normalized()
@@ -53,16 +70,16 @@ func _physics_process(delta):
 	if input_movement_vector.length() > 0.0:
 		vdir = Globals.rotateTowards(curr_vel, player_dir, TURN_SPEED)
 	
-	#TODO accel
-	velocity = dir * speed
+	velocity = vel
 	move_and_slide()
 	
 	last_vdir = vdir
+	vel = velocity
 	var look_vec = vdir + get_transform().origin
-#	#only change look_at if its not already looking at the thing. Uses the built in check look_at uses
+#	only change look_at if its not already looking at the thing. Uses the built in check look_at uses
 	if (input_movement_vector.length() > 0.0 and Vector3.UP.cross(vdir) != Vector3.ZERO):
 		look_at(look_vec)
-	#		lock to only y rotation, got extra z and x we don't need from the look_at
+#		lock to only y rotation, got extra z and x we don't need from the look_at
 		var my_rot = get_rotation()
 		my_rot.x = 0
 		my_rot.z = 0
@@ -94,11 +111,9 @@ func _unhandled_input(event):
 			curr_len += 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
 		zoom_tween.tween_property(springarm, "spring_length", curr_len, 0.25)
-	#TODO inventory open/close
-	#TODO scroll to adjust cam length
-	#TODO jump
 	if event.is_action_pressed("jump"):
 		jump_requested = true
+	#TODO inventory open/close
 
 
 func _input(event: InputEvent) -> void:

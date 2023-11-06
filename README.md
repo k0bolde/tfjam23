@@ -14,3 +14,9 @@ Before changing back when you place said object in the right spot
 Pick up the crystal statue and play through a segment as a mouse before finding the next pedestal etc etc
 lock you to the new form the first time you're in the new area, then when its finished, let you use your other tf items
 
+TODO:
+	dialogue system
+	tf items
+		tf cutscenes
+		change model
+		change movement
