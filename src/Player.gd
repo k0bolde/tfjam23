@@ -11,8 +11,8 @@ extends CharacterBody3D
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
 var max_speed := 10.0
-const ACCEL := 0.05
-const DEACCEL := 0.1
+var ACCEL := 0.05
+var DEACCEL := 0.1
 var jump_speed := 12.0
 var input_movement_vector : Vector2
 var player_dir := Vector3()
@@ -25,6 +25,7 @@ var target_spring_length := 2.0
 
 var curr_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}}
+var is_tfing := false
 
 
 func _ready():
@@ -36,6 +37,22 @@ func _ready():
 	forms["knight"]["col"] = get_node("KnightCollision")
 	forms["cow"]["col"] = get_node("CowCollision2")
 	forms["bird"]["col"] = get_node("KnightCollision")
+
+	forms["knight"]["speed"] = 6.0
+	forms["cow"]["speed"] = 18.0
+	forms["bird"]["speed"] = 12.0
+	
+	forms["knight"]["turn_speed"] = 0.06
+	forms["cow"]["turn_speed"] = 0.03
+	forms["bird"]["turn_speed"] = 0.1
+	
+	forms["knight"]["jump_speed"] = 10.0
+	forms["cow"]["jump_speed"] = 6.0
+	forms["bird"]["jump_speed"] = 16.0
+	
+	forms["knight"]["accel"] = 0.05
+	forms["cow"]["accel"] = 0.005
+	forms["bird"]["accel"] = 0.1
 
 
 func _physics_process(_delta):
@@ -107,6 +124,11 @@ func change_form(new_form:String):
 		
 		forms[curr_form]["model"].visible = true
 		forms[curr_form]["col"].disabled = false
+		
+		max_speed = forms[curr_form]["speed"]
+		TURN_SPEED = forms[curr_form]["turn_speed"]
+		jump_speed = forms[curr_form]["jump_speed"]
+		ACCEL = forms[curr_form]["accel"]
 	
 	
 func _unhandled_input(event):

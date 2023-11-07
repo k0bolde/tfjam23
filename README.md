@@ -10,7 +10,7 @@ anteater for fishing with tongue, reaching keys down tubes/drains, claw attack, 
 cow for udder milking/charge attack/pushing heavy things
 	can charge but hard to turn while moving fast, can't jump much
 emu/cassowary for egg laying/shooting & fast running - egg target shooting/physics based destruction
-	can go pretty fast, up steep slopes, egg shooting, can jump pretty high with wing flaps, glide
+	can go pretty fast, up steep slopes, egg shooting, can jump pretty high with wing flaps/maybe double jump, glide
 
 Different parts of the castle could be for different forms then
 Maybe the general idea is that you pick something up to enter a part of the castle and then get TFed
