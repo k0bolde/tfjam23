@@ -1,19 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6yo5u3syjaij"]
+[gd_scene load_steps=17 format=3 uid="uid://c6yo5u3syjaij"]
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
+[ext_resource type="PackedScene" uid="uid://cao5amupwthpg" path="res://assets/knight.glb" id="2_vs0jd"]
 [ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="3_3qvty"]
+[ext_resource type="PackedScene" uid="uid://d1mxrmf6gmudw" path="res://assets/bird.glb" id="4_08fgu"]
 [ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="4_h2v42"]
 [ext_resource type="Texture2D" uid="uid://cmb2kncwyy3dv" path="res://assets/egg-icon.png" id="4_lbkam"]
 [ext_resource type="Texture2D" uid="uid://bh3ppjbrvjt6v" path="res://assets/fish-icon.png" id="5_rgtnw"]
+[ext_resource type="PackedScene" uid="uid://cxd2uib45p0fe" path="res://assets/cow.glb" id="8_qxe5j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_oslmi"]
-radius = 0.25
-
-[sub_resource type="PrismMesh" id="PrismMesh_ta04k"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_isgsa"]
+radius = 0.866832
+height = 2.62382
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2eru2"]
 radius = 0.25
@@ -44,22 +46,38 @@ shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_a2pdl"]
 
+[sub_resource type="Gradient" id="Gradient_sk5fm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h62xa"]
+gradient = SubResource("Gradient_sk5fm")
+width = 25
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_8b3if")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="KnightCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_y7b03")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_oslmi")
+[node name="CowCollision2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.903981, -0.0350349)
+shape = SubResource("CapsuleShape3D_isgsa")
+disabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(-1.74846e-08, -1.74846e-08, 0.4, -0.4, -1.74846e-08, -1.74846e-08, 1.74846e-08, -0.4, -1.74846e-08, 0, 0.623776, -0.322019)
-mesh = SubResource("PrismMesh_ta04k")
+[node name="Models" type="Node3D" parent="."]
+
+[node name="knight" parent="Models" instance=ExtResource("2_vs0jd")]
+transform = Transform3D(-0.951, 0, -1.43597e-07, 0, 0.951, 0, 1.43597e-07, 0, -0.951, 0, 0, 0)
+visible = false
+
+[node name="cow" parent="Models" instance=ExtResource("8_qxe5j")]
+transform = Transform3D(-0.85, 0, -1.28346e-07, 0, 0.85, 0, 1.28346e-07, 0, -0.85, 0, 0, 0)
+visible = false
+
+[node name="bird" parent="Models" instance=ExtResource("4_08fgu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Gimbal" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -118,6 +136,8 @@ layout_mode = 2
 texture = ExtResource("5_rgtnw")
 
 [node name="Dialog" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,10 +170,23 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="Label" type="Label" parent="CanvasLayer/Dialog/MarginContainer/MarginContainer"]
+[node name="DialogLabel" type="Label" parent="CanvasLayer/Dialog/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 text = "Snake: 
 Hssss I got stuck as a snake and all I got for it was this t-shirt that's way too big for me now..."
 label_settings = ExtResource("4_h2v42")
 autowrap_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Dialog/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Dialog/MarginContainer/MarginContainer2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_h62xa")

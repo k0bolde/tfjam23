@@ -5,6 +5,8 @@ extends CharacterBody3D
 @onready var gimbal_origin : Vector3 = gimbal.transform.origin
 @onready var camera : Camera3D = $Gimbal/RotationHelper/SpringArm3D/InterpolatedCamera3D
 @onready var springarm : SpringArm3D = $Gimbal/RotationHelper/SpringArm3D
+@onready var dialog_node = %Dialog
+@onready var dialog_label : Label = %DialogLabel
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.1
@@ -127,3 +129,13 @@ func _input(event: InputEvent) -> void:
 			var camera_rot: Vector3 = rotation_helper.rotation
 			camera_rot.x = clamp(camera_rot.x, -deg_to_rad(30), deg_to_rad(70))
 			rotation_helper.rotation = camera_rot
+
+
+func update_dialog(speaker_name, text):
+	dialog_node.visible = true
+	dialog_label.text = "%s\n%s" % [speaker_name, text]
+	
+	
+func hide_dialog():
+	dialog_node.visible = false
+	dialog_label.text = ""

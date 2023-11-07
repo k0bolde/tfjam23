@@ -3,10 +3,11 @@ TF Gamejam 2023
 Walking sim in a castle (on a lake)? cursed items that tf you, have to figure out how to break the curse, end up with reusable tf items.
 Birds fly down from the top to deliver messages, goal is to figure out who's sending them.
 
-tf forms:
-anteater for fishing with tongue
-cow for udder milking
-messenger bird for egg laying/shooting
+tf forms: still have some armor pieces. Never explain why all the forms are female
+human armored knight base form - can't do much
+anteater for fishing with tongue, reaching keys down tubes/drains, claw attack, slow movement
+cow for udder milking/charge attack/pushing heavy things
+emu/cassowary for egg laying/shooting & fast running - egg target shooting/physics based destruction
 
 Different parts of the castle could be for different forms then
 Maybe the general idea is that you pick something up to enter a part of the castle and then get TFed
@@ -20,3 +21,4 @@ TODO:
 		tf cutscenes
 		change model
 		change movement
+		

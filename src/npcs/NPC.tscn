@@ -18,7 +18,5 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56694, 0)
 shape = SubResource("CylinderShape3D_4aqbf")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 [connection signal="body_entered" from="TalkArea" to="." method="_on_talk_area_body_entered"]
 [connection signal="body_exited" from="TalkArea" to="." method="_on_talk_area_body_exited"]
