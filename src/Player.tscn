@@ -70,7 +70,6 @@ disabled = true
 
 [node name="knight" parent="Models" instance=ExtResource("2_vs0jd")]
 transform = Transform3D(-0.951, 0, -1.43597e-07, 0, 0.951, 0, 1.43597e-07, 0, -0.951, 0, 0, 0)
-visible = false
 
 [node name="cow" parent="Models" instance=ExtResource("8_qxe5j")]
 transform = Transform3D(-0.85, 0, -1.28346e-07, 0, 0.85, 0, 1.28346e-07, 0, -0.85, 0, 0, 0)
@@ -78,6 +77,7 @@ visible = false
 
 [node name="bird" parent="Models" instance=ExtResource("4_08fgu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 
 [node name="Gimbal" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

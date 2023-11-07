@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtq7k1huy0pbn"]
+[gd_scene load_steps=12 format=3 uid="uid://dtq7k1huy0pbn"]
 
 [ext_resource type="Script" path="res://src/Main.gd" id="1_qct01"]
 [ext_resource type="PackedScene" uid="uid://bqdlufs0sumsy" path="res://src/levels/level1.tscn" id="2_cec4s"]
 [ext_resource type="Texture2D" uid="uid://btin653nxli0e" path="res://assets/textures/DayEnvironmentHDRI017_1K-HDR.exr" id="2_pnp1u"]
 [ext_resource type="PackedScene" uid="uid://c6yo5u3syjaij" path="res://src/Player.tscn" id="3_nmt4s"]
 [ext_resource type="PackedScene" uid="uid://b5o3ebg1p35vs" path="res://assets/npcs/Snake.glb" id="4_q7dhb"]
+[ext_resource type="PackedScene" uid="uid://cxd2uib45p0fe" path="res://assets/cow.glb" id="6_hy4yf"]
+[ext_resource type="PackedScene" uid="uid://d1mxrmf6gmudw" path="res://assets/bird.glb" id="7_nnkar"]
+[ext_resource type="PackedScene" uid="uid://cao5amupwthpg" path="res://assets/knight.glb" id="8_5oebo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cnp8l"]
 panorama = ExtResource("2_pnp1u")
@@ -42,3 +45,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 121.39
 
 [node name="Snake" parent="." instance=ExtResource("4_q7dhb")]
 transform = Transform3D(0.340068, 0, 0.345802, 0, 0.485, 0, -0.345802, 0, 0.340068, 103.976, -0.182792, -3.49779)
+
+[node name="cow" parent="." instance=ExtResource("6_hy4yf")]
+transform = Transform3D(-0.601041, 0, 0.601041, 0, 0.85, 0, -0.601041, 0, -0.601041, 92.4571, -0.182791, -7.13101)
+
+[node name="bird" parent="." instance=ExtResource("7_nnkar")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 94.1125, -0.182791, -5.62015)
+
+[node name="knight" parent="." instance=ExtResource("8_5oebo")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 95.3088, -0.182791, -3.85171)

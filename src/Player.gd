@@ -9,7 +9,7 @@ extends CharacterBody3D
 @onready var dialog_label : Label = %DialogLabel
 
 var MOUSE_SENSITIVITY := 0.1
-var TURN_SPEED := 0.1
+var TURN_SPEED := 0.05
 var max_speed := 10.0
 const ACCEL := 0.05
 const DEACCEL := 0.1
@@ -24,11 +24,18 @@ var jump_requested := false
 var target_spring_length := 2.0
 
 var curr_form := "knight"
-var forms := ["knight", "cow", "anteater", "messenger"]
+var forms := {"knight": {}, "cow": {}, "bird": {}}
 
 
 func _ready():
 	Globals.player = self
+	forms["knight"]["model"] = get_node("Models/knight")
+	forms["cow"]["model"] = get_node("Models/cow")
+	forms["bird"]["model"] = get_node("Models/bird")
+	
+	forms["knight"]["col"] = get_node("KnightCollision")
+	forms["cow"]["col"] = get_node("CowCollision2")
+	forms["bird"]["col"] = get_node("KnightCollision")
 
 
 func _physics_process(_delta):
@@ -91,10 +98,15 @@ func _physics_process(_delta):
 	
 	
 func change_form(new_form:String):
-	if forms.has(new_form):
+	if forms.keys().has(new_form) and curr_form != new_form:
+		var last_form := curr_form
 		curr_form = new_form
 		#TODO play tf cutscene
-		#TODO change model
+		forms[last_form]["model"].visible = false
+		forms[last_form]["col"].disabled = true
+		
+		forms[curr_form]["model"].visible = true
+		forms[curr_form]["col"].disabled = false
 	
 	
 func _unhandled_input(event):
@@ -129,7 +141,13 @@ func _input(event: InputEvent) -> void:
 			var camera_rot: Vector3 = rotation_helper.rotation
 			camera_rot.x = clamp(camera_rot.x, -deg_to_rad(30), deg_to_rad(70))
 			rotation_helper.rotation = camera_rot
-
+	if event.is_action_pressed("item 1"):
+		change_form("knight")
+	if event.is_action_pressed("item 2"):
+		change_form("cow")
+	if event.is_action_pressed("item 3"):
+		change_form("bird")
+			
 
 func update_dialog(speaker_name, text):
 	dialog_node.visible = true

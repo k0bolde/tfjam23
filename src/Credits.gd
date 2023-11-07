@@ -1,7 +1,7 @@
 extends Node
 
 var credits := """
-A TF gamejam 2023 game by:
+A TF gamejam 2023 game (https://itch.io/jam/tf23) by:
 	k0bold - a bit of everything :)
 	Sloe - writing, planning, game design
 

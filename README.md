@@ -5,9 +5,12 @@ Birds fly down from the top to deliver messages, goal is to figure out who's sen
 
 tf forms: still have some armor pieces. Never explain why all the forms are female
 human armored knight base form - can't do much
+	slow, can't jump, armored though and can use tools/interact better
 anteater for fishing with tongue, reaching keys down tubes/drains, claw attack, slow movement
 cow for udder milking/charge attack/pushing heavy things
+	can charge but hard to turn while moving fast, can't jump much
 emu/cassowary for egg laying/shooting & fast running - egg target shooting/physics based destruction
+	can go pretty fast, up steep slopes, egg shooting, can jump pretty high with wing flaps, glide
 
 Different parts of the castle could be for different forms then
 Maybe the general idea is that you pick something up to enter a part of the castle and then get TFed
