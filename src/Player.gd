@@ -29,7 +29,7 @@ func _ready():
 	Globals.player = self
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var cam_xform := camera.get_global_transform()
 	var clamped_move_vec := input_movement_vector.normalized()
 	var dir := Vector3()

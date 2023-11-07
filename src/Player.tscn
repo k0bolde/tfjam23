@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6yo5u3syjaij"]
+[gd_scene load_steps=13 format=3 uid="uid://c6yo5u3syjaij"]
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
+[ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="3_3qvty"]
+[ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="4_h2v42"]
+[ext_resource type="Texture2D" uid="uid://cmb2kncwyy3dv" path="res://assets/egg-icon.png" id="4_lbkam"]
+[ext_resource type="Texture2D" uid="uid://bh3ppjbrvjt6v" path="res://assets/fish-icon.png" id="5_rgtnw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
@@ -13,6 +17,32 @@ radius = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2eru2"]
 radius = 0.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbe0e"]
+shader = ExtResource("3_3qvty")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.01
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_a2pdl"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -56,7 +86,74 @@ layer = 2
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI"]
+visible = false
+material = SubResource("ShaderMaterial_bbe0e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_a2pdl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+offset_right = 131.0
+offset_bottom = 131.0
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_lbkam")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_rgtnw")
+
+[node name="Dialog" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Dialog"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 25
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Dialog/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Dialog/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/Dialog/MarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+text = "Snake: 
+Hssss I got stuck as a snake and all I got for it was this t-shirt that's way too big for me now..."
+label_settings = ExtResource("4_h2v42")
+autowrap_mode = 3

@@ -1,31 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqdlufs0sumsy"]
+[gd_scene load_steps=9 format=3 uid="uid://bqdlufs0sumsy"]
 
 [ext_resource type="PackedScene" uid="uid://ckgpjl7sukgvd" path="res://assets/level1.glb" id="1_6ste0"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="2_4mnbo"]
-[ext_resource type="Texture2D" uid="uid://bueb5uijq80o8" path="res://assets/textures/Ground048_1K-JPG/Ground048_1K-JPG_Color.jpg" id="2_sq344"]
-[ext_resource type="Texture2D" uid="uid://buojr0e5pimwq" path="res://assets/textures/Ground048_1K-JPG/Ground048_1K-JPG_AmbientOcclusion.jpg" id="3_301mf"]
+[ext_resource type="Material" uid="uid://shrpwp67rcu1" path="res://assets/textures/dirt.tres" id="2_akc77"]
 [ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="3_bipcs"]
-[ext_resource type="Texture2D" uid="uid://dfvdli0liyut2" path="res://assets/textures/Ground048_1K-JPG/Ground048_1K-JPG_Displacement.jpg" id="4_eqetx"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="4_skp54"]
-[ext_resource type="Texture2D" uid="uid://dxq4cr8xydqh5" path="res://assets/textures/Ground048_1K-JPG/Ground048_1K-JPG_NormalGL.jpg" id="5_caemm"]
-[ext_resource type="Texture2D" uid="uid://duwaj4mf41mip" path="res://assets/textures/Ground048_1K-JPG/Ground048_1K-JPG_Roughness.jpg" id="6_l701b"]
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="6_oiq1i"]
+[ext_resource type="Texture2D" uid="uid://bx8gaikfty370" path="res://assets/shaders/bwr_caustic.png" id="7_sjfix"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05mro"]
-albedo_texture = ExtResource("2_sq344")
-roughness_texture = ExtResource("6_l701b")
-roughness_texture_channel = 4
-normal_enabled = true
-normal_texture = ExtResource("5_caemm")
-ao_enabled = true
-ao_texture = ExtResource("3_301mf")
-ao_texture_channel = 4
-heightmap_enabled = true
-heightmap_texture = ExtResource("4_eqetx")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wqqf"]
+render_priority = 0
+shader = ExtResource("6_oiq1i")
+shader_parameter/tint_color = Color(0.172549, 0.286275, 0.411765, 1)
+shader_parameter/slowdown = 10.0
+shader_parameter/time_caust = 0.05
+shader_parameter/caust_form = 0.06
+shader_parameter/tile = 0.8
+shader_parameter/caustics = ExtResource("7_sjfix")
 
 [node name="level1" instance=ExtResource("1_6ste0")]
 
 [node name="island" parent="." index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_05mro")
+surface_material_override/0 = ExtResource("2_akc77")
 
 [node name="room_straight" parent="." index="4"]
 surface_material_override/0 = ExtResource("2_4mnbo")
@@ -33,6 +29,9 @@ surface_material_override/1 = ExtResource("3_bipcs")
 
 [node name="dock" parent="." index="5"]
 surface_material_override/0 = ExtResource("4_skp54")
+
+[node name="Plane" parent="." index="7"]
+surface_material_override/0 = SubResource("ShaderMaterial_4wqqf")
 
 [node name="barrier" parent="." index="8"]
 collision_layer = 4

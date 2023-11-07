@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c6v438gve42q7"]
+
+[ext_resource type="FontFile" uid="uid://bassgp3vpng6l" path="res://assets/cmu.serif-bold.ttf" id="1_pvr62"]
+
+[resource]
+font = ExtResource("1_pvr62")
+font_size = 32
