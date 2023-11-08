@@ -1,7 +1,7 @@
 extends Node
 
-var main
-var player
+var main : Main
+var player : Player
 
 
 func _ready():

@@ -1,12 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqdlufs0sumsy"]
+[gd_scene load_steps=19 format=3 uid="uid://bqdlufs0sumsy"]
 
 [ext_resource type="PackedScene" uid="uid://ckgpjl7sukgvd" path="res://assets/level1.glb" id="1_6ste0"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="2_4mnbo"]
 [ext_resource type="Material" uid="uid://shrpwp67rcu1" path="res://assets/textures/dirt.tres" id="2_akc77"]
+[ext_resource type="Script" path="res://src/levels/Level.gd" id="2_skivb"]
 [ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="3_bipcs"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="4_skp54"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="6_oiq1i"]
 [ext_resource type="Texture2D" uid="uid://bx8gaikfty370" path="res://assets/shaders/bwr_caustic.png" id="7_sjfix"]
+[ext_resource type="Texture2D" uid="uid://btin653nxli0e" path="res://assets/textures/DayEnvironmentHDRI017_1K-HDR.exr" id="9_16ehg"]
+[ext_resource type="PackedScene" uid="uid://b5o3ebg1p35vs" path="res://assets/npcs/Snake.glb" id="10_gkq47"]
+[ext_resource type="PackedScene" uid="uid://cxd2uib45p0fe" path="res://assets/cow.glb" id="11_4rb74"]
+[ext_resource type="PackedScene" uid="uid://d1mxrmf6gmudw" path="res://assets/bird.glb" id="12_od2i6"]
+[ext_resource type="PackedScene" uid="uid://cao5amupwthpg" path="res://assets/knight.glb" id="13_nvk1w"]
+[ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="14_tdq6j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wqqf"]
 render_priority = 0
@@ -18,7 +25,29 @@ shader_parameter/caust_form = 0.06
 shader_parameter/tile = 0.8
 shader_parameter/caustics = ExtResource("7_sjfix")
 
-[node name="level1" instance=ExtResource("1_6ste0")]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_04qnu"]
+panorama = ExtResource("9_16ehg")
+
+[sub_resource type="Sky" id="Sky_xexco"]
+sky_material = SubResource("PanoramaSkyMaterial_04qnu")
+
+[sub_resource type="Environment" id="Environment_v4rpd"]
+background_mode = 2
+sky = SubResource("Sky_xexco")
+sky_rotation = Vector3(0, -0.834267, 0)
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.26
+reflected_light_source = 1
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+glow_enabled = true
+glow_bloom = 0.25
+glow_blend_mode = 1
+
+[node name="level1" node_paths=PackedStringArray("spawn_node") instance=ExtResource("1_6ste0")]
+script = ExtResource("2_skivb")
+spawn_node = NodePath("Spawn")
 
 [node name="island" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_akc77")
@@ -42,3 +71,29 @@ collision_layer = 4
 [node name="Tower" parent="." index="21"]
 surface_material_override/0 = ExtResource("2_4mnbo")
 surface_material_override/1 = ExtResource("3_bipcs")
+
+[node name="Spawn" type="Marker3D" parent="." index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.036, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="23"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="24"]
+environment = SubResource("Environment_v4rpd")
+
+[node name="Snake" parent="." index="25" instance=ExtResource("10_gkq47")]
+transform = Transform3D(0.340068, 0, 0.345802, 0, 0.485, 0, -0.345802, 0, 0.340068, 103.976, -0.182792, -3.49779)
+
+[node name="cow" parent="." index="26" instance=ExtResource("11_4rb74")]
+transform = Transform3D(-0.601041, 0, 0.601041, 0, 0.85, 0, -0.601041, 0, -0.601041, 92.4571, -0.182791, -7.13101)
+
+[node name="bird" parent="." index="27" instance=ExtResource("12_od2i6")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 94.1125, -0.182791, -5.62015)
+
+[node name="knight" parent="." index="28" instance=ExtResource("13_nvk1w")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 95.3088, -0.182791, -3.85171)
+
+[node name="Door" parent="." index="29" instance=ExtResource("14_tdq6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4383, 0, 0)
+level_idx_to_load = 1

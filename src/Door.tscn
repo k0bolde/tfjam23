@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cant0y3v6awlb"]
+
+[ext_resource type="Script" path="res://src/Door.gd" id="1_68g3m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bhd4m"]
+height = 1.3063
+radius = 1.41454
+
+[node name="Door" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_68g3m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614849, 0)
+shape = SubResource("CylinderShape3D_bhd4m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

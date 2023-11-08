@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var rotation_helper = $Gimbal/RotationHelper
 @onready var gimbal = $Gimbal
@@ -27,6 +28,8 @@ var curr_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}}
 var is_tfing := false
 
+var curr_interact_area
+
 
 func _ready():
 	Globals.player = self
@@ -39,7 +42,7 @@ func _ready():
 	forms["bird"]["col"] = get_node("KnightCollision")
 
 	forms["knight"]["speed"] = 6.0
-	forms["cow"]["speed"] = 18.0
+	forms["cow"]["speed"] = 20.0
 	forms["bird"]["speed"] = 12.0
 	
 	forms["knight"]["turn_speed"] = 0.06
@@ -47,13 +50,14 @@ func _ready():
 	forms["bird"]["turn_speed"] = 0.1
 	
 	forms["knight"]["jump_speed"] = 10.0
-	forms["cow"]["jump_speed"] = 6.0
+	forms["cow"]["jump_speed"] = 8.0
 	forms["bird"]["jump_speed"] = 16.0
 	
 	forms["knight"]["accel"] = 0.05
-	forms["cow"]["accel"] = 0.005
+	forms["cow"]["accel"] = 0.0025
 	forms["bird"]["accel"] = 0.1
 
+	change_form("knight")
 
 func _physics_process(_delta):
 	var cam_xform := camera.get_global_transform()
@@ -66,25 +70,12 @@ func _physics_process(_delta):
 		if jump_requested:
 			jump_requested = false
 			vel.y += jump_speed
+			vel += get_platform_velocity()
 		else:
 			vel.y = 0.0
 	else:
 		vel.y -= 1.0
 		
-	var hvel := vel
-	hvel.y = 0
-	var target := dir * max_speed
-	var accel: float
-	#dot product tells us if we're going faster than max speed or not
-	if dir.dot(hvel) > 0:
-		accel = ACCEL
-	else:
-		accel = DEACCEL
-
-	hvel = hvel.lerp(target, accel)
-	vel.x = hvel.x
-	vel.z = hvel.z		
-
 	var curr_vel := last_vdir
 	curr_vel.y = 0.0
 	curr_vel = curr_vel.normalized()
@@ -96,6 +87,28 @@ func _physics_process(_delta):
 	#TODO change to lerp_angle()?
 	if input_movement_vector.length() > 0.0:
 		vdir = Globals.rotateTowards(curr_vel, player_dir, TURN_SPEED)
+		
+	var hvel := vel
+	hvel.y = 0
+	var target := dir * max_speed
+	var accel: float
+	#dot product tells us if we're going faster than max speed or not
+	if dir.dot(hvel) > 0:
+		accel = ACCEL
+	else:
+		accel = DEACCEL
+	#cow moves in the dir they're facing
+	if curr_form == "cow" and input_movement_vector.length() > 0.0:
+		target = vdir.normalized() * max_speed
+		if vdir.normalized().dot(hvel) > 0:
+			accel = ACCEL
+		else:
+			accel = DEACCEL
+
+	hvel = hvel.lerp(target, accel)
+	vel.x = hvel.x
+	vel.z = hvel.z		
+
 	
 	velocity = vel
 	move_and_slide()
@@ -118,7 +131,7 @@ func change_form(new_form:String):
 	if forms.keys().has(new_form) and curr_form != new_form:
 		var last_form := curr_form
 		curr_form = new_form
-		#TODO play tf cutscene
+		
 		forms[last_form]["model"].visible = false
 		forms[last_form]["col"].disabled = true
 		
@@ -129,6 +142,9 @@ func change_form(new_form:String):
 		TURN_SPEED = forms[curr_form]["turn_speed"]
 		jump_speed = forms[curr_form]["jump_speed"]
 		ACCEL = forms[curr_form]["accel"]
+		
+		
+		#TODO play tf cutscene
 	
 	
 func _unhandled_input(event):
@@ -148,8 +164,18 @@ func _unhandled_input(event):
 			target_spring_length += 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
 		zoom_tween.tween_property(springarm, "spring_length", target_spring_length, 0.25)
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed("jump") and is_on_floor():
 		jump_requested = true
+	if event.is_action_pressed("item 1"):
+		change_form("knight")
+	if event.is_action_pressed("item 2"):
+		change_form("cow")
+	if event.is_action_pressed("item 3"):
+		change_form("bird")
+		
+	if event.is_action_pressed("interact"):
+		if curr_interact_area:
+			curr_interact_area.interact()
 	#TODO inventory open/close
 
 
@@ -163,12 +189,6 @@ func _input(event: InputEvent) -> void:
 			var camera_rot: Vector3 = rotation_helper.rotation
 			camera_rot.x = clamp(camera_rot.x, -deg_to_rad(30), deg_to_rad(70))
 			rotation_helper.rotation = camera_rot
-	if event.is_action_pressed("item 1"):
-		change_form("knight")
-	if event.is_action_pressed("item 2"):
-		change_form("cow")
-	if event.is_action_pressed("item 3"):
-		change_form("bird")
 			
 
 func update_dialog(speaker_name, text):
