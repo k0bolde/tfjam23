@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt4pwpe8il0if"]
+
+[ext_resource type="Script" path="res://src/npcs/Snake.gd" id="1_hya4m"]
+[ext_resource type="PackedScene" uid="uid://b5o3ebg1p35vs" path="res://assets/npcs/Snake.glb" id="2_fwyx0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s1vkb"]
+height = 1.48407
+radius = 0.371727
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8bswi"]
+height = 1.12631
+radius = 1.66107
+
+[node name="Snake" type="Node3D"]
+script = ExtResource("1_hya4m")
+
+[node name="Snake" parent="." instance=ExtResource("2_fwyx0")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.377308)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.736775, 0.193338)
+shape = SubResource("CylinderShape3D_s1vkb")
+
+[node name="TalkArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27158)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TalkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56694, 0)
+shape = SubResource("CylinderShape3D_8bswi")

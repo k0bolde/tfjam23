@@ -8,6 +8,7 @@
 
 [resource]
 albedo_texture = ExtResource("1_t5lkq")
+metallic_specular = 0.0
 roughness_texture = ExtResource("5_8jh7q")
 roughness_texture_channel = 4
 normal_enabled = true
@@ -15,5 +16,4 @@ normal_texture = ExtResource("4_p86uf")
 ao_enabled = true
 ao_texture = ExtResource("2_76xlc")
 ao_texture_channel = 4
-heightmap_enabled = true
 heightmap_texture = ExtResource("3_rj03x")

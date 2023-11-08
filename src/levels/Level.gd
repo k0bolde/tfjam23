@@ -1,5 +1,8 @@
 extends Node3D
 class_name Level
+#Each level needs:
+#	a node called Spawn or set in the export
+#	its own WorldEnvironment
 
 @export var spawn_node : Node3D
 

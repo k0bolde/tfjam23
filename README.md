@@ -22,6 +22,9 @@ TODO:
 	dialogue system
 	tf items
 		tf cutscenes
-		change model
-		change movement
-		
+	form specific levels
+		knight puzzles with tool use
+		bird agility & egg shooting
+		cow racing & milking/udder management
+	animations:
+		idle, run, jump, tf for each form

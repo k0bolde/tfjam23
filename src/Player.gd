@@ -6,8 +6,11 @@ class_name Player
 @onready var gimbal_origin : Vector3 = gimbal.transform.origin
 @onready var camera : Camera3D = $Gimbal/RotationHelper/SpringArm3D/InterpolatedCamera3D
 @onready var springarm : SpringArm3D = $Gimbal/RotationHelper/SpringArm3D
-@onready var dialog_node = %Dialog
+@onready var dialog_node : Control = %Dialog
 @onready var dialog_label : Label = %DialogLabel
+@onready var talk_prompt : Control = %TalkPrompt
+@onready var next_prompt : Control = %NextPrompt
+@onready var prompt_label : Label = %PromptLabel
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
@@ -29,7 +32,8 @@ var forms := {"knight": {}, "cow": {}, "bird": {}}
 var is_tfing := false
 
 var curr_interact_area
-
+var dialog_callable : Callable
+var curr_npc_name : String
 
 func _ready():
 	Globals.player = self
@@ -176,6 +180,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if curr_interact_area:
 			curr_interact_area.interact()
+		elif dialog_callable and dialog_callable.is_valid():
+			update_dialog()
 	#TODO inventory open/close
 
 
@@ -190,12 +196,24 @@ func _input(event: InputEvent) -> void:
 			camera_rot.x = clamp(camera_rot.x, -deg_to_rad(30), deg_to_rad(70))
 			rotation_helper.rotation = camera_rot
 			
+			
+func dialog_area_entered(npc_name, the_callable):
+	dialog_callable = the_callable
+	curr_npc_name = npc_name
+	talk_prompt.visible = true
 
-func update_dialog(speaker_name, text):
+
+func update_dialog():
 	dialog_node.visible = true
-	dialog_label.text = "%s\n%s" % [speaker_name, text]
+	talk_prompt.visible = false
+	if dialog_callable.is_valid() and curr_npc_name != "":
+		var text = dialog_callable.call()
+		dialog_label.text = "%s:\n%s" % [curr_npc_name, text]
 	
 	
 func hide_dialog():
+	curr_npc_name = ""
+	dialog_callable = Callable()
 	dialog_node.visible = false
 	dialog_label.text = ""
+	talk_prompt.visible = false

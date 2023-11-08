@@ -14,8 +14,8 @@
 radius = 0.25
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_isgsa"]
-radius = 0.866832
-height = 2.62382
+radius = 0.783
+height = 1.9378
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2eru2"]
 radius = 0.25
@@ -54,7 +54,7 @@ width = 25
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_8b3if")
 
 [node name="KnightCollision" type="CollisionShape3D" parent="."]
@@ -62,7 +62,7 @@ transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_y7b03")
 
 [node name="CowCollision2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.903981, -0.0350349)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.78613, -0.0350349)
 shape = SubResource("CapsuleShape3D_isgsa")
 disabled = true
 
@@ -72,7 +72,7 @@ disabled = true
 transform = Transform3D(-0.951, 0, -1.43597e-07, 0, 0.951, 0, 1.43597e-07, 0, -0.951, 0, 0, 0)
 
 [node name="cow" parent="Models" instance=ExtResource("8_qxe5j")]
-transform = Transform3D(-0.85, 0, -1.28346e-07, 0, 0.85, 0, 1.28346e-07, 0, -0.85, 0, 0, 0)
+transform = Transform3D(-0.75, 0, -1.13247e-07, 0, 0.75, 0, 1.13247e-07, 0, -0.75, 0, 0, 0)
 visible = false
 
 [node name="bird" parent="Models" instance=ExtResource("4_08fgu")]
@@ -179,14 +179,55 @@ Hssss I got stuck as a snake and all I got for it was this t-shirt that's way to
 label_settings = ExtResource("4_h2v42")
 autowrap_mode = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Dialog/MarginContainer"]
+[node name="NextPrompt" type="MarginContainer" parent="CanvasLayer/Dialog/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Dialog/MarginContainer/MarginContainer2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Dialog/MarginContainer/NextPrompt"]
+visible = false
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = SubResource("GradientTexture1D_h62xa")
+
+[node name="Label" type="Label" parent="CanvasLayer/Dialog/MarginContainer/NextPrompt"]
+layout_mode = 2
+text = "(E)"
+label_settings = ExtResource("4_h2v42")
+
+[node name="TalkPrompt" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TalkPrompt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TalkPrompt/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.517647)
+
+[node name="PromptLabel" type="Label" parent="CanvasLayer/TalkPrompt/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Talk - (E)"
+label_settings = ExtResource("4_h2v42")
