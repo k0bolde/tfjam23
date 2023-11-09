@@ -11,6 +11,7 @@ class_name Player
 @onready var talk_prompt : Control = %TalkPrompt
 @onready var next_prompt : Control = %NextPrompt
 @onready var prompt_label : Label = %PromptLabel
+@onready var shader : TextureRect = %ShaderRect
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
@@ -62,6 +63,10 @@ func _ready():
 	forms["bird"]["accel"] = 0.1
 
 	change_form("knight")
+	
+	RenderingServer.viewport_set_scaling_3d_scale(get_viewport().get_viewport_rid(), 0.5)
+	get_viewport().size_changed.connect(window_resize)
+	window_resize()
 
 func _physics_process(_delta):
 	var cam_xform := camera.get_global_transform()
@@ -217,3 +222,7 @@ func hide_dialog():
 	dialog_node.visible = false
 	dialog_label.text = ""
 	talk_prompt.visible = false
+
+func window_resize():
+	var new_shader_res := Vector2(DisplayServer.window_get_size() / 2.0)
+	shader.material.set_shader_parameter("resolution", new_shader_res)

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
-[ext_resource type="PackedScene" uid="uid://cao5amupwthpg" path="res://assets/knight.glb" id="2_vs0jd"]
 [ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="3_3qvty"]
-[ext_resource type="PackedScene" uid="uid://d1mxrmf6gmudw" path="res://assets/bird.glb" id="4_08fgu"]
+[ext_resource type="PackedScene" uid="uid://7aqfudnrar5r" path="res://src/Bird.tscn" id="4_1xrey"]
+[ext_resource type="PackedScene" uid="uid://bxlx8vqo5bky6" path="res://src/Cow.tscn" id="4_6c8rn"]
+[ext_resource type="PackedScene" uid="uid://dmwx56dvhm4kg" path="res://src/Knight.tscn" id="4_ab216"]
 [ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="4_h2v42"]
 [ext_resource type="Texture2D" uid="uid://cmb2kncwyy3dv" path="res://assets/egg-icon.png" id="4_lbkam"]
 [ext_resource type="Texture2D" uid="uid://bh3ppjbrvjt6v" path="res://assets/fish-icon.png" id="5_rgtnw"]
-[ext_resource type="PackedScene" uid="uid://cxd2uib45p0fe" path="res://assets/cow.glb" id="8_qxe5j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
@@ -19,6 +19,12 @@ height = 1.9378
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2eru2"]
 radius = 0.25
+
+[sub_resource type="Gradient" id="Gradient_sk5fm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h62xa"]
+gradient = SubResource("Gradient_sk5fm")
+width = 25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bbe0e"]
 shader = ExtResource("3_3qvty")
@@ -41,16 +47,10 @@ shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
 shader_parameter/warp_amount = 0.0
 shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_intensity = 0.6
 shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_a2pdl"]
-
-[sub_resource type="Gradient" id="Gradient_sk5fm"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_h62xa"]
-gradient = SubResource("Gradient_sk5fm")
-width = 25
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -68,16 +68,16 @@ disabled = true
 
 [node name="Models" type="Node3D" parent="."]
 
-[node name="knight" parent="Models" instance=ExtResource("2_vs0jd")]
-transform = Transform3D(-0.951, 0, -1.43597e-07, 0, 0.951, 0, 1.43597e-07, 0, -0.951, 0, 0, 0)
-
-[node name="cow" parent="Models" instance=ExtResource("8_qxe5j")]
-transform = Transform3D(-0.75, 0, -1.13247e-07, 0, 0.75, 0, 1.13247e-07, 0, -0.75, 0, 0, 0)
+[node name="cow" parent="Models" instance=ExtResource("4_6c8rn")]
+transform = Transform3D(-0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 0, 0, 0)
 visible = false
 
-[node name="bird" parent="Models" instance=ExtResource("4_08fgu")]
+[node name="bird" parent="Models" instance=ExtResource("4_1xrey")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
+
+[node name="knight" parent="Models" instance=ExtResource("4_ab216")]
+transform = Transform3D(-0.95, 0, -1.43446e-07, 0, 0.95, 0, 1.43446e-07, 0, -0.95, 0, 0, 0)
 
 [node name="Gimbal" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -110,17 +110,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI"]
-visible = false
-material = SubResource("ShaderMaterial_bbe0e")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CanvasTexture_a2pdl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -158,7 +147,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_bottom = 25
+theme_override_constants/margin_bottom = 50
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Dialog/MarginContainer"]
 layout_mode = 2
@@ -172,7 +161,7 @@ theme_override_constants/margin_right = 10
 
 [node name="DialogLabel" type="Label" parent="CanvasLayer/Dialog/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 0)
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 text = "Snake: 
 Hssss I got stuck as a snake and all I got for it was this t-shirt that's way too big for me now..."
@@ -231,3 +220,13 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Talk - (E)"
 label_settings = ExtResource("4_h2v42")
+
+[node name="ShaderRect" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bbe0e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_a2pdl")
