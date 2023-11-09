@@ -19,8 +19,7 @@ Pick up the crystal statue and play through a segment as a mouse before finding 
 lock you to the new form the first time you're in the new area, then when its finished, let you use your other tf items
 
 TODO:
-	tf items
-		tf cutscenes
+	tf cutscenes
 	form specific levels
 		knight puzzles with tool use
 		bird agility & egg shooting
@@ -29,3 +28,6 @@ TODO:
 		idle, run, jump, tf for each form
 	form movement/abilities
 	cutscene player
+		camera on a pathfollow?
+		disable player controls/hud
+	hud

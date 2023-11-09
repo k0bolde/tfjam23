@@ -183,7 +183,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 text = "Snake: 
-Hssss I got stuck as a snake and all I got for it was this t-shirt that's way too big for me now..."
+Hssss I got stuck as a "
 label_settings = ExtResource("4_h2v42")
 autowrap_mode = 3
 

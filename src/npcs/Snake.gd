@@ -1,4 +1,5 @@
 extends NPC
+#TODO non-repeating first line
 
 @onready var animplayer : AnimationPlayer = $Snake/AnimationPlayer
 
@@ -9,25 +10,26 @@ func _ready():
 	npc_name = "T-Shirt Snake"
 	animplayer.playback_default_blend_time = 0.1
 	animplayer.play("Snake_Idle")
-	dialogue = { "start": [Callable(self, "zeroth_line"), "line1"],
-				"line1": [Callable(self, "first_line"), "line2"],
-				"line2": ["And it doesn't even fit me anymore!", "END"]
+	dialogue = { "start": ["""You must be here to take on the tower right?
+I reckon there has to be a REAL prize at the top of it. 
+All I got was a curse, and this lousy t-shirt.
+It doesn’t even fit me anymore!""", "line1", 1],
+				"line1": [Callable(self, "zeroth_line"), "END", 0]
 				}
 
 
-func first_line() -> String:
+func zeroth_line() -> String:
 	animplayer.play("Snake_Attack")
 	animplayer.queue("Snake_Idle")
-	return "Can't believe all I got was a damn shirt"
-
-
-func zeroth_line() -> String:
+	var ret : String = ""
 	match Globals.player.curr_form:
 		"knight":
-			return "Hey knight"
+			ret += "Hey knight.\n"
 		"bird":
-			return "Hey messenger"
+			ret += "Hey eggbutt.\n"
 		"cow":
-			return "Hey udderfiend"
+			ret += "Hey milkbags.\n"
 		_:
-			return "Hey unknown form"
+			ret += "Hey unknown form"
+	ret += "Do you reckon they’ve got shirts up there without armholes?"
+	return ret

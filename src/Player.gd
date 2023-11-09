@@ -28,6 +28,7 @@ var vel := Vector3()
 var zoom_tween : Tween
 var jump_requested := false
 var target_spring_length := 2.0
+var is_cutscene_playing := false
 
 var curr_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}}
@@ -70,6 +71,8 @@ func _ready():
 	window_resize()
 
 func _physics_process(_delta):
+	if is_cutscene_playing:
+		return
 	var cam_xform := camera.get_global_transform()
 	var clamped_move_vec := input_movement_vector.normalized()
 	var dir := Vector3()
@@ -160,6 +163,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("click"):
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+	if is_cutscene_playing:
+		return
 	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
 	if event.is_action_pressed("scroll_up"):
 #		var curr_len = rotation_helper.get_node("SpringArm3D").spring_length
@@ -192,10 +197,11 @@ func _unhandled_input(event):
 		crosshair.visible = true
 	if event.is_action_released("aim mode"):
 		crosshair.visible = false
-	#TODO inventory open/close
 
 
 func _input(event: InputEvent) -> void:
+	if is_cutscene_playing:
+		return
 	#behaves better in _input, in unhandled it wouldn't work until the user pressed some buttons
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -219,6 +225,9 @@ func update_dialog():
 	if dialog_callable.is_valid() and curr_npc_name != "":
 		var text = dialog_callable.call()
 		dialog_label.text = "%s:\n%s" % [curr_npc_name, text]
+		#sometimes the dialog goes under the screen? Need to set the size manually apparently
+		dialog_label.custom_minimum_size.y = 50 * dialog_label.text.count("\n") + 100
+#		dialog_label.call_deferred("update_minimum_size")
 	
 	
 func hide_dialog():
@@ -227,6 +236,7 @@ func hide_dialog():
 	dialog_node.visible = false
 	dialog_label.text = ""
 	talk_prompt.visible = false
+
 
 func window_resize():
 	var new_shader_res := Vector2(DisplayServer.window_get_size() / 2.0)
