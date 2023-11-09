@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6yo5u3syjaij"]
+[gd_scene load_steps=18 format=3 uid="uid://c6yo5u3syjaij"]
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
@@ -9,6 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="4_h2v42"]
 [ext_resource type="Texture2D" uid="uid://cmb2kncwyy3dv" path="res://assets/egg-icon.png" id="4_lbkam"]
 [ext_resource type="Texture2D" uid="uid://bh3ppjbrvjt6v" path="res://assets/fish-icon.png" id="5_rgtnw"]
+[ext_resource type="Texture2D" uid="uid://dqwgk606r85gc" path="res://assets/crosshairs2.png" id="8_3mhgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
@@ -123,6 +124,24 @@ texture = ExtResource("4_lbkam")
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_rgtnw")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 300
+
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer/UI/CenterContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("8_3mhgy")
 
 [node name="Dialog" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true

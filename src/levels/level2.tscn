@@ -65,9 +65,8 @@ _data = {
 "platform": SubResource("Animation_th24w")
 }
 
-[node name="level2" node_paths=PackedStringArray("spawn_node") instance=ExtResource("1_jfwob")]
+[node name="level2" instance=ExtResource("1_jfwob")]
 script = ExtResource("2_8u3ea")
-spawn_node = NodePath("spawn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
 transform = Transform3D(-0.952129, -0.279914, 0.122874, 0, 0.401948, 0.915663, -0.305695, 0.871829, -0.382706, 0, 0, 0)
@@ -76,7 +75,7 @@ shadow_enabled = true
 [node name="CubeAnimatableBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.211684, -17.4639)
 
-[node name="spawn" type="Marker3D" parent="." index="6"]
+[node name="Spawn" type="Marker3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0653341, 0)
 
 [node name="Door" parent="." index="7" instance=ExtResource("4_bukhm")]

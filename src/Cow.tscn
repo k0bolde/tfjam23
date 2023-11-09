@@ -16,9 +16,6 @@ max_degrees = 30.0
 
 [node name="cow" instance=ExtResource("1_alceb")]
 
-[node name="Cylinder_004" parent="metarig/Skeleton3D" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="WiggleBone" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="18"]
 transform = Transform3D(1, 9.57567e-16, 1.50996e-07, 3.23108e-10, -0.999998, -0.00213984, 1.50995e-07, 0.00213984, -0.999998, -9.89133e-17, 1.1629, -0.853784)
 bone_name = "udder"

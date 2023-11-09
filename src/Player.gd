@@ -12,6 +12,7 @@ class_name Player
 @onready var next_prompt : Control = %NextPrompt
 @onready var prompt_label : Label = %PromptLabel
 @onready var shader : TextureRect = %ShaderRect
+@onready var crosshair : TextureRect = %Crosshair
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
@@ -152,7 +153,6 @@ func change_form(new_form:String):
 		jump_speed = forms[curr_form]["jump_speed"]
 		ACCEL = forms[curr_form]["accel"]
 		
-		
 		#TODO play tf cutscene
 	
 	
@@ -187,6 +187,11 @@ func _unhandled_input(event):
 			curr_interact_area.interact()
 		elif dialog_callable and dialog_callable.is_valid():
 			update_dialog()
+		
+	if event.is_action_pressed("aim mode"):
+		crosshair.visible = true
+	if event.is_action_released("aim mode"):
+		crosshair.visible = false
 	#TODO inventory open/close
 
 

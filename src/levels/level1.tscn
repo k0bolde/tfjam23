@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqdlufs0sumsy"]
+[gd_scene load_steps=22 format=3 uid="uid://bqdlufs0sumsy"]
 
 [ext_resource type="PackedScene" uid="uid://ckgpjl7sukgvd" path="res://assets/level1.glb" id="1_6ste0"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="2_4mnbo"]
@@ -45,9 +45,46 @@ glow_enabled = true
 glow_bloom = 0.25
 glow_blend_mode = 1
 
-[node name="level1" node_paths=PackedStringArray("spawn_node") instance=ExtResource("1_6ste0")]
+[sub_resource type="Animation" id="Animation_fng1s"]
+resource_name = "boat idle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(128.287, -0.998699, 0.282838), Vector3(128.287, -1.783, 0.283), Vector3(128.287, -0.998699, 0.282838)]
+}
+
+[sub_resource type="Animation" id="Animation_3ur3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(128.287, -0.998699, 0.282838)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wvdff"]
+_data = {
+"RESET": SubResource("Animation_3ur3y"),
+"boat idle": SubResource("Animation_fng1s")
+}
+
+[node name="level1" instance=ExtResource("1_6ste0")]
 script = ExtResource("2_skivb")
-spawn_node = NodePath("Spawn")
 
 [node name="island" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_akc77")
@@ -97,3 +134,9 @@ level_idx_to_load = 1
 
 [node name="Snake" parent="." index="29" instance=ExtResource("14_iwecw")]
 transform = Transform3D(-0.634784, 0, -0.772689, 0, 1, 0, 0.772689, 0, -0.634784, 102.93, -0.200174, -3.45792)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="boat" index="0"]
+autoplay = "boat idle"
+libraries = {
+"": SubResource("AnimationLibrary_wvdff")
+}

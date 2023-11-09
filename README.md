@@ -5,8 +5,8 @@ Birds fly down from the top to deliver messages, goal is to figure out who's sen
 
 tf forms: still have some armor pieces. Never explain why all the forms are female
 human armored knight base form - can't do much
-	slow, can't jump, armored though and can use tools/interact better
-anteater for fishing with tongue, reaching keys down tubes/drains, claw attack, slow movement
+	slow, can't jump, armored though and can use tools/interact better, ladders
+anteater for fishing/grappling with tongue, reaching keys down tubes/drains, claw attack, slow movement
 cow for udder milking/charge attack/pushing heavy things
 	can charge but hard to turn while moving fast, can't jump much
 emu/cassowary for egg laying/shooting & fast running - egg target shooting/physics based destruction
@@ -19,7 +19,6 @@ Pick up the crystal statue and play through a segment as a mouse before finding 
 lock you to the new form the first time you're in the new area, then when its finished, let you use your other tf items
 
 TODO:
-	dialogue system
 	tf items
 		tf cutscenes
 	form specific levels
@@ -28,3 +27,5 @@ TODO:
 		cow racing & milking/udder management
 	animations:
 		idle, run, jump, tf for each form
+	form movement/abilities
+	cutscene player
