@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck40u6rgtap7"]
+[gd_scene load_steps=4 format=3 uid="uid://ck40u6rgtap7"]
+
+[ext_resource type="Script" path="res://src/Egg.gd" id="1_5w4gq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_eo4tr"]
 radius = 0.35
@@ -6,14 +8,31 @@ radial_segments = 16
 rings = 8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xok27"]
-radius = 0.418647
+radius = 0.197335
 
 [node name="Egg" type="RigidBody3D"]
 collision_layer = 16
-collision_mask = 27
+collision_mask = 25
+continuous_cd = true
+script = ExtResource("1_5w4gq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_eo4tr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_xok27")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="PlayerColTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="PlayerColTimer" to="." method="_on_player_col_timer_timeout"]

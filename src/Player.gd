@@ -181,9 +181,12 @@ func _unhandled_input(event):
 			#shoot egg where camera is facing
 			var egg : RigidBody3D = egg_scene.instantiate()
 			Globals.main.eggs.add_child(egg)
-			egg.set_deferred("global_position", global_position)
-			#TODO why doesn't it shoot eggs up at all?
-			egg.linear_velocity = Vector3(0, 20.0, -40.0).rotated(Vector3.UP, gimbal.get_rotation().y)
+			var pos = global_position
+			pos.y += 0.5
+			egg.global_position = pos
+			egg.rotation.y = gimbal.rotation.y
+			var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
+			egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
 	if is_cutscene_playing:
 		return
 	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
