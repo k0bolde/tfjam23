@@ -1,6 +1,8 @@
 extends Node3D
 
-var item_name := "Bird Ring"
+@export var item_name := "Bird Ring"
+@export var item_type := "new form"
+@export var form_name := "bird"
 
 
 func _ready():
@@ -11,7 +13,7 @@ func _ready():
 	
 	
 func _on_pickup_area_body_entered(body):
-	body.pickup_area_entered(Callable(self, "form_pickup").bind("bird"))
+	body.pickup_area_entered(form_pickup)
 	
 	
 func _on_pickup_area_body_exited(body):
@@ -20,7 +22,7 @@ func _on_pickup_area_body_exited(body):
 	body.pickup_callable = Callable()
 
 
-func form_pickup(form_name:String) -> Dictionary:
-	var p := {"type": "new form", "item_name": item_name, "form_name": form_name}
+func form_pickup() -> Dictionary:
+	var p := {"type": item_type, "item_name": item_name, "form_name": form_name}
 	queue_free()
 	return p

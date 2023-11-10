@@ -4,7 +4,9 @@ class_name Cutscene
 var path_follow : PathFollow3D
 var camera : Camera3D
 
+
 @export var time_to_path := 10.0
+@export var ease_type := 0.5
 var is_playing := false
 var accum_delta := 0.0
 
@@ -28,6 +30,7 @@ func stop_cutscene():
 	Globals.player.is_cutscene_playing = false	
 	is_playing = false
 	accum_delta = 0.0
+	path_follow.progress_ratio = 0.0
 
 
 func _process(delta):
@@ -35,4 +38,4 @@ func _process(delta):
 		accum_delta += delta
 		if accum_delta > time_to_path:
 			stop_cutscene()
-		path_follow.progress_ratio = accum_delta / time_to_path
+		path_follow.progress_ratio = ease(accum_delta / time_to_path, ease_type)

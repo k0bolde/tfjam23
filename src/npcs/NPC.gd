@@ -26,6 +26,7 @@ func next_line() -> String:
 		is_first_talk = false
 		curr_dialog_id = "start"
 		Globals.player.hide_dialog()
+		return ""
 		
 	if not is_first_talk:
 		while dialogue[curr_dialog_id][2] == 1:

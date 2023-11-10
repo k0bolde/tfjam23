@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqdlufs0sumsy"]
+[gd_scene load_steps=25 format=3 uid="uid://bqdlufs0sumsy"]
 
 [ext_resource type="PackedScene" uid="uid://ckgpjl7sukgvd" path="res://assets/level1.glb" id="1_6ste0"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="2_4mnbo"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bt4pwpe8il0if" path="res://src/npcs/Snake.tscn" id="14_iwecw"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="14_tdq6j"]
 [ext_resource type="PackedScene" uid="uid://d6bcu846l37i" path="res://src/CursedItem.tscn" id="15_4t315"]
+[ext_resource type="PackedScene" uid="uid://ctalbj8qktb7m" path="res://src/Cutscene.tscn" id="16_nm2qn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wqqf"]
 render_priority = 0
@@ -84,6 +85,14 @@ _data = {
 "boat idle": SubResource("Animation_fng1s")
 }
 
+[sub_resource type="Curve3D" id="Curve3D_blphu"]
+_data = {
+"points": PackedVector3Array(0.488602, -2.4762, -0.101837, -0.488602, 2.4762, 0.101837, 85.9032, -7.98668, -61.7265, 25.8517, -2.38747, -10.2428, -25.8517, 2.38747, 10.2428, 58.6823, 3.46477, -41.2228, 10.1482, 0.786943, -0.978729, -10.1482, -0.786943, 0.978729, 18.2217, 4.6739, -59.731, 6.90644, 1.57764, -1.21275, -6.90644, -1.57764, 1.21275, -3.95776, -3.15144, -34.759, 1.65472, 2.02942, -6.53075, -1.65472, -2.02942, 6.53075, -8.83727, -7.0858, -27.3332),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+up_vector_enabled = false
+
 [node name="level1" instance=ExtResource("1_6ste0")]
 script = ExtResource("2_skivb")
 
@@ -144,3 +153,8 @@ libraries = {
 
 [node name="CursedItem" parent="." index="35" instance=ExtResource("15_4t315")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2002, 0, 3.29621)
+
+[node name="IntroCutscene" parent="." index="36" instance=ExtResource("16_nm2qn")]
+transform = Transform3D(0.503065, 0, -0.864248, 0, 1, 0, 0.864248, 0, 0.503065, 100.06, 8.19233, 20.8737)
+curve = SubResource("Curve3D_blphu")
+time_to_path = 5.0

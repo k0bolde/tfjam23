@@ -10,6 +10,7 @@ Textures:
 	Cow: https://www.myfreetextures.com/
 	
 Models:
+	"Simple N64 model" (https://skfb.ly/oLWZ8) by Swayne is licensed under Creative Commons Attribution.
 	
 Sounds:
 	

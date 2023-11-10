@@ -9,9 +9,13 @@ class_name Level
 
 func _ready():
 	if has_node("Spawn"):
-		spawn_node = get_node("Spawn")
+		spawn_node = $Spawn
 	if has_node("Killplane"):
-		get_node("Killplane").body_entered.connect(_on_killplane_body_entered)
+		if not $Killplane.body_entered.is_connected(_on_killplane_body_entered):
+			$Killplane.body_entered.connect(_on_killplane_body_entered)
+	if has_node("IntroCutscene"):
+#		$IntroCutscene.start_cutscene()
+		$IntroCutscene.call_deferred("start_cutscene")
 	
 
 func _on_killplane_body_entered(body):

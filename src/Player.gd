@@ -1,6 +1,9 @@
 extends CharacterBody3D
 class_name Player
 #TODO investigate interpolated cam not interpolating position
+#TODO jumping improvements - coyote time, lower grav while jump held (for a short time)
+#TODO egg shooting
+#TODO anteater grapple and fishing
 
 @onready var rotation_helper = $Gimbal/RotationHelper
 @onready var gimbal = $Gimbal
@@ -73,7 +76,7 @@ func _ready():
 
 	change_form("knight")
 	
-	RenderingServer.viewport_set_scaling_3d_scale(get_viewport().get_viewport_rid(), 1)
+	RenderingServer.viewport_set_scaling_3d_scale(get_viewport().get_viewport_rid(), 0.5)
 	get_viewport().size_changed.connect(window_resize)
 	window_resize()
 

@@ -10,6 +10,7 @@ func _ready():
 	Globals.main = self
 	curr_level = level_node.get_child(0)
 
+
 func change_level(level_idx : int):
 	#TODO fade to black
 	curr_level.queue_free()

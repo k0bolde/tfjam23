@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://d6mb624ujo77"]
+
+[ext_resource type="Script" path="res://src/Title.gd" id="1_71y5o"]
+[ext_resource type="PackedScene" uid="uid://cuei4hxfudhmf" path="res://assets/n64.glb" id="1_vdqo5"]
+[ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="2_p41kl"]
+
+[sub_resource type="Environment" id="Environment_bdfpo"]
+background_mode = 1
+ambient_light_source = 1
+tonemap_mode = 3
+glow_enabled = true
+glow_bloom = 1.0
+glow_blend_mode = 1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.6185
+
+[node name="Title" type="Node3D"]
+script = ExtResource("1_71y5o")
+
+[node name="n64" parent="." instance=ExtResource("1_vdqo5")]
+transform = Transform3D(5.805, 0, 0, 0, 5.805, 0, 0, 0, 5.805, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.990983, 0.0673977, -0.115801, 0, 0.864275, 0.50302, 0.133986, -0.498484, 0.856482, -0.482, 0.996, 1.171)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -101.0
+offset_right = 452.0
+offset_bottom = 101.0
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Castle of Transformation"
+label_settings = ExtResource("2_p41kl")
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "By k0bold and Sloe"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bdfpo")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.712626, -0.481791, 0.509943, 0, 0.726886, 0.686758, -0.701544, -0.489402, 0.517998, 2.49249, 2.26134, 1.43157)
+light_color = Color(1, 0.580392, 0.611765, 1)
+shadow_enabled = true
+spot_angle = 31.4169
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.554394, 0, -0.832254, 0, 1, 0, 0.832254, 0, 0.554394, -2.05155, 0, 1.16068)
+light_color = Color(0.317647, 0.627451, 0.854902, 1)
+shadow_enabled = true
+spot_range = 4.5648
+spot_angle = 42.563
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.870833, 2.10839)
+light_volumetric_fog_energy = 4.88
+spot_range = 3.73834
+spot_angle = 7.59569
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

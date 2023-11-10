@@ -13,12 +13,11 @@ func _ready():
 I reckon there has to be a REAL prize at the top of it. 
 All I got was a curse, and this lousy t-shirt.
 It doesn’t even fit me anymore!""", "line1", 1],
-				"line1": [Callable(self, "zeroth_line"), "END", 0]
+				"line1": [zeroth_line, "END", 0]
 				}
 
 
 func zeroth_line() -> String:
-	#TODO anims play when 
 	animplayer.play("Snake_Attack")
 	animplayer.queue("Snake_Idle")
 	var ret : String = ""
