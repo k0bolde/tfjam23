@@ -2,6 +2,7 @@ extends Node3D
 class_name Main
 
 @onready var level_node = $Level
+@onready var eggs = $Eggs
 var curr_level : Level
 var levels := [preload("res://src/levels/level1.tscn"), preload("res://src/levels/level2.tscn")]
 
@@ -13,6 +14,8 @@ func _ready():
 
 func change_level(level_idx : int):
 	#TODO fade to black
+	for egg in eggs.get_children():
+		egg.queue_free()
 	curr_level.queue_free()
 	curr_level = levels[level_idx].instantiate()
 	level_node.add_child(curr_level)

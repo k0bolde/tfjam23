@@ -1,4 +1,5 @@
 extends Node3D
+#TODO keep track of if it was taken when returning to a level
 
 @export var item_name := "Bird Ring"
 @export var item_type := "new form"

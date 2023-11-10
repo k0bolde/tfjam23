@@ -13,3 +13,5 @@ script = ExtResource("1_qct01")
 
 [node name="Player" parent="." instance=ExtResource("3_nmt4s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 121.398, 0.121013, 0)
+
+[node name="Eggs" type="Node3D" parent="."]

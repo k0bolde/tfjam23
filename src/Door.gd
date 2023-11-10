@@ -1,4 +1,5 @@
 extends Area3D
+#TODO interact popup
 
 @export var level_idx_to_load : int
 

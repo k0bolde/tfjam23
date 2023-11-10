@@ -38,6 +38,7 @@ var curr_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}}
 var is_tfing := false
 var is_form_locked := false
+var egg_scene = preload("res://src/Egg.tscn")
 
 var curr_interact_area
 var dialog_callable : Callable
@@ -152,6 +153,7 @@ func _physics_process(_delta):
 	
 func change_form(new_form:String):
 	if is_form_locked:
+		#TODO feedback that you're locked
 		return
 	if forms.keys().has(new_form) and curr_form != new_form and forms[new_form]["owned"] == true:
 		var last_form := curr_form
@@ -175,6 +177,13 @@ func _unhandled_input(event):
 	if event.is_action_pressed("click"):
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+		if crosshair.visible and curr_form == "bird":
+			#shoot egg where camera is facing
+			var egg : RigidBody3D = egg_scene.instantiate()
+			Globals.main.eggs.add_child(egg)
+			egg.set_deferred("global_position", global_position)
+			#TODO why doesn't it shoot eggs up at all?
+			egg.linear_velocity = Vector3(0, 20.0, -40.0).rotated(Vector3.UP, gimbal.get_rotation().y)
 	if is_cutscene_playing:
 		return
 	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")

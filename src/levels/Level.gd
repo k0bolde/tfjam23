@@ -3,7 +3,9 @@ class_name Level
 #Each level needs:
 #	a node called Spawn or set in the export
 #	its own WorldEnvironment
-#	a killplane with connected
+#	optionally a killplane
+#	optionally an IntroCutscene
+#TODO don't play intro cutscene when the level's already been visited once?
 
 @export var spawn_node : Node3D
 
@@ -14,7 +16,7 @@ func _ready():
 		if not $Killplane.body_entered.is_connected(_on_killplane_body_entered):
 			$Killplane.body_entered.connect(_on_killplane_body_entered)
 	if has_node("IntroCutscene"):
-#		$IntroCutscene.start_cutscene()
+	#might be safer to delay this until the player is loaded for sure
 		$IntroCutscene.call_deferred("start_cutscene")
 	
 

@@ -92,8 +92,8 @@ spot_angle = 42.563
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.870833, 2.10839)
 light_volumetric_fog_energy = 4.88
-spot_range = 3.73834
-spot_angle = 7.59569
+spot_range = 4.03932
+spot_angle = 7.3059
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

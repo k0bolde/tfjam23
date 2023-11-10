@@ -11,6 +11,7 @@ cow for udder milking/charge attack/pushing heavy things
 	can charge but hard to turn while moving fast, can't jump much
 emu/cassowary for egg laying/shooting & fast running - egg target shooting/physics based destruction
 	can go pretty fast, up steep slopes, egg shooting, can jump pretty high with wing flaps/maybe double jump, glide
+cool dinosaur (trex/raptor)
 
 Different parts of the castle could be for different forms then
 Maybe the general idea is that you pick something up to enter a part of the castle and then get TFed
@@ -27,7 +28,6 @@ TODO:
 	animations:
 		idle, run, jump, tf for each form
 	form movement/abilities
-	cutscene player
-		camera on a pathfollow?
-		disable player controls/hud
 	hud
+	pause menu
+	options menu
