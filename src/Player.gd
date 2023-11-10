@@ -1,5 +1,6 @@
 extends CharacterBody3D
 class_name Player
+#TODO investigate interpolated cam not interpolating position
 
 @onready var rotation_helper = $Gimbal/RotationHelper
 @onready var gimbal = $Gimbal
@@ -33,10 +34,12 @@ var is_cutscene_playing := false
 var curr_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}}
 var is_tfing := false
+var is_form_locked := false
 
 var curr_interact_area
 var dialog_callable : Callable
 var curr_npc_name : String
+var pickup_callable : Callable
 
 func _ready():
 	Globals.player = self
@@ -63,10 +66,14 @@ func _ready():
 	forms["knight"]["accel"] = 0.05
 	forms["cow"]["accel"] = 0.0025
 	forms["bird"]["accel"] = 0.1
+	
+	forms["knight"]["owned"] = true
+	forms["cow"]["owned"] = true
+	forms["bird"]["owned"] = false
 
 	change_form("knight")
 	
-	RenderingServer.viewport_set_scaling_3d_scale(get_viewport().get_viewport_rid(), 0.5)
+	RenderingServer.viewport_set_scaling_3d_scale(get_viewport().get_viewport_rid(), 1)
 	get_viewport().size_changed.connect(window_resize)
 	window_resize()
 
@@ -141,7 +148,9 @@ func _physics_process(_delta):
 	
 	
 func change_form(new_form:String):
-	if forms.keys().has(new_form) and curr_form != new_form:
+	if is_form_locked:
+		return
+	if forms.keys().has(new_form) and curr_form != new_form and forms[new_form]["owned"] == true:
 		var last_form := curr_form
 		curr_form = new_form
 		
@@ -192,6 +201,8 @@ func _unhandled_input(event):
 			curr_interact_area.interact()
 		elif dialog_callable and dialog_callable.is_valid():
 			update_dialog()
+		elif pickup_callable and pickup_callable.is_valid():
+			pickup_item()
 		
 	if event.is_action_pressed("aim mode"):
 		crosshair.visible = true
@@ -217,6 +228,7 @@ func dialog_area_entered(npc_name, the_callable):
 	dialog_callable = the_callable
 	curr_npc_name = npc_name
 	talk_prompt.visible = true
+	prompt_label.text = "Talk (E)"
 
 
 func update_dialog():
@@ -236,6 +248,20 @@ func hide_dialog():
 	dialog_node.visible = false
 	dialog_label.text = ""
 	talk_prompt.visible = false
+
+
+func pickup_area_entered(the_callable : Callable):
+	talk_prompt.visible = true
+	prompt_label.text = "Pick Up (E)"
+	pickup_callable = the_callable
+
+
+func pickup_item():
+	var item_info : Dictionary = pickup_callable.call()
+	if item_info["type"] == "new form":
+		forms[item_info["form_name"]]["owned"] = true
+		change_form(item_info["form_name"])
+		is_form_locked = true
 
 
 func window_resize():

@@ -1,5 +1,4 @@
 extends NPC
-#TODO non-repeating first line
 
 @onready var animplayer : AnimationPlayer = $Snake/AnimationPlayer
 
@@ -7,7 +6,7 @@ extends NPC
 func _ready():
 	$TalkArea.body_entered.connect(_on_talk_area_body_entered)
 	$TalkArea.body_exited.connect(_on_talk_area_body_exited)
-	npc_name = "T-Shirt Snake"
+	npc_name = "Shirt Snake"
 	animplayer.playback_default_blend_time = 0.1
 	animplayer.play("Snake_Idle")
 	dialogue = { "start": ["""You must be here to take on the tower right?
@@ -19,6 +18,7 @@ It doesn’t even fit me anymore!""", "line1", 1],
 
 
 func zeroth_line() -> String:
+	#TODO anims play when 
 	animplayer.play("Snake_Attack")
 	animplayer.queue("Snake_Idle")
 	var ret : String = ""

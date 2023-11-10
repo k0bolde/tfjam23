@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d6bcu846l37i"]
+
+[ext_resource type="Script" path="res://src/CursedItem.gd" id="1_mofv1"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_x8ikk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iafhc"]
+height = 1.02667
+radius = 0.590236
+
+[node name="CursedItem" type="Node3D"]
+script = ExtResource("1_mofv1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 0.243796, 0)
+mesh = SubResource("TorusMesh_x8ikk")
+
+[node name="PickupArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553431, 0)
+shape = SubResource("CylinderShape3D_iafhc")

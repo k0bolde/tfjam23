@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctalbj8qktb7m"]
+
+[ext_resource type="Script" path="res://src/Cutscene.gd" id="1_x1fxg"]
+
+[sub_resource type="Curve3D" id="Curve3D_rxbkf"]
+
+[node name="Cutscene" type="Path3D"]
+curve = SubResource("Curve3D_rxbkf")
+script = ExtResource("1_x1fxg")
