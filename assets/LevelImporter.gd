@@ -15,6 +15,8 @@ func iterate(node):
 		var animbody := AnimatableBody3D.new()
 		animbody.name = "%sAnimatableBody3D" % node.name.trim_suffix("-ab")
 		animbody.position = node.position
+		#weird jitter when it syncs
+		animbody.sync_to_physics = false
 		var parent = node.get_parent()
 		parent.add_child(animbody)
 		animbody.set_owner(root)

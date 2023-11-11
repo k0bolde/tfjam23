@@ -59,7 +59,7 @@ func _ready():
 	forms["bird"]["col"] = get_node("KnightCollision")
 
 	forms["knight"]["speed"] = 6.0
-	forms["cow"]["speed"] = 20.0
+	forms["cow"]["speed"] = 26.0
 	forms["bird"]["speed"] = 12.0
 	
 	forms["knight"]["turn_speed"] = 0.06
@@ -104,7 +104,6 @@ func _physics_process(delta):
 	else:
 		in_air_time += delta
 		if jump_requested and in_air_time < coyote_time:
-			jump_requested = false
 			vel.y = jump_speed
 			vel += get_platform_velocity()
 		else:
@@ -116,6 +115,7 @@ func _physics_process(delta):
 					vel.y -= 1.0
 			else:
 				vel.y -= 1.0
+		jump_requested = false
 		
 	var curr_vel := last_vdir
 	curr_vel.y = 0.0
@@ -218,7 +218,7 @@ func _unhandled_input(event):
 			target_spring_length += 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
 		zoom_tween.tween_property(springarm, "spring_length", target_spring_length, 0.25)
-	if event.is_action_pressed("jump") and (is_on_floor() or in_air_time < coyote_time):
+	if event.is_action_pressed("jump"):
 		jump_requested = true
 		jump_held_time = 0.0
 	if event.is_action_pressed("item 1"):
@@ -239,10 +239,10 @@ func _unhandled_input(event):
 	if event.is_action_pressed("aim mode"):
 		crosshair.visible = true
 		#TODO zoom in while aiming so player can't see where the egg spawns at
-		camera.fov = 30
+#		camera.fov = 30
 	if event.is_action_released("aim mode"):
 		crosshair.visible = false
-		camera.fov = 75
+#		camera.fov = 75
 
 
 func _input(event: InputEvent) -> void:

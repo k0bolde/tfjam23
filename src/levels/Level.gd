@@ -24,3 +24,4 @@ func _ready():
 
 func _on_killplane_body_entered(body):
 	body.set_deferred("global_position", spawns[0].global_position)
+	body.vel = Vector3()
