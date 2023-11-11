@@ -120,7 +120,7 @@ surface_material_override/0 = ExtResource("2_4mnbo")
 surface_material_override/1 = ExtResource("3_bipcs")
 
 [node name="Spawn" type="Marker3D" parent="." index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.036, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 121.036, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="23"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)

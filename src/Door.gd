@@ -1,15 +1,13 @@
 extends Area3D
-#TODO interact popup
 
 @export var level_idx_to_load : int
 
 func _on_body_entered(body):
-	body.curr_interact_area = self
+	body.door_area_entered(interact)
 
 
 func _on_body_exited(body):
-	if body.curr_interact_area == self:
-		body.curr_interact_area = null
+	body.door_area_exited()
 
 
 func interact():

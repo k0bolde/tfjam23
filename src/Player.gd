@@ -40,10 +40,10 @@ var is_tfing := false
 var is_form_locked := false
 var egg_scene = preload("res://src/Egg.tscn")
 
-var curr_interact_area
 var dialog_callable : Callable
 var curr_npc_name : String
 var pickup_callable : Callable
+var door_callable : Callable
 
 func _ready():
 	Globals.player = self
@@ -191,13 +191,11 @@ func _unhandled_input(event):
 		return
 	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
 	if event.is_action_pressed("scroll_up"):
-#		var curr_len = rotation_helper.get_node("SpringArm3D").spring_length
 		if target_spring_length > 1.0:
 			target_spring_length -= 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
 		zoom_tween.tween_property(springarm, "spring_length", target_spring_length, 0.25)
 	if event.is_action_pressed("scroll_down"):
-#		var curr_len = rotation_helper.get_node("SpringArm3D").spring_length
 		if target_spring_length < 6.0:
 			target_spring_length += 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
@@ -212,8 +210,8 @@ func _unhandled_input(event):
 		change_form("bird")
 		
 	if event.is_action_pressed("interact"):
-		if curr_interact_area:
-			curr_interact_area.interact()
+		if door_callable and door_callable.is_valid():
+			door_callable.call()
 		elif dialog_callable and dialog_callable.is_valid():
 			update_dialog()
 		elif pickup_callable and pickup_callable.is_valid():
@@ -269,6 +267,17 @@ func pickup_area_entered(the_callable : Callable):
 	talk_prompt.visible = true
 	prompt_label.text = "Pick Up (E)"
 	pickup_callable = the_callable
+	
+	
+func door_area_entered(the_callable:Callable):
+	door_callable = the_callable
+	prompt_label.text = "Enter (E)"
+	talk_prompt.visible = true
+	
+	
+func door_area_exited():
+	door_callable = Callable()
+	talk_prompt.visible = false
 
 
 func pickup_item():
