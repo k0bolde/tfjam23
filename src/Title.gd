@@ -33,3 +33,13 @@ func _on_button_pressed():
 func _on_start_button_pressed():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	get_tree().change_scene_to_file("res://src/Main.tscn")
+
+
+func _on_credits_button_pressed():
+	#TODO open credits
+	pass # Replace with function body.
+
+
+func _on_options_button_pressed():
+	#TODO open options
+	pass # Replace with function body.

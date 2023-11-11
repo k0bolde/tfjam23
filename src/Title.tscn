@@ -102,4 +102,6 @@ spot_range = 4.03932
 spot_angle = 7.3059
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_button_pressed"]

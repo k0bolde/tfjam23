@@ -1,9 +1,8 @@
 extends CharacterBody3D
 class_name Player
 #TODO investigate interpolated cam not interpolating position
-#TODO jumping improvements - coyote time, lower grav while jump held (for a short time)
-#TODO egg shooting
 #TODO anteater grapple and fishing
+#TODO items attached to forms to show what tfs are availible? cow bell, . Actually use the item in the tf cutscenes
 
 @onready var rotation_helper = $Gimbal/RotationHelper
 @onready var gimbal = $Gimbal
@@ -24,6 +23,10 @@ var max_speed := 10.0
 var ACCEL := 0.05
 var DEACCEL := 0.1
 var jump_speed := 12.0
+var in_air_time := 0.0
+var coyote_time := 0.15
+var jump_held_time := 0.0
+var low_grav_time := 0.5
 var input_movement_vector : Vector2
 var player_dir := Vector3()
 var vdir := Vector3()
@@ -81,7 +84,7 @@ func _ready():
 	get_viewport().size_changed.connect(window_resize)
 	window_resize()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if is_cutscene_playing:
 		return
 	var cam_xform := camera.get_global_transform()
@@ -91,14 +94,28 @@ func _physics_process(_delta):
 	dir += cam_xform.basis.x * clamped_move_vec.x
 	dir.y = 0.0
 	if is_on_floor():
+		in_air_time = 0.0
 		if jump_requested:
 			jump_requested = false
-			vel.y += jump_speed
+			vel.y = jump_speed
 			vel += get_platform_velocity()
 		else:
 			vel.y = 0.0
 	else:
-		vel.y -= 1.0
+		in_air_time += delta
+		if jump_requested and in_air_time < coyote_time:
+			jump_requested = false
+			vel.y = jump_speed
+			vel += get_platform_velocity()
+		else:
+			if Input.is_action_pressed("jump"):
+				jump_held_time += delta
+				if jump_held_time < low_grav_time:
+					vel.y -= 0.5
+				else:
+					vel.y -= 1.0
+			else:
+				vel.y -= 1.0
 		
 	var curr_vel := last_vdir
 	curr_vel.y = 0.0
@@ -137,6 +154,7 @@ func _physics_process(_delta):
 	velocity = vel
 	move_and_slide()
 	
+	vdir += get_platform_angular_velocity()
 	last_vdir = vdir
 	vel = velocity
 	var look_vec = vdir + get_transform().origin
@@ -200,8 +218,9 @@ func _unhandled_input(event):
 			target_spring_length += 1
 		zoom_tween = Globals.get_tween(zoom_tween, self)
 		zoom_tween.tween_property(springarm, "spring_length", target_spring_length, 0.25)
-	if event.is_action_pressed("jump") and is_on_floor():
+	if event.is_action_pressed("jump") and (is_on_floor() or in_air_time < coyote_time):
 		jump_requested = true
+		jump_held_time = 0.0
 	if event.is_action_pressed("item 1"):
 		change_form("knight")
 	if event.is_action_pressed("item 2"):

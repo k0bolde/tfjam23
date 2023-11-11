@@ -22,7 +22,7 @@ func iterate(node):
 		animbody.add_child(node)
 		node.position = Vector3.ZERO
 		
-		var shape : ConvexPolygonShape3D = node.mesh.create_convex_shape(true, true)
+		var shape : ConvexPolygonShape3D = node.mesh.create_convex_shape(true, false)
 #		shape.margin = 0.001
 		var col := CollisionShape3D.new()
 		col.name = "%sCollision" % animbody.name

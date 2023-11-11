@@ -11,14 +11,16 @@ var levels := [preload("res://src/levels/level1.tscn"), preload("res://src/level
 
 func _ready():
 	Globals.main = self
-	curr_level = level_node.get_child(0)
+	change_level(1)
+#	curr_level = level_node.get_child(0)
 	
 
 func change_level(level_idx : int):
 	#TODO fade to black
 	for egg in eggs.get_children():
 		egg.queue_free()
-	curr_level.queue_free()
+	if curr_level:
+		curr_level.queue_free()
 	curr_level = levels[level_idx].instantiate()
 	curr_level_idx = level_idx
 	level_node.add_child(curr_level)

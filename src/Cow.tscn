@@ -57,35 +57,35 @@ max_degrees = 60.0
 [node name="cow" instance=ExtResource("1_alceb")]
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="18"]
-transform = Transform3D(1, 9.99201e-16, 1.50996e-07, 4.9036e-10, -0.999995, -0.0032475, 1.50995e-07, 0.0032475, -0.999995, -9.89133e-17, 1.1629, -0.853784)
+transform = Transform3D(1, 0, 1.50996e-07, 4.9036e-10, -0.999995, -0.0032475, 1.50995e-07, 0.0032475, -0.999995, -9.89133e-17, 1.1629, -0.853784)
 bone_name = "udder"
 bone_idx = 48
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_px2ww")
 
 [node name="WiggleBone2" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="19"]
-transform = Transform3D(-0.342021, 0.939693, -8.94069e-08, -8.9407e-08, 0, 1, 0.939692, 0.342021, 0, 0.219592, 1.60674, 1.63579)
+transform = Transform3D(-0.342021, 0.939693, -1.08177e-08, -1.22935e-07, -3.72529e-08, 1, 0.939692, 0.342021, 7.07805e-08, 0.219592, 1.60674, 1.63579)
 bone_name = "eye.L"
 bone_idx = 15
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_2oobj")
 
 [node name="WiggleBone3" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="20"]
-transform = Transform3D(-0.342021, -0.939693, -2.98023e-08, 8.9407e-08, -1.19209e-07, 1, -0.939692, 0.342021, 1.19209e-07, -0.219592, 1.60674, 1.63579)
+transform = Transform3D(-0.342021, -0.939693, 1.89846e-08, 1.11759e-07, -2.04891e-08, 1, -0.939692, 0.342021, 5.96046e-08, -0.219592, 1.60674, 1.63579)
 bone_name = "eye.R"
 bone_idx = 19
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_mety0")
 
 [node name="WiggleBone4" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="21"]
-transform = Transform3D(0.498822, -0.865354, -0.0483628, 0.805312, 0.483394, -0.343224, 0.320389, 0.13226, 0.938007, -0.264005, 1.58798, 1.37694)
+transform = Transform3D(0.498822, -0.865354, -0.0483628, 0.805312, 0.483393, -0.343224, 0.320389, 0.13226, 0.938007, -0.264005, 1.58798, 1.37694)
 bone_name = "ear.R"
 bone_idx = 17
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_uxset")
 
 [node name="WiggleBone5" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="22"]
-transform = Transform3D(0.498822, 0.865354, 0.0483626, -0.805312, 0.483394, -0.343224, -0.320388, 0.132261, 0.938007, 0.264005, 1.58798, 1.37694)
+transform = Transform3D(0.498822, 0.865354, 0.0483627, -0.805312, 0.483393, -0.343224, -0.320388, 0.132261, 0.938007, 0.264005, 1.58798, 1.37694)
 bone_name = "ear.L"
 bone_idx = 11
 script = ExtResource("2_g4px4")
