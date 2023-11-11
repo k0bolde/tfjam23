@@ -65,6 +65,34 @@ _data = {
 "platform": SubResource("Animation_th24w")
 }
 
+[sub_resource type="Animation" id="Animation_hlehy"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GearAnimatableBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gear2AnimatableBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_by7br"]
 resource_name = "spin"
 length = 10.0
@@ -94,34 +122,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, -6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_hlehy"]
-length = 0.001
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GearAnimatableBody3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gear2AnimatableBody3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jjjrc"]
 _data = {
 "RESET": SubResource("Animation_hlehy"),
@@ -135,13 +135,11 @@ script = ExtResource("2_8u3ea")
 transform = Transform3D(-0.952129, -0.279914, 0.122874, 0, 0.401948, 0.915663, -0.305695, 0.871829, -0.382706, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Spawn" type="Marker3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0653341, 0)
+[node name="Door" parent="." index="6" instance=ExtResource("4_bukhm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.9689, 3.89506, -0.0345627)
+spawn_idx = 1
 
-[node name="Door" parent="." index="7" instance=ExtResource("4_bukhm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32577, 0, 4.25392)
-
-[node name="Killplane" type="Area3D" parent="." index="8"]
+[node name="Killplane" type="Area3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28.8004, 0)
 collision_layer = 0
 collision_mask = 2
@@ -149,39 +147,44 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
 shape = SubResource("BoxShape3D_se4mx")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="9"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="8"]
 environment = SubResource("Environment_0suxt")
 
-[node name="MovingPlatformAnimationPlayer" type="AnimationPlayer" parent="." index="10"]
+[node name="MovingPlatformAnimationPlayer" type="AnimationPlayer" parent="." index="9"]
 autoplay = "platform"
 libraries = {
 "": SubResource("AnimationLibrary_yfo7c")
 }
 
-[node name="CubeAnimatableBody3D" parent="." index="12"]
+[node name="CubeAnimatableBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.211684, -17.4639)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="13"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42768, 7.3901)
 omni_range = 3.98908
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." index="14"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42768, 7.3901)
 omni_range = 3.98908
 
-[node name="GearsAnimationPlayer" type="AnimationPlayer" parent="." index="15"]
+[node name="GearsAnimationPlayer" type="AnimationPlayer" parent="." index="14"]
 autoplay = "spin"
 libraries = {
 "": SubResource("AnimationLibrary_jjjrc")
 }
 
-[node name="GearAnimatableBody3D" parent="." index="16"]
+[node name="GearAnimatableBody3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.139362, 7.3048)
 
 [node name="Gear-ab" parent="GearAnimatableBody3D" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 
-[node name="Gear2AnimatableBody3D" parent="." index="17"]
+[node name="Gear2AnimatableBody3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.139362, 12.4496)
+
+[node name="Spawns" type="Node3D" parent="." index="17"]
+
+[node name="Spawn" type="Marker3D" parent="Spawns" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.7374, 4.20486, 0)
 
 [connection signal="body_entered" from="Killplane" to="." method="_on_killplane_body_entered" flags=18]

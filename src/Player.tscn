@@ -98,7 +98,9 @@ doppler_tracking = 2
 current = true
 script = ExtResource("2_chnxt")
 rotate_speed = 0.98
-target = NodePath("..")
+target = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="Gimbal/RotationHelper/SpringArm3D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2

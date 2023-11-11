@@ -11,11 +11,11 @@ var levels := [preload("res://src/levels/level1.tscn"), preload("res://src/level
 
 func _ready():
 	Globals.main = self
-	change_level(1)
+	change_level(0)
 #	curr_level = level_node.get_child(0)
 	
 
-func change_level(level_idx : int):
+func change_level(level_idx : int, spawn_idx := 0):
 	#TODO fade to black
 	for egg in eggs.get_children():
 		egg.queue_free()
@@ -24,7 +24,8 @@ func change_level(level_idx : int):
 	curr_level = levels[level_idx].instantiate()
 	curr_level_idx = level_idx
 	level_node.add_child(curr_level)
-	Globals.player.set_deferred("global_position", curr_level.spawn_node.global_position)
-	Globals.player.set_deferred("global_rotation", curr_level.spawn_node.global_rotation)
+	var spawn = curr_level.spawns[spawn_idx]
+	Globals.player.set_deferred("global_position", spawn.global_position)
+	Globals.player.set_deferred("global_rotation", spawn.global_rotation)
 	Globals.player.vdir = Vector3()
-	Globals.player.gimbal.set_deferred("global_rotation", curr_level.spawn_node.global_rotation)
+	Globals.player.gimbal.set_deferred("global_rotation", spawn.global_rotation)

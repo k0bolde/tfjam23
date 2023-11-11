@@ -119,33 +119,30 @@ collision_layer = 4
 surface_material_override/0 = ExtResource("2_4mnbo")
 surface_material_override/1 = ExtResource("3_bipcs")
 
-[node name="Spawn" type="Marker3D" parent="." index="22"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 121.036, 0, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="23"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="22"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="24"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="23"]
 environment = SubResource("Environment_v4rpd")
 
-[node name="cow" parent="." index="25" instance=ExtResource("11_4rb74")]
+[node name="cow" parent="." index="24" instance=ExtResource("11_4rb74")]
 transform = Transform3D(-0.53033, 0, 0.53033, 0, 0.75, 0, -0.53033, 0, -0.53033, 92.4571, -0.182791, -7.13101)
 
-[node name="bird" parent="." index="26" instance=ExtResource("12_od2i6")]
+[node name="bird" parent="." index="25" instance=ExtResource("12_od2i6")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 94.1125, -0.182791, -5.62015)
 
-[node name="knight" parent="." index="27" instance=ExtResource("13_nvk1w")]
+[node name="knight" parent="." index="26" instance=ExtResource("13_nvk1w")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 95.3088, -0.182791, -3.85171)
 
-[node name="Door" parent="." index="28" instance=ExtResource("14_tdq6j")]
+[node name="Door" parent="." index="27" instance=ExtResource("14_tdq6j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 70.1675, -0.25526, 3.18764e-08)
 level_idx_to_load = 1
 
-[node name="Snake" parent="." index="29" instance=ExtResource("14_iwecw")]
+[node name="Snake" parent="." index="28" instance=ExtResource("14_iwecw")]
 transform = Transform3D(-0.634784, 0, -0.772689, 0, 1, 0, 0.772689, 0, -0.634784, 102.93, -0.200174, -3.45792)
 
-[node name="boat" parent="." index="34"]
+[node name="boat" parent="." index="33"]
 transform = Transform3D(4.43013, 0, 0, 0, 4.43013, 0, 0, 0, 14.4626, 128.287, -0.998699, 0.282838)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="boat" index="0"]
@@ -154,10 +151,18 @@ libraries = {
 "": SubResource("AnimationLibrary_wvdff")
 }
 
-[node name="CursedItem" parent="." index="35" instance=ExtResource("15_4t315")]
+[node name="CursedItem" parent="." index="34" instance=ExtResource("15_4t315")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2002, 0, 3.29621)
 
-[node name="IntroCutscene1" parent="." index="36" instance=ExtResource("16_nm2qn")]
+[node name="IntroCutscene1" parent="." index="35" instance=ExtResource("16_nm2qn")]
 transform = Transform3D(0.503065, 0, -0.864248, 0, 1, 0, 0.864248, 0, 0.503065, 100.06, 8.19233, 20.8737)
 curve = SubResource("Curve3D_blphu")
 time_to_path = 5.0
+
+[node name="Spawns" type="Node3D" parent="." index="36"]
+
+[node name="Spawn" type="Marker3D" parent="Spawns" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 121.036, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Spawns" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.2719, 0.0600139, 0)

@@ -7,7 +7,7 @@ class_name Player
 @onready var rotation_helper = $Gimbal/RotationHelper
 @onready var gimbal = $Gimbal
 @onready var gimbal_origin : Vector3 = gimbal.transform.origin
-@onready var camera : Camera3D = $Gimbal/RotationHelper/SpringArm3D/InterpolatedCamera3D
+@onready var camera : Camera3D = $Gimbal/RotationHelper/SpringArm3D/Camera3D
 @onready var springarm : SpringArm3D = $Gimbal/RotationHelper/SpringArm3D
 @onready var dialog_node : Control = %Dialog
 @onready var dialog_label : Label = %DialogLabel
@@ -238,8 +238,11 @@ func _unhandled_input(event):
 		
 	if event.is_action_pressed("aim mode"):
 		crosshair.visible = true
+		#TODO zoom in while aiming so player can't see where the egg spawns at
+		camera.fov = 30
 	if event.is_action_released("aim mode"):
 		crosshair.visible = false
+		camera.fov = 75
 
 
 func _input(event: InputEvent) -> void:
