@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ce4xoddpiisny"]
+
+[ext_resource type="FontFile" uid="uid://bassgp3vpng6l" path="res://assets/cmu.serif-bold.ttf" id="1_ngffc"]
+
+[resource]
+default_font = ExtResource("1_ngffc")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d6mb624ujo77"]
+[gd_scene load_steps=6 format=3 uid="uid://d6mb624ujo77"]
 
 [ext_resource type="Script" path="res://src/Title.gd" id="1_71y5o"]
 [ext_resource type="PackedScene" uid="uid://cuei4hxfudhmf" path="res://assets/n64.glb" id="1_vdqo5"]
 [ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="2_p41kl"]
+[ext_resource type="Theme" uid="uid://ce4xoddpiisny" path="res://assets/MenuTheme.tres" id="4_kbpk6"]
 
 [sub_resource type="Environment" id="Environment_bdfpo"]
 background_mode = 1
@@ -54,22 +55,27 @@ label_settings = ExtResource("2_p41kl")
 [node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "By k0bold and Sloe"
+label_settings = ExtResource("2_p41kl")
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_kbpk6")
 text = "Start Game"
 
 [node name="OptionsButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_kbpk6")
 text = "Options"
 
 [node name="CreditsButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_kbpk6")
 text = "Credits"
 
-[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_kbpk6")
 text = "Quit
 "
 
@@ -96,4 +102,4 @@ spot_range = 4.03932
 spot_angle = 7.3059
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_button_pressed"]

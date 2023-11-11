@@ -1,5 +1,7 @@
 @tool
 extends EditorScenePostImport
+#imports meshes whose names end in "-ab" as animatible bodies
+
 var root
 
 func _post_import(scene):
