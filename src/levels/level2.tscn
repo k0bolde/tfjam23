@@ -269,16 +269,16 @@ libraries = {
 "": SubResource("AnimationLibrary_ohxar")
 }
 
-[node name="CubeAnimatableBody3D" parent="." index="21"]
+[node name="CubeAnimatableBody3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.211684, -17.4639)
 
-[node name="GearAnimatableBody3D" parent="." index="22"]
+[node name="GearAnimatableBody3D" parent="." index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.139362, 7.3048)
 
 [node name="Gear-ab" parent="GearAnimatableBody3D" index="0"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 
-[node name="elevatorAnimatableBody3D" parent="." index="26"]
+[node name="elevatorAnimatableBody3D" parent="." index="29"]
 sync_to_physics = true
 script = ExtResource("5_i5qwr")
 
