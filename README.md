@@ -31,3 +31,4 @@ TODO:
 	hud
 	pause menu
 	options menu
+	crouch & long jump & backflip?

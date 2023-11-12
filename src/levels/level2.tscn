@@ -261,7 +261,7 @@ shape = SubResource("CylinderShape3D_k8w3o")
 [node name="Spawns" type="Node3D" parent="." index="18"]
 
 [node name="Spawn" type="Marker3D" parent="Spawns" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.7374, 4.20486, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.0461, 4.20486, 3.02178e-08)
 
 [node name="BigSpinnerAnimationPlayer" type="AnimationPlayer" parent="." index="20"]
 autoplay = "spin"

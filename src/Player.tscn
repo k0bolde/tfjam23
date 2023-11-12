@@ -77,6 +77,7 @@ visible = false
 
 [node name="bird" parent="Models" instance=ExtResource("4_1xrey")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 
 [node name="knight" parent="Models" instance=ExtResource("4_ab216")]
 transform = Transform3D(-0.95, 0, -1.43446e-07, 0, 0.95, 0, 1.43446e-07, 0, -0.95, 0, 0, 0)

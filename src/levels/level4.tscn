@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckmh7atudt1eg"]
+
+[ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
+[ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_352jy"]
+size = Vector3(304.646, 1, 225.322)
+
+[sub_resource type="Environment" id="Environment_hi5xs"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.133333, 0.133333, 0.133333, 1)
+tonemap_mode = 3
+ssr_enabled = true
+glow_enabled = true
+glow_bloom = 1.0
+glow_blend_mode = 1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.3
+
+[node name="level4" instance=ExtResource("1_j5aw4")]
+script = ExtResource("2_12sl6")
+
+[node name="StaticBody3D" parent="floor_001" index="0"]
+collision_layer = 4
+
+[node name="Spawns" type="Node3D" parent="." index="15"]
+
+[node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.402, 0.0330634, 0)
+
+[node name="Killplane" type="Area3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24.458, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
+shape = SubResource("BoxShape3D_352jy")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="17"]
+environment = SubResource("Environment_hi5xs")
+
+[node name="Lights" type="Node3D" parent="." index="18"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9145, 4.70075)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 7.4195
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.81931, 3.9145, 4.70075)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 7.4195
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8919, 3.9145, -0.212383)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 7.4195

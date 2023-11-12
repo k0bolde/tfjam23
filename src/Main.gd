@@ -6,12 +6,18 @@ class_name Main
 @onready var eggs = $Eggs
 var curr_level : Level
 var curr_level_idx := 0
-var levels := [preload("res://src/levels/level1.tscn"), preload("res://src/levels/level2.tscn"), preload("res://src/levels/Level3.tscn")]
+var levels := [
+	preload("res://src/levels/level1.tscn"),
+	preload("res://src/levels/level2.tscn"),
+	preload("res://src/levels/Level3.tscn"),
+	preload("res://src/levels/level4.tscn"),
+	
+	]
 
 
 func _ready():
 	Globals.main = self
-	change_level(1)
+	change_level(3)
 #	curr_level = level_node.get_child(0)
 	
 
