@@ -11,7 +11,7 @@ var levels := [preload("res://src/levels/level1.tscn"), preload("res://src/level
 
 func _ready():
 	Globals.main = self
-	change_level(0)
+	change_level(1)
 #	curr_level = level_node.get_child(0)
 	
 

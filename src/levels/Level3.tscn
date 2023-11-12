@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyqcbrxkpvmdl"]
+[gd_scene load_steps=12 format=3 uid="uid://dyqcbrxkpvmdl"]
 
 [ext_resource type="PackedScene" uid="uid://cg3j61b2pigkc" path="res://assets/level3.glb" id="1_n2lql"]
 [ext_resource type="Texture2D" uid="uid://btin653nxli0e" path="res://assets/textures/DayEnvironmentHDRI017_1K-HDR.exr" id="2_oe1c4"]
@@ -27,13 +27,123 @@ density = 0.125
 height_falloff = 0.201711
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eejaf"]
-size = Vector3(228.884, 1, 171.7)
+size = Vector3(740.325, 1, 448.081)
+
+[sub_resource type="Animation" id="Animation_57ibk"]
+resource_name = "spin"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("windmill_bladesAnimatableBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("windmill_blades2AnimatableBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("windmill_blades3AnimatableBody3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("windmill_blades4AnimatableBody3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_lgkhi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("windmill_bladesAnimatableBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("windmill_blades2AnimatableBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("windmill_blades3AnimatableBody3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("windmill_blades4AnimatableBody3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c3r3o"]
+_data = {
+"RESET": SubResource("Animation_lgkhi"),
+"spin": SubResource("Animation_57ibk")
+}
 
 [node name="level3" instance=ExtResource("1_n2lql")]
 script = ExtResource("2_wg2eb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
-transform = Transform3D(-0.952129, -0.279914, 0.122874, 0, 0.401948, 0.915663, -0.305695, 0.871829, -0.382706, 0, 0, 0)
+transform = Transform3D(-0.952129, -0.279914, 0.122874, 0, 0.401948, 0.915663, -0.305695, 0.871829, -0.382706, 0, 15.5331, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
@@ -45,9 +155,8 @@ environment = SubResource("Environment_g6ox5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6728, 1.16089, 0)
 
 [node name="FogVolume" type="FogVolume" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2301, 0)
-size = Vector3(290.512, 79.0813, 206.717)
-shape = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.5957, 0)
+size = Vector3(744.82, 104.006, 444.792)
 material = SubResource("FogMaterial_hwl7q")
 
 [node name="Killplane" type="Area3D" parent="." index="7"]
@@ -57,3 +166,9 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
 shape = SubResource("BoxShape3D_eejaf")
+
+[node name="WindmillAnimationPlayer" type="AnimationPlayer" parent="." index="13"]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_c3r3o")
+}

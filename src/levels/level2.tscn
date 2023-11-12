@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3qvn215svy0v"]
+[gd_scene load_steps=22 format=3 uid="uid://c3qvn215svy0v"]
 
 [ext_resource type="PackedScene" uid="uid://odvxn8edjo5h" path="res://assets/level2.glb" id="1_jfwob"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_8u3ea"]
 [ext_resource type="Texture2D" uid="uid://cj1tkuufbuveh" path="res://assets/textures/IndoorEnvironmentHDRI008_1K-HDR.exr" id="2_u4kfs"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="4_bukhm"]
+[ext_resource type="Script" path="res://src/levels/AntigravArea.gd" id="5_70qgd"]
 [ext_resource type="Script" path="res://src/levels/Elevator.gd" id="5_i5qwr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_se4mx"]
@@ -129,6 +130,10 @@ _data = {
 "spin": SubResource("Animation_by7br")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k8w3o"]
+height = 11.4
+radius = 1.16944
+
 [sub_resource type="Animation" id="Animation_vprpj"]
 length = 0.001
 tracks/0/type = "value"
@@ -223,9 +228,6 @@ libraries = {
 "": SubResource("AnimationLibrary_yfo7c")
 }
 
-[node name="CubeAnimatableBody3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.211684, -17.4639)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42768, 7.3901)
 omni_range = 3.98908
@@ -240,24 +242,43 @@ libraries = {
 "": SubResource("AnimationLibrary_jjjrc")
 }
 
-[node name="GearAnimatableBody3D" parent="." index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.139362, 7.3048)
+[node name="Cone" parent="." index="16"]
+collision_layer = 4
 
-[node name="Gear-ab" parent="GearAnimatableBody3D" index="0"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+[node name="AntigravArea" type="Area3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.74802, 10.2653, -1.14439)
+collision_layer = 0
+collision_mask = 2
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("5_70qgd")
 
-[node name="Spawns" type="Node3D" parent="." index="17"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AntigravArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.07338, 0)
+shape = SubResource("CylinderShape3D_k8w3o")
+
+[node name="Spawns" type="Node3D" parent="." index="18"]
 
 [node name="Spawn" type="Marker3D" parent="Spawns" index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.7374, 4.20486, 0)
 
-[node name="BigSpinnerAnimationPlayer" type="AnimationPlayer" parent="." index="19"]
+[node name="BigSpinnerAnimationPlayer" type="AnimationPlayer" parent="." index="20"]
 autoplay = "spin"
 libraries = {
 "": SubResource("AnimationLibrary_ohxar")
 }
 
-[node name="elevatorAnimatableBody3D" parent="." index="21"]
+[node name="CubeAnimatableBody3D" parent="." index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.211684, -17.4639)
+
+[node name="GearAnimatableBody3D" parent="." index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.139362, 7.3048)
+
+[node name="Gear-ab" parent="GearAnimatableBody3D" index="0"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+
+[node name="elevatorAnimatableBody3D" parent="." index="26"]
 sync_to_physics = true
 script = ExtResource("5_i5qwr")
 
@@ -270,5 +291,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983881, 0)
 shape = SubResource("CylinderShape3D_hggqy")
 
 [connection signal="body_entered" from="Killplane" to="." method="_on_killplane_body_entered" flags=18]
-[connection signal="body_entered" from="elevatorAnimatableBody3D/Area3D" to="elevatorAnimatableBody3D" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="elevatorAnimatableBody3D/Area3D" to="elevatorAnimatableBody3D" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="AntigravArea" to="AntigravArea" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="AntigravArea" to="AntigravArea" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="elevatorAnimatableBody3D/Area3D" to="elevatorAnimatableBody3D" method="_on_area_3d_body_entered" flags=18]
+[connection signal="body_exited" from="elevatorAnimatableBody3D/Area3D" to="elevatorAnimatableBody3D" method="_on_area_3d_body_exited" flags=18]

@@ -36,6 +36,7 @@ var zoom_tween : Tween
 var jump_requested := false
 var target_spring_length := 2.0
 var is_cutscene_playing := false
+var gravity_mult := 1.0
 
 var curr_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}}
@@ -76,7 +77,7 @@ func _ready():
 	
 	forms["knight"]["owned"] = true
 	forms["cow"]["owned"] = true
-	forms["bird"]["owned"] = false
+	forms["bird"]["owned"] = true
 
 	change_form("knight")
 	
@@ -99,8 +100,10 @@ func _physics_process(delta):
 			jump_requested = false
 			vel.y = jump_speed
 			vel += get_platform_velocity()
-		else:
+		elif is_equal_approx(gravity_mult, 1.0):
 			vel.y = 0.0
+		else:
+			vel.y -= 1.0 * gravity_mult
 	else:
 		in_air_time += delta
 		if jump_requested and in_air_time < coyote_time:
@@ -110,11 +113,11 @@ func _physics_process(delta):
 			if Input.is_action_pressed("jump"):
 				jump_held_time += delta
 				if jump_held_time < low_grav_time:
-					vel.y -= 0.5
+					vel.y -= 0.5 * gravity_mult
 				else:
-					vel.y -= 1.0
+					vel.y -= 1.0 * gravity_mult
 			else:
-				vel.y -= 1.0
+				vel.y -= 1.0 * gravity_mult
 		jump_requested = false
 		
 	var curr_vel := last_vdir
