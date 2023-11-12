@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyqcbrxkpvmdl"]
+
+[ext_resource type="PackedScene" uid="uid://cg3j61b2pigkc" path="res://assets/level3.glb" id="1_n2lql"]
+[ext_resource type="Texture2D" uid="uid://btin653nxli0e" path="res://assets/textures/DayEnvironmentHDRI017_1K-HDR.exr" id="2_oe1c4"]
+[ext_resource type="Script" path="res://src/levels/Level.gd" id="2_wg2eb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aeh33"]
+panorama = ExtResource("2_oe1c4")
+
+[sub_resource type="Sky" id="Sky_q57kw"]
+sky_material = SubResource("PanoramaSkyMaterial_aeh33")
+
+[sub_resource type="Environment" id="Environment_g6ox5"]
+background_mode = 2
+sky = SubResource("Sky_q57kw")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_length = 128.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_hwl7q"]
+density = 0.125
+height_falloff = 0.201711
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eejaf"]
+size = Vector3(228.884, 1, 171.7)
+
+[node name="level3" instance=ExtResource("1_n2lql")]
+script = ExtResource("2_wg2eb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
+transform = Transform3D(-0.952129, -0.279914, 0.122874, 0, 0.401948, 0.915663, -0.305695, 0.871829, -0.382706, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
+environment = SubResource("Environment_g6ox5")
+
+[node name="Spawns" type="Node3D" parent="." index="5"]
+
+[node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6728, 1.16089, 0)
+
+[node name="FogVolume" type="FogVolume" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.2301, 0)
+size = Vector3(290.512, 79.0813, 206.717)
+shape = 2
+material = SubResource("FogMaterial_hwl7q")
+
+[node name="Killplane" type="Area3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.3642, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
+shape = SubResource("BoxShape3D_eejaf")

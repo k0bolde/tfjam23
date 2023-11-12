@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqdlufs0sumsy"]
+[gd_scene load_steps=26 format=3 uid="uid://bqdlufs0sumsy"]
 
 [ext_resource type="PackedScene" uid="uid://ckgpjl7sukgvd" path="res://assets/level1.glb" id="1_6ste0"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="2_4mnbo"]
@@ -46,6 +46,8 @@ ssao_enabled = true
 glow_enabled = true
 glow_bloom = 0.25
 glow_blend_mode = 1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
 
 [sub_resource type="Animation" id="Animation_3ur3y"]
 length = 0.001
@@ -92,6 +94,10 @@ _data = {
 }
 point_count = 5
 up_vector_enabled = false
+
+[sub_resource type="FogMaterial" id="FogMaterial_2aavw"]
+density = 0.05
+edge_fade = 0.828212
 
 [node name="level1" instance=ExtResource("1_6ste0")]
 script = ExtResource("2_skivb")
@@ -166,3 +172,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 121.03
 
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.2719, 0.0600139, 0)
+
+[node name="FogVolume" type="FogVolume" parent="." index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.6551, 71.6297, 0)
+size = Vector3(59.6049, 121.165, 178.239)
+material = SubResource("FogMaterial_2aavw")

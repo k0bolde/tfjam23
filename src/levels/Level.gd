@@ -1,7 +1,7 @@
 extends Node3D
 class_name Level
 #Each level needs:
-#	a node called Spawn or set in the export
+#	a node called Spawns with node3d's in it that mark entrance/exit points
 #	its own WorldEnvironment
 #	optionally a killplane
 #	optionally an IntroCutscene
@@ -15,6 +15,7 @@ func _ready():
 		for child in $Spawns.get_children():
 			spawns.append(child)
 	if has_node("Killplane"):
+		$Killplane.collision_mask = 2
 		if not $Killplane.body_entered.is_connected(_on_killplane_body_entered):
 			$Killplane.body_entered.connect(_on_killplane_body_entered)
 	if has_node("IntroCutscene"):

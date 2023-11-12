@@ -8,7 +8,7 @@ var is_moving_down := false
 func _ready():
 	ele_tween = Globals.get_tween(ele_tween, self)
 	ele_tween.set_loops()
-	ele_tween.set_trans(Tween.TRANS_BOUNCE).tween_property(self, "global_position:y", intial_pos.y - 20.0, 10.0)
+	ele_tween.set_trans(Tween.TRANS_SPRING).tween_property(self, "global_position:y", intial_pos.y - 20.0, 10.0)
 	ele_tween.set_trans(Tween.TRANS_ELASTIC).tween_property(self, "global_position:y", intial_pos.y, 10.0)
 	
 
