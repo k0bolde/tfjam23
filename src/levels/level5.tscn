@@ -25,6 +25,7 @@ ambient_light_color = Color(0.168627, 0.168627, 0.168627, 1)
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
+volumetric_fog_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkt4r"]
 albedo_texture = ExtResource("3_epglt")
@@ -508,7 +509,7 @@ radius = 1.55773
 
 [sub_resource type="Curve3D" id="Curve3D_k3tei"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.998098, 0.157764, 0.0154799, 5.26558, -0.0963974, 0.110011, -5.26558, 0.0963974, -0.110011, -20.5121, 16.8922, 0.0732359, 0, 0, 0, 0, 0, 0, -31.9662, 10.232, -0.127181),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.998098, 0.157764, 0.0154799, 5.26558, -0.0963974, 0.110011, -5.26558, 0.0963974, -0.110011, -20.5121, 16.8922, 0.0732359, 0, 0, 0, 0, 0, 0, -31.7707, 10.5344, -0.214761),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -666,4 +667,4 @@ shape = SubResource("CylinderShape3D_guklt")
 curve = SubResource("Curve3D_k3tei")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cannon/Path3D" index="0"]
-transform = Transform3D(-0.00295965, 0.650953, 0.759081, 2.98014e-08, 0.759084, -0.650956, -0.999966, -0.00192664, -0.00224671, -0.998098, 0.157764, 0.0154799)
+transform = Transform3D(-0.00295963, 0.650953, 0.759081, 5.96029e-08, 0.759084, -0.650956, -0.999966, -0.0019266, -0.00224671, -0.998098, 0.157764, 0.0154799)

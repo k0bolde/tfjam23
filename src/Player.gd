@@ -16,6 +16,7 @@ class_name Player
 @onready var prompt_label : Label = %PromptLabel
 @onready var shader : TextureRect = %ShaderRect
 @onready var crosshair : TextureRect = %Crosshair
+@onready var black_fade : ColorRect = %BlackFade
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
@@ -338,3 +339,11 @@ func window_resize():
 
 func in_path_follow(is_starting:bool):
 	is_cutscene_playing = is_starting
+
+
+var fade_tween : Tween
+func fade_in_out(time:= 1.0):
+	fade_tween = Globals.get_tween(fade_tween, self)
+	fade_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	fade_tween.tween_property(black_fade, "modulate", Color.WHITE, 0.5)
+	fade_tween.tween_property(black_fade, "modulate", Color.TRANSPARENT, 2.0)

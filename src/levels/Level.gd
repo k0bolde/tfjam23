@@ -22,7 +22,15 @@ func _ready():
 		#might be safer to delay this until the player is loaded for sure
 		$IntroCutscene.call_deferred("start_cutscene")
 	
-
+	
+var respawn_wait_tween : Tween
 func _on_killplane_body_entered(body):
-	body.set_deferred("global_position", spawns[0].global_position)
-	body.vel = Vector3()
+	body.fade_in_out()
+	respawn_wait_tween = Globals.get_tween(respawn_wait_tween, self)
+	respawn_wait_tween.tween_interval(0.5)
+	respawn_wait_tween.tween_callback(_on_respawn_timeout)
+	
+	
+func _on_respawn_timeout():
+	Globals.player.set_deferred("global_position", spawns[0].global_position)
+	Globals.player.vel = Vector3()

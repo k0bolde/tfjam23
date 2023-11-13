@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6yo5u3syjaij"]
+[gd_scene load_steps=21 format=3 uid="uid://c6yo5u3syjaij"]
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmb2kncwyy3dv" path="res://assets/egg-icon.png" id="4_lbkam"]
 [ext_resource type="Texture2D" uid="uid://bh3ppjbrvjt6v" path="res://assets/fish-icon.png" id="5_rgtnw"]
 [ext_resource type="Texture2D" uid="uid://dqwgk606r85gc" path="res://assets/crosshairs2.png" id="8_3mhgy"]
+[ext_resource type="FontFile" uid="uid://bxwxor4eohja1" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="9_tcr8e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
@@ -24,6 +25,10 @@ height = 1.9378
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2eru2"]
 radius = 0.25
+
+[sub_resource type="LabelSettings" id="LabelSettings_fs4bf"]
+font = ExtResource("9_tcr8e")
+font_size = 72
 
 [sub_resource type="Gradient" id="Gradient_sk5fm"]
 
@@ -156,6 +161,24 @@ visible = false
 layout_mode = 2
 texture = ExtResource("8_3mhgy")
 
+[node name="StateContainer" type="MarginContainer" parent="CanvasLayer/UI/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/CenterContainer/StateContainer"]
+custom_minimum_size = Vector2(10000, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 0.603922)
+
+[node name="StateLabel" type="Label" parent="CanvasLayer/UI/CenterContainer/StateContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "CURSED!!"
+label_settings = SubResource("LabelSettings_fs4bf")
+horizontal_alignment = 1
+
 [node name="Dialog" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
@@ -252,6 +275,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Talk - (E)"
 label_settings = ExtResource("4_h2v42")
+
+[node name="BlackFade" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0313726, 0.0313726, 1)
 
 [node name="ShaderRect" type="TextureRect" parent="CanvasLayer"]
 unique_name_in_owner = true
