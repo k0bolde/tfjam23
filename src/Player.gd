@@ -37,9 +37,10 @@ var jump_requested := false
 var target_spring_length := 2.0
 var is_cutscene_playing := false
 var gravity_mult := 1.0
+var is_crouching := false
 
 var curr_form := "knight"
-var forms := {"knight": {}, "cow": {}, "bird": {}}
+var forms := {"knight": {}, "cow": {}, "bird": {}, "anteater": {}}
 var is_tfing := false
 var is_form_locked := false
 var egg_scene = preload("res://src/Egg.tscn")
@@ -58,6 +59,9 @@ func _ready():
 	forms["knight"]["col"] = get_node("KnightCollision")
 	forms["cow"]["col"] = get_node("CowCollision2")
 	forms["bird"]["col"] = get_node("KnightCollision")
+	forms["knight"]["crouch_col"] = get_node("KnightCrouchCollision")
+	forms["cow"]["crouch_col"] = get_node("KnightCrouchCollision")
+	forms["bird"]["crouch_col"] = get_node("KnightCrouchCollision")
 
 	forms["knight"]["speed"] = 6.0
 	forms["cow"]["speed"] = 26.0
@@ -78,6 +82,7 @@ func _ready():
 	forms["knight"]["owned"] = true
 	forms["cow"]["owned"] = true
 	forms["bird"]["owned"] = true
+	forms["anteater"]["owned"] = false
 
 	change_form("knight")
 	
@@ -85,7 +90,9 @@ func _ready():
 	get_viewport().size_changed.connect(window_resize)
 	window_resize()
 
+
 func _physics_process(delta):
+	gimbal.global_position = global_position + Vector3(0, 1.5, 0)
 	if is_cutscene_playing:
 		return
 	var cam_xform := camera.get_global_transform()
@@ -152,9 +159,15 @@ func _physics_process(delta):
 	hvel = hvel.lerp(target, accel)
 	vel.x = hvel.x
 	vel.z = hvel.z		
-
-	
 	velocity = vel
+	
+	if is_crouching and forms[curr_form]["crouch_col"].disabled:
+		forms[curr_form]["crouch_col"].disabled = false
+		forms[curr_form]["col"].disabled = true
+	elif not is_crouching and forms[curr_form]["col"].disabled:
+		forms[curr_form]["crouch_col"].disabled = true
+		forms[curr_form]["col"].disabled = false
+		
 	move_and_slide()
 	
 	vdir += get_platform_angular_velocity()
@@ -169,7 +182,6 @@ func _physics_process(delta):
 		my_rot.x = 0
 		my_rot.z = 0
 		set_rotation(my_rot)
-	gimbal.global_position = global_position + Vector3(0, 1.5, 0)
 	
 	
 func change_form(new_form:String):
@@ -208,9 +220,9 @@ func _unhandled_input(event):
 			egg.rotation.y = gimbal.rotation.y
 			var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
 			egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
+	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
 	if is_cutscene_playing:
 		return
-	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
 	if event.is_action_pressed("scroll_up"):
 		if target_spring_length > 1.0:
 			target_spring_length -= 1
@@ -230,6 +242,8 @@ func _unhandled_input(event):
 		change_form("cow")
 	if event.is_action_pressed("item 3"):
 		change_form("bird")
+	if event.is_action_pressed("item 4"):
+		change_form("anteater")
 		
 	if event.is_action_pressed("interact"):
 		if door_callable and door_callable.is_valid():
@@ -246,6 +260,10 @@ func _unhandled_input(event):
 	if event.is_action_released("aim mode"):
 		crosshair.visible = false
 #		camera.fov = 75
+	if event.is_action_pressed("crouch"):
+		is_crouching = true
+	if event.is_action_released("crouch"):
+		is_crouching = false
 
 
 func _input(event: InputEvent) -> void:
@@ -316,3 +334,7 @@ func pickup_item():
 func window_resize():
 	var new_shader_res := Vector2(DisplayServer.window_get_size() / 2.0)
 	shader.material.set_shader_parameter("resolution", new_shader_res)
+
+
+func in_path_follow(is_starting:bool):
+	is_cutscene_playing = is_starting

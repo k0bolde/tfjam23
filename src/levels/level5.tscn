@@ -1,0 +1,669 @@
+[gd_scene load_steps=33 format=3 uid="uid://fb47k3tuatm7"]
+
+[ext_resource type="PackedScene" uid="uid://dm7it1mgf8h2j" path="res://assets/level5.glb" id="1_r2i58"]
+[ext_resource type="Script" path="res://src/levels/Level.gd" id="2_54u54"]
+[ext_resource type="Script" path="res://src/levels/AntigravArea.gd" id="3_bdvnj"]
+[ext_resource type="Texture2D" uid="uid://dli8x4ik0dd36" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Color.jpg" id="3_epglt"]
+[ext_resource type="Texture2D" uid="uid://dtyepfx8xrpyg" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_AmbientOcclusion.jpg" id="4_lu0na"]
+[ext_resource type="Script" path="res://src/levels/Cannon.gd" id="4_tddnd"]
+[ext_resource type="Texture2D" uid="uid://bjowju4cdcakt" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Displacement.jpg" id="5_uhpbj"]
+[ext_resource type="Texture2D" uid="uid://cdm2yd3y6nbkn" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_NormalGL.jpg" id="6_xe6h3"]
+[ext_resource type="Texture2D" uid="uid://dljlehbbnwsf8" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Roughness.jpg" id="7_pso3k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03vhr"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_6gtqg"]
+sky_material = SubResource("ProceduralSkyMaterial_03vhr")
+
+[sub_resource type="Environment" id="Environment_vvcif"]
+background_mode = 1
+sky = SubResource("Sky_6gtqg")
+ambient_light_source = 2
+ambient_light_color = Color(0.168627, 0.168627, 0.168627, 1)
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkt4r"]
+albedo_texture = ExtResource("3_epglt")
+metallic_specular = 0.0
+roughness_texture = ExtResource("7_pso3k")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("6_xe6h3")
+ao_enabled = true
+ao_texture = ExtResource("4_lu0na")
+ao_texture_channel = 4
+heightmap_texture = ExtResource("5_uhpbj")
+uv1_scale = Vector3(0.17, 0.17, 0.17)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8gbe5"]
+size = Vector3(58.3334, 1, 58.1499)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d4556"]
+height = 10.3784
+radius = 0.795886
+
+[sub_resource type="Animation" id="Animation_64q56"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevatorAnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.49238, 10.3472, 8.82119)]
+}
+
+[sub_resource type="Animation" id="Animation_60yuv"]
+resource_name = "Up"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevatorAnimatableBody3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-8.49238, 10.3472, 8.82119), Vector3(-8.49238, 29.1021, 8.82119), Vector3(-8.49238, 10.3472, 8.82119)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikhsx"]
+_data = {
+"RESET": SubResource("Animation_64q56"),
+"Up": SubResource("Animation_60yuv")
+}
+
+[sub_resource type="Animation" id="Animation_nlpk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotatorAnimatableBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotatorhandleAnimatableBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fwe2a"]
+resource_name = "rotate"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotatorAnimatableBody3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.90415, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotatorhandleAnimatableBody3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.90415, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6l3ni"]
+_data = {
+"RESET": SubResource("Animation_nlpk6"),
+"rotate": SubResource("Animation_fwe2a")
+}
+
+[sub_resource type="Animation" id="Animation_llmb8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator2AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.13517, 34.3744, 2.53855)]
+}
+
+[sub_resource type="Animation" id="Animation_7gohx"]
+resource_name = "move"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator2AnimatableBody3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-9.60808, 39.9527, 2.53855), Vector3(8.13517, 34.3744, 2.53855), Vector3(-9.60808, 39.9527, 2.53855)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3k863"]
+_data = {
+"RESET": SubResource("Animation_llmb8"),
+"move": SubResource("Animation_7gohx")
+}
+
+[sub_resource type="Animation" id="Animation_nhu5h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("diagonalshoversAnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.08858, 46.1249, 13.6822)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("diagonalshovers3AnimatableBody3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.87774, 48.0966, 13.6822)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("diagonalshovers5AnimatableBody3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9.84406, 50.0683, 13.6822)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("diagonalshovers2AnimatableBody3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.894576, 47.1108, 13.6822)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("diagonalshovers4AnimatableBody3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.8609, 49.0824, 13.6822)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("diagonalshovers6AnimatableBody3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.8272, 51.0541, 13.6822)]
+}
+
+[sub_resource type="Animation" id="Animation_huuya"]
+resource_name = "alternate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("diagonalshoversAnimatableBody3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.08858, 46.1249, 13.6822), Vector3(-0.140716, 45.2598, 13.6822)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("diagonalshovers3AnimatableBody3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.87774, 48.0966, 13.6822), Vector3(6.1356, 47.1116, 13.6822)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("diagonalshovers5AnimatableBody3D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(9.84406, 50.0683, 13.6822), Vector3(12.2438, 49.02, 13.6822)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("diagonalshovers2AnimatableBody3D:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.894576, 47.1108, 13.6822), Vector3(-1.26134, 48.0373, 13.6822)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("diagonalshovers4AnimatableBody3D:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(6.8609, 49.0824, 13.6822), Vector3(4.69875, 50.0148, 13.6822)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("diagonalshovers6AnimatableBody3D:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(12.8272, 51.0541, 13.6822), Vector3(11.7198, 51.5214, 13.6822)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n2ucm"]
+_data = {
+"RESET": SubResource("Animation_nhu5h"),
+"alternate": SubResource("Animation_huuya")
+}
+
+[sub_resource type="Animation" id="Animation_vx6oy"]
+resource_name = "1"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("movingplatsAnimatableBody3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(18.2654, 5.90045, 0), Vector3(28.7484, 5.90045, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("movingplats2AnimatableBody3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(18.2673, 7.66663, 5.83697), Vector3(27.0346, 7.66663, 8.6618)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("movingplats3AnimatableBody3D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(14.777, 9.43281, 10.7361), Vector3(21.9463, 9.43281, 16.1322)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("movingplats4AnimatableBody3D:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(16.069, 11.199, 21.856), Vector3(10.7361, 11.199, 14.777)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("movingplats5AnimatableBody3D:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.64431, 12.9652, 17.3714), Vector3(8.27132, 12.9652, 25.2177)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("movingplats6AnimatableBody3D:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.5034e-06, 14.7314, 18.2654), Vector3(2.5034e-06, 14.7314, 24.5061)]
+}
+
+[sub_resource type="Animation" id="Animation_sox8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("movingplatsAnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(18.2654, 5.90045, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("movingplats2AnimatableBody3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(20.1357, 7.66663, 6.5774)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("movingplats3AnimatableBody3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(14.777, 9.43281, 10.7361)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("movingplats4AnimatableBody3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(10.7361, 11.199, 14.777)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("movingplats5AnimatableBody3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.64431, 12.9652, 17.3714)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("movingplats6AnimatableBody3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.5034e-06, 14.7314, 18.2654)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsihe"]
+_data = {
+"1": SubResource("Animation_vx6oy"),
+"RESET": SubResource("Animation_sox8f")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_guklt"]
+height = 0.839022
+radius = 1.55773
+
+[sub_resource type="Curve3D" id="Curve3D_k3tei"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.998098, 0.157764, 0.0154799, 5.26558, -0.0963974, 0.110011, -5.26558, 0.0963974, -0.110011, -20.5121, 16.8922, 0.0732359, 0, 0, 0, 0, 0, 0, -31.9662, 10.232, -0.127181),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[node name="level5" instance=ExtResource("1_r2i58")]
+script = ExtResource("2_54u54")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_vvcif")
+
+[node name="Cube_006" parent="." index="6"]
+visible = false
+
+[node name="StaticBody3D" parent="launcher" index="0"]
+collision_layer = 4
+
+[node name="launchercol" parent="." index="9"]
+collision_layer = 4
+
+[node name="elevator-ab_001" parent="." index="10"]
+visible = false
+
+[node name="walls" parent="." index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nkt4r")
+
+[node name="movingplatsAnimatableBody3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2654, 5.90045, 0)
+sync_to_physics = true
+
+[node name="elevatorAnimatableBody3D" parent="." index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49238, 10.3472, 8.82119)
+sync_to_physics = true
+
+[node name="elevator2AnimatableBody3D" parent="." index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13517, 34.3744, 2.53855)
+sync_to_physics = true
+
+[node name="Spawns" type="Node3D" parent="." index="23"]
+
+[node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.342074, -20.1608)
+
+[node name="Marker3D2" type="Marker3D" parent="Spawns" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.5527, 64.1761, 1.57209e-08)
+
+[node name="Marker3D3" type="Marker3D" parent="Spawns" index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.485, 51.0932, 1.45985e-06)
+
+[node name="Killplane" type="Area3D" parent="." index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5568, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
+shape = SubResource("BoxShape3D_8gbe5")
+
+[node name="Lights" type="Node3D" parent="." index="25"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 77.351, -2.97189e-06)
+light_energy = 22.895
+shadow_enabled = true
+spot_range = 96.9396
+spot_angle = 39.0876
+
+[node name="AntigravArea" type="Area3D" parent="." index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.66019, 38.4126, 5.32013)
+collision_layer = 0
+collision_mask = 2
+gravity_space_override = 3
+script = ExtResource("3_bdvnj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AntigravArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57772, 0)
+shape = SubResource("CylinderShape3D_d4556")
+
+[node name="ElevatorAnimationPlayer" type="AnimationPlayer" parent="." index="27"]
+autoplay = "Up"
+libraries = {
+"": SubResource("AnimationLibrary_ikhsx")
+}
+
+[node name="RotatorAnimationPlayer" type="AnimationPlayer" parent="." index="28"]
+autoplay = "rotate"
+libraries = {
+"": SubResource("AnimationLibrary_6l3ni")
+}
+
+[node name="Elevator2AnimationPlayer" type="AnimationPlayer" parent="." index="29"]
+autoplay = "move"
+libraries = {
+"": SubResource("AnimationLibrary_3k863")
+}
+
+[node name="diagonalshoversAnimatableBody3D" parent="." index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08858, 46.1249, 13.6822)
+
+[node name="diagonalshovers2AnimatableBody3D" parent="." index="31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894576, 47.1108, 13.6822)
+
+[node name="diagonalshovers3AnimatableBody3D" parent="." index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87774, 48.0966, 13.6822)
+
+[node name="diagonalshovers4AnimatableBody3D" parent="." index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8609, 49.0824, 13.6822)
+
+[node name="diagonalshovers5AnimatableBody3D" parent="." index="34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84406, 50.0683, 13.6822)
+
+[node name="diagonalshovers6AnimatableBody3D" parent="." index="35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8272, 51.0541, 13.6822)
+
+[node name="movingplats2AnimatableBody3D" parent="." index="36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1357, 7.66663, 6.5774)
+sync_to_physics = true
+
+[node name="movingplats3AnimatableBody3D" parent="." index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.777, 9.43281, 10.7361)
+sync_to_physics = true
+
+[node name="movingplats4AnimatableBody3D" parent="." index="38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7361, 11.199, 14.777)
+sync_to_physics = true
+
+[node name="movingplats5AnimatableBody3D" parent="." index="39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64431, 12.9652, 17.3714)
+sync_to_physics = true
+
+[node name="ShoverAnimationPlayer" type="AnimationPlayer" parent="." index="40"]
+autoplay = "alternate"
+libraries = {
+"": SubResource("AnimationLibrary_n2ucm")
+}
+
+[node name="ShrinkerAnimationPlayer" type="AnimationPlayer" parent="." index="41"]
+autoplay = "1"
+libraries = {
+"": SubResource("AnimationLibrary_bsihe")
+}
+
+[node name="movingplats6AnimatableBody3D" parent="." index="42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5034e-06, 14.7314, 18.2654)
+sync_to_physics = true
+
+[node name="Cannon" type="Node3D" parent="." index="43"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3349, 51.7965, 0.289544)
+script = ExtResource("4_tddnd")
+
+[node name="Area3D" type="Area3D" parent="Cannon" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cannon/Area3D" index="0"]
+transform = Transform3D(0.542471, -0.840075, 0, 0.840075, 0.542471, 0, 0, 0, 1, 0.0365047, 0.428276, 0)
+shape = SubResource("CylinderShape3D_guklt")
+
+[node name="Path3D" type="Path3D" parent="Cannon" index="1"]
+curve = SubResource("Curve3D_k3tei")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Cannon/Path3D" index="0"]
+transform = Transform3D(-0.00295965, 0.650953, 0.759081, 2.98014e-08, 0.759084, -0.650956, -0.999966, -0.00192664, -0.00224671, -0.998098, 0.157764, 0.0154799)

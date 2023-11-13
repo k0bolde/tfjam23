@@ -26,7 +26,7 @@ TODO:
 		bird agility & egg shooting
 		cow racing & milking/udder management
 	animations:
-		idle, run, jump, tf for each form
+		idle, run, jump, falling, crouch, tf for each form
 	form movement/abilities
 	hud
 	pause menu

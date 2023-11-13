@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6yo5u3syjaij"]
+[gd_scene load_steps=19 format=3 uid="uid://c6yo5u3syjaij"]
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
@@ -13,6 +13,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pihlp"]
+radius = 0.274357
+height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_isgsa"]
 radius = 0.783
@@ -63,6 +67,11 @@ script = ExtResource("1_8b3if")
 [node name="KnightCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_y7b03")
+
+[node name="KnightCrouchCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496752, 0)
+shape = SubResource("CapsuleShape3D_pihlp")
+disabled = true
 
 [node name="CowCollision2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.78613, -0.0350349)
