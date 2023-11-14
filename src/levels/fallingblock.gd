@@ -11,7 +11,7 @@ var is_raising := false
 
 	
 var t : Tween
-func player_touched(player):
+func player_touched(_player):
 	t = Globals.get_tween(t, self)
 	t.tween_property(self, "is_falling", true, wait_time)
 	is_raising = false

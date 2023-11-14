@@ -23,8 +23,8 @@ volumetric_fog_density = 0.01
 volumetric_fog_length = 128.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_hwl7q"]
-density = 0.125
-height_falloff = 0.201711
+density = 0.2
+height_falloff = 0.108094
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eejaf"]
 size = Vector3(740.325, 1, 448.081)
@@ -143,7 +143,7 @@ _data = {
 script = ExtResource("2_wg2eb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
-transform = Transform3D(-0.952129, -0.279914, 0.122874, 0, 0.401948, 0.915663, -0.305695, 0.871829, -0.382706, 0, 15.5331, 0)
+transform = Transform3D(-0.528169, 0.757791, -0.383132, 0.0415282, 0.473713, 0.8797, 0.848123, 0.44872, -0.28167, 0, 15.5331, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
@@ -155,8 +155,8 @@ environment = SubResource("Environment_g6ox5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6728, 1.16089, 0)
 
 [node name="FogVolume" type="FogVolume" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.5957, 0)
-size = Vector3(744.82, 104.006, 444.792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.838, -40.0577, 0)
+size = Vector3(830.989, 225.883, 1004.45)
 material = SubResource("FogMaterial_hwl7q")
 
 [node name="Killplane" type="Area3D" parent="." index="7"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqxk4euww1ne6"]
+
+[ext_resource type="PackedScene" uid="uid://b87rmwfp3t0q3" path="res://assets/decurse.glb" id="1_pn7l6"]
+[ext_resource type="Script" path="res://src/levels/Level.gd" id="2_sysp1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lmfja"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_go7q7"]
+sky_material = SubResource("ProceduralSkyMaterial_lmfja")
+
+[sub_resource type="Environment" id="Environment_hxb2w"]
+background_mode = 2
+sky = SubResource("Sky_go7q7")
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilruj"]
+size = Vector3(167.286, 1, 131.773)
+
+[node name="decurse" instance=ExtResource("1_pn7l6")]
+script = ExtResource("2_sysp1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_hxb2w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.952128, -0.264744, 0.152849, 0, 0.499998, 0.866027, -0.305699, 0.824568, -0.476062, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Spawns" type="Node3D" parent="." index="12"]
+
+[node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0868576, 15.5373)
+
+[node name="Killplane" type="Area3D" parent="." index="13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.31298, 0)
+shape = SubResource("BoxShape3D_ilruj")

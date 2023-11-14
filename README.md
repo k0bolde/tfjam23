@@ -32,3 +32,4 @@ TODO:
 	pause menu
 	options menu
 	crouch & long jump & backflip?
+	regenerating eggs/limits
