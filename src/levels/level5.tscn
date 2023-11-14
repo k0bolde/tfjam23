@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://fb47k3tuatm7"]
+[gd_scene load_steps=34 format=3 uid="uid://fb47k3tuatm7"]
 
 [ext_resource type="PackedScene" uid="uid://dm7it1mgf8h2j" path="res://assets/level5.glb" id="1_r2i58"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_54u54"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bjowju4cdcakt" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Displacement.jpg" id="5_uhpbj"]
 [ext_resource type="Texture2D" uid="uid://cdm2yd3y6nbkn" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_NormalGL.jpg" id="6_xe6h3"]
 [ext_resource type="Texture2D" uid="uid://dljlehbbnwsf8" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Roughness.jpg" id="7_pso3k"]
+[ext_resource type="Script" path="res://src/levels/fallingblock.gd" id="8_x8xcu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03vhr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,7 +44,7 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gbe5"]
-size = Vector3(58.3334, 1, 58.1499)
+size = Vector3(58.3334, 72.1916, 58.1499)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d4556"]
 height = 10.3784
@@ -536,17 +537,8 @@ visible = false
 [node name="walls" parent="." index="16"]
 surface_material_override/0 = SubResource("StandardMaterial3D_nkt4r")
 
-[node name="movingplatsAnimatableBody3D" parent="." index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2654, 5.90045, 0)
-sync_to_physics = true
-
-[node name="elevatorAnimatableBody3D" parent="." index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49238, 10.3472, 8.82119)
-sync_to_physics = true
-
-[node name="elevator2AnimatableBody3D" parent="." index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13517, 34.3744, 2.53855)
-sync_to_physics = true
+[node name="fallingblock" parent="." index="18"]
+script = ExtResource("8_x8xcu")
 
 [node name="Spawns" type="Node3D" parent="." index="23"]
 
@@ -563,6 +555,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.485
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5568, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.9185, 0)
 shape = SubResource("BoxShape3D_8gbe5")
 
 [node name="Lights" type="Node3D" parent="." index="25"]
@@ -603,39 +596,29 @@ libraries = {
 "": SubResource("AnimationLibrary_3k863")
 }
 
-[node name="diagonalshoversAnimatableBody3D" parent="." index="30"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08858, 46.1249, 13.6822)
+[node name="fallingblock_001" parent="." index="32"]
+script = ExtResource("8_x8xcu")
 
-[node name="diagonalshovers2AnimatableBody3D" parent="." index="31"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894576, 47.1108, 13.6822)
+[node name="fallingblock_002" parent="." index="33"]
+script = ExtResource("8_x8xcu")
 
-[node name="diagonalshovers3AnimatableBody3D" parent="." index="32"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87774, 48.0966, 13.6822)
+[node name="fallingblock_003" parent="." index="34"]
+script = ExtResource("8_x8xcu")
 
-[node name="diagonalshovers4AnimatableBody3D" parent="." index="33"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8609, 49.0824, 13.6822)
+[node name="fallingblock_004" parent="." index="35"]
+script = ExtResource("8_x8xcu")
 
-[node name="diagonalshovers5AnimatableBody3D" parent="." index="34"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84406, 50.0683, 13.6822)
+[node name="fallingblock_005" parent="." index="36"]
+script = ExtResource("8_x8xcu")
 
-[node name="diagonalshovers6AnimatableBody3D" parent="." index="35"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8272, 51.0541, 13.6822)
+[node name="fallingblock_006" parent="." index="37"]
+script = ExtResource("8_x8xcu")
 
-[node name="movingplats2AnimatableBody3D" parent="." index="36"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1357, 7.66663, 6.5774)
-sync_to_physics = true
+[node name="fallingblock_007" parent="." index="38"]
+script = ExtResource("8_x8xcu")
 
-[node name="movingplats3AnimatableBody3D" parent="." index="37"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.777, 9.43281, 10.7361)
-sync_to_physics = true
-
-[node name="movingplats4AnimatableBody3D" parent="." index="38"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7361, 11.199, 14.777)
-sync_to_physics = true
-
-[node name="movingplats5AnimatableBody3D" parent="." index="39"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64431, 12.9652, 17.3714)
-sync_to_physics = true
+[node name="fallingblock_008" parent="." index="39"]
+script = ExtResource("8_x8xcu")
 
 [node name="ShoverAnimationPlayer" type="AnimationPlayer" parent="." index="40"]
 autoplay = "alternate"
@@ -649,9 +632,8 @@ libraries = {
 "": SubResource("AnimationLibrary_bsihe")
 }
 
-[node name="movingplats6AnimatableBody3D" parent="." index="42"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5034e-06, 14.7314, 18.2654)
-sync_to_physics = true
+[node name="fallingblock_009" parent="." index="42"]
+script = ExtResource("8_x8xcu")
 
 [node name="Cannon" type="Node3D" parent="." index="43"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3349, 51.7965, 0.289544)
@@ -668,3 +650,113 @@ curve = SubResource("Curve3D_k3tei")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cannon/Path3D" index="0"]
 transform = Transform3D(-0.00295963, 0.650953, 0.759081, 5.96029e-08, 0.759084, -0.650956, -0.999966, -0.0019266, -0.00224671, -0.998098, 0.157764, 0.0154799)
+
+[node name="fallingblock_010" parent="." index="44"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_011" parent="." index="45"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_012" parent="." index="46"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_013" parent="." index="47"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_014" parent="." index="48"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_015" parent="." index="49"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_016" parent="." index="50"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_017" parent="." index="51"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_018" parent="." index="52"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_019" parent="." index="53"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_020" parent="." index="54"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_021" parent="." index="55"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_022" parent="." index="56"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_023" parent="." index="57"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_024" parent="." index="58"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_025" parent="." index="59"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_026" parent="." index="60"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_027" parent="." index="61"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_028" parent="." index="62"]
+script = ExtResource("8_x8xcu")
+
+[node name="fallingblock_029" parent="." index="63"]
+script = ExtResource("8_x8xcu")
+
+[node name="movingplatsAnimatableBody3D" parent="." index="65"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2654, 5.90045, 0)
+sync_to_physics = true
+
+[node name="elevatorAnimatableBody3D" parent="." index="66"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49238, 10.3472, 8.82119)
+sync_to_physics = true
+
+[node name="elevator2AnimatableBody3D" parent="." index="69"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13517, 34.3744, 2.53855)
+sync_to_physics = true
+
+[node name="diagonalshoversAnimatableBody3D" parent="." index="70"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08858, 46.1249, 13.6822)
+
+[node name="diagonalshovers2AnimatableBody3D" parent="." index="71"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894576, 47.1108, 13.6822)
+
+[node name="diagonalshovers3AnimatableBody3D" parent="." index="72"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87774, 48.0966, 13.6822)
+
+[node name="diagonalshovers4AnimatableBody3D" parent="." index="73"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8609, 49.0824, 13.6822)
+
+[node name="diagonalshovers5AnimatableBody3D" parent="." index="74"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84406, 50.0683, 13.6822)
+
+[node name="diagonalshovers6AnimatableBody3D" parent="." index="75"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8272, 51.0541, 13.6822)
+
+[node name="movingplats2AnimatableBody3D" parent="." index="76"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1357, 7.66663, 6.5774)
+sync_to_physics = true
+
+[node name="movingplats3AnimatableBody3D" parent="." index="77"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.777, 9.43281, 10.7361)
+sync_to_physics = true
+
+[node name="movingplats4AnimatableBody3D" parent="." index="78"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7361, 11.199, 14.777)
+sync_to_physics = true
+
+[node name="movingplats5AnimatableBody3D" parent="." index="79"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64431, 12.9652, 17.3714)
+sync_to_physics = true
+
+[node name="movingplats6AnimatableBody3D" parent="." index="80"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5034e-06, 14.7314, 18.2654)
+sync_to_physics = true

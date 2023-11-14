@@ -34,3 +34,5 @@ func _on_killplane_body_entered(body):
 func _on_respawn_timeout():
 	Globals.player.set_deferred("global_position", spawns[0].global_position)
 	Globals.player.vel = Vector3()
+	Globals.player.global_rotation = spawns[0].global_rotation
+	Globals.player.gimbal.global_rotation = spawns[0].global_rotation

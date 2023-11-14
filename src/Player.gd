@@ -183,6 +183,13 @@ func _physics_process(delta):
 		my_rot.x = 0
 		my_rot.z = 0
 		set_rotation(my_rot)
+		
+	if get_last_slide_collision():
+		var collider = get_last_slide_collision().get_collider()
+		if collider.has_method("player_touched"):
+			collider.player_touched(self)
+		elif collider.get_parent().has_method("player_touched"):
+			collider.get_parent().player_touched(self)
 	
 	
 func change_form(new_form:String):
@@ -342,8 +349,8 @@ func in_path_follow(is_starting:bool):
 
 
 var fade_tween : Tween
-func fade_in_out(time:= 1.0):
+func fade_in_out():
 	fade_tween = Globals.get_tween(fade_tween, self)
-	fade_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	fade_tween.set_trans(Tween.TRANS_SINE)
 	fade_tween.tween_property(black_fade, "modulate", Color.WHITE, 0.5)
 	fade_tween.tween_property(black_fade, "modulate", Color.TRANSPARENT, 2.0)
