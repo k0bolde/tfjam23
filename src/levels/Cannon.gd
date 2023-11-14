@@ -3,7 +3,8 @@ extends Node3D
 @onready var path_follow : PathFollow3D = $Path3D/PathFollow3D
 @onready var area : Area3D = $Area3D
 var is_animating := false
-var speed := 1.0
+var speed := 0.5
+var delta_accum := 0.0
 
 
 func _ready():
@@ -21,12 +22,14 @@ func _on_body_entered(body):
 	
 func _physics_process(delta):
 	if is_animating:
-		path_follow.progress_ratio += speed * delta
+		delta_accum += delta * speed
+		path_follow.progress_ratio = ease(delta_accum, -0.5)
 		if path_follow.progress_ratio >= 1:
 			is_animating = false
 			Globals.player.reparent(Globals.main)
 			Globals.player.in_path_follow(false)
 			path_follow.set_deferred("progress_ratio", 0.0)
+			delta_accum = 0.0
 			Globals.player.gimbal.rotation.x = 0.0
 			Globals.player.gimbal.rotation.z = 0.0
 			Globals.player.vel = Vector3()

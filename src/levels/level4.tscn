@@ -1,59 +1,105 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckmh7atudt1eg"]
+[gd_scene load_steps=15 format=3 uid="uid://ckmh7atudt1eg"]
 
 [ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
+[ext_resource type="Texture2D" uid="uid://7c2og5b4u6qq" path="res://assets/textures/belfast_farmhouse_1k.hdr" id="3_xlsgp"]
+[ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="4_4cwoo"]
+[ext_resource type="Script" path="res://src/levels/RaceCheckpoint.gd" id="5_ert6c"]
+[ext_resource type="Script" path="res://src/levels/Racer.gd" id="6_o8po4"]
+[ext_resource type="PackedScene" uid="uid://bxlx8vqo5bky6" path="res://src/Cow.tscn" id="6_rw31b"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_352jy"]
-size = Vector3(304.646, 1, 225.322)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5behf"]
+panorama = ExtResource("3_xlsgp")
 
-[sub_resource type="Environment" id="Environment_hi5xs"]
-background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(0.133333, 0.133333, 0.133333, 1)
+[sub_resource type="Sky" id="Sky_t3gu8"]
+sky_material = SubResource("PanoramaSkyMaterial_5behf")
+
+[sub_resource type="Environment" id="Environment_h7s67"]
+background_mode = 2
+sky = SubResource("Sky_t3gu8")
+sky_rotation = Vector3(0, 2.74017, 0)
 tonemap_mode = 3
+tonemap_exposure = 0.5
 ssr_enabled = true
+ssao_enabled = true
 glow_enabled = true
 glow_bloom = 1.0
-glow_blend_mode = 1
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_352jy"]
+size = Vector3(304.646, 24.1409, 225.322)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hhrk5"]
+size = Vector3(8.69345, 6.58003, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_cbnad"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.02034, 0.0127683, 0.0312207, 0, 0, 0, 0, 0, 0, -0.765451, 0.191253, -5.77072, 0, 0, 0, 0, 0, 0, -13.1741, 0.247188, -11.9091, 0, 0, 0, 0, 0, 0, -15.2133, -0.0833776, -22.163, 0, 0, 0, 0, 0, 0, -1.12576, 0.0489388, -39.8964, 0, 0, 0, 0, 0, 0, 22.223, 0.238944, -39.9857, 0, 0, 0, 0, 0, 0, 41.2549, -0.080713, 0.69674, 0, 0, 0, 0, 0, 0, 22.1059, 0.068666, 40.3578, 0, 0, 0, 0, 0, 0, -4.33192, -0.0644579, 35.8769, 0, 0, 0, 0, 0, 0, -18.029, 0.0997219, -4.72305, 0, 0, 0, 0, 0, 0, -0.771708, 0.182787, -11.231, 0, 0, 0, 0, 0, 0, -0.0866528, 0.15987, 9.37511, 0, 0, 0, 0, 0, 0, -17.2876, 0.0631676, 12.6178, 0, 0, 0, 0, 0, 0, -16.3098, -0.0700045, -9.85757, 0, 0, 0, 0, 0, 0, 2.32805, 0.0842396, -9.59645, 0, 0, 0, 0, 0, 0, 2.53832, 0.000936031, 0.244395),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i6wpc"]
+radius = 0.84864
+height = 3.71396
 
 [node name="level4" instance=ExtResource("1_j5aw4")]
 script = ExtResource("2_12sl6")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
+transform = Transform3D(-0.648647, 0.0783422, 0.757047, 0.508827, 0.784354, 0.354801, -0.565997, 0.615347, -0.548631, 1.79002, 10.1421, -5.57517)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = SubResource("Environment_h7s67")
+
 [node name="StaticBody3D" parent="floor_001" index="0"]
 collision_layer = 4
 
-[node name="Spawns" type="Node3D" parent="." index="15"]
+[node name="Spawns" type="Node3D" parent="." index="17"]
 
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.402, 0.0330634, 0)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -8.23483, 0.472303, 3.61908)
 
-[node name="Killplane" type="Area3D" parent="." index="16"]
+[node name="Killplane" type="Area3D" parent="." index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24.458, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
 shape = SubResource("BoxShape3D_352jy")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="17"]
-environment = SubResource("Environment_hi5xs")
+[node name="Cube_001" parent="." index="26"]
+surface_material_override/0 = ExtResource("4_4cwoo")
 
-[node name="Lights" type="Node3D" parent="." index="18"]
+[node name="Checkpoints" type="Node3D" parent="." index="32"]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80025, 3.9145, 4.70075)
-light_energy = 0.5
-shadow_enabled = true
-omni_range = 7.4195
+[node name="Finish" type="Area3D" parent="Checkpoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.54572, 0.238475, 0)
+script = ExtResource("5_ert6c")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56951, 4.01244, -5.31951)
-light_energy = 0.5
-shadow_enabled = true
-omni_range = 7.4195
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Finish" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04412, 0)
+shape = SubResource("BoxShape3D_hhrk5")
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8919, 3.9145, -0.212383)
-light_energy = 0.5
-shadow_enabled = true
-omni_range = 7.4195
+[node name="StaticBody3D" parent="inner_fence" index="0"]
+collision_layer = 4
+
+[node name="StaticBody3D" parent="circle_fence" index="0"]
+collision_layer = 4
+
+[node name="Racers" type="Node3D" parent="." index="35"]
+
+[node name="Racer1" type="Path3D" parent="Racers" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.242, 0.222784, 0)
+curve = SubResource("Curve3D_cbnad")
+script = ExtResource("6_o8po4")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Racers/Racer1" index="0"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Racers/Racer1/PathFollow3D" index="0"]
+sync_to_physics = false
+
+[node name="cow" parent="Racers/Racer1/PathFollow3D/AnimatableBody3D" index="0" instance=ExtResource("6_rw31b")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Racers/Racer1/PathFollow3D/AnimatableBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.776128, -0.334849)
+shape = SubResource("CapsuleShape3D_i6wpc")

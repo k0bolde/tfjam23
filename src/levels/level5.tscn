@@ -510,7 +510,7 @@ radius = 1.55773
 
 [sub_resource type="Curve3D" id="Curve3D_k3tei"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.998098, 0.157764, 0.0154799, 5.26558, -0.0963974, 0.110011, -5.26558, 0.0963974, -0.110011, -20.5121, 16.8922, 0.0732359, 0, 0, 0, 0, 0, 0, -31.7707, 10.5344, -0.214761),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.598539, -0.0786819, 0.0644169, 5.26558, -0.0963974, 0.110011, -5.26558, 0.0963974, -0.110011, -22.5699, 22.4621, -0.399293, 0, 0, 0, 0, 0, 0, -31.7707, 10.5344, -0.214761),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -649,7 +649,7 @@ shape = SubResource("CylinderShape3D_guklt")
 curve = SubResource("Curve3D_k3tei")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cannon/Path3D" index="0"]
-transform = Transform3D(-0.00295963, 0.650953, 0.759081, 5.96029e-08, 0.759084, -0.650956, -0.999966, -0.0019266, -0.00224671, -0.998098, 0.157764, 0.0154799)
+transform = Transform3D(-0.00295944, 0.650954, 0.75908, 0, 0.759083, -0.650957, -0.999966, -0.00192653, -0.00224653, -0.998098, 0.157764, 0.0154799)
 
 [node name="fallingblock_010" parent="." index="44"]
 script = ExtResource("8_x8xcu")

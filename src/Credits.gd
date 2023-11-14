@@ -7,6 +7,7 @@ A TF gamejam 2023 game (https://itch.io/jam/tf23) by:
 
 Textures:
 	Most from https://ambientcg.com 
+	Some skyboxes from https://hdri-haven.com/
 	Cow: https://www.myfreetextures.com/
 	
 Models:

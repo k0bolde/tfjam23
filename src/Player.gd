@@ -65,7 +65,7 @@ func _ready():
 	forms["bird"]["crouch_col"] = get_node("KnightCrouchCollision")
 
 	forms["knight"]["speed"] = 6.0
-	forms["cow"]["speed"] = 26.0
+	forms["cow"]["speed"] = 30.0
 	forms["bird"]["speed"] = 12.0
 	
 	forms["knight"]["turn_speed"] = 0.06
@@ -77,7 +77,7 @@ func _ready():
 	forms["bird"]["jump_speed"] = 16.0
 	
 	forms["knight"]["accel"] = 0.05
-	forms["cow"]["accel"] = 0.0025
+	forms["cow"]["accel"] = 0.005
 	forms["bird"]["accel"] = 0.1
 	
 	forms["knight"]["owned"] = true
