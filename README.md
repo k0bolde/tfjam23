@@ -29,7 +29,6 @@ TODO:
 		idle, run, jump, falling, crouch, tf for each form
 	form movement/abilities
 	hud
-	pause menu
 	options menu
 	crouch & long jump & backflip?
 	regenerating eggs/limits

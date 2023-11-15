@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhj2crtsx5bbf"]
+
+[ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="1_f25bi"]
+[ext_resource type="Script" path="res://src/Options.gd" id="1_ogjxc"]
+[ext_resource type="Theme" uid="uid://ce4xoddpiisny" path="res://assets/MenuTheme.tres" id="2_po37h"]
+
+[node name="Options" type="CanvasLayer"]
+process_mode = 3
+layer = 3
+script = ExtResource("1_ogjxc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.733333)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+label_settings = ExtResource("1_f25bi")
+horizontal_alignment = 1
+
+[node name="CRTButton" type="CheckButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_po37h")
+button_pressed = true
+action_mode = 0
+text = "CRT Filter"
+alignment = 1
+
+[node name="AAButton" type="CheckButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_po37h")
+button_pressed = true
+action_mode = 0
+text = "FXAA"
+alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_po37h")
+text = "Resolution Scaling"
+horizontal_alignment = 1
+
+[node name="ResSlider" type="HSlider" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 3.0
+value = 2.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "10%   25%      50% 100%"
+label_settings = ExtResource("1_f25bi")
+
+[node name="Label4" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Shadows"
+label_settings = ExtResource("1_f25bi")
+horizontal_alignment = 1
+
+[node name="ShadowSlider" type="HSlider" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 3.0
+value = 2.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Label5" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Off    Low  Medium High"
+label_settings = ExtResource("1_f25bi")
+
+[node name="DefaultsButton" type="Button" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_po37h")
+text = "Reset to Defaults"
+
+[node name="CloseButton" type="Button" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_po37h")
+text = "Return"
+
+[connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/CRTButton" to="." method="_on_crt_button_toggled"]
+[connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/AAButton" to="." method="_on_aa_button_toggled"]
+[connection signal="drag_ended" from="Control/MarginContainer/CenterContainer/VBoxContainer/ResSlider" to="." method="_on_res_slider_drag_ended"]
+[connection signal="drag_ended" from="Control/MarginContainer/CenterContainer/VBoxContainer/ShadowSlider" to="." method="_on_shadow_slider_drag_ended"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/DefaultsButton" to="." method="_on_defaults_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

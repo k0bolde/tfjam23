@@ -64,6 +64,7 @@ theme = ExtResource("4_kbpk6")
 text = "Start Game"
 
 [node name="OptionsButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("4_kbpk6")
 text = "Options"

@@ -16,8 +16,8 @@ func _on_respawn_button_pressed():
 
 
 func _on_options_button_pressed():
-	#TODO open options menu
-	pass # Replace with function body.
+	var options = preload("res://src/Options.tscn").instantiate()
+	add_child(options)
 
 
 func _on_resume_button_pressed():

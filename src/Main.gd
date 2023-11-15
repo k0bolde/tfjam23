@@ -36,4 +36,5 @@ func change_level(level_idx : int, spawn_idx := 0):
 	Globals.player.set_deferred("global_position", spawn.global_position)
 	Globals.player.set_deferred("global_rotation", spawn.global_rotation)
 	Globals.player.vdir = Vector3()
+	Globals.player.vel = Vector3()
 	Globals.player.gimbal.set_deferred("global_rotation", spawn.global_rotation)
