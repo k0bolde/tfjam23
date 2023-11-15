@@ -66,9 +66,9 @@ func _ready():
 	forms["cow"]["crouch_col"] = get_node("KnightCrouchCollision")
 	forms["bird"]["crouch_col"] = get_node("KnightCrouchCollision")
 
-	forms["knight"]["speed"] = 6.0
+	forms["knight"]["speed"] = 10.0
 	forms["cow"]["speed"] = 30.0
-	forms["bird"]["speed"] = 12.0
+	forms["bird"]["speed"] = 16.0
 	
 	forms["knight"]["turn_speed"] = 0.06
 	forms["cow"]["turn_speed"] = 0.03
@@ -217,17 +217,6 @@ func change_form(new_form:String):
 	
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("click"):
-		if crosshair.visible and curr_form == "bird":
-			#shoot egg where camera is facing
-			var egg : RigidBody3D = egg_scene.instantiate()
-			Globals.main.eggs.add_child(egg)
-			var pos = global_position
-			pos.y += 0.5
-			egg.global_position = pos
-			egg.rotation.y = gimbal.rotation.y
-			var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
-			egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
 	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
 	if is_cutscene_playing:
 		return
@@ -261,13 +250,6 @@ func _unhandled_input(event):
 		elif pickup_callable and pickup_callable.is_valid():
 			pickup_item()
 		
-	if event.is_action_pressed("aim mode"):
-		crosshair.visible = true
-		#TODO zoom in while aiming so player can't see where the egg spawns at
-#		camera.fov = 30
-	if event.is_action_released("aim mode"):
-		crosshair.visible = false
-#		camera.fov = 75
 	if event.is_action_pressed("crouch"):
 		is_crouching = true
 	if event.is_action_released("crouch"):
@@ -285,6 +267,24 @@ func _input(event: InputEvent) -> void:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	if is_cutscene_playing:
 		return
+	if event.is_action_pressed("click"):
+		if crosshair.visible and curr_form == "bird":
+			#shoot egg where camera is facing
+			var egg : RigidBody3D = egg_scene.instantiate()
+			Globals.main.eggs.add_child(egg)
+			var pos = global_position
+			pos.y += 0.5
+			egg.global_position = pos
+			egg.rotation.y = gimbal.rotation.y
+			var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
+			egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
+	if event.is_action_pressed("aim mode"):
+		crosshair.visible = true
+		#TODO zoom in while aiming so player can't see where the egg spawns at
+#		camera.fov = 30
+	if event.is_action_released("aim mode"):
+		crosshair.visible = false
+#		camera.fov = 75
 	#behaves better in _input, in unhandled it wouldn't work until the user pressed some buttons
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
