@@ -3,6 +3,7 @@ class_name Player
 #TODO investigate interpolated cam not interpolating position
 #TODO anteater grapple and fishing
 #TODO items attached to forms to show what tfs are availible? cow bell, . Actually use the item in the tf cutscenes
+#TODO springarm blob shadow - decal?
 
 @onready var rotation_helper = $Gimbal/RotationHelper
 @onready var gimbal = $Gimbal
@@ -17,6 +18,7 @@ class_name Player
 @onready var shader : TextureRect = %ShaderRect
 @onready var crosshair : TextureRect = %Crosshair
 @onready var black_fade : ColorRect = %BlackFade
+@onready var pause_menu : Control = $CanvasLayer/PauseMenu
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
@@ -216,8 +218,6 @@ func change_form(new_form:String):
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("click"):
-		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE:
-			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 		if crosshair.visible and curr_form == "bird":
 			#shoot egg where camera is facing
 			var egg : RigidBody3D = egg_scene.instantiate()
@@ -272,9 +272,17 @@ func _unhandled_input(event):
 		is_crouching = true
 	if event.is_action_released("crouch"):
 		is_crouching = false
+	
+	if event.is_action_pressed("pause"):
+		pause_menu.visible = true
+		get_tree().paused = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("click"):
+		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE:
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	if is_cutscene_playing:
 		return
 	#behaves better in _input, in unhandled it wouldn't work until the user pressed some buttons

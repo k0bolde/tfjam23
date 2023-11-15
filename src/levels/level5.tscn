@@ -649,7 +649,7 @@ shape = SubResource("CylinderShape3D_guklt")
 curve = SubResource("Curve3D_k3tei")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cannon/Path3D" index="0"]
-transform = Transform3D(-0.00295944, 0.650954, 0.75908, 0, 0.759083, -0.650957, -0.999966, -0.00192653, -0.00224653, -0.998098, 0.157764, 0.0154799)
+transform = Transform3D(0.02001, 0.697103, 0.716658, 0, 0.716801, -0.697243, -0.99977, 0.0139523, 0.0143437, 0.598539, -0.0786819, 0.0644169)
 
 [node name="fallingblock_010" parent="." index="44"]
 script = ExtResource("8_x8xcu")

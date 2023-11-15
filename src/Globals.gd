@@ -4,6 +4,10 @@ var main : Main
 var player : Player
 
 
+func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
 func _unhandled_input(event):
 	if event.is_action_pressed("quit"):
 		get_tree().quit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6yo5u3syjaij"]
+[gd_scene load_steps=22 format=3 uid="uid://c6yo5u3syjaij"]
 
 [ext_resource type="Script" path="res://src/Player.gd" id="1_8b3if"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="2_chnxt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bh3ppjbrvjt6v" path="res://assets/fish-icon.png" id="5_rgtnw"]
 [ext_resource type="Texture2D" uid="uid://dqwgk606r85gc" path="res://assets/crosshairs2.png" id="8_3mhgy"]
 [ext_resource type="FontFile" uid="uid://bxwxor4eohja1" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="9_tcr8e"]
+[ext_resource type="PackedScene" uid="uid://dcy20xop57t0l" path="res://src/PauseMenu.tscn" id="11_vd8yg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7b03"]
 radius = 0.25
@@ -286,12 +287,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0313726, 0.0313726, 0.0313726, 1)
 
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_vd8yg")]
+visible = false
+
 [node name="ShaderRect" type="TextureRect" parent="CanvasLayer"]
 unique_name_in_owner = true
+process_mode = 3
 material = SubResource("ShaderMaterial_bbe0e")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("CanvasTexture_a2pdl")

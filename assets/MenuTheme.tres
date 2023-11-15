@@ -4,3 +4,4 @@
 
 [resource]
 default_font = ExtResource("1_ngffc")
+default_font_size = 24
