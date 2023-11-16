@@ -27,35 +27,30 @@ max_degrees = 60.0
 [node name="knight" instance=ExtResource("1_x0hhp")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/rotation = Quaternion(0.0218176, 0.70677, -0.0218176, 0.70677)
-bones/2/rotation = Quaternion(-0.210091, 0.977682, 3.20038e-08, 6.56272e-07)
-bones/3/rotation = Quaternion(8.90704e-08, 2.07647e-07, 0.147795, 0.989018)
-bones/4/rotation = Quaternion(-4.75232e-08, 1.75405e-07, -0.210191, 0.97766)
-bones/5/rotation = Quaternion(1.21868e-08, 3.03244e-10, 0.292174, 0.956365)
-bones/8/rotation = Quaternion(-0.688374, -0.0954545, -0.0954545, 0.712684)
-bones/9/rotation = Quaternion(-0.49878, -0.22541, -0.269304, 0.792391)
-bones/10/rotation = Quaternion(0.00485001, -0.0714336, -0.698089, 0.712422)
-bones/27/rotation = Quaternion(-0.100868, 0.686913, 0.712602, 0.100868)
-bones/28/rotation = Quaternion(-0.495825, -0.361836, -0.399153, 0.68111)
-bones/29/rotation = Quaternion(0.00488979, 0.0649616, 0.692713, 0.718265)
-bones/46/rotation = Quaternion(-5.61986e-07, 5.72966e-08, 0.87795, 0.478752)
-bones/47/rotation = Quaternion(-4.36029e-07, -8.95703e-08, 0.679921, 0.733286)
-bones/48/rotation = Quaternion(2.45918e-07, 1.07635e-08, -0.458739, 0.888571)
-bones/49/rotation = Quaternion(-0.517972, -0.855398, -3.19774e-07, 6.56691e-08)
-bones/50/rotation = Quaternion(0.980537, 0.196335, -1.23855e-07, 1.24644e-07)
-bones/51/rotation = Quaternion(-3.35573e-08, 1.26784e-07, -0.0514521, 0.998675)
-bones/52/rotation = Quaternion(2.15692e-07, -8.8008e-09, 0.402038, 0.915623)
-bones/53/rotation = Quaternion(-0.635765, 0.771883, 3.9183e-07, 5.83638e-08)
+bones/2/rotation = Quaternion(-0.293368, 0.955999, -1.9701e-07, 6.41996e-07)
+bones/3/rotation = Quaternion(-4.61139e-08, 2.0549e-07, -0.218964, 0.975733)
+bones/4/rotation = Quaternion(4.37339e-08, 1.73383e-07, 0.244578, 0.96963)
+bones/5/rotation = Quaternion(1.07331e-14, 6.4353e-15, -0.21492, 0.976632)
+bones/9/rotation = Quaternion(-0.471444, 4.12423e-08, 4.46672e-08, 0.881896)
+bones/10/rotation = Quaternion(0.00572791, 0.00367869, -0.540364, 0.841404)
+bones/28/rotation = Quaternion(-0.359369, -1.78544e-07, -7.83192e-08, 0.933196)
+bones/29/rotation = Quaternion(0.00531082, -0.00425878, 0.625575, 0.780134)
+bones/46/rotation = Quaternion(0.119425, 0.19029, 0.825357, 0.517989)
+bones/47/rotation = Quaternion(4.3289e-08, -6.91604e-07, 0.789129, 0.614228)
+bones/48/rotation = Quaternion(2.61266e-07, -5.98135e-08, -0.553805, 0.832646)
+bones/50/rotation = Quaternion(0.802337, -0.546423, 0.135187, -0.1985)
+bones/51/rotation = Quaternion(-1.67586e-07, 7.68117e-07, -0.885538, 0.464566)
+bones/52/rotation = Quaternion(2.99959e-07, 1.47112e-08, 0.57292, 0.819611)
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="12"]
-transform = Transform3D(-0.998096, 0.00263909, 0.0616236, 0.0616801, 0.0427048, 0.997182, 3.35276e-08, 0.999084, -0.0427863, 0.10286, 1.92818, 0.285114)
+transform = Transform3D(-0.999955, 0.00950977, 1.1168e-05, -0.00788378, -0.829637, 0.558248, 0.00531808, 0.558223, 0.829674, 0.0485195, 1.66758, 0.581324)
 bone_name = "eye.L"
 bone_idx = 6
 script = ExtResource("2_5gb4y")
 properties = SubResource("Resource_5c1ac")
 
 [node name="WiggleBone2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="13"]
-transform = Transform3D(-0.998096, 0.00263909, 0.0616236, 0.0616801, 0.0427048, 0.997182, 3.35276e-08, 0.999084, -0.0427863, 0.00600479, 1.93416, 0.285114)
+transform = Transform3D(-0.999968, -0.00795921, 5.68153e-06, 0.00658871, -0.827383, 0.5616, -0.00446519, 0.561582, 0.827409, -0.0485203, 1.66758, 0.581324)
 bone_name = "eye.R"
 bone_idx = 7
 script = ExtResource("2_5gb4y")

@@ -61,7 +61,7 @@ func _ready():
 	forms["bird"]["model"] = $Models/bird
 	
 	forms["knight"]["anims"] = $Models/knight/AnimationPlayer
-	forms["cow"]["anims"] = $Models/knight/AnimationPlayer
+	forms["cow"]["anims"] = $Models/cow/AnimationPlayer
 	forms["bird"]["anims"] = $Models/knight/AnimationPlayer
 	
 	forms["knight"]["col"] = $KnightCollision
@@ -139,7 +139,10 @@ func _physics_process(delta):
 	var hvel := vel
 	hvel.y = 0
 	if vel.y < 0.0:
-		curr_anim.play("Falling")
+		if curr_anim.has_animation("Fall"):
+			curr_anim.play("Fall")
+		else:
+			curr_anim.play("Falling")
 	elif is_zero_approx(vel.y):	
 		if hvel.length_squared() > 0.5:
 			curr_anim.play("Run")
@@ -218,7 +221,8 @@ func change_form(new_form:String):
 		curr_form = new_form
 		
 		forms[last_form]["model"].visible = false
-		curr_anim = forms[last_form]["anims"]
+		curr_anim.stop()
+		curr_anim = forms[curr_form]["anims"]
 		forms[last_form]["col"].disabled = true
 		
 		forms[curr_form]["model"].visible = true

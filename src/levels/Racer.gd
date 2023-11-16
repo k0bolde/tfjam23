@@ -1,6 +1,7 @@
 extends Path3D
 
 @onready var path_follow : PathFollow3D = $PathFollow3D
+@onready var anims : AnimationPlayer = $PathFollow3D/AnimatableBody3D/cow/AnimationPlayer
 var is_racing := false
 var delta_accum := 0.0
 @export var speed := 10.0
@@ -15,6 +16,7 @@ func _ready():
 	
 func _physics_process(delta):
 	if is_racing:
+		anims.play("Run")
 		delta_accum += delta * speed
 		path_follow.progress = delta_accum
 #		print("progress: %s" % path_follow.progress_ratio)
@@ -22,3 +24,5 @@ func _physics_process(delta):
 		if path_follow.progress_ratio >= 1.0:
 			delta_accum = 0.0
 			is_racing = false
+	else:
+		anims.play("Idle")
