@@ -46,6 +46,7 @@ var curr_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}, "anteater": {}}
 var is_tfing := false
 var is_form_locked := false
+@onready var curr_anim : AnimationPlayer = $Models/knight/AnimationPlayer
 var egg_scene = preload("res://src/Egg.tscn")
 
 var dialog_callable : Callable
@@ -55,16 +56,20 @@ var door_callable : Callable
 
 func _ready():
 	Globals.player = self
-	forms["knight"]["model"] = get_node("Models/knight")
-	forms["cow"]["model"] = get_node("Models/cow")
-	forms["bird"]["model"] = get_node("Models/bird")
+	forms["knight"]["model"] = $Models/knight
+	forms["cow"]["model"] = $Models/cow
+	forms["bird"]["model"] = $Models/bird
 	
-	forms["knight"]["col"] = get_node("KnightCollision")
-	forms["cow"]["col"] = get_node("CowCollision2")
-	forms["bird"]["col"] = get_node("KnightCollision")
-	forms["knight"]["crouch_col"] = get_node("KnightCrouchCollision")
-	forms["cow"]["crouch_col"] = get_node("KnightCrouchCollision")
-	forms["bird"]["crouch_col"] = get_node("KnightCrouchCollision")
+	forms["knight"]["anims"] = $Models/knight/AnimationPlayer
+	forms["cow"]["anims"] = $Models/knight/AnimationPlayer
+	forms["bird"]["anims"] = $Models/knight/AnimationPlayer
+	
+	forms["knight"]["col"] = $KnightCollision
+	forms["cow"]["col"] = $CowCollision2
+	forms["bird"]["col"] = $KnightCollision
+	forms["knight"]["crouch_col"] = $KnightCrouchCollision
+	forms["cow"]["crouch_col"] = $KnightCrouchCollision
+	forms["bird"]["crouch_col"] = $KnightCrouchCollision
 
 	forms["knight"]["speed"] = 10.0
 	forms["cow"]["speed"] = 30.0
@@ -110,6 +115,7 @@ func _physics_process(delta):
 			jump_requested = false
 			vel.y = jump_speed
 			vel += get_platform_velocity()
+			curr_anim.play("Jump")
 		elif is_equal_approx(gravity_mult, 1.0):
 			vel.y = 0.0
 		else:
@@ -119,6 +125,7 @@ func _physics_process(delta):
 		if jump_requested and in_air_time < coyote_time:
 			vel.y = jump_speed
 			vel += get_platform_velocity()
+			curr_anim.play("Jump")
 		else:
 			if Input.is_action_pressed("jump"):
 				jump_held_time += delta
@@ -129,7 +136,16 @@ func _physics_process(delta):
 			else:
 				vel.y -= 1.0 * gravity_mult
 		jump_requested = false
-		
+	var hvel := vel
+	hvel.y = 0
+	if vel.y < 0.0:
+		curr_anim.play("Falling")
+	elif is_zero_approx(vel.y):	
+		if hvel.length_squared() > 0.5:
+			curr_anim.play("Run")
+		else:
+			curr_anim.play("Idle")
+	
 	var curr_vel := last_vdir
 	curr_vel.y = 0.0
 	curr_vel = curr_vel.normalized()
@@ -142,8 +158,7 @@ func _physics_process(delta):
 	if input_movement_vector.length() > 0.0:
 		vdir = Globals.rotateTowards(curr_vel, player_dir, TURN_SPEED)
 		
-	var hvel := vel
-	hvel.y = 0
+
 	var target := dir * max_speed
 	var accel: float
 	#dot product tells us if we're going faster than max speed or not
@@ -203,6 +218,7 @@ func change_form(new_form:String):
 		curr_form = new_form
 		
 		forms[last_form]["model"].visible = false
+		curr_anim = forms[last_form]["anims"]
 		forms[last_form]["col"].disabled = true
 		
 		forms[curr_form]["model"].visible = true
