@@ -43,14 +43,14 @@ bones/51/rotation = Quaternion(-1.67586e-07, 7.68117e-07, -0.885538, 0.464566)
 bones/52/rotation = Quaternion(2.99959e-07, 1.47112e-08, 0.57292, 0.819611)
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="12"]
-transform = Transform3D(-0.999955, 0.00950977, 1.1168e-05, -0.00788378, -0.829637, 0.558248, 0.00531808, 0.558223, 0.829674, 0.0485195, 1.66758, 0.581324)
+transform = Transform3D(-1, 2.62673e-07, -5.82844e-07, -5.44136e-07, -0.828292, 0.560297, -3.3559e-07, 0.560297, 0.828292, 0.0485195, 1.66758, 0.581324)
 bone_name = "eye.L"
 bone_idx = 6
 script = ExtResource("2_5gb4y")
 properties = SubResource("Resource_5c1ac")
 
 [node name="WiggleBone2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="13"]
-transform = Transform3D(-0.999968, -0.00795921, 5.68153e-06, 0.00658871, -0.827383, 0.5616, -0.00446519, 0.561582, 0.827409, -0.0485203, 1.66758, 0.581324)
+transform = Transform3D(-1, 2.62673e-07, -5.82844e-07, -5.44136e-07, -0.828292, 0.560297, -3.3559e-07, 0.560297, 0.828292, -0.0485203, 1.66758, 0.581324)
 bone_name = "eye.R"
 bone_idx = 7
 script = ExtResource("2_5gb4y")

@@ -62,7 +62,7 @@ func _ready():
 	
 	forms["knight"]["anims"] = $Models/knight/AnimationPlayer
 	forms["cow"]["anims"] = $Models/cow/AnimationPlayer
-	forms["bird"]["anims"] = $Models/knight/AnimationPlayer
+	forms["bird"]["anims"] = $Models/bird/AnimationPlayer
 	
 	forms["knight"]["col"] = $KnightCollision
 	forms["cow"]["col"] = $CowCollision2
@@ -219,13 +219,13 @@ func change_form(new_form:String):
 	if forms.keys().has(new_form) and curr_form != new_form and forms[new_form]["owned"] == true:
 		var last_form := curr_form
 		curr_form = new_form
+		var model = forms[curr_form]["model"]
 		
-		forms[last_form]["model"].visible = false
 		curr_anim.stop()
 		curr_anim = forms[curr_form]["anims"]
 		forms[last_form]["col"].disabled = true
 		
-		forms[curr_form]["model"].visible = true
+		model.visible = true
 		forms[curr_form]["col"].disabled = false
 		
 		max_speed = forms[curr_form]["speed"]
@@ -234,7 +234,12 @@ func change_form(new_form:String):
 		ACCEL = forms[curr_form]["accel"]
 		
 		#TODO play tf cutscene
-	
+		#(or we don't?) Need to pause everything but player model and cutscene cam
+		#Run tf animation and cutscene cam
+		#Unpause
+		model.process_mode = PROCESS_MODE_ALWAYS
+		forms[last_form]["model"].visible = false
+		
 	
 func _unhandled_input(event):
 	input_movement_vector = Input.get_vector("left", "right", "backward", "forward")
@@ -275,10 +280,6 @@ func _unhandled_input(event):
 	if event.is_action_released("crouch"):
 		is_crouching = false
 	
-	if event.is_action_pressed("pause"):
-		pause_menu.visible = true
-		get_tree().paused = true
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _input(event: InputEvent) -> void:

@@ -17,6 +17,16 @@ func _unhandled_input(event):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			
+	if event.is_action_pressed("pause"):
+		if not player.pause_menu.visible:
+			player.pause_menu.visible = true
+			get_tree().paused = true
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			get_tree().paused = false
+			player.pause_menu.visible = false
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			
 			
 #TODO replace with lerp_angle()
 #rotate a vector towards another with a clamp on radians. Used for turn speed control.
