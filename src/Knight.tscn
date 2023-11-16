@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmwx56dvhm4kg"]
+[gd_scene load_steps=8 format=3 uid="uid://dmwx56dvhm4kg"]
 
 [ext_resource type="PackedScene" uid="uid://cao5amupwthpg" path="res://assets/knight.glb" id="1_x0hhp"]
 [ext_resource type="Script" path="res://addons/wigglebone/wiggle_bone.gd" id="2_5gb4y"]
 [ext_resource type="Script" path="res://addons/wigglebone/wiggle_properties.gd" id="3_gicj7"]
+[ext_resource type="PackedScene" uid="uid://0dvag33mus6s" path="res://assets/cowbell.glb" id="4_biqy8"]
+[ext_resource type="PackedScene" uid="uid://dqqqewguml5l8" path="res://assets/feather.glb" id="5_0d0ut"]
 
 [sub_resource type="Resource" id="Resource_5c1ac"]
 script = ExtResource("3_gicj7")
@@ -55,6 +57,17 @@ bone_name = "eye.R"
 bone_idx = 7
 script = ExtResource("2_5gb4y")
 properties = SubResource("Resource_n4bgx")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="14"]
+transform = Transform3D(-4.76837e-07, 0, 1, 0, 1, 0, -1, 0, -4.76837e-07, 0, 1.05036, 0)
+bone_name = "hips"
+bone_idx = 1
+
+[node name="cowbell" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("4_biqy8")]
+transform = Transform3D(0.710063, -0.316405, 0.629046, 0, 0.893356, 0.44935, -0.704139, -0.319067, 0.634338, 0.134869, 0.207938, 0.198755)
+
+[node name="feather" parent="Armature/Skeleton3D/BoneAttachment3D" index="1" instance=ExtResource("5_0d0ut")]
+transform = Transform3D(-4.37121e-08, -0.395017, 0.918675, 0, 0.918675, 0.395017, -1, 1.7267e-08, -4.0157e-08, 0.233116, 0.0272672, 0.0983651)
 
 [node name="AnimationPlayer" parent="." index="2"]
 playback_default_blend_time = 0.2

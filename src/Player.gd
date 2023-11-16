@@ -237,7 +237,7 @@ func change_form(new_form:String):
 		#(or we don't?) Need to pause everything but player model and cutscene cam
 		#Run tf animation and cutscene cam
 		#Unpause
-		model.process_mode = PROCESS_MODE_ALWAYS
+#		model.process_mode = PROCESS_MODE_ALWAYS
 		forms[last_form]["model"].visible = false
 		
 	
@@ -279,7 +279,6 @@ func _unhandled_input(event):
 		is_crouching = true
 	if event.is_action_released("crouch"):
 		is_crouching = false
-	
 
 
 func _input(event: InputEvent) -> void:
