@@ -112,6 +112,7 @@ spring_length = 2.0
 
 [node name="InterpolatedCamera3D" type="Camera3D" parent="Gimbal/RotationHelper/SpringArm3D" node_paths=PackedStringArray("target")]
 top_level = true
+cull_mask = 1048573
 doppler_tracking = 2
 current = true
 script = ExtResource("2_chnxt")
@@ -313,5 +314,4 @@ mouse_filter = 2
 texture = SubResource("CanvasTexture_a2pdl")
 
 [node name="TFCutscene" parent="." instance=ExtResource("13_cpjbj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.75201, -1.01848)
-visible = false
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.53686, -1.1538)

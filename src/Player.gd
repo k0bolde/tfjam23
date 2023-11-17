@@ -72,6 +72,10 @@ func _ready():
 	$Models/cow/AnimationPlayer.animation_finished.connect(_anim_finished)
 	$Models/bird/AnimationPlayer.animation_finished.connect(_anim_finished)
 	
+	forms["knight"]["tf_item"] = "helmet"
+	forms["cow"]["tf_item"] = "cowbell"
+	forms["bird"]["tf_item"] = "feather"
+	
 	forms["knight"]["col"] = $KnightCollision
 	forms["cow"]["col"] = $CowCollision2
 	forms["bird"]["col"] = $KnightCollision
@@ -236,32 +240,19 @@ func change_form(new_form:String):
 		jump_speed = forms[curr_form]["jump_speed"]
 		ACCEL = forms[curr_form]["accel"]
 		
-		#TODO play tf cutscene
-		#lock controls, Run tf animation, set cutscene visible, set cutscene cam current, fade to white
+		#TODO hide/show tf item on right bone attachment
 		is_cutscene_playing = true
 		tf_cutscene.visible = true
 		tf_cutscene.get_node("Camera3D").current = true
 		tf_cutscene.get_node("AnimationPlayer").play("zoom")
 		white_fade_tween = Globals.get_tween(white_fade_tween, self)
-		white_fade_tween.set_ease(Tween.EASE_IN)
+		white_fade_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 		white_fade_tween.tween_property(white_fade, "modulate", Color.WHITE, 4.0)
-#		white_fade.modulate = Color.WHITE
 		if curr_anim.has_animation("tf"):
 			curr_anim.play("tf")
 		else:
 			_anim_finished("tf")
 		
-		#when its done: unlock controls, switch models, fade out white, hide cutscene, set interp cam current
-#		is_cutscene_playing = false
-#		tf_cutscene.visible = false
-#		interp_cam.current = true
-#		forms[last_form]["model"].visible = false
-#		model.visible = true
-#		white_fade.modulate = Color.TRANSPARENT
-#		curr_anim.stop()
-#		curr_anim = forms[curr_form]["anims"]
-#		forms[last_form]["col"].disabled = true
-#		forms[curr_form]["col"].disabled = false
 		
 	
 func _unhandled_input(event):
@@ -425,3 +416,4 @@ func _anim_finished(anim_name):
 		white_fade_tween = Globals.get_tween(white_fade_tween, self)
 		white_fade_tween.set_ease(Tween.EASE_IN)
 		white_fade_tween.tween_property(white_fade, "modulate", Color.TRANSPARENT, 2.0)
+		#TODO reparent tf item to hipAttachment on old model

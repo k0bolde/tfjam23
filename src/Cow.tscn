@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxlx8vqo5bky6"]
+[gd_scene load_steps=12 format=3 uid="uid://bxlx8vqo5bky6"]
 
 [ext_resource type="PackedScene" uid="uid://cxd2uib45p0fe" path="res://assets/cow.glb" id="1_alceb"]
 [ext_resource type="Script" path="res://addons/wigglebone/wiggle_bone.gd" id="2_g4px4"]
 [ext_resource type="Script" path="res://addons/wigglebone/wiggle_properties.gd" id="3_oh613"]
 [ext_resource type="PackedScene" uid="uid://0dvag33mus6s" path="res://assets/cowbell.glb" id="4_o5bh3"]
 [ext_resource type="PackedScene" uid="uid://dqqqewguml5l8" path="res://assets/feather.glb" id="5_0ykhh"]
+[ext_resource type="PackedScene" uid="uid://bivgndghcd4t" path="res://assets/helmet.glb" id="6_44o1t"]
 
 [sub_resource type="Resource" id="Resource_px2ww"]
 script = ExtResource("3_oh613")
@@ -174,35 +175,42 @@ bone_idx = 11
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_5cq28")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="23"]
+[node name="HipAttachment" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="23"]
 transform = Transform3D(1, -1.70741e-06, -1.72481e-06, -5.16486e-08, 0.69555, -0.718478, 2.42643e-06, 0.718478, 0.69555, -7.0695e-07, 1.85666, 0.588201)
 bone_name = "neck.001"
 bone_idx = 9
 
-[node name="cowbell" parent="metarig/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("4_o5bh3")]
+[node name="cowbell" parent="metarig/Skeleton3D/HipAttachment" index="0" instance=ExtResource("4_o5bh3")]
 transform = Transform3D(1, -3.03256e-06, 3.08462e-07, 3.392e-07, 0.211274, 0.977428, -3.02927e-06, -0.977428, 0.211274, 8.94925e-07, 0.18908, 0.331683)
 
-[node name="Cube" parent="metarig/Skeleton3D/BoneAttachment3D/cowbell" index="0"]
+[node name="Cube" parent="metarig/Skeleton3D/HipAttachment/cowbell" index="0"]
 layers = 3
 
-[node name="Cube_001" parent="metarig/Skeleton3D/BoneAttachment3D/cowbell" index="1"]
+[node name="Cube_001" parent="metarig/Skeleton3D/HipAttachment/cowbell" index="1"]
 layers = 3
 
-[node name="Icosphere" parent="metarig/Skeleton3D/BoneAttachment3D/cowbell" index="2"]
+[node name="Icosphere" parent="metarig/Skeleton3D/HipAttachment/cowbell" index="2"]
 layers = 3
 
-[node name="Torus" parent="metarig/Skeleton3D/BoneAttachment3D/cowbell" index="3"]
+[node name="Torus" parent="metarig/Skeleton3D/HipAttachment/cowbell" index="3"]
 layers = 3
 
-[node name="feather" parent="metarig/Skeleton3D/BoneAttachment3D" index="1" instance=ExtResource("5_0ykhh")]
+[node name="feather" parent="metarig/Skeleton3D/HipAttachment" index="1" instance=ExtResource("5_0ykhh")]
 transform = Transform3D(0.920987, -0.308219, -0.238294, 0.27098, 0.0673328, 0.960228, -0.279915, -0.948931, 0.145534, 0.183889, 0.141407, 0.451118)
 
-[node name="Cube" parent="metarig/Skeleton3D/BoneAttachment3D/feather" index="0"]
+[node name="Cube" parent="metarig/Skeleton3D/HipAttachment/feather" index="0"]
+layers = 3
+
+[node name="helmet" parent="metarig/Skeleton3D/HipAttachment" index="2" instance=ExtResource("6_44o1t")]
+transform = Transform3D(0.9188, 0.362792, 0.155531, -0.100218, -0.166706, 0.980902, 0.381791, -0.916839, -0.116811, -0.286915, 0.248541, 0.420829)
+
+[node name="Cylinder" parent="metarig/Skeleton3D/HipAttachment/helmet" index="0"]
 layers = 3
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Idle"
 playback_default_blend_time = 0.2
 
-[editable path="metarig/Skeleton3D/BoneAttachment3D/cowbell"]
-[editable path="metarig/Skeleton3D/BoneAttachment3D/feather"]
+[editable path="metarig/Skeleton3D/HipAttachment/cowbell"]
+[editable path="metarig/Skeleton3D/HipAttachment/feather"]
+[editable path="metarig/Skeleton3D/HipAttachment/helmet"]

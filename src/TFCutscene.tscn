@@ -4,6 +4,8 @@
 
 [sub_resource type="Environment" id="Environment_j12r8"]
 background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 3
 ssr_enabled = true
 ssao_enabled = true
