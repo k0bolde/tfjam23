@@ -177,6 +177,7 @@ properties = SubResource("Resource_5cq28")
 
 [node name="HipAttachment" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="23"]
 transform = Transform3D(1, -1.70741e-06, -1.72481e-06, -5.16486e-08, 0.69555, -0.718478, 2.42643e-06, 0.718478, 0.69555, -7.0695e-07, 1.85666, 0.588201)
+visible = false
 bone_name = "neck.001"
 bone_idx = 9
 

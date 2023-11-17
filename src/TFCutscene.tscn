@@ -4,8 +4,6 @@
 
 [sub_resource type="Environment" id="Environment_j12r8"]
 background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 3
 ssr_enabled = true
 ssao_enabled = true
@@ -130,7 +128,7 @@ cull_mask = 1048574
 environment = SubResource("Environment_j12r8")
 
 [node name="tfcone" parent="." instance=ExtResource("1_0xgjh")]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, -0.115551)
+transform = Transform3D(1, 0, 0, 0, 0.137669, -0.990478, 0, 0.990478, 0.137669, 0, 0, -0.115551)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

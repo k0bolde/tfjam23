@@ -1,9 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://7aqfudnrar5r"]
+[gd_scene load_steps=10 format=3 uid="uid://7aqfudnrar5r"]
 
 [ext_resource type="PackedScene" uid="uid://d1mxrmf6gmudw" path="res://assets/bird.glb" id="1_8y4kf"]
 [ext_resource type="PackedScene" uid="uid://0dvag33mus6s" path="res://assets/cowbell.glb" id="2_vd0s5"]
 [ext_resource type="PackedScene" uid="uid://dqqqewguml5l8" path="res://assets/feather.glb" id="3_pe3jv"]
 [ext_resource type="PackedScene" uid="uid://bivgndghcd4t" path="res://assets/helmet.glb" id="4_y1rsq"]
+[ext_resource type="Script" path="res://addons/wigglebone/wiggle_bone.gd" id="5_opj0a"]
+[ext_resource type="Script" path="res://addons/wigglebone/wiggle_properties.gd" id="6_1ldu1"]
+
+[sub_resource type="Resource" id="Resource_ih805"]
+script = ExtResource("6_1ldu1")
+mode = 0
+stiffness = 0.2
+damping = 0.1
+gravity = Vector3(0, 0, 0)
+length = 0.1
+max_distance = 0.1
+max_degrees = 60.0
+
+[sub_resource type="Resource" id="Resource_dxcv3"]
+script = ExtResource("6_1ldu1")
+mode = 0
+stiffness = 0.1
+damping = 0.1
+gravity = Vector3(0, 0, 0)
+length = 0.1
+max_distance = 0.1
+max_degrees = 60.0
+
+[sub_resource type="Resource" id="Resource_4aln1"]
+script = ExtResource("6_1ldu1")
+mode = 0
+stiffness = 0.2
+damping = 0.3
+gravity = Vector3(0, 0, 0)
+length = 0.1
+max_distance = 0.1
+max_degrees = 60.0
 
 [node name="bird" instance=ExtResource("1_8y4kf")]
 
@@ -99,6 +131,7 @@ layers = 3
 
 [node name="HipAttachment" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="20"]
 transform = Transform3D(1, 6.39488e-13, 1.66893e-06, -5.6614e-07, 0.940707, 0.339224, -1.56997e-06, -0.339224, 0.940706, -1.68131e-13, 0.868982, 0.322495)
+visible = false
 bone_name = "spine.006"
 bone_idx = 10
 
@@ -128,6 +161,27 @@ transform = Transform3D(0.872767, -0.417605, 0.252754, 0.324334, 0.883074, 0.339
 
 [node name="Cylinder" parent="metarig/Skeleton3D/HipAttachment/helmet" index="0"]
 layers = 3
+
+[node name="WiggleBone" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="21"]
+transform = Transform3D(-0.873717, 0.486434, -5.96047e-08, -2.98023e-07, -4.76837e-07, 1, 0.486434, 0.873717, 4.76838e-07, 0.0754053, 1.88815, 0.450992)
+bone_name = "eye.L"
+bone_idx = 18
+script = ExtResource("5_opj0a")
+properties = SubResource("Resource_ih805")
+
+[node name="WiggleBone2" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="22"]
+transform = Transform3D(-0.834421, -0.551127, -8.94071e-08, 2.68221e-07, -4.76837e-07, 1, -0.551128, 0.834421, 5.96047e-07, -0.0754053, 1.88815, 0.450992)
+bone_name = "eye.R"
+bone_idx = 19
+script = ExtResource("5_opj0a")
+properties = SubResource("Resource_dxcv3")
+
+[node name="WiggleBone3" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="23"]
+transform = Transform3D(1, -1.10107e-12, -5.66725e-13, 1.05168e-12, 0.513478, 0.858104, -6.5383e-13, -0.858104, 0.513478, -4.26642e-14, 1.055, -0.240156)
+bone_name = "spine.002"
+bone_idx = 1
+script = ExtResource("5_opj0a")
+properties = SubResource("Resource_4aln1")
 
 [node name="AnimationPlayer" parent="." index="2"]
 playback_default_blend_time = 0.2

@@ -91,9 +91,15 @@ disabled = true
 transform = Transform3D(-0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 0, 0, 0)
 visible = false
 
+[node name="HipAttachment" parent="Models/cow/metarig/Skeleton3D" index="23"]
+visible = true
+
 [node name="bird" parent="Models" instance=ExtResource("4_1xrey")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
+
+[node name="HipAttachment" parent="Models/bird/metarig/Skeleton3D" index="20"]
+visible = true
 
 [node name="knight" parent="Models" instance=ExtResource("4_ab216")]
 transform = Transform3D(-0.95, 0, -1.43446e-07, 0, 0.95, 0, 1.43446e-07, 0, -0.95, 0, 0, 0)
@@ -315,3 +321,12 @@ texture = SubResource("CanvasTexture_a2pdl")
 
 [node name="TFCutscene" parent="." instance=ExtResource("13_cpjbj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.53686, -1.1538)
+
+[editable path="Models/cow"]
+[editable path="Models/cow/metarig/Skeleton3D/HipAttachment/cowbell"]
+[editable path="Models/cow/metarig/Skeleton3D/HipAttachment/feather"]
+[editable path="Models/cow/metarig/Skeleton3D/HipAttachment/helmet"]
+[editable path="Models/bird"]
+[editable path="Models/bird/metarig/Skeleton3D/HipAttachment/cowbell"]
+[editable path="Models/bird/metarig/Skeleton3D/HipAttachment/feather"]
+[editable path="Models/bird/metarig/Skeleton3D/HipAttachment/helmet"]
