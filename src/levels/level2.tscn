@@ -205,6 +205,7 @@ script = ExtResource("2_8u3ea")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
 transform = Transform3D(-0.952129, -0.279914, 0.122874, 0, 0.401948, 0.915663, -0.305695, 0.871829, -0.382706, 0, 0, 0)
+light_cull_mask = 4294967293
 shadow_enabled = true
 
 [node name="Door" parent="." index="6" instance=ExtResource("4_bukhm")]

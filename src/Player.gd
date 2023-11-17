@@ -9,6 +9,7 @@ class_name Player
 @onready var gimbal = $Gimbal
 @onready var gimbal_origin : Vector3 = gimbal.transform.origin
 @onready var camera : Camera3D = $Gimbal/RotationHelper/SpringArm3D/Camera3D
+@onready var interp_cam : InterpolatedCamera3D = $Gimbal/RotationHelper/SpringArm3D/InterpolatedCamera3D
 @onready var springarm : SpringArm3D = $Gimbal/RotationHelper/SpringArm3D
 @onready var dialog_node : Control = %Dialog
 @onready var dialog_label : Label = %DialogLabel
@@ -18,7 +19,9 @@ class_name Player
 @onready var shader : TextureRect = %ShaderRect
 @onready var crosshair : TextureRect = %Crosshair
 @onready var black_fade : ColorRect = %BlackFade
+@onready var white_fade : ColorRect = %WhiteFade
 @onready var pause_menu : Control = $CanvasLayer/PauseMenu
+@onready var tf_cutscene = $TFCutscene
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
@@ -43,11 +46,13 @@ var gravity_mult := 1.0
 var is_crouching := false
 
 var curr_form := "knight"
+var last_form := "knight"
 var forms := {"knight": {}, "cow": {}, "bird": {}, "anteater": {}}
 var is_tfing := false
 var is_form_locked := false
 @onready var curr_anim : AnimationPlayer = $Models/knight/AnimationPlayer
 var egg_scene = preload("res://src/Egg.tscn")
+var white_fade_tween : Tween
 
 var dialog_callable : Callable
 var curr_npc_name : String
@@ -63,6 +68,9 @@ func _ready():
 	forms["knight"]["anims"] = $Models/knight/AnimationPlayer
 	forms["cow"]["anims"] = $Models/cow/AnimationPlayer
 	forms["bird"]["anims"] = $Models/bird/AnimationPlayer
+	$Models/knight/AnimationPlayer.animation_finished.connect(_anim_finished)
+	$Models/cow/AnimationPlayer.animation_finished.connect(_anim_finished)
+	$Models/bird/AnimationPlayer.animation_finished.connect(_anim_finished)
 	
 	forms["knight"]["col"] = $KnightCollision
 	forms["cow"]["col"] = $CowCollision2
@@ -97,14 +105,16 @@ func _ready():
 	RenderingServer.viewport_set_scaling_3d_scale(get_viewport().get_viewport_rid(), 0.5)
 	get_viewport().size_changed.connect(window_resize)
 	window_resize()
+	
+#	tf_cutscene.get_node("Camera3D").current = true
 
 
 func _physics_process(delta):
 	gimbal.global_position = global_position + Vector3(0, 1.5, 0)
-	if is_cutscene_playing:
-		return
 	var cam_xform := camera.get_global_transform()
 	var clamped_move_vec := input_movement_vector.normalized()
+	if is_cutscene_playing:
+		clamped_move_vec = Vector2()
 	var dir := Vector3()
 	dir += -cam_xform.basis.z * clamped_move_vec.y
 	dir += cam_xform.basis.x * clamped_move_vec.x
@@ -138,16 +148,17 @@ func _physics_process(delta):
 		jump_requested = false
 	var hvel := vel
 	hvel.y = 0
-	if vel.y < 0.0:
-		if curr_anim.has_animation("Fall"):
-			curr_anim.play("Fall")
-		else:
-			curr_anim.play("Falling")
-	elif is_zero_approx(vel.y):	
-		if hvel.length_squared() > 0.5:
-			curr_anim.play("Run")
-		else:
-			curr_anim.play("Idle")
+	if not is_cutscene_playing:
+		if vel.y < 0.0:
+			if curr_anim.has_animation("Fall"):
+				curr_anim.play("Fall")
+			else:
+				curr_anim.play("Falling")
+		elif is_zero_approx(vel.y):	
+			if hvel.length_squared() > 0.5:
+				curr_anim.play("Run")
+			else:
+				curr_anim.play("Idle")
 	
 	var curr_vel := last_vdir
 	curr_vel.y = 0.0
@@ -217,16 +228,8 @@ func change_form(new_form:String):
 		#TODO feedback that you're locked
 		return
 	if forms.keys().has(new_form) and curr_form != new_form and forms[new_form]["owned"] == true:
-		var last_form := curr_form
+		last_form = curr_form
 		curr_form = new_form
-		var model = forms[curr_form]["model"]
-		
-		curr_anim.stop()
-		curr_anim = forms[curr_form]["anims"]
-		forms[last_form]["col"].disabled = true
-		
-		model.visible = true
-		forms[curr_form]["col"].disabled = false
 		
 		max_speed = forms[curr_form]["speed"]
 		TURN_SPEED = forms[curr_form]["turn_speed"]
@@ -234,11 +237,31 @@ func change_form(new_form:String):
 		ACCEL = forms[curr_form]["accel"]
 		
 		#TODO play tf cutscene
-		#(or we don't?) Need to pause everything but player model and cutscene cam
-		#Run tf animation and cutscene cam
-		#Unpause
-#		model.process_mode = PROCESS_MODE_ALWAYS
-		forms[last_form]["model"].visible = false
+		#lock controls, Run tf animation, set cutscene visible, set cutscene cam current, fade to white
+		is_cutscene_playing = true
+		tf_cutscene.visible = true
+		tf_cutscene.get_node("Camera3D").current = true
+		tf_cutscene.get_node("AnimationPlayer").play("zoom")
+		white_fade_tween = Globals.get_tween(white_fade_tween, self)
+		white_fade_tween.set_ease(Tween.EASE_IN)
+		white_fade_tween.tween_property(white_fade, "modulate", Color.WHITE, 4.0)
+#		white_fade.modulate = Color.WHITE
+		if curr_anim.has_animation("tf"):
+			curr_anim.play("tf")
+		else:
+			_anim_finished("tf")
+		
+		#when its done: unlock controls, switch models, fade out white, hide cutscene, set interp cam current
+#		is_cutscene_playing = false
+#		tf_cutscene.visible = false
+#		interp_cam.current = true
+#		forms[last_form]["model"].visible = false
+#		model.visible = true
+#		white_fade.modulate = Color.TRANSPARENT
+#		curr_anim.stop()
+#		curr_anim = forms[curr_form]["anims"]
+#		forms[last_form]["col"].disabled = true
+#		forms[curr_form]["col"].disabled = false
 		
 	
 func _unhandled_input(event):
@@ -374,6 +397,10 @@ func window_resize():
 
 func in_path_follow(is_starting:bool):
 	is_cutscene_playing = is_starting
+	if is_starting:
+		gravity_mult = 0.0
+	else:
+		gravity_mult = 1.0
 
 
 var fade_tween : Tween
@@ -382,3 +409,19 @@ func fade_in_out():
 	fade_tween.set_trans(Tween.TRANS_SINE)
 	fade_tween.tween_property(black_fade, "modulate", Color.WHITE, 0.5)
 	fade_tween.tween_property(black_fade, "modulate", Color.TRANSPARENT, 2.0)
+
+
+func _anim_finished(anim_name):
+	if anim_name == "tf":
+		is_cutscene_playing = false
+		tf_cutscene.visible = false
+		interp_cam.current = true
+		forms[last_form]["model"].visible = false
+		forms[curr_form]["model"].visible = true
+		curr_anim.stop()
+		curr_anim = forms[curr_form]["anims"]
+		forms[last_form]["col"].disabled = true
+		forms[curr_form]["col"].disabled = false
+		white_fade_tween = Globals.get_tween(white_fade_tween, self)
+		white_fade_tween.set_ease(Tween.EASE_IN)
+		white_fade_tween.tween_property(white_fade, "modulate", Color.TRANSPARENT, 2.0)

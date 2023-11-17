@@ -29,30 +29,66 @@ max_degrees = 60.0
 [node name="knight" instance=ExtResource("1_x0hhp")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/2/rotation = Quaternion(-0.293368, 0.955999, -1.9701e-07, 6.41996e-07)
-bones/3/rotation = Quaternion(-4.61139e-08, 2.0549e-07, -0.218964, 0.975733)
-bones/4/rotation = Quaternion(4.37339e-08, 1.73383e-07, 0.244578, 0.96963)
-bones/5/rotation = Quaternion(1.07331e-14, 6.4353e-15, -0.21492, 0.976632)
-bones/9/rotation = Quaternion(-0.471444, 4.12423e-08, 4.46672e-08, 0.881896)
-bones/10/rotation = Quaternion(0.00572791, 0.00367869, -0.540364, 0.841404)
-bones/28/rotation = Quaternion(-0.359369, -1.78544e-07, -7.83192e-08, 0.933196)
-bones/29/rotation = Quaternion(0.00531082, -0.00425878, 0.625575, 0.780134)
-bones/46/rotation = Quaternion(0.119425, 0.19029, 0.825357, 0.517989)
-bones/47/rotation = Quaternion(4.3289e-08, -6.91604e-07, 0.789129, 0.614228)
-bones/48/rotation = Quaternion(2.61266e-07, -5.98135e-08, -0.553805, 0.832646)
-bones/50/rotation = Quaternion(0.802337, -0.546423, 0.135187, -0.1985)
-bones/51/rotation = Quaternion(-1.67586e-07, 7.68117e-07, -0.885538, 0.464566)
-bones/52/rotation = Quaternion(2.99959e-07, 1.47112e-08, 0.57292, 0.819611)
+bones/2/rotation = Quaternion(-0.10114, 0.994872, -6.79202e-08, 6.68101e-07)
+bones/3/rotation = Quaternion(-1.34469e-08, 2.10171e-07, -0.0638504, 0.997959)
+bones/4/rotation = Quaternion(-1.88605e-08, 1.77816e-07, -0.105476, 0.994422)
+bones/5/rotation = Quaternion(6.50623e-15, 2.29003e-14, 0.175802, 0.984426)
+bones/9/rotation = Quaternion(-0.564963, 0.324346, 0.377743, 0.657972)
+bones/10/rotation = Quaternion(0.00415705, 0.00539081, -0.79187, 0.610652)
+bones/11/rotation = Quaternion(0.302541, -8.57585e-08, 1.19716e-08, 0.953136)
+bones/28/rotation = Quaternion(-0.515389, -0.133149, -0.211751, 0.819638)
+bones/29/rotation = Quaternion(0.00562523, -0.00383386, 0.563166, 0.826316)
+bones/30/rotation = Quaternion(0.00272773, 7.5199e-08, 1.62702e-09, 0.999996)
+bones/46/rotation = Quaternion(-6.39837e-07, 2.49922e-09, 0.999657, 0.0261739)
+bones/47/rotation = Quaternion(-3.54138e-08, -1.18955e-07, 0.0562776, 0.998415)
+bones/50/rotation = Quaternion(0.999657, -0.0261739, -1.2693e-07, -1.75769e-08)
+bones/51/rotation = Quaternion(-3.70911e-08, 1.26371e-07, -0.0562775, 0.998415)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+layers = 3
+
+[node name="Cylinder" parent="Armature/Skeleton3D" index="1"]
+layers = 3
+
+[node name="Cylinder_001" parent="Armature/Skeleton3D" index="2"]
+layers = 3
+
+[node name="Cylinder_002" parent="Armature/Skeleton3D" index="3"]
+layers = 3
+
+[node name="Cylinder_003" parent="Armature/Skeleton3D" index="4"]
+layers = 3
+
+[node name="Cylinder_004" parent="Armature/Skeleton3D" index="5"]
+layers = 3
+
+[node name="Cylinder_005" parent="Armature/Skeleton3D" index="6"]
+layers = 3
+
+[node name="Cylinder_006" parent="Armature/Skeleton3D" index="7"]
+layers = 3
+
+[node name="Cylinder_007" parent="Armature/Skeleton3D" index="8"]
+layers = 3
+
+[node name="Cylinder_009" parent="Armature/Skeleton3D" index="9"]
+layers = 3
+
+[node name="eyes" parent="Armature/Skeleton3D" index="10"]
+layers = 3
+
+[node name="Sphere" parent="Armature/Skeleton3D" index="11"]
+layers = 3
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="12"]
-transform = Transform3D(-1, 2.62673e-07, -5.82844e-07, -5.44136e-07, -0.828292, 0.560297, -3.3559e-07, 0.560297, 0.828292, 0.0485195, 1.66758, 0.581324)
+transform = Transform3D(-1, -7.57561e-08, -2.18842e-07, -2.00791e-07, -0.187208, 0.98232, -1.15386e-07, 0.98232, 0.187208, 0.0485197, 1.91753, 0.313936)
 bone_name = "eye.L"
 bone_idx = 6
 script = ExtResource("2_5gb4y")
 properties = SubResource("Resource_5c1ac")
 
 [node name="WiggleBone2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="13"]
-transform = Transform3D(-1, 2.62673e-07, -5.82844e-07, -5.44136e-07, -0.828292, 0.560297, -3.3559e-07, 0.560297, 0.828292, -0.0485203, 1.66758, 0.581324)
+transform = Transform3D(-1, -7.57561e-08, -2.18842e-07, -2.00791e-07, -0.187208, 0.98232, -1.15386e-07, 0.98232, 0.187208, -0.0485201, 1.91753, 0.313936)
 bone_name = "eye.R"
 bone_idx = 7
 script = ExtResource("2_5gb4y")
@@ -66,8 +102,26 @@ bone_idx = 1
 [node name="cowbell" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("4_biqy8")]
 transform = Transform3D(0.710063, -0.316405, 0.629046, 0, 0.893356, 0.44935, -0.704139, -0.319067, 0.634338, 0.134869, 0.207938, 0.198755)
 
+[node name="Cube" parent="Armature/Skeleton3D/BoneAttachment3D/cowbell" index="0"]
+layers = 3
+
+[node name="Cube_001" parent="Armature/Skeleton3D/BoneAttachment3D/cowbell" index="1"]
+layers = 3
+
+[node name="Icosphere" parent="Armature/Skeleton3D/BoneAttachment3D/cowbell" index="2"]
+layers = 3
+
+[node name="Torus" parent="Armature/Skeleton3D/BoneAttachment3D/cowbell" index="3"]
+layers = 3
+
 [node name="feather" parent="Armature/Skeleton3D/BoneAttachment3D" index="1" instance=ExtResource("5_0d0ut")]
 transform = Transform3D(-4.37121e-08, -0.395017, 0.918675, 0, 0.918675, 0.395017, -1, 1.7267e-08, -4.0157e-08, 0.233116, 0.0272672, 0.0983651)
 
+[node name="Cube" parent="Armature/Skeleton3D/BoneAttachment3D/feather" index="0"]
+layers = 3
+
 [node name="AnimationPlayer" parent="." index="2"]
 playback_default_blend_time = 0.2
+
+[editable path="Armature/Skeleton3D/BoneAttachment3D/cowbell"]
+[editable path="Armature/Skeleton3D/BoneAttachment3D/feather"]
