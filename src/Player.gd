@@ -58,6 +58,7 @@ var dialog_callable : Callable
 var curr_npc_name : String
 var pickup_callable : Callable
 var door_callable : Callable
+var interact_callable : Callable
 
 func _ready():
 	Globals.player = self
@@ -288,6 +289,10 @@ func _unhandled_input(event):
 			update_dialog()
 		elif pickup_callable and pickup_callable.is_valid():
 			pickup_item()
+		elif interact_callable and interact_callable.is_valid():
+			interact_callable.call()
+			talk_prompt.hide()
+			interact_callable = Callable()
 		
 	if event.is_action_pressed("crouch"):
 		is_crouching = true
@@ -368,6 +373,17 @@ func door_area_entered(the_callable:Callable):
 	talk_prompt.visible = true
 	
 	
+func interact_area_entered(the_prompt:String, the_callable:Callable):
+	prompt_label.text = the_prompt
+	talk_prompt.visible = true
+	interact_callable = the_callable
+	
+	
+func interact_area_exited():
+	interact_callable = Callable()
+	talk_prompt.visible = false	
+
+
 func door_area_exited():
 	door_callable = Callable()
 	talk_prompt.visible = false
