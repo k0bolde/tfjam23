@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyqcbrxkpvmdl"]
+[gd_scene load_steps=13 format=3 uid="uid://dyqcbrxkpvmdl"]
 
 [ext_resource type="PackedScene" uid="uid://cg3j61b2pigkc" path="res://assets/level3.glb" id="1_n2lql"]
 [ext_resource type="Texture2D" uid="uid://btin653nxli0e" path="res://assets/textures/DayEnvironmentHDRI017_1K-HDR.exr" id="2_oe1c4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_wg2eb"]
+[ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="4_ithji"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aeh33"]
 panorama = ExtResource("2_oe1c4")
@@ -153,7 +154,7 @@ environment = SubResource("Environment_g6ox5")
 [node name="Spawns" type="Node3D" parent="." index="5"]
 
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6728, 1.16089, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.0917, 1.16089, -3.11797e-08)
 
 [node name="FogVolume" type="FogVolume" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.838, -40.0577, 0)
@@ -173,3 +174,10 @@ autoplay = "spin"
 libraries = {
 "": SubResource("AnimationLibrary_c3r3o")
 }
+
+[node name="Doors" type="Node3D" parent="." index="24"]
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("4_ithji")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.5861, 0.97537, -9.49002e-08)
+level_idx_to_load = 4
+spawn_idx = 1

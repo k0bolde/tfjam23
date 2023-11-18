@@ -152,7 +152,7 @@ transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 95.3088,
 
 [node name="Door" parent="." index="27" instance=ExtResource("14_tdq6j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 70.1675, -0.25526, 3.18764e-08)
-level_idx_to_load = 1
+level_idx_to_load = 6
 
 [node name="Snake" parent="." index="28" instance=ExtResource("14_iwecw")]
 transform = Transform3D(-0.634784, 0, -0.772689, 0, 1, 0, 0.772689, 0, -0.634784, 102.93, -0.200174, -3.45792)

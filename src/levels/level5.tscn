@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://fb47k3tuatm7"]
+[gd_scene load_steps=35 format=3 uid="uid://fb47k3tuatm7"]
 
 [ext_resource type="PackedScene" uid="uid://dm7it1mgf8h2j" path="res://assets/level5.glb" id="1_r2i58"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_54u54"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cdm2yd3y6nbkn" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_NormalGL.jpg" id="6_xe6h3"]
 [ext_resource type="Texture2D" uid="uid://dljlehbbnwsf8" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Roughness.jpg" id="7_pso3k"]
 [ext_resource type="Script" path="res://src/levels/fallingblock.gd" id="8_x8xcu"]
+[ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="11_fbw4y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03vhr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -543,10 +544,10 @@ script = ExtResource("8_x8xcu")
 [node name="Spawns" type="Node3D" parent="." index="23"]
 
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.342074, -20.1608)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.81827e-08, 0.342074, -19.3809)
 
 [node name="Marker3D2" type="Marker3D" parent="Spawns" index="1"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.5527, 64.1761, 1.57209e-08)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.24879, 64.2542, -8.55369)
 
 [node name="Marker3D3" type="Marker3D" parent="Spawns" index="2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.485, 51.0932, 1.45985e-06)
@@ -761,3 +762,14 @@ sync_to_physics = true
 [node name="movingplats6AnimatableBody3D" parent="." index="80"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5034e-06, 14.7314, 18.2654)
 sync_to_physics = true
+
+[node name="Doors" type="Node3D" parent="." index="81"]
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("11_fbw4y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.76172e-08, 0, -21.4606)
+level_idx_to_load = 6
+spawn_idx = 3
+
+[node name="Door2" parent="Doors" index="1" instance=ExtResource("11_fbw4y")]
+transform = Transform3D(0.124034, 0, -0.992278, 0, 1, 0, 0.992278, 0, 0.124034, 5.73828, 63.9141, -8.54047)
+level_idx_to_load = 2

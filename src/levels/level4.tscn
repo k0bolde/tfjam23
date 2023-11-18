@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckmh7atudt1eg"]
+[gd_scene load_steps=16 format=3 uid="uid://ckmh7atudt1eg"]
 
 [ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/levels/RaceCheckpoint.gd" id="5_ert6c"]
 [ext_resource type="Script" path="res://src/levels/Racer.gd" id="6_o8po4"]
 [ext_resource type="PackedScene" uid="uid://bxlx8vqo5bky6" path="res://src/Cow.tscn" id="6_rw31b"]
+[ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="8_xxgjt"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5behf"]
 panorama = ExtResource("3_xlsgp")
@@ -59,7 +60,7 @@ collision_layer = 4
 [node name="Spawns" type="Node3D" parent="." index="17"]
 
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -8.23483, 0.472303, 3.61908)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.1365, 0.472303, -0.220054)
 
 [node name="Killplane" type="Area3D" parent="." index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24.458, 0)
@@ -119,3 +120,10 @@ transform = Transform3D(-0.219846, 0, 0.975535, 0, 1, 0, -0.975535, 0, -0.219846
 
 [node name="cow4" parent="BGCows" index="3" instance=ExtResource("6_rw31b")]
 transform = Transform3D(-0.603333, 0.12195, 0.78811, 7.45058e-09, 0.988239, -0.152917, -0.797489, -0.0922598, -0.596238, 19.2793, 1.89512, -3.7617)
+
+[node name="Doors" type="Node3D" parent="." index="37"]
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("8_xxgjt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.4871, 0, -0.217668)
+level_idx_to_load = 6
+spawn_idx = 2

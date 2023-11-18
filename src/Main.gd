@@ -7,11 +7,11 @@ class_name Main
 var curr_level : Level
 var curr_level_idx := 0
 var levels := [
-	preload("res://src/levels/level1.tscn"),
-	preload("res://src/levels/level2.tscn"),
-	preload("res://src/levels/Level3.tscn"),
-	preload("res://src/levels/level4.tscn"),
-	preload("res://src/levels/level5.tscn"),
+	preload("res://src/levels/level1.tscn"), #outside
+	preload("res://src/levels/level2.tscn"), #test level
+	preload("res://src/levels/Level3.tscn"), #rooftops
+	preload("res://src/levels/level4.tscn"), #cow race
+	preload("res://src/levels/level5.tscn"), #tower ascention
 	preload("res://src/levels/DecurseRoom.tscn"),
 	preload("res://src/levels/atrium.tscn")
 	

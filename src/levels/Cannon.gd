@@ -18,6 +18,7 @@ func _on_body_entered(body):
 	body.reparent(path_follow)
 	body.in_path_follow(true)
 	is_animating = true
+	body.vel = Vector3()
 	
 	
 func _physics_process(delta):
