@@ -84,14 +84,14 @@ layers = 3
 layers = 3
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="12"]
-transform = Transform3D(-1, -1.1091e-07, -4.61453e-07, -4.20559e-07, -0.243493, 0.969902, -2.19933e-07, 0.969903, 0.243493, 0.0485196, 1.76783, 0.514067)
+transform = Transform3D(-1, -1.10909e-07, -4.61453e-07, -4.20559e-07, -0.243493, 0.969902, -2.19932e-07, 0.969902, 0.243493, 0.0485196, 1.76783, 0.514067)
 bone_name = "eye.L"
 bone_idx = 6
 script = ExtResource("2_5gb4y")
 properties = SubResource("Resource_5c1ac")
 
 [node name="WiggleBone2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="13"]
-transform = Transform3D(-1, -1.1091e-07, -4.61453e-07, -4.20559e-07, -0.243493, 0.969902, -2.19933e-07, 0.969903, 0.243493, -0.0485202, 1.76783, 0.514067)
+transform = Transform3D(-1, -1.10909e-07, -4.61453e-07, -4.20559e-07, -0.243493, 0.969902, -2.19932e-07, 0.969902, 0.243493, -0.0485202, 1.76783, 0.514067)
 bone_name = "eye.R"
 bone_idx = 7
 script = ExtResource("2_5gb4y")
@@ -124,7 +124,7 @@ transform = Transform3D(-4.37121e-08, -0.395017, 0.918675, 0, 0.918675, 0.395017
 layers = 3
 
 [node name="LeftHandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="15"]
-transform = Transform3D(0.394687, -0.806814, 0.439627, 0.917284, 0.373609, -0.13786, -0.0530218, 0.457675, 0.887537, 0.131029, 1.21823, 0.49096)
+transform = Transform3D(0.394688, -0.806815, 0.439626, 0.917284, 0.373609, -0.137861, -0.0530201, 0.457674, 0.887538, 0.131029, 1.21822, 0.49096)
 bone_name = "hand.L"
 bone_idx = 11
 

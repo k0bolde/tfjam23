@@ -13,13 +13,14 @@ var levels := [
 	preload("res://src/levels/level4.tscn"),
 	preload("res://src/levels/level5.tscn"),
 	preload("res://src/levels/DecurseRoom.tscn"),
+	preload("res://src/levels/atrium.tscn")
 	
 	]
 
 
 func _ready():
 	Globals.main = self
-	change_level(0, 0)
+	change_level(6, 0)
 #	curr_level = level_node.get_child(0)
 	
 

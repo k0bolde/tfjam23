@@ -1,5 +1,6 @@
 extends Path3D
 class_name Cutscene
+#TODO cam lookat target. Maybe another path?
 
 var path_follow : PathFollow3D
 var camera : Camera3D

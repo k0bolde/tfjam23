@@ -141,7 +141,7 @@ layers = 3
 layers = 3
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="18"]
-transform = Transform3D(1, 6.68893e-08, 1.35372e-07, 4.90349e-10, -0.897961, 0.440074, 1.50995e-07, -0.440074, -0.897961, -9.89133e-17, 1.1629, -0.853784)
+transform = Transform3D(1, 6.68893e-08, 1.35372e-07, 4.90346e-10, -0.897961, 0.440075, 1.50995e-07, -0.440074, -0.897961, -9.89133e-17, 1.1629, -0.853784)
 bone_name = "udder"
 bone_idx = 48
 script = ExtResource("2_g4px4")
@@ -162,7 +162,7 @@ script = ExtResource("2_g4px4")
 properties = SubResource("Resource_mety0")
 
 [node name="WiggleBone4" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="21"]
-transform = Transform3D(0.423606, -0.889404, 0.171809, 0.837484, 0.456812, 0.299904, -0.34522, 0.0168456, 0.93837, -0.264006, 2.43079, 1.03739)
+transform = Transform3D(0.423606, -0.889404, 0.171809, 0.837484, 0.456812, 0.299905, -0.34522, 0.0168457, 0.93837, -0.264006, 2.43079, 1.03738)
 bone_name = "ear.R"
 bone_idx = 17
 script = ExtResource("2_g4px4")
@@ -176,7 +176,7 @@ script = ExtResource("2_g4px4")
 properties = SubResource("Resource_5cq28")
 
 [node name="HipAttachment" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="23"]
-transform = Transform3D(1, -1.70741e-06, -1.72481e-06, -5.16486e-08, 0.69555, -0.718478, 2.42643e-06, 0.718478, 0.69555, -7.0695e-07, 1.85666, 0.588201)
+transform = Transform3D(1, -1.70741e-06, -1.7248e-06, -5.16418e-08, 0.69555, -0.718478, 2.42642e-06, 0.718477, 0.69555, -7.06951e-07, 1.85666, 0.588201)
 visible = false
 bone_name = "neck.001"
 bone_idx = 9

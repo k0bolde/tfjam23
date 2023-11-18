@@ -25,11 +25,11 @@ func _ready():
 		Globals.level_state[get_parent().name] = {"is_l_cut": false, "is_r_cut": false}
 
 
-func _on_body_entered(body, name):
+func _on_body_entered(body, area_name):
 	#show popup to player and send callable to correct cut, if not already cut
-	if name == "LArea" and not is_l_cut:
+	if area_name == "LArea" and not is_l_cut:
 		body.interact_area_entered("Cut Rope (E)", cut.bind("L"))
-	elif name == "RArea" and not is_r_cut:
+	elif area_name == "RArea" and not is_r_cut:
 		body.interact_area_entered("Cut Rope (E)", cut.bind("R"))
 	
 	
