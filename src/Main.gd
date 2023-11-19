@@ -20,7 +20,7 @@ var levels := [
 
 func _ready():
 	Globals.main = self
-	change_level(6, 0)
+	change_level(0, 0)
 #	curr_level = level_node.get_child(0)
 	
 
