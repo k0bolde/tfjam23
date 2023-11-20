@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr55228dipkk1"]
+
+[ext_resource type="Script" path="res://src/npcs/AAnteater.gd" id="1_51jhy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_30xb7"]
+radius = 0.643163
+height = 2.74094
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kq02w"]
+height = 1.12631
+radius = 2.13612
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ri833"]
+
+[node name="AAnteater" type="Node3D"]
+script = ExtResource("1_51jhy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.377308)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.993173, 0.450742)
+shape = SubResource("CapsuleShape3D_30xb7")
+
+[node name="TalkArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.755645)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TalkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56694, -0.709137)
+shape = SubResource("CylinderShape3D_kq02w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.975, 0, 0, 0, -5.74805e-08, 1.315, 0, -1.315, -5.74805e-08, 0, 1.0154, -4.43844e-08)
+mesh = SubResource("CapsuleMesh_ri833")

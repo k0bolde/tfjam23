@@ -241,7 +241,7 @@ func change_form(new_form:String):
 		jump_speed = forms[curr_form]["jump_speed"]
 		ACCEL = forms[curr_form]["accel"]
 		
-		#TODO hide/show tf item on right bone attachment
+		#TODO hide/show owned tf item on hip bone attachment
 		is_cutscene_playing = true
 		tf_cutscene.visible = true
 		tf_cutscene.get_node("Camera3D").current = true

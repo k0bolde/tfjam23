@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwfrkf8ieb8lh"]
+[gd_scene load_steps=15 format=3 uid="uid://dwfrkf8ieb8lh"]
 
 [ext_resource type="PackedScene" uid="uid://77a870tfiatc" path="res://assets/atrium.glb" id="1_r7g4u"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_kdklr"]
@@ -6,6 +6,12 @@
 [ext_resource type="Material" uid="uid://c7osqxo2jj3c5" path="res://assets/textures/plaster.material" id="4_ftywo"]
 [ext_resource type="Material" uid="uid://bjc1h1pmxe4du" path="res://assets/textures/marbletiles.material" id="5_62hq6"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="6_qxe21"]
+[ext_resource type="PackedScene" uid="uid://b5461tcb57ogp" path="res://src/npcs/ShowerBird.tscn" id="7_5il4u"]
+[ext_resource type="PackedScene" uid="uid://cboy1akadehu4" path="res://src/npcs/Cow1.tscn" id="8_cwlck"]
+[ext_resource type="PackedScene" uid="uid://b1l3rpjpd86do" path="res://src/npcs/BarrelMan.tscn" id="9_qlqam"]
+[ext_resource type="PackedScene" uid="uid://d1fd2k3fi0l70" path="res://src/npcs/FuckLizard.tscn" id="10_hxusb"]
+[ext_resource type="PackedScene" uid="uid://bt4pwpe8il0if" path="res://src/npcs/Snake.tscn" id="11_1gnbg"]
+[ext_resource type="PackedScene" uid="uid://cr55228dipkk1" path="res://src/npcs/AAnteater.tscn" id="12_73c4t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wgiw"]
 size = Vector3(149.16, 12.117, 109.026)
@@ -132,3 +138,37 @@ level_idx_to_load = 4
 
 [node name="Cube_001_001" parent="." index="22"]
 surface_material_override/0 = ExtResource("4_ftywo")
+
+[node name="ShowerBird" parent="." index="23" instance=ExtResource("7_5il4u")]
+transform = Transform3D(-0.130976, 0, 0.991386, 0, 1, 0, -0.991386, 0, -0.130976, 7.40652, 0, -14.654)
+
+[node name="Cow1" parent="." index="24" instance=ExtResource("8_cwlck")]
+transform = Transform3D(-0.162465, 0, 0.986715, 0, 1, 0, -0.986715, 0, -0.162465, 8.03532, 0, -18.8577)
+
+[node name="Cow2" parent="." index="25" instance=ExtResource("8_cwlck")]
+transform = Transform3D(-0.595987, 0, 0.802995, 0, 1, 0, -0.802995, 0, -0.595987, 6.3776, 0, -24.394)
+cow_num = 2
+
+[node name="Cow3" parent="." index="26" instance=ExtResource("8_cwlck")]
+transform = Transform3D(-0.249687, 0, -0.968327, 0, 1, 0, 0.968327, 0, -0.249687, -9.2527, 0, -18.7506)
+cow_num = 3
+
+[node name="Cow4" parent="." index="27" instance=ExtResource("8_cwlck")]
+transform = Transform3D(-0.846528, 0, -0.532345, 0, 1, 0, 0.532345, 0, -0.846528, -5.6935, 0, -24.3193)
+cow_num = 4
+
+[node name="BarrelMan" parent="." index="28" instance=ExtResource("9_qlqam")]
+transform = Transform3D(0.342988, 0, -0.93934, 0, 1, 0, 0.93934, 0, 0.342988, -7.933, 0, -13.4141)
+
+[node name="FuckLizard" parent="." index="29" instance=ExtResource("10_hxusb")]
+transform = Transform3D(0.295675, 0, -0.955289, 0, 1, 0, 0.955289, 0, 0.295675, -8.34654, 0, -7.73824)
+
+[node name="Cow5" parent="." index="30" instance=ExtResource("8_cwlck")]
+transform = Transform3D(0.0889292, 0, 0.996039, 0, 1, 0, -0.996039, 0, 0.0889292, 7.48946, 0, -9.99738)
+cow_num = 5
+
+[node name="Snake" parent="." index="31" instance=ExtResource("11_1gnbg")]
+transform = Transform3D(0.373716, 0, 0.927543, 0, 1, 0, -0.927543, 0, 0.373716, 6.86914, 0, -4.77446)
+
+[node name="AAnteater" parent="." index="32" instance=ExtResource("12_73c4t")]
+transform = Transform3D(-0.252745, 0, -0.967533, 0, 1, 0, 0.967533, 0, -0.252745, -7.37145, 0, -1.98969)

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5461tcb57ogp"]
+
+[ext_resource type="Script" path="res://src/npcs/ShowerBird.gd" id="1_saixt"]
+[ext_resource type="PackedScene" uid="uid://7aqfudnrar5r" path="res://src/Bird.tscn" id="2_6cacu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l51e2"]
+height = 1.12951
+radius = 0.422285
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u3pun"]
+height = 1.12631
+radius = 1.66107
+
+[node name="ShowerBird" type="Node3D"]
+script = ExtResource("1_saixt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.377308)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60106, 0.450742)
+shape = SubResource("CylinderShape3D_l51e2")
+
+[node name="TalkArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.755645)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TalkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56694, 0)
+shape = SubResource("CylinderShape3D_u3pun")
+
+[node name="bird" parent="." instance=ExtResource("2_6cacu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="hat" parent="bird/metarig/Skeleton3D" index="14"]
+visible = true
+
+[node name="Torus" parent="bird/metarig/Skeleton3D" index="19"]
+visible = true
+
+[node name="HipAttachment" parent="bird/metarig/Skeleton3D" index="20"]
+transform = Transform3D(1, 1.42109e-14, 1.66893e-06, -5.66141e-07, 0.940707, 0.339225, -1.56997e-06, -0.339225, 0.940705, -1.68131e-13, 0.868982, 0.322495)
+
+[node name="WiggleBone" parent="bird/metarig/Skeleton3D" index="21"]
+transform = Transform3D(-0.866026, 0.5, 0, 6.4075e-07, 1.07288e-06, 1, 0.5, 0.866025, -1.3113e-06, 0.0754053, 1.88815, 0.450991)
+
+[node name="WiggleBone2" parent="bird/metarig/Skeleton3D" index="22"]
+transform = Transform3D(-0.866025, -0.5, 2.98024e-08, -7.00355e-07, 1.3113e-06, 1, -0.5, 0.866025, -1.43051e-06, -0.0754053, 1.88815, 0.450991)
+
+[node name="WiggleBone3" parent="bird/metarig/Skeleton3D" index="23"]
+transform = Transform3D(1, -1.10091e-12, -5.66732e-13, 1.0516e-12, 0.513472, 0.858107, -6.53699e-13, -0.858108, 0.513472, -4.26642e-14, 1.055, -0.240156)
+
+[editable path="bird"]
+[editable path="bird/metarig/Skeleton3D/HipAttachment/cowbell"]
+[editable path="bird/metarig/Skeleton3D/HipAttachment/feather"]
+[editable path="bird/metarig/Skeleton3D/HipAttachment/helmet"]

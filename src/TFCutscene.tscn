@@ -4,12 +4,17 @@
 
 [sub_resource type="Environment" id="Environment_j12r8"]
 background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.533333, 0.533333, 0.533333, 1)
+reflected_light_source = 1
 tonemap_mode = 3
 ssr_enabled = true
 ssao_enabled = true
 glow_bloom = 0.41
 glow_blend_mode = 1
-volumetric_fog_density = 0.0768
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.3296
+volumetric_fog_length = 11.45
 
 [sub_resource type="Animation" id="Animation_7mogv"]
 length = 0.001
@@ -128,7 +133,7 @@ cull_mask = 1048574
 environment = SubResource("Environment_j12r8")
 
 [node name="tfcone" parent="." instance=ExtResource("1_0xgjh")]
-transform = Transform3D(1, 0, 0, 0, 0.137669, -0.990478, 0, 0.990478, 0.137669, 0, 0, -0.115551)
+transform = Transform3D(1.515, 0, 0, 0, 0.208569, -1.50057, 0, 1.50057, 0.208569, 0, 0, -0.115551)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

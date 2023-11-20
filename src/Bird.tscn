@@ -130,7 +130,7 @@ visible = false
 layers = 3
 
 [node name="HipAttachment" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="20"]
-transform = Transform3D(1, 1.42109e-14, 1.66893e-06, -5.66141e-07, 0.940707, 0.339225, -1.56997e-06, -0.339225, 0.940705, -1.68131e-13, 0.868982, 0.322495)
+transform = Transform3D(1, 6.39488e-13, 1.66893e-06, -5.6614e-07, 0.940707, 0.339224, -1.56997e-06, -0.339224, 0.940706, -1.68131e-13, 0.868982, 0.322495)
 visible = false
 bone_name = "spine.006"
 bone_idx = 10
@@ -163,27 +163,28 @@ transform = Transform3D(0.872767, -0.417605, 0.252754, 0.324334, 0.883074, 0.339
 layers = 3
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="21"]
-transform = Transform3D(-0.866025, 0.5, -1.92093e-08, 6.53788e-07, 1.16788e-06, 1, 0.5, 0.866025, -2.46428e-06, 0.0754053, 1.88815, 0.450991)
+transform = Transform3D(-0.86607, 0.499921, 0.00144476, -1.93715e-07, -0.00289035, 0.999997, 0.499923, 0.866066, 0.00250328, 0.0754053, 1.88815, 0.450992)
 bone_name = "eye.L"
 bone_idx = 18
 script = ExtResource("5_opj0a")
 properties = SubResource("Resource_ih805")
 
 [node name="WiggleBone2" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="22"]
-transform = Transform3D(-0.866025, -0.5, 4.97086e-08, -6.83591e-07, 1.27964e-06, 1, -0.5, 0.866025, -2.57418e-06, -0.0754053, 1.88815, 0.450991)
+transform = Transform3D(-0.866068, -0.499925, -0.0013492, 1.63913e-07, -0.00269914, 0.999997, -0.499927, 0.866064, 0.00233764, -0.0754053, 1.88815, 0.450992)
 bone_name = "eye.R"
 bone_idx = 19
 script = ExtResource("5_opj0a")
 properties = SubResource("Resource_dxcv3")
 
 [node name="WiggleBone3" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="23"]
-transform = Transform3D(1, 8.52651e-14, 3.97904e-13, 1.0516e-12, 0.513472, 0.858108, -6.53699e-13, -0.858107, 0.51347, -4.26642e-14, 1.055, -0.240156)
+transform = Transform3D(1, -1.10091e-12, -5.66732e-13, 1.0516e-12, 0.513472, 0.858107, -6.53699e-13, -0.858108, 0.513472, -4.26642e-14, 1.055, -0.240156)
 bone_name = "spine.002"
 bone_idx = 1
 script = ExtResource("5_opj0a")
 properties = SubResource("Resource_4aln1")
 
 [node name="AnimationPlayer" parent="." index="2"]
+autoplay = "Idle"
 playback_default_blend_time = 0.2
 
 [editable path="metarig/Skeleton3D/HipAttachment/cowbell"]

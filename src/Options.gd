@@ -21,7 +21,10 @@ func _ready():
 		1.0:
 			res_slider.value = 3
 			
-
+			
+func _input(event):
+	if event.is_action_pressed("pause"):
+		_on_close_button_pressed()
 
 
 func _on_crt_button_toggled(button_pressed):

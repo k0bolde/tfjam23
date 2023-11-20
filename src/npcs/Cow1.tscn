@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cboy1akadehu4"]
+
+[ext_resource type="Script" path="res://src/npcs/Cow1.gd" id="1_2ka01"]
+[ext_resource type="PackedScene" uid="uid://bxlx8vqo5bky6" path="res://src/Cow.tscn" id="2_ljqr2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_py7n3"]
+radius = 1.04975
+height = 3.45182
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3fj11"]
+height = 1.12631
+radius = 2.13612
+
+[node name="Cow1" type="Node3D"]
+script = ExtResource("1_2ka01")
+
+[node name="cow" parent="." instance=ExtResource("2_ljqr2")]
+transform = Transform3D(-0.83, 0, -7.25609e-08, 0, 0.83, 0, 7.25609e-08, 0, -0.83, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.377308)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.993173, 0.450742)
+shape = SubResource("CapsuleShape3D_py7n3")
+
+[node name="TalkArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.755645)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TalkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56694, -0.709137)
+shape = SubResource("CylinderShape3D_3fj11")
