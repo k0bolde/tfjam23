@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d6bcu846l37i"]
+[gd_scene load_steps=6 format=3 uid="uid://d6bcu846l37i"]
 
 [ext_resource type="Script" path="res://src/CursedItem.gd" id="1_mofv1"]
+[ext_resource type="PackedScene" uid="uid://0dvag33mus6s" path="res://assets/cowbell.glb" id="2_mlc65"]
+[ext_resource type="PackedScene" uid="uid://dqqqewguml5l8" path="res://assets/feather.glb" id="3_8myjw"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_x8ikk"]
 
@@ -20,3 +22,12 @@ mesh = SubResource("TorusMesh_x8ikk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553431, 0)
 shape = SubResource("CylinderShape3D_iafhc")
+
+[node name="Spinny" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631361, 0)
+
+[node name="cowbell" parent="Spinny" instance=ExtResource("2_mlc65")]
+visible = false
+
+[node name="feather" parent="Spinny" instance=ExtResource("3_8myjw")]
+visible = false

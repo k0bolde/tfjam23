@@ -181,3 +181,9 @@ libraries = {
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.5861, 0.97537, -9.49002e-08)
 level_idx_to_load = 4
 spawn_idx = 1
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.6814, 0, 44.2631)
+max_distance = 113.0
+size = Vector3(142.356, 76.5014, 108.068)
+enable_shadows = true

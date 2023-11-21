@@ -13,7 +13,8 @@ var levels := [
 	preload("res://src/levels/level4.tscn"), #cow race
 	preload("res://src/levels/level5.tscn"), #tower ascention
 	preload("res://src/levels/DecurseRoom.tscn"),
-	preload("res://src/levels/atrium.tscn")
+	preload("res://src/levels/atrium.tscn"), #hub
+	preload("res://src/levels/tf_pedestal.tscn"), #interim room to hold forced tf items
 	
 	]
 

@@ -292,6 +292,11 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983881, 0)
 shape = SubResource("CylinderShape3D_hggqy")
 
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.1366, -4.87924)
+size = Vector3(75.4109, 43.8333, 68.6488)
+enable_shadows = true
+
 [connection signal="body_entered" from="Killplane" to="." method="_on_killplane_body_entered" flags=18]
 [connection signal="body_entered" from="AntigravArea" to="AntigravArea" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="AntigravArea" to="AntigravArea" method="_on_body_exited" flags=18]

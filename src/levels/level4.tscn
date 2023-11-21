@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckmh7atudt1eg"]
+[gd_scene load_steps=17 format=3 uid="uid://ckmh7atudt1eg"]
 
 [ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/levels/RaceCheckpoint.gd" id="5_ert6c"]
 [ext_resource type="Script" path="res://src/levels/Racer.gd" id="6_o8po4"]
 [ext_resource type="PackedScene" uid="uid://bxlx8vqo5bky6" path="res://src/Cow.tscn" id="6_rw31b"]
+[ext_resource type="PackedScene" uid="uid://cboy1akadehu4" path="res://src/npcs/Cow1.tscn" id="8_1p883"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="8_xxgjt"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5behf"]
@@ -109,17 +110,20 @@ shape = SubResource("CapsuleShape3D_i6wpc")
 
 [node name="BGCows" type="Node3D" parent="." index="36"]
 
-[node name="cow" parent="BGCows" index="0" instance=ExtResource("6_rw31b")]
-transform = Transform3D(-0.772878, 0, -0.634555, 0, 1, 0, 0.634555, 0, -0.772878, -0.982295, 2.48266, -17.8514)
+[node name="Cow1" parent="BGCows" index="0" instance=ExtResource("8_1p883")]
+transform = Transform3D(0.969795, 0, 0.24392, 0, 1, 0, -0.24392, 0, 0.969795, 0.925533, 2.51684, -19.5241)
 
-[node name="cow2" parent="BGCows" index="1" instance=ExtResource("6_rw31b")]
-transform = Transform3D(0.870502, 0, -0.492165, 0, 1, 0, 0.492165, 0, 0.870502, -17.5395, 1.00605, 0.555183)
+[node name="Cow2" parent="BGCows" index="1" instance=ExtResource("8_1p883")]
+transform = Transform3D(0.586938, 0.113281, -0.801668, 0, 0.990163, 0.139916, 0.809632, -0.0821221, 0.581164, 19.6814, 1.79837, -3.6989)
+cow_num = 2
 
-[node name="cow3" parent="BGCows" index="2" instance=ExtResource("6_rw31b")]
-transform = Transform3D(-0.219846, 0, 0.975535, 0, 1, 0, -0.975535, 0, -0.219846, 5.88566, 2.41143, 22.0147)
+[node name="Cow3" parent="BGCows" index="2" instance=ExtResource("8_1p883")]
+transform = Transform3D(-0.8271, 0.0404105, -0.5606, 0, 0.997412, 0.0718978, 0.562055, 0.0594667, -0.82496, 7.15976, 2.40271, 21.3995)
+cow_num = 3
 
-[node name="cow4" parent="BGCows" index="3" instance=ExtResource("6_rw31b")]
-transform = Transform3D(-0.603333, 0.12195, 0.78811, 7.45058e-09, 0.988239, -0.152917, -0.797489, -0.0922598, -0.596238, 19.2793, 1.89512, -3.7617)
+[node name="Cow4" parent="BGCows" index="3" instance=ExtResource("8_1p883")]
+transform = Transform3D(-0.235583, 0, -0.971854, 0, 1, 0, 0.971854, 0, -0.235583, -17.8618, 1.02263, 0.435537)
+cow_num = 4
 
 [node name="Doors" type="Node3D" parent="." index="37"]
 
@@ -127,3 +131,10 @@ transform = Transform3D(-0.603333, 0.12195, 0.78811, 7.45058e-09, 0.988239, -0.1
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.4871, 0, -0.217668)
 level_idx_to_load = 6
 spawn_idx = 2
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." index="38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.9367, 0)
+max_distance = 100.5
+size = Vector3(63.6062, 30.4488, 95.9206)
+origin_offset = Vector3(0, -6.63623, -4.5332)
+enable_shadows = true

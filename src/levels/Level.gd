@@ -21,6 +21,9 @@ func _ready():
 	if has_node("IntroCutscene"):
 		#might be safer to delay this until the player is loaded for sure
 		$IntroCutscene.call_deferred("start_cutscene")
+	#hacky way to have subclasses have their _ready (__ready()) called. Normally if a subclass has a _ready, this one won't be called
+	if self.has_method("__ready"):
+		call_deferred("__ready")
 	
 	
 var respawn_wait_tween : Tween

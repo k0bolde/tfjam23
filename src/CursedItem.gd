@@ -1,9 +1,14 @@
 extends Node3D
+class_name CursedItem
 #TODO keep track of if it was taken when returning to a level
 
-@export var item_name := "Bird Ring"
+var item_name := "Bird Ring"
 @export var item_type := "new form"
 @export var form_name := "bird"
+
+var spinny_tween : Tween
+@onready var cowbell = $Spinny/cowbell
+@onready var feather = $Spinny/feather
 
 
 func _ready():
@@ -11,6 +16,17 @@ func _ready():
 	$PickupArea.body_exited.connect(_on_pickup_area_body_exited)
 	$PickupArea.collision_mask = 2
 	$PickupArea.collision_layer = 0
+	update_item()
+	
+	
+func update_item():
+	match form_name:
+		"bird":
+			feather.visible = true
+			item_name = "Feather"
+		"cow":
+			cowbell.visible = true
+			item_name = "Cow Bell"
 	
 	
 func _on_pickup_area_body_entered(body):
