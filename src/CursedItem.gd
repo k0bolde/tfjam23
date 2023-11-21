@@ -23,9 +23,11 @@ func update_item():
 	match form_name:
 		"bird":
 			feather.visible = true
+			cowbell.visible = false
 			item_name = "Feather"
 		"cow":
 			cowbell.visible = true
+			feather.visible = false
 			item_name = "Cow Bell"
 	
 	

@@ -15,6 +15,7 @@ script = ExtResource("1_mofv1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 0.243796, 0)
+visible = false
 mesh = SubResource("TorusMesh_x8ikk")
 
 [node name="PickupArea" type="Area3D" parent="."]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://j1elauvkexhs"]
+
+[ext_resource type="PackedScene" uid="uid://g20ydu4y3rnt" path="res://src/levels/tf_pedestal.tscn" id="1_xevxh"]
+
+[node name="tf-pedestal" instance=ExtResource("1_xevxh")]
+form = "bird"

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://by0ce7ksuyjyd"]
+
+[ext_resource type="PackedScene" uid="uid://g20ydu4y3rnt" path="res://src/levels/tf_pedestal.tscn" id="1_ituf0"]
+
+[node name="tf-pedestal" instance=ExtResource("1_ituf0")]
+
+[node name="Door" parent="Doors" index="0"]
+level_idx_to_load = 6
+spawn_idx = 2
+
+[node name="Door2" parent="Doors" index="1"]
+level_idx_to_load = 3

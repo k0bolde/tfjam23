@@ -129,8 +129,8 @@ cow_num = 4
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("8_xxgjt")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.4871, 0, -0.217668)
-level_idx_to_load = 6
-spawn_idx = 2
+level_idx_to_load = 7
+spawn_idx = 1
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="." index="38"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.9367, 0)

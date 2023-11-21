@@ -7,14 +7,15 @@ class_name Main
 var curr_level : Level
 var curr_level_idx := 0
 var levels := [
-	preload("res://src/levels/level1.tscn"), #outside
-	preload("res://src/levels/level2.tscn"), #test level
-	preload("res://src/levels/Level3.tscn"), #rooftops
-	preload("res://src/levels/level4.tscn"), #cow race
-	preload("res://src/levels/level5.tscn"), #tower ascention
-	preload("res://src/levels/DecurseRoom.tscn"),
-	preload("res://src/levels/atrium.tscn"), #hub
-	preload("res://src/levels/tf_pedestal.tscn"), #interim room to hold forced tf items
+	preload("res://src/levels/level1.tscn"), #0 outside
+	preload("res://src/levels/level2.tscn"), #1 test level
+	preload("res://src/levels/Level3.tscn"), #2 rooftops
+	preload("res://src/levels/level4.tscn"), #3 cow race
+	preload("res://src/levels/level5.tscn"), #4 tower ascention
+	preload("res://src/levels/DecurseRoom.tscn"), #5
+	preload("res://src/levels/atrium.tscn"), #6 hub
+	preload("res://src/levels/cow_pedestal.tscn"), #7 interim room to hold forced tf items
+	preload("res://src/levels/bird_pedestal.tscn"), #8 interim room to hold forced tf items
 	
 	]
 

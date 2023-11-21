@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://g20ydu4y3rnt"]
+[gd_scene load_steps=9 format=3 uid="uid://g20ydu4y3rnt"]
 
 [ext_resource type="PackedScene" uid="uid://8a8w5bvvrsvs" path="res://assets/tf-pedestal.glb" id="1_0bg2m"]
 [ext_resource type="Script" path="res://src/levels/tf_pedestal.gd" id="2_me11r"]
@@ -7,6 +7,20 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_733p0"]
 size = Vector3(92.6639, 7.49509, 87.8908)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_j3ocn"]
+rayleigh_color = Color(0.2, 0.396078, 0.717647, 1)
+energy_multiplier = 3.1
+
+[sub_resource type="Sky" id="Sky_21xob"]
+sky_material = SubResource("PhysicalSkyMaterial_j3ocn")
+
+[sub_resource type="Environment" id="Environment_ogtvy"]
+background_mode = 2
+sky = SubResource("Sky_21xob")
+tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
 
 [node name="tf-pedestal" instance=ExtResource("1_0bg2m")]
 script = ExtResource("2_me11r")
@@ -33,8 +47,9 @@ transform = Transform3D(0.842, 0, 0, 0, 0.842, 0, 0, 0, 0.842, 0, -0.0309884, 15
 transform = Transform3D(-0.852, 0, -1.28648e-07, 0, 0.852, 0, 1.28648e-07, 0, -0.852, -7.4562e-09, -0.0477824, -15.4034)
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.74132, 0)
-size = Vector3(18.033, 31.8016, 32.7658)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5448, 0)
+size = Vector3(18.033, 30.029, 32.7658)
+origin_offset = Vector3(0, -5.55664, 0)
 box_projection = true
 enable_shadows = true
 
@@ -46,3 +61,6 @@ shape = SubResource("BoxShape3D_733p0")
 
 [node name="CursedItem" parent="." index="11" instance=ExtResource("4_sxuue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36925, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="12"]
+environment = SubResource("Environment_ogtvy")
