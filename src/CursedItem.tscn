@@ -8,7 +8,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_iafhc"]
 height = 1.02667
-radius = 0.590236
+radius = 0.660362
 
 [node name="CursedItem" type="Node3D"]
 script = ExtResource("1_mofv1")
@@ -28,7 +28,7 @@ shape = SubResource("CylinderShape3D_iafhc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631361, 0)
 
 [node name="cowbell" parent="Spinny" instance=ExtResource("2_mlc65")]
-visible = false
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="feather" parent="Spinny" instance=ExtResource("3_8myjw")]
-visible = false
+transform = Transform3D(-3, 4.52987e-07, 0, -4.52987e-07, -3, 0, 0, 0, 3, 0.0544037, -0.12238, 0)

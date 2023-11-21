@@ -6,10 +6,11 @@ var item_name := "Bird Ring"
 @export var item_type := "new form"
 @export var form_name := "bird"
 
+var bouncy_tween : Tween
 var spinny_tween : Tween
 @onready var cowbell = $Spinny/cowbell
 @onready var feather = $Spinny/feather
-
+@onready var spinny = $Spinny
 
 func _ready():
 	$PickupArea.body_entered.connect(_on_pickup_area_body_entered)
@@ -17,6 +18,15 @@ func _ready():
 	$PickupArea.collision_mask = 2
 	$PickupArea.collision_layer = 0
 	update_item()
+	bouncy_tween = Globals.get_tween(bouncy_tween, self)
+	bouncy_tween.set_loops().set_trans(Tween.TRANS_SINE)
+	bouncy_tween.tween_property(spinny, "position:y", 1.05, 1.0)
+	bouncy_tween.tween_property(spinny, "position:y", 0.70, 1.0)
+	
+	spinny_tween = Globals.get_tween(spinny_tween, self)
+	spinny_tween.set_loops()
+	spinny_tween.tween_property(spinny, "rotation:y", deg_to_rad(360), 4.0)
+	spinny_tween.tween_property(spinny, "rotation:y", 0, 0.001)
 	
 	
 func update_item():

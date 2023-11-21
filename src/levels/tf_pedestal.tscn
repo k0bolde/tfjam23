@@ -49,7 +49,7 @@ transform = Transform3D(-0.852, 0, -1.28648e-07, 0, 0.852, 0, 1.28648e-07, 0, -0
 [node name="ReflectionProbe" type="ReflectionProbe" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5448, 0)
 size = Vector3(18.033, 30.029, 32.7658)
-origin_offset = Vector3(0, -5.55664, 0)
+origin_offset = Vector3(0, -9.2793, 0)
 box_projection = true
 enable_shadows = true
 

@@ -92,7 +92,7 @@ func _ready():
 	forms["cow"]["turn_speed"] = 0.03
 	forms["bird"]["turn_speed"] = 0.1
 	
-	forms["knight"]["jump_speed"] = 10.0
+	forms["knight"]["jump_speed"] = 12.0
 	forms["cow"]["jump_speed"] = 8.0
 	forms["bird"]["jump_speed"] = 16.0
 	
