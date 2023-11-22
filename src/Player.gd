@@ -4,6 +4,7 @@ class_name Player
 #TODO anteater grapple and fishing
 #TODO items attached to forms to show what tfs are availible? cow bell, . Actually use the item in the tf cutscenes
 #TODO springarm blob shadow - decal?
+#TODO cow dustcloud particles when vel is far enough away from vdir for drifting purposes
 
 @onready var rotation_helper = $Gimbal/RotationHelper
 @onready var gimbal = $Gimbal
@@ -22,6 +23,7 @@ class_name Player
 @onready var white_fade : ColorRect = %WhiteFade
 @onready var pause_menu : Control = $CanvasLayer/PauseMenu
 @onready var tf_cutscene = $TFCutscene
+@onready var cow_skelly : Skeleton3D = $Models/cow/metarig/Skeleton3D
 
 var MOUSE_SENSITIVITY := 0.1
 var TURN_SPEED := 0.05
@@ -44,10 +46,15 @@ var target_spring_length := 2.0
 var is_cutscene_playing := false
 var gravity_mult := 1.0
 var is_crouching := false
+var udder_size := 1.0
+var udder_fill_rate := 0.01
+var udder_max_size := 3.0
+var udder_min_size := 0.3
+var udder_bone_idx := 0
 
 var curr_form := "knight"
 var last_form := "knight"
-var forms := {"knight": {}, "cow": {}, "bird": {}, "anteater": {}}
+var forms := {"knight": {}, "cow": {}, "bird": {}}
 var is_tfing := false
 var is_form_locked := false
 @onready var curr_anim : AnimationPlayer = $Models/knight/AnimationPlayer
@@ -62,6 +69,8 @@ var interact_callable : Callable
 
 func _ready():
 	Globals.player = self
+	udder_bone_idx = cow_skelly.find_bone("udder")
+	
 	forms["knight"]["model"] = $Models/knight
 	forms["cow"]["model"] = $Models/cow
 	forms["bird"]["model"] = $Models/bird
@@ -103,7 +112,6 @@ func _ready():
 	forms["knight"]["owned"] = true
 	forms["cow"]["owned"] = true
 	forms["bird"]["owned"] = true
-	forms["anteater"]["owned"] = false
 
 	change_form("knight")
 	
@@ -228,10 +236,11 @@ func _physics_process(delta):
 			collider.get_parent().player_touched(self)
 	
 	
-func change_form(new_form:String):
+func change_form(new_form:String, is_locking := false):
 	if is_form_locked:
 		#TODO feedback that you're locked
 		return
+	is_form_locked = is_locking
 	if forms.keys().has(new_form) and curr_form != new_form and forms[new_form]["owned"] == true:
 		last_form = curr_form
 		curr_form = new_form
@@ -240,6 +249,11 @@ func change_form(new_form:String):
 		TURN_SPEED = forms[curr_form]["turn_speed"]
 		jump_speed = forms[curr_form]["jump_speed"]
 		ACCEL = forms[curr_form]["accel"]
+		
+		if curr_form == "cow":
+			floor_block_on_wall = false
+		else:
+			floor_block_on_wall = true
 		
 		#TODO hide/show owned tf item on hip bone attachment
 		is_cutscene_playing = true
@@ -307,16 +321,32 @@ func _input(event: InputEvent) -> void:
 	if is_cutscene_playing:
 		return
 	if event.is_action_pressed("click"):
-		if crosshair.visible and curr_form == "bird":
-			#shoot egg where camera is facing
-			var egg : RigidBody3D = egg_scene.instantiate()
-			Globals.main.eggs.add_child(egg)
-			var pos = global_position
-			pos.y += 0.5
-			egg.global_position = pos
-			egg.rotation.y = gimbal.rotation.y
-			var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
-			egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
+		if crosshair.visible:
+			if curr_form == "bird":
+				#shoot egg where camera is facing
+				var egg : RigidBody3D = egg_scene.instantiate()
+				Globals.main.eggs.add_child(egg)
+				var pos = global_position
+				pos.y += 0.5
+				egg.global_position = pos
+				egg.rotation.y = gimbal.rotation.y
+				var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
+				egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
+			elif curr_form == "cow":
+				#shoot milk, shrink udder
+				if udder_size > udder_min_size + 0.3:
+#					var milk_drop = preload("res://src/MilkDrop.tscn").instantiate()
+#					Globals.main.eggs.add_child(milk_drop)
+#					var pos = global_position
+#					pos.y += 0.5
+#					milk_drop.global_position = pos
+#					milk_drop.rotation.y = gimbal.rotation.y
+#					var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
+#					milk_drop.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
+#					udder_size -= 0.3
+					pass
+				
+				
 	if event.is_action_pressed("aim mode"):
 		crosshair.visible = true
 		#TODO zoom in while aiming so player can't see where the egg spawns at
@@ -334,6 +364,15 @@ func _input(event: InputEvent) -> void:
 			camera_rot.x = clamp(camera_rot.x, -deg_to_rad(30), deg_to_rad(70))
 			rotation_helper.rotation = camera_rot
 			
+			
+func _process(delta):
+	if curr_form == "cow":
+#		var udder_min_size := 0.3
+			udder_size += udder_fill_rate * delta
+			if udder_size > udder_max_size:
+				udder_size = udder_max_size
+				#TODO milksplosion
+			cow_skelly.set_bone_pose_scale(udder_bone_idx, Vector3.ONE * udder_size)
 			
 func dialog_area_entered(npc_name, the_callable):
 	dialog_callable = the_callable
@@ -393,8 +432,7 @@ func pickup_item():
 	var item_info : Dictionary = pickup_callable.call()
 	if item_info["type"] == "new form":
 		forms[item_info["form_name"]]["owned"] = true
-		change_form(item_info["form_name"])
-		is_form_locked = true
+		change_form(item_info["form_name"], true)
 
 
 func window_resize():
@@ -425,6 +463,10 @@ func _anim_finished(anim_name):
 		interp_cam.current = true
 		forms[last_form]["model"].visible = false
 		forms[curr_form]["model"].visible = true
+		#if we're formlocked, don't show the other tf items
+		for form in forms:
+			if form != curr_form and curr_form != "knight":
+				forms[curr_form]["model"].get_node("metarig/Skeleton3D/HipAttachment/%s" % forms[form]["tf_item"]).visible = not is_form_locked and forms[form]["owned"]
 		curr_anim.stop()
 		curr_anim = forms[curr_form]["anims"]
 		forms[last_form]["col"].disabled = true
@@ -432,4 +474,3 @@ func _anim_finished(anim_name):
 		white_fade_tween = Globals.get_tween(white_fade_tween, self)
 		white_fade_tween.set_ease(Tween.EASE_IN)
 		white_fade_tween.tween_property(white_fade, "modulate", Color.TRANSPARENT, 2.0)
-		#TODO reparent tf item to hipAttachment on old model

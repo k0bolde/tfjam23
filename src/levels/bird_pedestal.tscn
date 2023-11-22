@@ -4,3 +4,10 @@
 
 [node name="tf-pedestal" instance=ExtResource("1_xevxh")]
 form = "bird"
+
+[node name="Door" parent="Doors" index="0"]
+level_idx_to_load = 4
+spawn_idx = 1
+
+[node name="Door2" parent="Doors" index="1"]
+level_idx_to_load = 2

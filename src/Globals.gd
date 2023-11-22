@@ -1,7 +1,7 @@
 extends Node
 
-var main : Main
-var player : Player
+var main
+var player
 #used to preverse level state between loads. Could save this in the future for save files
 var level_state := {}
 

@@ -91,23 +91,7 @@ disabled = true
 transform = Transform3D(-0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 0, 0, 0)
 visible = false
 
-[node name="WiggleBone" parent="Models/cow/metarig/Skeleton3D" index="18"]
-transform = Transform3D(1, 0, 1.50996e-07, 5.61892e-10, -0.999993, -0.00372123, 1.50995e-07, 0.00372147, -0.999993, -9.89133e-17, 1.16288, -0.853674)
-
-[node name="WiggleBone2" parent="Models/cow/metarig/Skeleton3D" index="19"]
-transform = Transform3D(-0.264478, 0.939693, 0.216862, 0.217307, -0.161018, 0.962731, 0.939589, 0.301747, -0.161617, 0.219592, 1.47379, 1.71221)
-
-[node name="WiggleBone3" parent="Models/cow/metarig/Skeleton3D" index="20"]
-transform = Transform3D(-0.264478, -0.939693, -0.216862, -0.217308, -0.161018, 0.962731, -0.939589, 0.301747, -0.161617, -0.219592, 1.47379, 1.71221)
-
-[node name="WiggleBone4" parent="Models/cow/metarig/Skeleton3D" index="21"]
-transform = Transform3D(0.423607, -0.889404, 0.171811, 0.833607, 0.308527, -0.45816, 0.35448, 0.337302, 0.872107, -0.264005, 1.58906, 1.47231)
-
-[node name="WiggleBone5" parent="Models/cow/metarig/Skeleton3D" index="22"]
-transform = Transform3D(0.423607, 0.889404, -0.171811, -0.833607, 0.308527, -0.45816, -0.35448, 0.337302, 0.872107, 0.264005, 1.58906, 1.47231)
-
 [node name="HipAttachment" parent="Models/cow/metarig/Skeleton3D" index="23"]
-transform = Transform3D(1, -1.13687e-12, -1.43053e-06, -1.40016e-06, 0.204974, -0.978767, 2.93224e-07, 0.978767, 0.204974, 3.36703e-14, 1.38334, 0.759306)
 visible = true
 
 [node name="bird" parent="Models" instance=ExtResource("4_1xrey")]
@@ -119,16 +103,28 @@ transform = Transform3D(1, 1.42109e-14, 1.66893e-06, -5.66141e-07, 0.940707, 0.3
 visible = true
 
 [node name="WiggleBone" parent="Models/bird/metarig/Skeleton3D" index="21"]
-transform = Transform3D(-0.866025, 0.5, -1.92093e-08, 6.53788e-07, 1.16788e-06, 1, 0.5, 0.866025, -2.46428e-06, 0.0754053, 1.88815, 0.450991)
+transform = Transform3D(-0.866026, 0.5, 0, 6.4075e-07, 1.07288e-06, 1, 0.5, 0.866025, -1.3113e-06, 0.0754053, 1.88815, 0.450991)
 
 [node name="WiggleBone2" parent="Models/bird/metarig/Skeleton3D" index="22"]
-transform = Transform3D(-0.866025, -0.5, 4.97086e-08, -6.83591e-07, 1.27964e-06, 1, -0.5, 0.866025, -2.57418e-06, -0.0754053, 1.88815, 0.450991)
+transform = Transform3D(-0.866025, -0.5, 2.98024e-08, -7.00355e-07, 1.3113e-06, 1, -0.5, 0.866025, -1.43051e-06, -0.0754053, 1.88815, 0.450991)
 
 [node name="WiggleBone3" parent="Models/bird/metarig/Skeleton3D" index="23"]
-transform = Transform3D(1, 8.52651e-14, 3.97904e-13, 1.0516e-12, 0.513472, 0.858108, -6.53699e-13, -0.858107, 0.51347, -4.26642e-14, 1.055, -0.240156)
+transform = Transform3D(1, -1.10091e-12, -5.66732e-13, 1.0516e-12, 0.513472, 0.858107, -6.53699e-13, -0.858108, 0.513472, -4.26642e-14, 1.055, -0.240156)
 
 [node name="knight" parent="Models" instance=ExtResource("4_ab216")]
 transform = Transform3D(-0.95, 0, -1.43446e-07, 0, 0.95, 0, 1.43446e-07, 0, -0.95, 0, 0, 0)
+
+[node name="WiggleBone" parent="Models/knight/Armature/Skeleton3D" index="12"]
+transform = Transform3D(-1, -1.10909e-07, -4.61453e-07, -4.20559e-07, -0.243493, 0.969902, -2.19932e-07, 0.969902, 0.243493, 0.0485196, 1.76783, 0.514067)
+
+[node name="WiggleBone2" parent="Models/knight/Armature/Skeleton3D" index="13"]
+transform = Transform3D(-1, -1.10909e-07, -4.61453e-07, -4.20559e-07, -0.243493, 0.969902, -2.19932e-07, 0.969902, 0.243493, -0.0485202, 1.76783, 0.514067)
+
+[node name="HipAttachment" parent="Models/knight/Armature/Skeleton3D" index="14"]
+transform = Transform3D(-4.76837e-07, 0, 1, 0, 1, 0, -1, 0, -4.76837e-07, 0, 1.03458, 0)
+
+[node name="LeftHandAttachment" parent="Models/knight/Armature/Skeleton3D" index="15"]
+transform = Transform3D(0.394688, -0.806815, 0.439626, 0.917284, 0.373609, -0.137861, -0.0530201, 0.457674, 0.887538, 0.131029, 1.21822, 0.49096)
 
 [node name="Gimbal" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -356,3 +352,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5
 [editable path="Models/bird/metarig/Skeleton3D/HipAttachment/cowbell"]
 [editable path="Models/bird/metarig/Skeleton3D/HipAttachment/feather"]
 [editable path="Models/bird/metarig/Skeleton3D/HipAttachment/helmet"]
+[editable path="Models/knight"]
+[editable path="Models/knight/Armature/Skeleton3D/HipAttachment/cowbell"]
+[editable path="Models/knight/Armature/Skeleton3D/HipAttachment/feather"]
+[editable path="Models/knight/Armature/Skeleton3D/LeftHandAttachment/cowbell"]
+[editable path="Models/knight/Armature/Skeleton3D/LeftHandAttachment/feather"]

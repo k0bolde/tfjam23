@@ -53,5 +53,6 @@ func _on_pickup_area_body_exited(body):
 
 func form_pickup() -> Dictionary:
 	var p := {"type": item_type, "item_name": item_name, "form_name": form_name}
+	Globals.level_state[get_parent().name] = {"cursed_item_taken": true}
 	queue_free()
 	return p

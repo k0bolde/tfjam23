@@ -195,8 +195,8 @@ libraries = {
 [node name="Doors" type="Node3D" parent="." index="24"]
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("4_ithji")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.5861, 0.97537, -9.49002e-08)
-level_idx_to_load = 4
+transform = Transform3D(-8.26145e-08, 0, 1.89, 0, 1.89, 0, -1.89, 0, -8.26145e-08, 26.0271, 0.97537, -1.14178e-07)
+level_idx_to_load = 8
 spawn_idx = 1
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="." index="25"]

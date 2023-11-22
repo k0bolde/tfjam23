@@ -8,9 +8,10 @@ var callback : Callable
 
 func _ready():
 	egg_area.body_entered.connect(_on_egg_entered)
+	egg_area.collision_mask = 16
 
 	
-func _on_egg_entered(body):
+func _on_egg_entered(_body):
 	if not is_pressed:
 		print("button pressed")
 		is_pressed = true

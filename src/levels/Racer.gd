@@ -1,4 +1,7 @@
 extends Path3D
+#TODO start race after talking to
+#TODO only race cows
+#TODO keep track of race position
 
 @onready var path_follow : PathFollow3D = $PathFollow3D
 @onready var anims : AnimationPlayer = $PathFollow3D/AnimatableBody3D/cow/AnimationPlayer
