@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckmh7atudt1eg"]
+[gd_scene load_steps=22 format=3 uid="uid://ckmh7atudt1eg"]
 
 [ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cboy1akadehu4" path="res://src/npcs/Cow1.tscn" id="8_1p883"]
 [ext_resource type="Material" uid="uid://rtk5fu1j68ss" path="res://assets/textures/marble.material" id="8_rm3gh"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="8_xxgjt"]
+[ext_resource type="Texture2D" uid="uid://bbvf5g8aialkl" path="res://icon.svg" id="14_4oai8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5behf"]
 panorama = ExtResource("3_xlsgp")
@@ -170,3 +171,7 @@ surface_material_override/0 = ExtResource("4_4cwoo")
 
 [node name="Cylinder_006" parent="." index="42"]
 surface_material_override/0 = ExtResource("5_g284k")
+
+[node name="Decal" type="Decal" parent="." index="46"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2774, 0.231094, 0)
+texture_albedo = ExtResource("14_4oai8")

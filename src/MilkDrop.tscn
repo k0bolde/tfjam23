@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfwxvhwkttboc"]
+[gd_scene load_steps=5 format=3 uid="uid://cfwxvhwkttboc"]
 
 [ext_resource type="Script" path="res://src/MilkDrop.gd" id="1_a1rkt"]
+[ext_resource type="Texture2D" uid="uid://bbvf5g8aialkl" path="res://icon.svg" id="2_5dsxp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tokod"]
 radial_segments = 8
 rings = 2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4sp7"]
-radius = 0.217248
+radius = 0.173923
 
 [node name="MilkDrop" type="RigidBody3D"]
 collision_layer = 16
@@ -17,12 +18,12 @@ max_contacts_reported = 1
 script = ExtResource("1_a1rkt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, 0, 0, 0)
+transform = Transform3D(0.225, 0, 0, 0, -9.83506e-09, 0.225, 0, -0.225, -9.83506e-09, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_tokod")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_k4sp7")
 
 [node name="Decal" type="Decal" parent="."]
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+size = Vector3(2, 0.140412, 2)
+texture_albedo = ExtResource("2_5dsxp")

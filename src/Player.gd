@@ -47,7 +47,7 @@ var is_cutscene_playing := false
 var gravity_mult := 1.0
 var is_crouching := false
 var udder_size := 1.0
-var udder_fill_rate := 0.01
+var udder_fill_rate := 0.1
 var udder_max_size := 3.0
 var udder_min_size := 0.3
 var udder_bone_idx := 0
@@ -331,20 +331,20 @@ func _input(event: InputEvent) -> void:
 				egg.global_position = pos
 				egg.rotation.y = gimbal.rotation.y
 				var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
-				egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
+				egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y) + vel
 			elif curr_form == "cow":
 				#shoot milk, shrink udder
+				#if in air, shoot down and doublejump?
 				if udder_size > udder_min_size + 0.3:
-#					var milk_drop = preload("res://src/MilkDrop.tscn").instantiate()
-#					Globals.main.eggs.add_child(milk_drop)
-#					var pos = global_position
-#					pos.y += 0.5
-#					milk_drop.global_position = pos
-#					milk_drop.rotation.y = gimbal.rotation.y
-#					var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
-#					milk_drop.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y)
-#					udder_size -= 0.3
-					pass
+					var milk_drop = preload("res://src/MilkDrop.tscn").instantiate()
+					Globals.main.eggs.add_child(milk_drop)
+					var pos = global_position
+					pos.y += 0.5
+					milk_drop.global_position = pos
+					milk_drop.rotation.y = gimbal.rotation.y
+					var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
+					milk_drop.linear_velocity = Vector3(0, y_vel, -10.0).rotated(Vector3.UP, gimbal.rotation.y) + vel
+					udder_size -= 0.3
 				
 				
 	if event.is_action_pressed("aim mode"):
