@@ -25,5 +25,5 @@ mesh = SubResource("CapsuleMesh_tokod")
 shape = SubResource("SphereShape3D_k4sp7")
 
 [node name="Decal" type="Decal" parent="."]
-size = Vector3(2, 0.140412, 2)
+visible = false
 texture_albedo = ExtResource("2_5dsxp")

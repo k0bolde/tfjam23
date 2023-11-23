@@ -113,6 +113,9 @@ script = ExtResource("2_skivb")
 [node name="island" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_akc77")
 
+[node name="Cylinder" parent="." index="2"]
+visible = false
+
 [node name="room_straight" parent="." index="4"]
 surface_material_override/0 = ExtResource("2_4mnbo")
 surface_material_override/1 = ExtResource("3_bipcs")
@@ -155,7 +158,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 70.167
 level_idx_to_load = 6
 
 [node name="Snake" parent="." index="28" instance=ExtResource("14_iwecw")]
-transform = Transform3D(-0.634784, 0, -0.772689, 0, 1, 0, 0.772689, 0, -0.634784, 102.93, -0.200174, -3.45792)
+transform = Transform3D(-0.634784, 0, -0.772689, 0, 1, 0, 0.772689, 0, -0.634784, 92.2036, -0.200174, -2.95443)
 
 [node name="Tower_001" parent="." index="32"]
 surface_material_override/0 = ExtResource("2_4mnbo")
@@ -163,6 +166,7 @@ surface_material_override/1 = ExtResource("3_bipcs")
 
 [node name="boat" parent="." index="33"]
 transform = Transform3D(4.43013, 0, 0, 0, 4.43013, 0, 0, 0, 14.4626, 128.287, -0.998699, 0.282838)
+surface_material_override/0 = ExtResource("4_skp54")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="boat" index="0"]
 autoplay = "boat idle"

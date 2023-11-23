@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyqcbrxkpvmdl"]
+[gd_scene load_steps=20 format=3 uid="uid://dyqcbrxkpvmdl"]
 
 [ext_resource type="PackedScene" uid="uid://cg3j61b2pigkc" path="res://assets/level3.glb" id="1_n2lql"]
 [ext_resource type="Script" path="res://src/levels/Rooftops.gd" id="2_37at0"]
 [ext_resource type="Texture2D" uid="uid://btin653nxli0e" path="res://assets/textures/DayEnvironmentHDRI017_1K-HDR.exr" id="2_oe1c4"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="4_ithji"]
+[ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="4_s783n"]
+[ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="5_geq3b"]
 [ext_resource type="Script" path="res://src/levels/EggButton.gd" id="5_gnkxt"]
+[ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="6_t4js6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aeh33"]
 panorama = ExtResource("2_oe1c4")
@@ -186,11 +189,20 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
 shape = SubResource("BoxShape3D_eejaf")
 
+[node name="Cube" parent="." index="8"]
+surface_material_override/0 = ExtResource("4_s783n")
+
+[node name="walkway" parent="." index="12"]
+surface_material_override/0 = ExtResource("5_geq3b")
+
 [node name="WindmillAnimationPlayer" type="AnimationPlayer" parent="." index="13"]
 autoplay = "spin"
 libraries = {
 "": SubResource("AnimationLibrary_c3r3o")
 }
+
+[node name="Cube_007" parent="." index="20"]
+surface_material_override/0 = ExtResource("6_t4js6")
 
 [node name="Doors" type="Node3D" parent="." index="24"]
 
@@ -218,3 +230,15 @@ collision_mask = 16
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EggButton/EggArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138527, 0)
 shape = SubResource("CylinderShape3D_d1naw")
+
+[node name="windmill_blades-ab" parent="windmill_bladesAnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("5_geq3b")
+
+[node name="windmill_blades2-ab" parent="windmill_blades2AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("5_geq3b")
+
+[node name="windmill_blades3-ab" parent="windmill_blades3AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("5_geq3b")
+
+[node name="windmill_blades4-ab" parent="windmill_blades4AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("5_geq3b")

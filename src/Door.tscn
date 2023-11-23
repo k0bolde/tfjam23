@@ -1,13 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://cant0y3v6awlb"]
+[gd_scene load_steps=14 format=3 uid="uid://cant0y3v6awlb"]
 
 [ext_resource type="Script" path="res://src/Door.gd" id="1_68g3m"]
+[ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="2_ek505"]
+[ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="3_wgr0g"]
+[ext_resource type="Material" uid="uid://bgcwx1ifw28qr" path="res://assets/textures/matteblack.material" id="4_2y7um"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bhd4m"]
 height = 1.3063
 radius = 1.41454
 
 [sub_resource type="BoxMesh" id="BoxMesh_dl2th"]
+material = ExtResource("2_ek505")
 size = Vector3(0.5, 1, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5csu2"]
+height = 1.77
+radial_segments = 8
+rings = 1
 
 [sub_resource type="Animation" id="Animation_gjxf8"]
 length = 0.001
@@ -73,6 +82,13 @@ _data = {
 "open": SubResource("Animation_proqo")
 }
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_hs31t"]
+material = ExtResource("4_2y7um")
+size = Vector2(2.975, 2.935)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecrwd"]
+size = Vector3(2.9217, 2.95229, 0.252627)
+
 [node name="Door" type="Area3D"]
 collision_layer = 0
 collision_mask = 2
@@ -90,6 +106,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0)
 mesh = SubResource("BoxMesh_dl2th")
 skeleton = NodePath("../..")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.12, 0, 0, 0, -5.24537e-09, 0.12, 0, -0.12, -5.24537e-09, -0.394214, 0.494533, 0)
+mesh = SubResource("CylinderMesh_5csu2")
+surface_material_override/0 = ExtResource("3_wgr0g")
+
 [node name="Node3D2" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.5, 0, 0)
 
@@ -98,10 +119,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
 mesh = SubResource("BoxMesh_dl2th")
 skeleton = NodePath("../..")
 
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(0.12, 0, 0, 0, -5.24537e-09, 0.12, 0, -0.12, -5.24537e-09, 0.392774, 0.494533, 0)
+mesh = SubResource("CylinderMesh_5csu2")
+surface_material_override/0 = ExtResource("3_wgr0g")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sohqo")
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.51513, 0)
+mesh = SubResource("PlaneMesh_hs31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47104, 0)
+shape = SubResource("BoxShape3D_ecrwd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

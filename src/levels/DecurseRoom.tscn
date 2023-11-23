@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqxk4euww1ne6"]
+[gd_scene load_steps=10 format=3 uid="uid://dqxk4euww1ne6"]
 
 [ext_resource type="PackedScene" uid="uid://b87rmwfp3t0q3" path="res://assets/decurse.glb" id="1_pn7l6"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_sysp1"]
+[ext_resource type="Material" uid="uid://bjc1h1pmxe4du" path="res://assets/textures/marbletiles.material" id="3_8t4dy"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="3_nraie"]
+[ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="4_la6s8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lmfja"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,6 +32,18 @@ environment = SubResource("Environment_hxb2w")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
 transform = Transform3D(-0.952128, -0.264744, 0.152849, 0, 0.499998, 0.866027, -0.305699, 0.824568, -0.476062, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Cylinder" parent="." index="3"]
+visible = false
+
+[node name="Cube_001" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_8t4dy")
+
+[node name="Cube_005" parent="." index="9"]
+surface_material_override/0 = ExtResource("4_la6s8")
+
+[node name="Cube_007" parent="." index="11"]
+surface_material_override/0 = ExtResource("4_la6s8")
 
 [node name="Spawns" type="Node3D" parent="." index="12"]
 

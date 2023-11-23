@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://fb47k3tuatm7"]
+[gd_scene load_steps=37 format=3 uid="uid://fb47k3tuatm7"]
 
 [ext_resource type="PackedScene" uid="uid://dm7it1mgf8h2j" path="res://assets/level5.glb" id="1_r2i58"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_54u54"]
 [ext_resource type="Script" path="res://src/levels/AntigravArea.gd" id="3_bdvnj"]
 [ext_resource type="Texture2D" uid="uid://dli8x4ik0dd36" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Color.jpg" id="3_epglt"]
+[ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="3_nwd70"]
 [ext_resource type="Texture2D" uid="uid://dtyepfx8xrpyg" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_AmbientOcclusion.jpg" id="4_lu0na"]
 [ext_resource type="Script" path="res://src/levels/Cannon.gd" id="4_tddnd"]
 [ext_resource type="Texture2D" uid="uid://bjowju4cdcakt" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Displacement.jpg" id="5_uhpbj"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dljlehbbnwsf8" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Roughness.jpg" id="7_pso3k"]
 [ext_resource type="Script" path="res://src/levels/fallingblock.gd" id="8_x8xcu"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="11_fbw4y"]
+[ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="11_q2662"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03vhr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -523,6 +525,12 @@ script = ExtResource("2_54u54")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 environment = SubResource("Environment_vvcif")
 
+[node name="start" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_nwd70")
+
+[node name="Cylinder_002" parent="." index="2"]
+visible = false
+
 [node name="Cube_006" parent="." index="6"]
 visible = false
 
@@ -597,6 +605,9 @@ autoplay = "move"
 libraries = {
 "": SubResource("AnimationLibrary_3k863")
 }
+
+[node name="plank" parent="." index="31"]
+surface_material_override/0 = ExtResource("11_q2662")
 
 [node name="fallingblock_001" parent="." index="32"]
 script = ExtResource("8_x8xcu")
@@ -712,6 +723,9 @@ script = ExtResource("8_x8xcu")
 
 [node name="fallingblock_029" parent="." index="63"]
 script = ExtResource("8_x8xcu")
+
+[node name="plank2" parent="." index="66"]
+surface_material_override/0 = ExtResource("11_q2662")
 
 [node name="movingplatsAnimatableBody3D" parent="." index="68"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2654, 5.90045, 0)

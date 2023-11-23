@@ -48,7 +48,7 @@ var gravity_mult := 1.0
 var is_crouching := false
 var udder_size := 1.0
 var udder_fill_rate := 0.1
-var udder_max_size := 3.0
+var udder_max_size := 1.5
 var udder_min_size := 0.3
 var udder_bone_idx := 0
 
@@ -94,7 +94,7 @@ func _ready():
 	forms["bird"]["crouch_col"] = $KnightCrouchCollision
 
 	forms["knight"]["speed"] = 10.0
-	forms["cow"]["speed"] = 30.0
+	forms["cow"]["speed"] = 40.0
 	forms["bird"]["speed"] = 16.0
 	
 	forms["knight"]["turn_speed"] = 0.06
@@ -368,11 +368,11 @@ func _input(event: InputEvent) -> void:
 func _process(delta):
 	if curr_form == "cow":
 #		var udder_min_size := 0.3
-			udder_size += udder_fill_rate * delta
-			if udder_size > udder_max_size:
-				udder_size = udder_max_size
-				#TODO milksplosion
-			cow_skelly.set_bone_pose_scale(udder_bone_idx, Vector3.ONE * udder_size)
+		udder_size += udder_fill_rate * delta
+		if udder_size > udder_max_size:
+			udder_size = udder_max_size
+			#TODO milksplosion
+		cow_skelly.set_bone_pose_scale(udder_bone_idx, Vector3.ONE * udder_size)
 			
 func dialog_area_entered(npc_name, the_callable):
 	dialog_callable = the_callable

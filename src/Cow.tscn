@@ -60,31 +60,28 @@ max_degrees = 60.0
 [node name="cow" instance=ExtResource("1_alceb")]
 
 [node name="Skeleton3D" parent="metarig" index="0"]
-bones/1/rotation = Quaternion(-4.23634e-08, -0.213969, -0.97684, 1.07716e-08)
-bones/2/rotation = Quaternion(0.244627, 1.58816e-07, -3.62709e-08, 0.969617)
-bones/3/rotation = Quaternion(0.153384, -1.17799e-07, 1.82848e-08, 0.988167)
-bones/5/rotation = Quaternion(-0.0934347, 6.35652e-07, 7.22907e-08, 0.995625)
-bones/6/rotation = Quaternion(-0.0456679, -4.76471e-07, -1.94415e-08, 0.998957)
-bones/7/rotation = Quaternion(-0.0772387, 8.3152e-07, 7.01349e-08, 0.997013)
-bones/8/rotation = Quaternion(-0.237826, 2.5814e-07, -9.20699e-08, 0.971308)
-bones/9/rotation = Quaternion(0.0628932, -1.88972e-06, 2.22041e-07, 0.99802)
-bones/10/rotation = Quaternion(0.0153562, 8.3082e-07, 1.80089e-08, 0.999882)
-bones/21/rotation = Quaternion(0.402988, 0.197729, -0.332736, 0.829332)
-bones/23/rotation = Quaternion(0.917767, -2.36071e-06, -4.45645e-06, 0.397119)
-bones/28/rotation = Quaternion(0.352794, -0.148109, 0.245691, 0.890638)
-bones/29/rotation = Quaternion(0.0312453, 0.591597, 0.793538, 0.139048)
-bones/30/rotation = Quaternion(0.86894, 1.85031e-06, 4.68125e-06, 0.494917)
-bones/35/rotation = Quaternion(-0.62857, -0.264376, -0.0879994, 0.726128)
-bones/36/rotation = Quaternion(-0.224947, 0.128426, -0.859361, 0.440914)
-bones/37/rotation = Quaternion(-0.411977, -0.000208718, -0.000755474, 0.911194)
-bones/38/rotation = Quaternion(0.201494, 8.65988e-07, -4.02003e-06, 0.97949)
-bones/39/rotation = Quaternion(0.0439305, 6.46931e-06, 2.79133e-06, 0.999035)
-bones/42/rotation = Quaternion(-0.609257, 0.306268, 0.136891, 0.718517)
-bones/43/rotation = Quaternion(-0.237814, -0.153639, 0.855213, 0.434109)
-bones/44/rotation = Quaternion(-0.41976, 0.000202281, 0.000757246, 0.907635)
-bones/45/rotation = Quaternion(0.192615, -9.51888e-07, 3.99424e-06, 0.981274)
-bones/46/rotation = Quaternion(0.0991957, -6.68865e-06, -2.43497e-06, 0.995068)
-bones/48/rotation = Quaternion(-3.97388e-08, -0.529115, 0.84855, 6.41931e-08)
+bones/0/rotation = Quaternion(0.010794, 0.707192, 0.706857, 0.0107991)
+bones/1/rotation = Quaternion(0.0322429, -0.477797, 0.876918, 0.0410426)
+bones/2/rotation = Quaternion(-0.204402, 0.0161192, 0.0769456, 0.975725)
+bones/3/rotation = Quaternion(0.00638039, -0.000233365, 0.0365316, 0.999312)
+bones/5/rotation = Quaternion(0.0621401, 6.38756e-07, -2.71546e-08, 0.998067)
+bones/6/rotation = Quaternion(-0.054123, -4.76757e-07, -2.36305e-08, 0.998534)
+bones/7/rotation = Quaternion(0.0187396, 8.34414e-07, -9.92307e-09, 0.999824)
+bones/8/rotation = Quaternion(-0.0355868, 2.33144e-07, -1.42634e-07, 0.999367)
+bones/9/rotation = Quaternion(0.00772034, -1.89771e-06, 1.17454e-07, 0.99997)
+bones/10/rotation = Quaternion(0.0572048, 8.30935e-07, -1.69355e-08, 0.998362)
+bones/13/rotation = Quaternion(0.224581, 2.7055e-06, 4.9352e-07, 0.974455)
+bones/14/rotation = Quaternion(0.0117949, -9.57226e-07, -9.79461e-08, 0.99993)
+bones/21/rotation = Quaternion(0.495309, 0.0725377, -0.0915352, 0.860829)
+bones/23/rotation = Quaternion(0.643454, -0.00507799, 0.00603553, 0.765444)
+bones/24/rotation = Quaternion(0.0128062, 8.04899e-05, -0.00629399, 0.999897)
+bones/30/rotation = Quaternion(0.643254, -0.0168298, 0.0200257, 0.765206)
+bones/32/rotation = Quaternion(0.632671, -0.0250471, -0.0198021, 0.773762)
+bones/36/rotation = Quaternion(0.0500348, -0.371708, -0.775368, 0.508065)
+bones/37/rotation = Quaternion(-0.52223, -0.00669802, -0.0115277, 0.8527)
+bones/43/rotation = Quaternion(0.065162, 0.369357, 0.795455, 0.476001)
+bones/45/rotation = Quaternion(0.421799, 4.84004e-08, 4.11072e-06, 0.906689)
+bones/46/rotation = Quaternion(0.512575, -7.05126e-06, 6.40941e-07, 0.858642)
 
 [node name="Cone" parent="metarig/Skeleton3D" index="0"]
 layers = 3
@@ -141,42 +138,42 @@ layers = 3
 layers = 3
 
 [node name="WiggleBone" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="18"]
-transform = Transform3D(1, 6.68893e-08, 1.35372e-07, 4.90346e-10, -0.897961, 0.440075, 1.50995e-07, -0.440074, -0.897961, -9.89133e-17, 1.1629, -0.853784)
+transform = Transform3D(0.999534, -0.0305304, -9.90169e-05, -0.0305306, -0.999527, -0.00371971, 1.45941e-05, 0.003721, -0.999993, -0.00708691, 1.16298, -0.853674)
 bone_name = "udder"
 bone_idx = 48
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_px2ww")
 
 [node name="WiggleBone2" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="19"]
-transform = Transform3D(-0.26448, 0.939692, 0.216863, 0.821939, 0.102016, 0.560365, 0.504447, 0.326453, -0.799351, 0.21959, 2.52085, 1.28785)
+transform = Transform3D(-0.259872, 0.933668, 0.246434, 0.153772, -0.211933, 0.965111, 0.953321, 0.288701, -0.0884964, 0.216061, 1.27726, 1.72009)
 bone_name = "eye.L"
 bone_idx = 15
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_2oobj")
 
 [node name="WiggleBone3" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="20"]
-transform = Transform3D(-0.264477, -0.939693, -0.216862, -0.82194, 0.102014, 0.560364, -0.504447, 0.32645, -0.799351, -0.219594, 2.52084, 1.28785)
+transform = Transform3D(-0.268903, -0.944802, -0.187192, -0.137649, -0.154658, 0.978332, -0.95328, 0.288844, -0.0884633, -0.222918, 1.29067, 1.72008)
 bone_name = "eye.R"
 bone_idx = 19
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_mety0")
 
 [node name="WiggleBone4" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="21"]
-transform = Transform3D(0.423606, -0.889404, 0.171809, 0.837484, 0.456812, 0.299905, -0.34522, 0.0168457, 0.93837, -0.264006, 2.43079, 1.03738)
+transform = Transform3D(0.447897, -0.880419, 0.155729, 0.791191, 0.30917, -0.527665, 0.416419, 0.359551, 0.835056, -0.263244, 1.42501, 1.48955)
 bone_name = "ear.R"
 bone_idx = 17
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_uxset")
 
 [node name="WiggleBone5" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="22"]
-transform = Transform3D(0.423607, 0.889403, -0.171812, -0.837483, 0.456814, 0.299904, 0.345222, 0.0168483, 0.93837, 0.264003, 2.43079, 1.03739)
+transform = Transform3D(0.398875, 0.897586, -0.18772, -0.817029, 0.254912, -0.517188, -0.416369, 0.359666, 0.835031, 0.264519, 1.40889, 1.48956)
 bone_name = "ear.L"
 bone_idx = 11
 script = ExtResource("2_g4px4")
 properties = SubResource("Resource_5cq28")
 
 [node name="HipAttachment" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="23"]
-transform = Transform3D(1, -1.70741e-06, -1.7248e-06, -5.16418e-08, 0.69555, -0.718478, 2.42642e-06, 0.718477, 0.69555, -7.06951e-07, 1.85666, 0.588201)
+transform = Transform3D(0.999534, -0.000492592, -0.0305312, -0.0305352, -0.0156537, -0.999411, 1.4375e-05, 0.999877, -0.0156613, -0.00157508, 1.34417, 0.758537)
 visible = false
 bone_name = "neck.001"
 bone_idx = 9

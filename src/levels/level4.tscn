@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckmh7atudt1eg"]
+[gd_scene load_steps=24 format=3 uid="uid://ckmh7atudt1eg"]
 
 [ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://shrpwp67rcu1" path="res://assets/textures/dirt.tres" id="4_8eixr"]
 [ext_resource type="Script" path="res://src/levels/RaceCheckpoint.gd" id="5_ert6c"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="5_g284k"]
+[ext_resource type="Material" uid="uid://b8s1p3cq51lev" path="res://assets/textures/grass.material" id="6_mgkhf"]
 [ext_resource type="Script" path="res://src/levels/Racer.gd" id="6_o8po4"]
 [ext_resource type="PackedScene" uid="uid://bxlx8vqo5bky6" path="res://src/Cow.tscn" id="6_rw31b"]
 [ext_resource type="Material" uid="uid://depkgtkaixypq" path="res://assets/textures/bricks-triplanar.material" id="7_4vstk"]
@@ -14,6 +15,7 @@
 [ext_resource type="Material" uid="uid://rtk5fu1j68ss" path="res://assets/textures/marble.material" id="8_rm3gh"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="8_xxgjt"]
 [ext_resource type="Texture2D" uid="uid://bbvf5g8aialkl" path="res://icon.svg" id="14_4oai8"]
+[ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="14_p5s36"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5behf"]
 panorama = ExtResource("3_xlsgp")
@@ -60,6 +62,9 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 environment = SubResource("Environment_h7s67")
 
+[node name="Cube_001" parent="." index="4"]
+surface_material_override/0 = ExtResource("4_4cwoo")
+
 [node name="StaticBody3D" parent="floor_001" index="0"]
 collision_layer = 4
 
@@ -77,11 +82,14 @@ shape = SubResource("BoxShape3D_352jy")
 [node name="dirt" parent="." index="19"]
 surface_material_override/0 = ExtResource("4_8eixr")
 
+[node name="inner_grass" parent="." index="20"]
+surface_material_override/0 = ExtResource("6_mgkhf")
+
 [node name="fence_outside" parent="." index="21"]
 surface_material_override/0 = ExtResource("5_g284k")
 
-[node name="Cube_001" parent="." index="26"]
-surface_material_override/0 = ExtResource("4_4cwoo")
+[node name="Cube_001_001" parent="." index="26"]
+surface_material_override/0 = ExtResource("14_p5s36")
 
 [node name="Cylinder_001" parent="." index="27"]
 surface_material_override/0 = ExtResource("7_4vstk")
@@ -149,6 +157,9 @@ cow_num = 3
 transform = Transform3D(-0.235583, 0, -0.971854, 0, 1, 0, 0.971854, 0, -0.235583, -17.8618, 1.02263, 0.435537)
 cow_num = 4
 
+[node name="Cow5" parent="BGCows" index="4" instance=ExtResource("8_1p883")]
+transform = Transform3D(2.67379, 0, -1.5687, 0, 3.1, 0, 1.5687, 0, 2.67379, 60.7001, -1.11706, 25.8006)
+
 [node name="Doors" type="Node3D" parent="." index="37"]
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("8_xxgjt")]
@@ -163,8 +174,13 @@ size = Vector3(63.6062, 30.4488, 95.9206)
 origin_offset = Vector3(0, -6.63623, -4.5332)
 enable_shadows = true
 
+[node name="Cube_003_001" parent="." index="39"]
+surface_material_override/0 = ExtResource("6_mgkhf")
+surface_material_override/1 = ExtResource("14_p5s36")
+
 [node name="track2" parent="Cube_003_001" index="0"]
 surface_material_override/0 = ExtResource("4_8eixr")
+surface_material_override/1 = ExtResource("5_g284k")
 
 [node name="Cylinder_003" parent="." index="41"]
 surface_material_override/0 = ExtResource("4_4cwoo")
