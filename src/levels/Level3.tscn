@@ -1,13 +1,17 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyqcbrxkpvmdl"]
+[gd_scene load_steps=24 format=3 uid="uid://dyqcbrxkpvmdl"]
 
 [ext_resource type="PackedScene" uid="uid://cg3j61b2pigkc" path="res://assets/level3.glb" id="1_n2lql"]
 [ext_resource type="Script" path="res://src/levels/Rooftops.gd" id="2_37at0"]
 [ext_resource type="Texture2D" uid="uid://btin653nxli0e" path="res://assets/textures/DayEnvironmentHDRI017_1K-HDR.exr" id="2_oe1c4"]
+[ext_resource type="Material" uid="uid://djb786lmy5rof" path="res://assets/textures/corrogated.material" id="4_2tcwi"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="4_ithji"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="4_s783n"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="5_geq3b"]
 [ext_resource type="Script" path="res://src/levels/EggButton.gd" id="5_gnkxt"]
 [ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="6_t4js6"]
+[ext_resource type="Material" uid="uid://bgcwx1ifw28qr" path="res://assets/textures/matteblack.material" id="8_w3xie"]
+[ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="9_w7hyf"]
+[ext_resource type="Material" uid="uid://cwaxspm62tnnx" path="res://assets/textures/metalplate.material" id="10_7vo7s"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aeh33"]
 panorama = ExtResource("2_oe1c4")
@@ -24,7 +28,7 @@ tonemap_mode = 3
 ssr_enabled = true
 ssao_enabled = true
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
+volumetric_fog_density = 0.005
 volumetric_fog_length = 128.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_hwl7q"]
@@ -168,6 +172,12 @@ transform = Transform3D(-0.528169, 0.757791, -0.383132, 0.0415282, 0.473713, 0.8
 light_cull_mask = 4294967293
 shadow_enabled = true
 
+[node name="roof" parent="." index="1"]
+surface_material_override/0 = ExtResource("5_geq3b")
+
+[node name="Cylinder" parent="." index="2"]
+surface_material_override/0 = ExtResource("4_2tcwi")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
 environment = SubResource("Environment_g6ox5")
 
@@ -192,6 +202,12 @@ shape = SubResource("BoxShape3D_eejaf")
 [node name="Cube" parent="." index="8"]
 surface_material_override/0 = ExtResource("4_s783n")
 
+[node name="Cube_003-col" parent="." index="10"]
+surface_material_override/0 = ExtResource("6_t4js6")
+
+[node name="Cylinder_001" parent="." index="11"]
+surface_material_override/0 = ExtResource("8_w3xie")
+
 [node name="walkway" parent="." index="12"]
 surface_material_override/0 = ExtResource("5_geq3b")
 
@@ -201,8 +217,24 @@ libraries = {
 "": SubResource("AnimationLibrary_c3r3o")
 }
 
+[node name="Cylinder_002" parent="." index="14"]
+surface_material_override/0 = ExtResource("9_w7hyf")
+
+[node name="Cube_006" parent="." index="18"]
+surface_material_override/0 = ExtResource("6_t4js6")
+
+[node name="Cylinder_003" parent="." index="19"]
+surface_material_override/0 = ExtResource("6_t4js6")
+surface_material_override/1 = ExtResource("6_t4js6")
+
 [node name="Cube_007" parent="." index="20"]
 surface_material_override/0 = ExtResource("6_t4js6")
+
+[node name="Cylinder_005" parent="." index="22"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
+[node name="Cube_003_001" parent="." index="23"]
+surface_material_override/0 = ExtResource("4_s783n")
 
 [node name="Doors" type="Node3D" parent="." index="24"]
 

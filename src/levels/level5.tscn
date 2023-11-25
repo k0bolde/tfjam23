@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://fb47k3tuatm7"]
+[gd_scene load_steps=43 format=3 uid="uid://fb47k3tuatm7"]
 
 [ext_resource type="PackedScene" uid="uid://dm7it1mgf8h2j" path="res://assets/level5.glb" id="1_r2i58"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_54u54"]
@@ -7,12 +7,18 @@
 [ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="3_nwd70"]
 [ext_resource type="Texture2D" uid="uid://dtyepfx8xrpyg" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_AmbientOcclusion.jpg" id="4_lu0na"]
 [ext_resource type="Script" path="res://src/levels/Cannon.gd" id="4_tddnd"]
+[ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="5_1j126"]
 [ext_resource type="Texture2D" uid="uid://bjowju4cdcakt" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Displacement.jpg" id="5_uhpbj"]
 [ext_resource type="Texture2D" uid="uid://cdm2yd3y6nbkn" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_NormalGL.jpg" id="6_xe6h3"]
 [ext_resource type="Texture2D" uid="uid://dljlehbbnwsf8" path="res://assets/textures/Bricks087_1K-JPG/Bricks087_1K-JPG_Roughness.jpg" id="7_pso3k"]
 [ext_resource type="Script" path="res://src/levels/fallingblock.gd" id="8_x8xcu"]
+[ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="11_225ga"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="11_fbw4y"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="11_q2662"]
+[ext_resource type="Material" uid="uid://davtjw50v0lnl" path="res://assets/textures/cautionmetal.material" id="13_1h6vm"]
+[ext_resource type="Material" uid="uid://cwaxspm62tnnx" path="res://assets/textures/metalplate.material" id="15_kc2w5"]
+[ext_resource type="Material" uid="uid://rtk5fu1j68ss" path="res://assets/textures/marble.material" id="15_r35o1"]
+[ext_resource type="Material" uid="uid://bjc1h1pmxe4du" path="res://assets/textures/marbletiles.material" id="18_xvp0d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03vhr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -531,11 +537,23 @@ surface_material_override/0 = ExtResource("3_nwd70")
 [node name="Cylinder_002" parent="." index="2"]
 visible = false
 
+[node name="stairs1" parent="." index="3"]
+surface_material_override/0 = ExtResource("11_q2662")
+
+[node name="stairs2" parent="." index="4"]
+surface_material_override/0 = ExtResource("11_q2662")
+
 [node name="Cube_006" parent="." index="6"]
 visible = false
 
+[node name="launcher" parent="." index="7"]
+surface_material_override/0 = ExtResource("5_1j126")
+
 [node name="StaticBody3D" parent="launcher" index="0"]
 collision_layer = 4
+
+[node name="landingplat" parent="." index="8"]
+surface_material_override/0 = ExtResource("11_q2662")
 
 [node name="launchercol" parent="." index="9"]
 collision_layer = 4
@@ -543,11 +561,35 @@ collision_layer = 4
 [node name="elevator-ab_001" parent="." index="10"]
 visible = false
 
+[node name="landingplat_001" parent="." index="11"]
+surface_material_override/0 = ExtResource("11_q2662")
+
+[node name="canon" parent="." index="12"]
+surface_material_override/0 = ExtResource("5_1j126")
+
+[node name="landingplat_002" parent="." index="13"]
+surface_material_override/0 = ExtResource("11_q2662")
+
+[node name="landingplat_003" parent="." index="14"]
+surface_material_override/0 = ExtResource("11_q2662")
+
 [node name="walls" parent="." index="16"]
 surface_material_override/0 = SubResource("StandardMaterial3D_nkt4r")
 
+[node name="landingplat_004" parent="." index="17"]
+surface_material_override/0 = ExtResource("11_225ga")
+
 [node name="fallingblock" parent="." index="18"]
 script = ExtResource("8_x8xcu")
+
+[node name="blocker" parent="." index="20"]
+surface_material_override/0 = ExtResource("13_1h6vm")
+
+[node name="blocker_001" parent="." index="21"]
+surface_material_override/0 = ExtResource("13_1h6vm")
+
+[node name="blocker_002" parent="." index="22"]
+surface_material_override/0 = ExtResource("13_1h6vm")
 
 [node name="Spawns" type="Node3D" parent="." index="23"]
 
@@ -577,6 +619,14 @@ shadow_enabled = true
 spot_range = 96.9396
 spot_angle = 39.0876
 
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights" index="1"]
+transform = Transform3D(0.935721, 9.57826e-10, 0.35274, -0.146817, 0.909265, 0.389464, -0.320734, -0.416217, 0.850819, 0, 77.351, -2.97189e-06)
+light_energy = 22.895
+light_cull_mask = 4294967293
+shadow_enabled = true
+spot_range = 39.7484
+spot_angle = 63.6141
+
 [node name="AntigravArea" type="Area3D" parent="." index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.66019, 38.4126, 5.32013)
 collision_layer = 0
@@ -605,6 +655,9 @@ autoplay = "move"
 libraries = {
 "": SubResource("AnimationLibrary_3k863")
 }
+
+[node name="Cube_001" parent="." index="30"]
+surface_material_override/0 = ExtResource("15_kc2w5")
 
 [node name="plank" parent="." index="31"]
 surface_material_override/0 = ExtResource("11_q2662")
@@ -724,46 +777,59 @@ script = ExtResource("8_x8xcu")
 [node name="fallingblock_029" parent="." index="63"]
 script = ExtResource("8_x8xcu")
 
+[node name="blocker_003" parent="." index="64"]
+surface_material_override/0 = ExtResource("13_1h6vm")
+
 [node name="plank2" parent="." index="66"]
 surface_material_override/0 = ExtResource("11_q2662")
 
-[node name="movingplatsAnimatableBody3D" parent="." index="68"]
+[node name="Cube" parent="." index="68"]
+surface_material_override/0 = ExtResource("3_nwd70")
+
+[node name="blocker_004" parent="." index="70"]
+surface_material_override/0 = ExtResource("13_1h6vm")
+
+[node name="blocker_005" parent="." index="71"]
+surface_material_override/0 = ExtResource("13_1h6vm")
+
+[node name="movingplatsAnimatableBody3D" parent="." index="72"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2654, 5.90045, 0)
 sync_to_physics = true
 
-[node name="elevatorAnimatableBody3D" parent="." index="69"]
+[node name="movingplats-ab" parent="movingplatsAnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_r35o1")
+
+[node name="elevatorAnimatableBody3D" parent="." index="73"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49238, 10.3472, 8.82119)
 sync_to_physics = true
 
-[node name="elevator2AnimatableBody3D" parent="." index="72"]
+[node name="elevator-ab" parent="elevatorAnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_kc2w5")
+
+[node name="rotator-ab" parent="rotatorAnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("18_xvp0d")
+
+[node name="rotatorhandle-ab" parent="rotatorhandleAnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("13_1h6vm")
+
+[node name="elevator2AnimatableBody3D" parent="." index="76"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13517, 34.3744, 2.53855)
 sync_to_physics = true
 
-[node name="diagonalshoversAnimatableBody3D" parent="." index="73"]
+[node name="elevator2-ab" parent="elevator2AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_kc2w5")
+
+[node name="diagonalshoversAnimatableBody3D" parent="." index="77"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08858, 46.1249, 13.6822)
 
-[node name="diagonalshovers2AnimatableBody3D" parent="." index="74"]
+[node name="diagonalshovers2AnimatableBody3D" parent="." index="78"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894576, 47.1108, 13.6822)
 
-[node name="diagonalshovers3AnimatableBody3D" parent="." index="75"]
+[node name="diagonalshovers3AnimatableBody3D" parent="." index="79"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87774, 48.0966, 13.6822)
 
-[node name="diagonalshovers4AnimatableBody3D" parent="." index="76"]
+[node name="diagonalshovers4AnimatableBody3D" parent="." index="80"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8609, 49.0824, 13.6822)
-
-[node name="diagonalshovers5AnimatableBody3D" parent="." index="77"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84406, 50.0683, 13.6822)
-
-[node name="diagonalshovers6AnimatableBody3D" parent="." index="78"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8272, 51.0541, 13.6822)
-
-[node name="movingplats2AnimatableBody3D" parent="." index="79"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1357, 7.66663, 6.5774)
-sync_to_physics = true
-
-[node name="movingplats3AnimatableBody3D" parent="." index="80"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.777, 9.43281, 10.7361)
-sync_to_physics = true
 
 [node name="Doors" type="Node3D" parent="." index="81"]
 
@@ -784,14 +850,43 @@ box_projection = true
 interior = true
 enable_shadows = true
 
-[node name="movingplats4AnimatableBody3D" parent="." index="83"]
+[node name="diagonalshovers5AnimatableBody3D" parent="." index="83"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84406, 50.0683, 13.6822)
+
+[node name="diagonalshovers6AnimatableBody3D" parent="." index="84"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8272, 51.0541, 13.6822)
+
+[node name="movingplats2AnimatableBody3D" parent="." index="85"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1357, 7.66663, 6.5774)
+sync_to_physics = true
+
+[node name="movingplats2-ab" parent="movingplats2AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_r35o1")
+
+[node name="movingplats3AnimatableBody3D" parent="." index="86"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.777, 9.43281, 10.7361)
+sync_to_physics = true
+
+[node name="movingplats3-ab" parent="movingplats3AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_r35o1")
+
+[node name="movingplats4AnimatableBody3D" parent="." index="87"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7361, 11.199, 14.777)
 sync_to_physics = true
 
-[node name="movingplats5AnimatableBody3D" parent="." index="84"]
+[node name="movingplats4-ab" parent="movingplats4AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_r35o1")
+
+[node name="movingplats5AnimatableBody3D" parent="." index="88"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64431, 12.9652, 17.3714)
 sync_to_physics = true
 
-[node name="movingplats6AnimatableBody3D" parent="." index="85"]
+[node name="movingplats5-ab" parent="movingplats5AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_r35o1")
+
+[node name="movingplats6AnimatableBody3D" parent="." index="89"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5034e-06, 14.7314, 18.2654)
 sync_to_physics = true
+
+[node name="movingplats6-ab" parent="movingplats6AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("15_r35o1")

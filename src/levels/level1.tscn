@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bqdlufs0sumsy"]
+[gd_scene load_steps=31 format=3 uid="uid://bqdlufs0sumsy"]
 
 [ext_resource type="PackedScene" uid="uid://ckgpjl7sukgvd" path="res://assets/level1.glb" id="1_6ste0"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="2_4mnbo"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://d6bcu846l37i" path="res://src/CursedItem.tscn" id="15_4t315"]
 [ext_resource type="PackedScene" uid="uid://ctalbj8qktb7m" path="res://src/Cutscene.tscn" id="16_nm2qn"]
 [ext_resource type="Script" path="res://src/levels/DoorPuzzle.gd" id="17_g25fp"]
+[ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="17_mpg2y"]
+[ext_resource type="Material" uid="uid://bj8mf8625twxw" path="res://assets/textures/rope.material" id="17_s6ccc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wqqf"]
 render_priority = 0
@@ -132,6 +134,9 @@ collision_layer = 4
 [node name="dockbarrier" parent="." index="9"]
 collision_layer = 4
 
+[node name="big" parent="." index="10"]
+surface_material_override/0 = ExtResource("3_bipcs")
+
 [node name="Tower" parent="." index="21"]
 surface_material_override/0 = ExtResource("2_4mnbo")
 surface_material_override/1 = ExtResource("3_bipcs")
@@ -160,12 +165,15 @@ level_idx_to_load = 6
 [node name="Snake" parent="." index="28" instance=ExtResource("14_iwecw")]
 transform = Transform3D(-0.634784, 0, -0.772689, 0, 1, 0, 0.772689, 0, -0.634784, 92.2036, -0.200174, -2.95443)
 
+[node name="outer wall" parent="." index="29"]
+surface_material_override/0 = ExtResource("3_bipcs")
+
 [node name="Tower_001" parent="." index="32"]
 surface_material_override/0 = ExtResource("2_4mnbo")
 surface_material_override/1 = ExtResource("3_bipcs")
 
 [node name="boat" parent="." index="33"]
-transform = Transform3D(4.43013, 0, 0, 0, 4.43013, 0, 0, 0, 14.4626, 128.287, -0.998699, 0.282838)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.287, -0.998699, 0.282838)
 surface_material_override/0 = ExtResource("4_skp54")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="boat" index="0"]
@@ -201,8 +209,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.8313, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
 shape = SubResource("BoxShape3D_37cmu")
 
-[node name="StaticBody3D" parent="Cylinder_003" index="1"]
-collision_layer = 4
+[node name="Cylinder_002" parent="." index="39"]
+surface_material_override/0 = ExtResource("17_s6ccc")
+
+[node name="Cube" parent="." index="41"]
+surface_material_override/0 = ExtResource("17_mpg2y")
+
+[node name="Cylinder_006" parent="Cube" index="0"]
+surface_material_override/0 = ExtResource("17_s6ccc")
 
 [node name="Cube_002" parent="." index="42"]
 surface_material_override/0 = ExtResource("4_skp54")
@@ -221,6 +235,15 @@ surface_material_override/0 = ExtResource("2_4mnbo")
 
 [node name="StaticBody3D" parent="Torus" index="0"]
 collision_layer = 4
+
+[node name="Knot" parent="." index="48"]
+surface_material_override/0 = ExtResource("17_s6ccc")
+
+[node name="Cube_001" parent="." index="49"]
+surface_material_override/0 = ExtResource("17_mpg2y")
+
+[node name="Cylinder_004" parent="Cube_001" index="0"]
+surface_material_override/0 = ExtResource("17_s6ccc")
 
 [node name="DoorPuzzle" type="Node3D" parent="." index="50"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.8127, 0, 0)
@@ -248,3 +271,9 @@ max_distance = 102.0
 size = Vector3(57.6167, 47.9348, 159.991)
 origin_offset = Vector3(0, -9.0918, 0)
 enable_shadows = true
+
+[node name="Cylinder_005" parent="." index="52"]
+surface_material_override/0 = ExtResource("17_s6ccc")
+
+[node name="Knot_001" parent="." index="53"]
+surface_material_override/0 = ExtResource("17_s6ccc")

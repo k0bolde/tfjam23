@@ -9,9 +9,10 @@ Textures:
 	Most from https://ambientcg.com 
 	Some skyboxes from https://hdri-haven.com/
 	Cow: https://www.myfreetextures.com/
+	Emu from https://www.flickr.com/photos/midwestkimchee/2431421184 - CC-BY
 	
 Models:
-	"Simple N64 model" (https://skfb.ly/oLWZ8) by Swayne is licensed under Creative Commons Attribution.
+	"Simple N64 model" (https://skfb.ly/oLWZ8) by Swayne - CC-BY
 	
 Sounds:
 	

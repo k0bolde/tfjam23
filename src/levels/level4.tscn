@@ -88,6 +88,9 @@ surface_material_override/0 = ExtResource("6_mgkhf")
 [node name="fence_outside" parent="." index="21"]
 surface_material_override/0 = ExtResource("5_g284k")
 
+[node name="outer_grass" parent="." index="22"]
+surface_material_override/0 = ExtResource("6_mgkhf")
+
 [node name="Cube_001_001" parent="." index="26"]
 surface_material_override/0 = ExtResource("14_p5s36")
 

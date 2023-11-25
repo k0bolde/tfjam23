@@ -20,15 +20,16 @@ Pick up the crystal statue and play through a segment as a mouse before finding 
 lock you to the new form the first time you're in the new area, then when its finished, let you use your other tf items
 
 TODO:
-	form specific levels
-		knight puzzles with tool use
-		bird agility & egg shooting
-		cow milking/udder management
 	animations:
-		tf for each form
+		tf for cow and bird
 	sound:
 		player actions, music, environmental sounds,
 	form movement/abilities
 		regenerating eggs/limits
+		milk jump
+	more bird level development
+	cow race
 	hud - form icon and egg/milk meters if applicable
-	crouch & long jump & backflip?
+	CUT - crouch & long jump & backflip?
+	decurse room and decurse items
+	anteater grapple if I have time

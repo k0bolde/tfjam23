@@ -308,10 +308,10 @@ func _unhandled_input(event):
 			talk_prompt.hide()
 			interact_callable = Callable()
 		
-	if event.is_action_pressed("crouch"):
-		is_crouching = true
-	if event.is_action_released("crouch"):
-		is_crouching = false
+#	if event.is_action_pressed("crouch"):
+#		is_crouching = true
+#	if event.is_action_released("crouch"):
+#		is_crouching = false
 
 
 func _input(event: InputEvent) -> void:

@@ -4,14 +4,15 @@ extends RigidBody3D
 
 
 func _integrate_forces(state):
-    if state.get_contact_count() > 0:
-        var normal = state.get_contact_local_normal(0)
+	if state.get_contact_count() > 0:
+		var normal = state.get_contact_local_normal(0)
 #        decal.rotation = normal
-        #rotate the decal to the surface
-        decal.transform.basis.y = normal
-        decal.transform.basis.x = -decal.transform.basis.z.cross(normal)
-        decal.transform.basis = decal.transform.basis.orthonormalized()
-        decal.visible = true
-        decal.reparent(state.get_contact_collider_object(0))
-        queue_free()
-        
+		#rotate the decal to the surface
+		#from https://kidscancode.org/godot_recipes/3.x/3d/3d_align_surface/index.html
+		decal.transform.basis.y = normal
+		decal.transform.basis.x = -decal.transform.basis.z.cross(normal)
+		decal.transform.basis = decal.transform.basis.orthonormalized()
+		decal.visible = true
+		decal.reparent(state.get_contact_collider_object(0))
+		queue_free()
+		
