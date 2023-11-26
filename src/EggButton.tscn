@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch3ime5jlg1mo"]
+
+[ext_resource type="Script" path="res://src/levels/EggButton.gd" id="1_kf8jm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78lhy"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oxhp4"]
+material = SubResource("StandardMaterial3D_78lhy")
+top_radius = 3.419
+radial_segments = 16
+rings = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d1naw"]
+height = 0.727677
+radius = 3.2391
+
+[node name="EggButton" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_oxhp4")
+script = ExtResource("1_kf8jm")
+
+[node name="EggArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10272, 0)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EggArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138527, 0)
+shape = SubResource("CylinderShape3D_d1naw")

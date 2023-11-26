@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjxr043vqguy5"]
+
+[ext_resource type="PackedScene" uid="uid://60vd6np5yp0u" path="res://assets/porb.glb" id="1_kf4jo"]
+[ext_resource type="Script" path="res://src/porb.gd" id="2_gth84"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cgo76"]
+
+[node name="porb" instance=ExtResource("1_kf4jo")]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0, 0)
+script = ExtResource("2_gth84")
+
+[node name="PickupArea" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea" index="0"]
+shape = SubResource("SphereShape3D_cgo76")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+light_color = Color(0.686275, 0.141176, 1, 1)

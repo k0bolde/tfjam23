@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dyqcbrxkpvmdl"]
+[gd_scene load_steps=26 format=3 uid="uid://dyqcbrxkpvmdl"]
 
 [ext_resource type="PackedScene" uid="uid://cg3j61b2pigkc" path="res://assets/level3.glb" id="1_n2lql"]
 [ext_resource type="Script" path="res://src/levels/Rooftops.gd" id="2_37at0"]
@@ -7,11 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="4_ithji"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="4_s783n"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="5_geq3b"]
-[ext_resource type="Script" path="res://src/levels/EggButton.gd" id="5_gnkxt"]
 [ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="6_t4js6"]
 [ext_resource type="Material" uid="uid://bgcwx1ifw28qr" path="res://assets/textures/matteblack.material" id="8_w3xie"]
 [ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="9_w7hyf"]
 [ext_resource type="Material" uid="uid://cwaxspm62tnnx" path="res://assets/textures/metalplate.material" id="10_7vo7s"]
+[ext_resource type="PackedScene" uid="uid://ch3ime5jlg1mo" path="res://src/EggButton.tscn" id="12_1pb4x"]
+[ext_resource type="Material" uid="uid://davtjw50v0lnl" path="res://assets/textures/cautionmetal.material" id="13_27hbh"]
+[ext_resource type="PackedScene" uid="uid://bjxr043vqguy5" path="res://src/porb.tscn" id="14_41e5e"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aeh33"]
 panorama = ExtResource("2_oe1c4")
@@ -33,6 +35,7 @@ volumetric_fog_length = 128.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_hwl7q"]
 density = 0.2
+emission = Color(0.392157, 0.392157, 0.392157, 1)
 height_falloff = 0.108094
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eejaf"]
@@ -148,21 +151,187 @@ _data = {
 "spin": SubResource("Animation_57ibk")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78lhy"]
-albedo_color = Color(0, 0, 0, 1)
-metallic_specular = 0.0
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_nerxy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_007_002:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Empty_001:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Empty_001/ferris1AnimatableBody3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Empty_001/ferris2AnimatableBody3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Empty_001/ferris3AnimatableBody3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Empty_001/ferris4AnimatableBody3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Torus_001:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_oxhp4"]
-material = SubResource("StandardMaterial3D_78lhy")
-top_radius = 3.419
-radial_segments = 16
-rings = 1
+[sub_resource type="Animation" id="Animation_pr5np"]
+resource_name = "spin"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_007_002:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Empty_001:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Empty_001/ferris1AnimatableBody3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Empty_001/ferris2AnimatableBody3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Empty_001/ferris3AnimatableBody3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Empty_001/ferris4AnimatableBody3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Torus_001:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_d1naw"]
-height = 0.727677
-radius = 3.2391
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_obgwy"]
+_data = {
+"RESET": SubResource("Animation_nerxy"),
+"spin": SubResource("Animation_pr5np")
+}
 
 [node name="level3" instance=ExtResource("1_n2lql")]
 script = ExtResource("2_37at0")
@@ -186,9 +355,12 @@ environment = SubResource("Environment_g6ox5")
 [node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.0917, 1.16089, -3.11797e-08)
 
+[node name="Marker3D2" type="Marker3D" parent="Spawns" index="1"]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -139.963, 165.753, -52.5854)
+
 [node name="FogVolume" type="FogVolume" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.838, -40.0577, 0)
-size = Vector3(830.989, 225.883, 1004.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.838, -26.9266, 0)
+size = Vector3(622.139, 361.569, 1004.45)
 material = SubResource("FogMaterial_hwl7q")
 
 [node name="Killplane" type="Area3D" parent="." index="7"]
@@ -249,19 +421,44 @@ max_distance = 113.0
 size = Vector3(142.356, 76.5014, 108.068)
 enable_shadows = true
 
-[node name="EggButton" type="MeshInstance3D" parent="." index="26"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -57.5207, 13.4687, 0)
-mesh = SubResource("CylinderMesh_oxhp4")
-script = ExtResource("5_gnkxt")
+[node name="EggButton" parent="." index="26" instance=ExtResource("12_1pb4x")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 0, 1, 1, 4.37114e-08, -4.37114e-08, -58.0568, 19.1812, -2.98472)
 
-[node name="EggArea" type="Area3D" parent="EggButton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10272, 0)
-collision_layer = 0
-collision_mask = 16
+[node name="Torus_001" parent="." index="28"]
+surface_material_override/0 = ExtResource("5_geq3b")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EggButton/EggArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138527, 0)
-shape = SubResource("CylinderShape3D_d1naw")
+[node name="Cube_007_002" parent="." index="29"]
+surface_material_override/0 = ExtResource("13_27hbh")
+
+[node name="Cube_003_003" parent="." index="30"]
+surface_material_override/0 = ExtResource("5_geq3b")
+
+[node name="ferris1-ab" parent="Empty_001/ferris1AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
+[node name="ferris2-ab" parent="Empty_001/ferris2AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
+[node name="ferris3-ab" parent="Empty_001/ferris3AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
+[node name="ferris4-ab" parent="Empty_001/ferris4AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
+[node name="Cube_003_002" parent="." index="32"]
+surface_material_override/0 = ExtResource("6_t4js6")
+
+[node name="Cube_007_001" parent="." index="35"]
+surface_material_override/0 = ExtResource("5_geq3b")
+
+[node name="FerrisAnimationPlayer" type="AnimationPlayer" parent="." index="36"]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_obgwy")
+}
+
+[node name="Cube-col_001" parent="." index="37"]
+surface_material_override/0 = ExtResource("10_7vo7s")
 
 [node name="windmill_blades-ab" parent="windmill_bladesAnimatableBody3D" index="0"]
 surface_material_override/0 = ExtResource("5_geq3b")
@@ -274,3 +471,6 @@ surface_material_override/0 = ExtResource("5_geq3b")
 
 [node name="windmill_blades4-ab" parent="windmill_blades4AnimatableBody3D" index="0"]
 surface_material_override/0 = ExtResource("5_geq3b")
+
+[node name="porb" parent="." index="46" instance=ExtResource("14_41e5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.1893, 148.144, -3.55873)

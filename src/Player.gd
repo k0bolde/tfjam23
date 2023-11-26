@@ -137,7 +137,11 @@ func _physics_process(delta):
 		if jump_requested:
 			jump_requested = false
 			vel.y = jump_speed
-			vel += get_platform_velocity()
+#			vel += get_platform_velocity()
+			var plat_vel = get_platform_velocity()
+			if plat_vel.y < 0:
+				plat_vel.y = 0
+			vel += plat_vel
 			curr_anim.play("Jump")
 		elif is_equal_approx(gravity_mult, 1.0):
 			vel.y = 0.0
