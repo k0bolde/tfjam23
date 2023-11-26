@@ -10,6 +10,7 @@ var camera : Camera3D
 @export var ease_type := 0.5
 var is_playing := false
 var accum_delta := 0.0
+var end_callback : Callable
 
 
 func _ready():
@@ -32,6 +33,8 @@ func stop_cutscene():
 	is_playing = false
 	accum_delta = 0.0
 	path_follow.progress_ratio = 0.0
+	if end_callback.is_valid():
+		end_callback.call()
 
 
 func _process(delta):

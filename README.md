@@ -32,4 +32,5 @@ TODO:
 	hud - form icon and egg/milk meters if applicable
 	CUT - crouch & long jump & backflip?
 	decurse room and decurse items
+	gamepad support
 	anteater grapple if I have time

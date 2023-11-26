@@ -305,8 +305,8 @@ func _unhandled_input(event):
 			pickup_item()
 		elif interact_callable and interact_callable.is_valid():
 			interact_callable.call()
-			talk_prompt.hide()
-			interact_callable = Callable()
+#			talk_prompt.hide()
+#			interact_callable = Callable()
 		
 #	if event.is_action_pressed("crouch"):
 #		is_crouching = true

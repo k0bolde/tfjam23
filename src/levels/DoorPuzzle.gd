@@ -42,6 +42,7 @@ var drop_l_tween : Tween
 var drop_r_tween : Tween
 var raise_tween : Tween
 func cut(dir):
+	Globals.player.interact_area_exited()
 	var weight : Node3D
 	if dir == "R" and not is_r_cut:
 		is_r_cut = true
