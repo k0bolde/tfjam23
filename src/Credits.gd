@@ -1,7 +1,6 @@
 extends Node
 
-var credits := """
-A TF gamejam 2023 game (https://itch.io/jam/tf23) by:
+var credits := """A TF gamejam 2023 game (https://itch.io/jam/tf23) by:
 	k0bold - a bit of everything :)
 	Sloe - writing, planning
 
@@ -25,3 +24,11 @@ Godot Addons:
 	Wigglebone
 	Interpolated Camera
 """
+
+
+func _ready():
+	%TextEdit.text = credits
+
+
+func _on_button_pressed():
+	queue_free()

@@ -22,6 +22,7 @@ func _ready():
 		if Globals.level_state[get_parent().name].has("%s_porb_taken" % name) and Globals.level_state[get_parent().name]["%s_porb_taken" % name] == true:
 			queue_free()
 	
+	
 func _pickup_area_entered(body):
 	body.collect_porb()
 	if Globals.level_state.has(get_parent().name):

@@ -185,6 +185,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+visible = false
 layout_mode = 1
 offset_right = 131.0
 offset_bottom = 131.0

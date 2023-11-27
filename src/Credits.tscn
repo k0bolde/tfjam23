@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3buj4kq34nc7"]
+
+[ext_resource type="Script" path="res://src/Credits.gd" id="1_8vwej"]
+
+[node name="Credits" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_8vwej")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.796078)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="Control/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 600)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+text = "asdfasd
+asf
+wer
+we
+r
+as
+df
+asdfasdfasdfasdfasdf
+"
+placeholder_text = "asdf"
+editable = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

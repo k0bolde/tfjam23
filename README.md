@@ -30,9 +30,8 @@ TODO:
 		milk jump
 	more bird level development
 	cow race
-	hud - form icon and egg/milk meters if applicable
-	decurse room and decurse items
-	gamepad support
+	final level that requires cow and bird tfs
 	anteater grapple if I have time
 	
 	CUT - crouch & long jump & backflip?
+	gamepad support

@@ -36,8 +36,8 @@ func _on_start_button_pressed():
 
 
 func _on_credits_button_pressed():
-	#TODO open credits
-	pass # Replace with function body.
+	var c = preload("res://src/Credits.tscn").instantiate()
+	add_child(c)
 
 
 func _on_options_button_pressed():

@@ -22,7 +22,7 @@ var levels := [
 
 func _ready():
 	Globals.main = self
-	change_level(2, 1)
+	change_level(6, 1)
 	
 
 func change_level(level_idx : int, spawn_idx := 0):

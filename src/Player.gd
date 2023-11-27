@@ -141,7 +141,6 @@ func _physics_process(delta):
 		if jump_requested:
 			jump_requested = false
 			vel.y = jump_speed
-#			vel += get_platform_velocity()
 			var plat_vel = get_platform_velocity()
 			if plat_vel.y < 0:
 				plat_vel.y = 0
@@ -249,6 +248,7 @@ func change_form(new_form:String, is_locking := false):
 		#TODO feedback that you're locked
 		return
 	is_form_locked = is_locking
+	%CursedLabel.visible = is_form_locked
 	if forms.keys().has(new_form) and curr_form != new_form and forms[new_form]["owned"] == true:
 		last_form = curr_form
 		curr_form = new_form
@@ -315,8 +315,6 @@ func _unhandled_input(event):
 			pickup_item()
 		elif interact_callable and interact_callable.is_valid():
 			interact_callable.call()
-#			talk_prompt.hide()
-#			interact_callable = Callable()
 		
 #	if event.is_action_pressed("crouch"):
 #		is_crouching = true
@@ -346,7 +344,7 @@ func _input(event: InputEvent) -> void:
 					eggs -= 1.0
 			elif curr_form == "cow":
 				#shoot milk, shrink udder
-				#if in air, shoot down and doublejump?
+				#TODO if in air, shoot down and doublejump?
 				if udder_size > udder_min_size + 0.3:
 					var milk_drop = preload("res://src/MilkDrop.tscn").instantiate()
 					Globals.main.eggs.add_child(milk_drop)
@@ -379,7 +377,6 @@ func _input(event: InputEvent) -> void:
 			
 func _process(delta):
 	if curr_form == "cow":
-#		var udder_min_size := 0.3
 		udder_size += udder_fill_rate * delta
 		if udder_size > udder_max_size:
 			udder_size = udder_max_size
@@ -390,6 +387,7 @@ func _process(delta):
 		if eggs < eggs_max:
 			eggs += egg_fill_rate * delta
 		%CountLabel.text = "%d Eggs" % eggs
+			
 			
 func dialog_area_entered(npc_name, the_callable):
 	dialog_callable = the_callable
@@ -406,7 +404,6 @@ func update_dialog():
 		dialog_label.text = "%s:\n%s" % [curr_npc_name, text]
 		#sometimes the dialog goes under the screen? Need to set the size manually apparently
 		dialog_label.custom_minimum_size.y = 50 * dialog_label.text.count("\n") + 100
-#		dialog_label.call_deferred("update_minimum_size")
 	
 	
 func hide_dialog():
@@ -450,7 +447,6 @@ func pickup_item():
 	if item_info["type"] == "new form":
 		forms[item_info["form_name"]]["owned"] = true
 		change_form(item_info["form_name"], true)
-		%CursedLabel.visible = true
 
 
 func window_resize():
@@ -496,5 +492,8 @@ func _anim_finished(anim_name):
 
 func collect_porb():
 	porbs += 1
-	%OrbLabel.text = "Orbs %d/3" % porbs
+	update_porbs()
 	
+	
+func update_porbs():
+	%OrbLabel.text = "Orbs %d/3" % porbs

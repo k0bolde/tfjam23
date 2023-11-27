@@ -786,6 +786,9 @@ surface_material_override/0 = ExtResource("11_q2662")
 [node name="Cube" parent="." index="68"]
 surface_material_override/0 = ExtResource("3_nwd70")
 
+[node name="Cube_001-col" parent="." index="69"]
+surface_material_override/0 = ExtResource("11_q2662")
+
 [node name="blocker_004" parent="." index="70"]
 surface_material_override/0 = ExtResource("13_1h6vm")
 
