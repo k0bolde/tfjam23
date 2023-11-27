@@ -474,3 +474,9 @@ surface_material_override/0 = ExtResource("5_geq3b")
 
 [node name="porb" parent="." index="46" instance=ExtResource("14_41e5e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.1893, 148.144, -3.55873)
+
+[node name="porb2" parent="." index="47" instance=ExtResource("14_41e5e")]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 3.25296, 6.17135)
+
+[node name="porb3" parent="." index="48" instance=ExtResource("14_41e5e")]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 2.63328, -5.87976)

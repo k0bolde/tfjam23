@@ -22,6 +22,7 @@ lock you to the new form the first time you're in the new area, then when its fi
 TODO:
 	animations:
 		tf for cow and bird
+		get porb dance for knight/cow/bird
 	sound:
 		player actions, music, environmental sounds,
 	form movement/abilities
@@ -30,7 +31,8 @@ TODO:
 	more bird level development
 	cow race
 	hud - form icon and egg/milk meters if applicable
-	CUT - crouch & long jump & backflip?
 	decurse room and decurse items
 	gamepad support
 	anteater grapple if I have time
+	
+	CUT - crouch & long jump & backflip?

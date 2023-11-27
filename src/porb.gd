@@ -18,6 +18,14 @@ func _ready():
 	t2.tween_property(self, "rotation:y", deg_to_rad(360), 6)
 	t2.tween_property(self, "rotation:y", 0, 0.001)
 	
+	if Globals.level_state.has(get_parent().name):
+		if Globals.level_state[get_parent().name].has("%s_porb_taken" % name) and Globals.level_state[get_parent().name]["%s_porb_taken" % name] == true:
+			queue_free()
 	
 func _pickup_area_entered(body):
-	pass
+	body.collect_porb()
+	if Globals.level_state.has(get_parent().name):
+		Globals.level_state[get_parent().name]["%s_porb_taken" % name] = true
+	else:
+		Globals.level_state[get_parent().name] = {"%s_porb_taken" % name: true}
+	queue_free()

@@ -51,6 +51,9 @@ var udder_fill_rate := 0.1
 var udder_max_size := 1.5
 var udder_min_size := 0.3
 var udder_bone_idx := 0
+var eggs := 6.0
+var egg_fill_rate := 0.5
+var eggs_max := 6.0
 
 var curr_form := "knight"
 var last_form := "knight"
@@ -60,6 +63,7 @@ var is_form_locked := false
 @onready var curr_anim : AnimationPlayer = $Models/knight/AnimationPlayer
 var egg_scene = preload("res://src/Egg.tscn")
 var white_fade_tween : Tween
+var porbs := 0
 
 var dialog_callable : Callable
 var curr_npc_name : String
@@ -248,6 +252,8 @@ func change_form(new_form:String, is_locking := false):
 	if forms.keys().has(new_form) and curr_form != new_form and forms[new_form]["owned"] == true:
 		last_form = curr_form
 		curr_form = new_form
+		%FormLabel.text = "%s Form" % curr_form.capitalize()
+		%CountLabel.visible = curr_form != "knight"
 		
 		max_speed = forms[curr_form]["speed"]
 		TURN_SPEED = forms[curr_form]["turn_speed"]
@@ -327,15 +333,17 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		if crosshair.visible:
 			if curr_form == "bird":
-				#shoot egg where camera is facing
-				var egg : RigidBody3D = egg_scene.instantiate()
-				Globals.main.eggs.add_child(egg)
-				var pos = global_position
-				pos.y += 0.5
-				egg.global_position = pos
-				egg.rotation.y = gimbal.rotation.y
-				var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
-				egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y) + vel
+				if eggs >= 1.0:
+					#shoot egg where camera is facing
+					var egg : RigidBody3D = egg_scene.instantiate()
+					Globals.main.eggs.add_child(egg)
+					var pos = global_position
+					pos.y += 0.5
+					egg.global_position = pos
+					egg.rotation.y = gimbal.rotation.y
+					var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
+					egg.linear_velocity = Vector3(0, y_vel, -20.0).rotated(Vector3.UP, gimbal.rotation.y) + vel
+					eggs -= 1.0
 			elif curr_form == "cow":
 				#shoot milk, shrink udder
 				#if in air, shoot down and doublejump?
@@ -377,6 +385,11 @@ func _process(delta):
 			udder_size = udder_max_size
 			#TODO milksplosion
 		cow_skelly.set_bone_pose_scale(udder_bone_idx, Vector3.ONE * udder_size)
+		%CountLabel.text = "%d Milk Squirts" % floori((udder_size - udder_min_size) / 0.3)
+	elif curr_form == "bird":
+		if eggs < eggs_max:
+			eggs += egg_fill_rate * delta
+		%CountLabel.text = "%d Eggs" % eggs
 			
 func dialog_area_entered(npc_name, the_callable):
 	dialog_callable = the_callable
@@ -437,6 +450,7 @@ func pickup_item():
 	if item_info["type"] == "new form":
 		forms[item_info["form_name"]]["owned"] = true
 		change_form(item_info["form_name"], true)
+		%CursedLabel.visible = true
 
 
 func window_resize():
@@ -478,3 +492,9 @@ func _anim_finished(anim_name):
 		white_fade_tween = Globals.get_tween(white_fade_tween, self)
 		white_fade_tween.set_ease(Tween.EASE_IN)
 		white_fade_tween.tween_property(white_fade, "modulate", Color.TRANSPARENT, 2.0)
+
+
+func collect_porb():
+	porbs += 1
+	%OrbLabel.text = "Orbs %d/3" % porbs
+	
