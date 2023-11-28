@@ -27,9 +27,21 @@ TODO:
 		player actions, music, environmental sounds,
 	more bird level development
 	cow race
+		start when talked to
+		checkpoints for player
+		give porb when beaten
+		path for 2nd course
 	final level that requires cow and bird tfs
-	shadows options & actual loading of current options
+		egg button
+		big jump that requires cow speed/milk jump
+	texture for title screen
+	texture for milk splash
+	texture for tf cutscene
+	level intro cutscenes
+	tshirt for tshirt snake
 	
-	CUT - crouch & long jump & backflip?
-	gamepad support
-	anteater grapple if I have time
+	CUT FOR TIME
+		crouch & long jump & backflip?
+		shadows options & actual loading of current options
+		gamepad support
+		anteater grapple if I have time

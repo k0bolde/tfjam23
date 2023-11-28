@@ -28,7 +28,7 @@ func start_cutscene():
 	
 	
 func stop_cutscene():
-	Globals.player.camera.current = true
+	Globals.player.interp_cam.current = true
 	Globals.player.is_cutscene_playing = false	
 	is_playing = false
 	accum_delta = 0.0

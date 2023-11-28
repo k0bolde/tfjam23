@@ -185,7 +185,7 @@ libraries = {
 [node name="CursedItem" parent="." index="34" instance=ExtResource("15_4t315")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2002, 0, 3.29621)
 
-[node name="IntroCutscene1" parent="." index="35" instance=ExtResource("16_nm2qn")]
+[node name="IntroCutscene" parent="." index="35" instance=ExtResource("16_nm2qn")]
 transform = Transform3D(0.503065, 0, -0.864248, 0, 1, 0, 0.864248, 0, 0.503065, 100.06, 8.19233, 20.8737)
 curve = SubResource("Curve3D_blphu")
 time_to_path = 5.0

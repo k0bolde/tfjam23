@@ -18,9 +18,14 @@ func _ready():
 		$Killplane.collision_mask = 2
 		if not $Killplane.body_entered.is_connected(_on_killplane_body_entered):
 			$Killplane.body_entered.connect(_on_killplane_body_entered)
-	if has_node("IntroCutscene"):
+	if not Globals.level_state.has(name):
+		Globals.level_state[name] = {"intro_played": false}
+	elif not Globals.level_state[name].has("intro_played"):
+		Globals.level_state[name]["intro_played"] = false
+	if has_node("IntroCutscene") and not Globals.level_state[name]["intro_played"]:
 		#might be safer to delay this until the player is loaded for sure
 		$IntroCutscene.call_deferred("start_cutscene")
+		Globals.level_state[name]["intro_played"] = true
 	#hacky way to have subclasses have their _ready (__ready()) called. Normally if a subclass has a _ready, this one won't be called
 	if self.has_method("__ready"):
 		call_deferred("__ready")
