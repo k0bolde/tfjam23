@@ -159,7 +159,7 @@ func _physics_process(delta):
 		else:
 			if Input.is_action_pressed("jump"):
 				jump_held_time += delta
-				if jump_held_time < low_grav_time:
+				if jump_held_time < low_grav_time or curr_form == "bird":
 					vel.y -= 0.5 * gravity_mult
 				else:
 					vel.y -= 1.0 * gravity_mult
@@ -352,8 +352,13 @@ func _input(event: InputEvent) -> void:
 					pos.y += 0.5
 					milk_drop.global_position = pos
 					milk_drop.rotation.y = gimbal.rotation.y
-					var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
-					milk_drop.linear_velocity = Vector3(0, y_vel, -10.0).rotated(Vector3.UP, gimbal.rotation.y) + vel
+					if is_on_floor():
+						var y_vel = remap(rotation_helper.rotation.x, deg_to_rad(0), deg_to_rad(70), 0.0, 30.0)
+						milk_drop.linear_velocity = Vector3(0, y_vel, -10.0).rotated(Vector3.UP, gimbal.rotation.y) + vel
+					else:
+						#shoot down and push player up
+						vel.y = jump_speed
+						milk_drop.linear_velocity = Vector3(0, -5, 0)
 					udder_size -= 0.3
 				
 				

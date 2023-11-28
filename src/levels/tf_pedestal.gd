@@ -1,5 +1,4 @@
 extends Level
-#TODO don't spawn cursed item if already taken
 
 @export var form := "bird"
 @onready var cursed_item : CursedItem = $CursedItem

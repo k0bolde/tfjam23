@@ -22,16 +22,14 @@ lock you to the new form the first time you're in the new area, then when its fi
 TODO:
 	animations:
 		tf for cow and bird
-		get porb dance for knight/cow/bird
+		get porb dance for cow/bird
 	sound:
 		player actions, music, environmental sounds,
-	form movement/abilities
-		regenerating eggs/limits
-		milk jump
 	more bird level development
 	cow race
 	final level that requires cow and bird tfs
-	anteater grapple if I have time
+	shadows options & actual loading of current options
 	
 	CUT - crouch & long jump & backflip?
 	gamepad support
+	anteater grapple if I have time
