@@ -27,19 +27,19 @@ TODO:
 		player actions, music, environmental sounds,
 	more bird level development
 	cow race
-		start when talked to
-		checkpoints for player
 		give porb when beaten
 	final level that requires cow and bird tfs
 		egg button
 		big jump that requires cow speed/milk jump
-	texture for title screen - actually write on masking tape and take a pic?
-	texture for milk splash
 	texture for tf cutscene - wavely glowly lines
 	level intro cutscenes - point out porbs
 	tshirt for tshirt snake
-	npc to tell the player about shooting eggs and milk
+	npc to tell the player about shooting eggs
 	playthrough test game
+	
+	STEPS TO RELEASE
+		lock all cow bird
+		set main class to title
 	
 	CUT FOR TIME
 		crouch & long jump & backflip?

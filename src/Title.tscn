@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d6mb624ujo77"]
+[gd_scene load_steps=7 format=3 uid="uid://d6mb624ujo77"]
 
 [ext_resource type="Script" path="res://src/Title.gd" id="1_71y5o"]
 [ext_resource type="PackedScene" uid="uid://cuei4hxfudhmf" path="res://assets/n64.glb" id="1_vdqo5"]
 [ext_resource type="LabelSettings" uid="uid://c6v438gve42q7" path="res://assets/dialog_label.tres" id="2_p41kl"]
 [ext_resource type="Theme" uid="uid://ce4xoddpiisny" path="res://assets/MenuTheme.tres" id="4_kbpk6"]
+[ext_resource type="Texture2D" uid="uid://dh2fyra5lwq8f" path="res://assets/titlelabel.png" id="5_hbrqq"]
 
 [sub_resource type="Environment" id="Environment_bdfpo"]
 background_mode = 1
@@ -101,6 +102,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.870833, 2.10839)
 light_volumetric_fog_energy = 4.88
 spot_range = 4.03932
 spot_angle = 7.3059
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(0.882331, -2.16364e-09, -0.116584, -0.116584, -3.28919e-08, -0.882331, -2.16364e-09, 0.89, -3.28919e-08, -0.0319413, 0.892784, -0.181193)
+size = Vector3(0.5, 0.5, 0.25)
+texture_albedo = ExtResource("5_hbrqq")
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

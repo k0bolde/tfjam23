@@ -1,13 +1,11 @@
 extends Path3D
 class_name Racer
-#TODO start race after talking to
-#TODO keep track of race position - race checkpoint tracker
 
 @onready var path_follow : PathFollow3D = $PathFollow3D
 @onready var anims : AnimationPlayer = $PathFollow3D/Cow1/cow/AnimationPlayer
 var is_racing := false
 var delta_accum := 0.0
-@export var speed := 15.0
+@export var speed := 12.0
 @export var speed_curve := 0.5
 
 

@@ -24,7 +24,7 @@ func _on_deposit_area_body_exited(body):
 	body.interact_area_exited()
 
 
-func _on_machine_area_body_entered(body):
+func _on_machine_area_body_entered(_body):
 	#if player has enough giblets, start cutscene and unformlock them
 	#else respawn?
 	if giblets >= required_giblets:

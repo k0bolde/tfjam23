@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfwxvhwkttboc"]
 
 [ext_resource type="Script" path="res://src/MilkDrop.gd" id="1_a1rkt"]
-[ext_resource type="Texture2D" uid="uid://bbvf5g8aialkl" path="res://icon.svg" id="2_5dsxp"]
+[ext_resource type="Texture2D" uid="uid://cwu7i5cose15y" path="res://assets/milksplash.png" id="2_t7ams"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tokod"]
 radial_segments = 8
@@ -25,5 +25,5 @@ mesh = SubResource("CapsuleMesh_tokod")
 shape = SubResource("SphereShape3D_k4sp7")
 
 [node name="Decal" type="Decal" parent="."]
-visible = false
-texture_albedo = ExtResource("2_5dsxp")
+texture_albedo = ExtResource("2_t7ams")
+modulate = Color(1, 1, 1, 0.8)
