@@ -114,6 +114,7 @@ func _ready():
 	forms["bird"]["accel"] = 0.1
 	
 	forms["knight"]["owned"] = true
+	#TODO set these to false when releasing
 	forms["cow"]["owned"] = true
 	forms["bird"]["owned"] = true
 
@@ -486,6 +487,8 @@ func _anim_finished(anim_name):
 		for form in forms:
 			if form != curr_form and curr_form != "knight":
 				forms[curr_form]["model"].get_node("metarig/Skeleton3D/HipAttachment/%s" % forms[form]["tf_item"]).visible = not is_form_locked and forms[form]["owned"]
+			elif form != curr_form and curr_form == "knight":
+				forms[curr_form]["model"].get_node("Armature/Skeleton3D/HipAttachment/%s" % forms[form]["tf_item"]).visible = not is_form_locked and forms[form]["owned"]
 		curr_anim.stop()
 		curr_anim = forms[curr_form]["anims"]
 		forms[last_form]["col"].disabled = true

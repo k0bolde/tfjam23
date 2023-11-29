@@ -51,6 +51,8 @@ func cut(dir):
 		drop_r_tween = Globals.get_tween(drop_r_tween, self)
 		drop_r_tween.set_trans(Tween.TRANS_BOUNCE)
 		drop_r_tween.tween_property(weight, "position:y", 2.5, 2.0)
+		get_parent().get_node("Cylinder_002").visible = false
+		get_parent().get_node("Cube/Cylinder_006").visible = true
 	elif dir == "L" and not is_l_cut:
 		is_l_cut = true
 		Globals.level_state[get_parent().name]["is_l_cut"] = true
@@ -58,6 +60,8 @@ func cut(dir):
 		drop_l_tween = Globals.get_tween(drop_l_tween, self)
 		drop_l_tween.set_trans(Tween.TRANS_BOUNCE)
 		drop_l_tween.tween_property(weight, "position:y", 2.5, 2.0)
+		get_parent().get_node("Cylinder_005").visible = false
+		get_parent().get_node("Cube_001/Cylinder_004").visible = true
 	else:
 		return
 	

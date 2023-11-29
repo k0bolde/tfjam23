@@ -18,6 +18,7 @@ func _ready():
 	path_follow.loop = false
 	add_child(path_follow)
 	camera = Camera3D.new()
+	camera.cull_mask = 1
 	path_follow.add_child(camera)
 	
 	

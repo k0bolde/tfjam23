@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckmh7atudt1eg"]
+[gd_scene load_steps=24 format=3 uid="uid://ckmh7atudt1eg"]
 
 [ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
@@ -49,6 +49,14 @@ point_count = 16
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i6wpc"]
 radius = 0.84864
 height = 3.71396
+
+[sub_resource type="Curve3D" id="Curve3D_8idsy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.086, -0.073, 0, -4.87106, 0.0645368, -4.60344, 4.87106, -0.0645368, 4.60344, 4.24291, -0.0258548, 14.5124, -9.23428, -0.325324, 4.36743, 9.23428, 0.325324, -4.36743, 28.2573, 0.00439477, 19.0402, 3.01468, -3.00079, 10.305, -3.01468, 3.00079, -10.305, 43.1726, 2.29148, -9.17479, 7.97176, -3.70033, -0.263105, -7.97176, 3.70033, 0.263105, 20.8362, 11.4444, -21.6091, 4.87946, 1.58587, 0.8069, -4.87946, -1.58587, -0.8069, 8.16853, 5.51438, -20.4447, 0.586105, 0.868773, 7.16009, -0.586105, -0.868773, -7.16009, -3.84851, 0.863549, -30.2378, -6.98383, 0.126221, 5.14328, 6.98383, -0.126221, -5.14328, 5.01554, 0.346033, -56.7822, -8.67145, -0.929772, -2.21338, 8.67145, 0.929772, 2.21338, 27.0798, 0.172824, -61.701, 2.99925, 0.0178213, -8.36962, -2.99925, -0.0178213, 8.36962, 40.2942, -0.108345, -34.8672, 6.9594, -0.425938, -0.896477, -6.9594, 0.425938, 0.896477, 21.7918, -2.41654, -20.6082, -1.32986, 0.335507, -3.09045, 1.32986, -0.335507, 3.09045, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+up_vector_enabled = false
 
 [node name="level4" instance=ExtResource("1_j5aw4")]
 script = ExtResource("2_12sl6")
@@ -131,6 +139,7 @@ script = ExtResource("6_o8po4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Racers/Racer1" index="0"]
 transform = Transform3D(0.990953, 0.00408946, 0.134148, 4.65661e-10, 0.999536, -0.0304705, -0.134211, 0.0301948, 0.990493, 0.02034, 0.0127683, 0.0312207)
+loop = false
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Racers/Racer1/PathFollow3D" index="0"]
 sync_to_physics = false
@@ -139,6 +148,23 @@ sync_to_physics = false
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Racers/Racer1/PathFollow3D/AnimatableBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.776128, -0.334849)
+shape = SubResource("CapsuleShape3D_i6wpc")
+
+[node name="Racer2" type="Path3D" parent="Racers" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4322, 1.87868, 21.3245)
+curve = SubResource("Curve3D_8idsy")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Racers/Racer2" index="0"]
+transform = Transform3D(-0.958276, -0.000889853, -0.285844, 0, 0.999995, -0.00311306, 0.285845, -0.00298317, -0.958271, -0.086, -0.073, 0)
+loop = false
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Racers/Racer2/PathFollow3D" index="0"]
+
+[node name="cow" parent="Racers/Racer2/PathFollow3D/AnimatableBody3D" index="0" instance=ExtResource("6_rw31b")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Racers/Racer2/PathFollow3D/AnimatableBody3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.776128, -0.334849)
 shape = SubResource("CapsuleShape3D_i6wpc")
 

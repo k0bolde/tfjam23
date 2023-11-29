@@ -22,6 +22,7 @@ func _ready():
 			npc_name = "Racing Cow"
 			animplayer.play("Run")
 			dialogue = { "start": ["Well met, new brother. Or sister, on the account of our mutual lack of a tackle. The udder takes a while to get used to, but the perks are positively overflowing!", "line1", 1],
-						 "line1": ["This part of the castle used to be a racetrack for horses. Me and the boys… girls have repurposed it for a race of sorts. If you can beat our best on a gentle trot across the grounds, maybe you’ll find a way out. ", "line2", 1],
-						 "line2": ["See you on the track!", "END", 0]}
+						 "line1": ["This part of the castle used to be a racetrack for horses. Me and the boys… girls have repurposed it for a race of sorts. If you can beat our best on a gentle trot across the grounds, maybe you’ll find a way out.", "line2", 1],
+						 "line2": ["See you on the track!", "line3", 0],
+						 "line3": ["3... 2... 1... LET'S GO!", "END", 0]}
 			

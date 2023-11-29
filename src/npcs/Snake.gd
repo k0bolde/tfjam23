@@ -29,6 +29,7 @@ func zeroth_line() -> String:
 		"cow":
 			ret += "Hey milkbags.\n"
 		_:
-			ret += "Hey unknown form"
+			ret += "Hey unknown form\n"
+	ret += "Want in? Go untie those ropes holding up these gate weights.\n"
 	ret += "Do you reckon they’ve got shirts up there without armholes?"
 	return ret

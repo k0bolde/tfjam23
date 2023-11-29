@@ -21,7 +21,7 @@ lock you to the new form the first time you're in the new area, then when its fi
 
 TODO:
 	animations:
-		tf for cow and bird
+		tf for cow and bird - 120 frames
 		get porb dance for cow/bird
 	sound:
 		player actions, music, environmental sounds,
@@ -34,11 +34,13 @@ TODO:
 	final level that requires cow and bird tfs
 		egg button
 		big jump that requires cow speed/milk jump
-	texture for title screen
+	texture for title screen - actually write on masking tape and take a pic?
 	texture for milk splash
-	texture for tf cutscene
-	level intro cutscenes
+	texture for tf cutscene - wavely glowly lines
+	level intro cutscenes - point out porbs
 	tshirt for tshirt snake
+	npc to tell the player about shooting eggs and milk
+	playthrough test game
 	
 	CUT FOR TIME
 		crouch & long jump & backflip?
