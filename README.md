@@ -38,7 +38,7 @@ TODO:
 	playthrough test game
 	
 	STEPS TO RELEASE
-		lock all cow bird
+		lock cow bird forms
 		set main class to title
 	
 	CUT FOR TIME

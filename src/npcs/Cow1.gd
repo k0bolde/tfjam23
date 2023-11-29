@@ -2,7 +2,7 @@ extends NPC
 
 
 @onready var animplayer : AnimationPlayer = $cow/AnimationPlayer
-@export_range(1, 7) var cow_num := 1
+@export_range(1, 8) var cow_num := 1
 @export var race : RaceManager
 
 
@@ -19,6 +19,7 @@ func _ready():
 		3:
 			dialogue = { "start": ["Cow? How? Well now….", "END", 0]}
 		4:
+			npc_name = "Race Referee"
 			dialogue = { "start": ["C’mon bud. Let’s chew some cud.", "END", 0]}
 		5:
 			npc_name = "Racing Cow"
@@ -37,8 +38,11 @@ func _ready():
 			}
 		7:
 			dialogue = {"start": ["Your udder's lookin pretty full there, try relieving some pressure! Just aim and shoot. Luckily we're cows so we're not responsible for spilled milk cleanup.", "END", 0]}
-			
+		8:
+			dialogue = {"start": ["Psst check out this door behind me. If you can make the jump back to here I'll give you a power orb.", "END", 0]}
 			
 func start_race() -> String:
+	if Globals.player.curr_form != "cow":
+		return "Too bad I only race cows..."
 	race.start_race()
 	return "3... 2... 1... LET'S GO!"

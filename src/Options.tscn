@@ -82,12 +82,14 @@ text = "10%   25%      50% 100%"
 label_settings = ExtResource("1_f25bi")
 
 [node name="Label4" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Shadows"
 label_settings = ExtResource("1_f25bi")
 horizontal_alignment = 1
 
 [node name="ShadowSlider" type="HSlider" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 max_value = 3.0
 value = 2.0
@@ -95,6 +97,7 @@ tick_count = 4
 ticks_on_borders = true
 
 [node name="Label5" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Off    Low  Medium High"
 label_settings = ExtResource("1_f25bi")
