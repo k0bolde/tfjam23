@@ -1,19 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://ckmh7atudt1eg"]
+[gd_scene load_steps=22 format=3 uid="uid://ckmh7atudt1eg"]
 
 [ext_resource type="PackedScene" uid="uid://cjddwc6y7smnf" path="res://assets/level4.glb" id="1_j5aw4"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_12sl6"]
 [ext_resource type="Texture2D" uid="uid://7c2og5b4u6qq" path="res://assets/textures/belfast_farmhouse_1k.hdr" id="3_xlsgp"]
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="4_4cwoo"]
 [ext_resource type="Material" uid="uid://shrpwp67rcu1" path="res://assets/textures/dirt.tres" id="4_8eixr"]
-[ext_resource type="Script" path="res://src/levels/RaceCheckpoint.gd" id="5_ert6c"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="5_g284k"]
 [ext_resource type="Material" uid="uid://b8s1p3cq51lev" path="res://assets/textures/grass.material" id="6_mgkhf"]
 [ext_resource type="Script" path="res://src/levels/Racer.gd" id="6_o8po4"]
-[ext_resource type="PackedScene" uid="uid://bxlx8vqo5bky6" path="res://src/Cow.tscn" id="6_rw31b"]
 [ext_resource type="Material" uid="uid://depkgtkaixypq" path="res://assets/textures/bricks-triplanar.material" id="7_4vstk"]
 [ext_resource type="PackedScene" uid="uid://cboy1akadehu4" path="res://src/npcs/Cow1.tscn" id="8_1p883"]
 [ext_resource type="Material" uid="uid://rtk5fu1j68ss" path="res://assets/textures/marble.material" id="8_rm3gh"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="8_xxgjt"]
+[ext_resource type="PackedScene" uid="uid://dko4j3rjp1w11" path="res://src/levels/RaceCheckpoint.tscn" id="11_1rrtt"]
+[ext_resource type="Script" path="res://src/levels/RaceManager.gd" id="11_ao2xb"]
 [ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="14_p5s36"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5behf"]
@@ -36,19 +36,12 @@ glow_bloom = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_352jy"]
 size = Vector3(304.646, 24.1409, 225.322)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hhrk5"]
-size = Vector3(8.69345, 6.58003, 1)
-
 [sub_resource type="Curve3D" id="Curve3D_cbnad"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.02034, 0.0127683, 0.0312207, 1.07564, -0.222517, 2.95927, -1.07564, 0.222517, -2.95927, -0.765451, 0.191253, -5.77072, 5.30247, 0.0295463, 4.01199, -5.30247, -0.0295463, -4.01199, -13.1741, 0.247188, -11.9091, 0, 0, 0, 0, 0, 0, -15.2133, -0.0833776, -22.163, -6.52893, -0.0522819, 2.30928, 6.52893, 0.0522819, -2.30928, -1.12576, 0.0489388, -39.8964, -5.93526, -0.312902, -4.47297, 5.93526, 0.312902, 4.47297, 21.5169, 0.295849, -38.6817, 1.18297, -0.00589931, -10.2376, -1.18297, 0.00589931, 10.2376, 39.6897, 0.0768338, 0.687696, 6.23324, -0.113831, -2.04789, -6.23324, 0.113831, 2.04789, 22.1059, 0.068666, 40.3578, 5.28134, 0.0230389, 5.05668, -5.28134, -0.0230389, -5.05668, -4.33192, -0.0644579, 35.8769, -3.33864, 0.0567904, 8.92561, 3.33864, -0.0567904, -8.92561, -18.029, 0.0997219, -4.72305, -5.11158, -0.141101, -3.56903, 5.11158, 0.141101, 3.56903, -0.771708, 0.182787, -11.231, 5.19641, 0.472615, -4.17029, -5.19641, -0.472615, 4.17029, -0.0866528, 0.15987, 9.37511, 4.81236, 0.150326, 5.77871, -4.81236, -0.150326, -5.77871, -15.882, 0.167053, 10.764, -7.57203, 0.0635166, 5.92101, 7.57203, -0.0635166, -5.92101, -13.8731, 0.0568381, -9.12286, -2.20693, -0.166618, -4.6692, 2.20693, 0.166618, 4.6692, 2.39281, 0.0747859, -7.26616, 0, 0, 0, 0, 0, 0, 2.53832, 0.000936031, 0.244395),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0714121, 0.0180181, 4.29636, 1.07564, -0.222517, 2.95927, -1.07564, 0.222517, -2.95927, -0.765451, 0.191253, -5.77072, 5.30247, 0.0295463, 4.01199, -5.30247, -0.0295463, -4.01199, -13.1741, 0.247188, -11.9091, 0, 0, 0, 0, 0, 0, -15.2133, -0.0833776, -22.163, -6.52893, -0.0522819, 2.30928, 6.52893, 0.0522819, -2.30928, -1.12576, 0.0489388, -39.8964, -5.93526, -0.312902, -4.47297, 5.93526, 0.312902, 4.47297, 21.5169, 0.295849, -38.6817, 1.18297, -0.00589931, -10.2376, -1.18297, 0.00589931, 10.2376, 39.6897, 0.0768338, 0.687696, 6.23324, -0.113831, -2.04789, -6.23324, 0.113831, 2.04789, 22.1059, 0.068666, 40.3578, 5.28134, 0.0230389, 5.05668, -5.28134, -0.0230389, -5.05668, -4.33192, -0.0644579, 35.8769, -3.33864, 0.0567904, 8.92561, 3.33864, -0.0567904, -8.92561, -18.029, 0.0997219, -4.72305, -5.11158, -0.141101, -3.56903, 5.11158, 0.141101, 3.56903, -0.779674, 0.0481733, -11.1985, 5.19641, 0.472615, -4.17029, -5.19641, -0.472615, 4.17029, -0.0866528, 0.15987, 9.37511, 4.81236, 0.150326, 5.77871, -4.81236, -0.150326, -5.77871, -15.882, 0.167053, 10.764, -7.57203, 0.0635166, 5.92101, 7.57203, -0.0635166, -5.92101, -13.8731, 0.0568381, -9.12286, -2.20693, -0.166618, -4.6692, 2.20693, 0.166618, 4.6692, 2.39281, 0.0747859, -7.26616, 0, 0, 0, 0, 0, 0, 1.94384, 0.0395747, 4.82558),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 16
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i6wpc"]
-radius = 0.84864
-height = 3.71396
 
 [sub_resource type="Curve3D" id="Curve3D_8idsy"]
 _data = {
@@ -114,15 +107,33 @@ surface_material_override/0 = ExtResource("7_4vstk")
 transform = Transform3D(0.232544, 0.0649055, -0.970418, -0.268836, 0.963186, 7.45058e-09, 0.934693, 0.260883, 0.241432, -10.2125, 1.38748, -103.882)
 surface_material_override/0 = ExtResource("8_rm3gh")
 
-[node name="Checkpoints" type="Node3D" parent="." index="32"]
+[node name="Race1Checkpoints" type="Node3D" parent="." index="32" node_paths=PackedStringArray("npc_racer")]
+script = ExtResource("11_ao2xb")
+npc_racer = NodePath("../Racers/Racer1")
 
-[node name="Finish" type="Area3D" parent="Checkpoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.54572, 0.238475, 0)
-script = ExtResource("5_ert6c")
+[node name="Finish" parent="Race1Checkpoints" index="0" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55213, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Finish" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04412, 0)
-shape = SubResource("BoxShape3D_hhrk5")
+[node name="Finish2" parent="Race1Checkpoints" index="1" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(1.25004, 0, -0.408212, 0, 1.315, 0, 0.408212, 0, 1.25004, -22.7449, 0, -18.4518)
+
+[node name="RaceCheckpoint" parent="Race1Checkpoints" index="2" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(0.99403, 0, -0.10911, 0, 1, 0, 0.10911, 0, 0.99403, 27.2634, 0, 9.20822)
+
+[node name="RaceCheckpoint2" parent="Race1Checkpoints" index="3" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.453, 0, -1.64196)
+
+[node name="RaceCheckpoint3" parent="Race1Checkpoints" index="4" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -17.9125, -1.90735e-06, -11.4931)
+
+[node name="RaceCheckpoint4" parent="Race1Checkpoints" index="5" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(0.818089, 0, 0.575091, 0, 1, 0, -0.575091, 0, 0.818089, -27.6852, 0, 6.36738)
+
+[node name="RaceCheckpoint5" parent="Race1Checkpoints" index="6" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -17.4099, 0, -11.2895)
+
+[node name="RaceCheckpoint6" parent="Race1Checkpoints" index="7" instance=ExtResource("11_1rrtt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66801, 0, 0)
 
 [node name="StaticBody3D" parent="inner_fence" index="0"]
 collision_layer = 4
@@ -138,35 +149,25 @@ curve = SubResource("Curve3D_cbnad")
 script = ExtResource("6_o8po4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Racers/Racer1" index="0"]
-transform = Transform3D(0.990953, 0.00408946, 0.134148, 4.65661e-10, 0.999536, -0.0304705, -0.134211, 0.0301948, 0.990493, 0.02034, 0.0127683, 0.0312207)
+transform = Transform3D(0.997625, 0.00118055, 0.0687673, -1.74622e-10, 0.999844, -0.0171646, -0.0687777, 0.017124, 0.997474, -0.0714121, 0.0180181, 4.29636)
 loop = false
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Racers/Racer1/PathFollow3D" index="0"]
-sync_to_physics = false
-
-[node name="cow" parent="Racers/Racer1/PathFollow3D/AnimatableBody3D" index="0" instance=ExtResource("6_rw31b")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Racers/Racer1/PathFollow3D/AnimatableBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.776128, -0.334849)
-shape = SubResource("CapsuleShape3D_i6wpc")
+[node name="Cow1" parent="Racers/Racer1/PathFollow3D" index="0" node_paths=PackedStringArray("race") instance=ExtResource("8_1p883")]
+transform = Transform3D(1, 0, 1.49012e-08, 4.65661e-10, 1, 0, 0, 0, 1, 0, 0, 0)
+cow_num = 5
+race = NodePath("../../../../Race1Checkpoints")
 
 [node name="Racer2" type="Path3D" parent="Racers" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4322, 1.87868, 21.3245)
 curve = SubResource("Curve3D_8idsy")
+script = ExtResource("6_o8po4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Racers/Racer2" index="0"]
-transform = Transform3D(-0.958276, -0.000889853, -0.285844, 0, 0.999995, -0.00311306, 0.285845, -0.00298317, -0.958271, -0.086, -0.073, 0)
+transform = Transform3D(-0.958276, -0.00088985, -0.285843, 2.91038e-11, 0.999995, -0.00311305, 0.285845, -0.00298317, -0.958271, -0.086, -0.073, 0)
 loop = false
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Racers/Racer2/PathFollow3D" index="0"]
-
-[node name="cow" parent="Racers/Racer2/PathFollow3D/AnimatableBody3D" index="0" instance=ExtResource("6_rw31b")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Racers/Racer2/PathFollow3D/AnimatableBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.776128, -0.334849)
-shape = SubResource("CapsuleShape3D_i6wpc")
+[node name="Cow1" parent="Racers/Racer2/PathFollow3D" index="0" instance=ExtResource("8_1p883")]
+cow_num = 6
 
 [node name="BGCows" type="Node3D" parent="." index="36"]
 
@@ -182,11 +183,12 @@ transform = Transform3D(-0.8271, 0.0404105, -0.5606, 0, 0.997412, 0.0718978, 0.5
 cow_num = 3
 
 [node name="Cow4" parent="BGCows" index="3" instance=ExtResource("8_1p883")]
-transform = Transform3D(-0.235583, 0, -0.971854, 0, 1, 0, 0.971854, 0, -0.235583, -17.8618, 1.02263, 0.435537)
-cow_num = 4
+transform = Transform3D(-0.0239787, 0, 0.999712, 0, 1, 0, -0.999712, 0, -0.0239787, -17.8618, 1.02263, 0.435537)
+cow_num = 7
 
 [node name="Cow5" parent="BGCows" index="4" instance=ExtResource("8_1p883")]
 transform = Transform3D(2.67379, 0, -1.5687, 0, 3.1, 0, 1.5687, 0, 2.67379, 60.7001, -1.11706, 25.8006)
+cow_num = 4
 
 [node name="Doors" type="Node3D" parent="." index="37"]
 

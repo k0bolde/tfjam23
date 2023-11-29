@@ -206,6 +206,6 @@ font_size = 77
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17091, 7.85935, 0)
 curve = SubResource("Curve3D_8i754")
 
-[connection signal="body_entered" from="DepositArea" to="." method="_on_deposit_area_body_entered"]
-[connection signal="body_exited" from="DepositArea" to="." method="_on_deposit_area_body_exited"]
-[connection signal="body_entered" from="MachineArea" to="." method="_on_machine_area_body_entered"]
+[connection signal="body_entered" from="DepositArea" to="." method="_on_deposit_area_body_entered" flags=18]
+[connection signal="body_exited" from="DepositArea" to="." method="_on_deposit_area_body_exited" flags=18]
+[connection signal="body_entered" from="MachineArea" to="." method="_on_machine_area_body_entered" flags=18]

@@ -30,7 +30,6 @@ TODO:
 		start when talked to
 		checkpoints for player
 		give porb when beaten
-		path for 2nd course
 	final level that requires cow and bird tfs
 		egg button
 		big jump that requires cow speed/milk jump

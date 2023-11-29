@@ -1,5 +1,7 @@
 extends Area3D
 
+@export var grav_mult := -1.0
+
 func _ready():
 	collision_layer = 0
 	collision_mask = 2
@@ -12,7 +14,7 @@ func _ready():
 
 
 func _on_body_entered(body):
-	body.gravity_mult = -1.0
+	body.gravity_mult = grav_mult
 
 
 func _on_body_exited(body):
