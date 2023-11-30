@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://fb47k3tuatm7"]
+[gd_scene load_steps=46 format=3 uid="uid://fb47k3tuatm7"]
 
 [ext_resource type="PackedScene" uid="uid://dm7it1mgf8h2j" path="res://assets/level5.glb" id="1_r2i58"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_54u54"]
@@ -529,6 +529,9 @@ up_vector_enabled = false
 [sub_resource type="BoxShape3D" id="BoxShape3D_dm6y1"]
 size = Vector3(1, 8.96301, 12.3206)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gn53e"]
+size = Vector3(1, 6.32861, 4.0355)
+
 [node name="level5" instance=ExtResource("1_r2i58")]
 script = ExtResource("2_54u54")
 
@@ -608,6 +611,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.485
 
 [node name="Marker3D4" type="Marker3D" parent="Spawns" index="3"]
 transform = Transform3D(0.997164, 0, 0.0752572, 0, 1, 0, -0.0752572, 0, 0.997164, -17.3151, 29.3869, 4.2226)
+
+[node name="Marker3D5" type="Marker3D" parent="Spawns" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.22013, 64.005, -8.68632)
 
 [node name="Killplane" type="Area3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5568, 0)
@@ -905,6 +911,7 @@ surface_material_override/0 = ExtResource("15_r35o1")
 
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("20_jvc4g")]
 transform = Transform3D(0.454519, 0, -0.890737, 0, 1, 0, 0.890737, 0, 0.454519, 16.9316, 53.6664, 2.99381)
+spawn_idx = 2
 
 [node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("20_jvc4g")]
 transform = Transform3D(0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, 0.864494, -15.0961, 32.2086, 6.88611)
@@ -914,4 +921,13 @@ spawn_idx = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86102e-06, 1.52203, -0.600221)
 shape = SubResource("BoxShape3D_dm6y1")
 
+[node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("20_jvc4g")]
+transform = Transform3D(0.999907, 0, 0.0136481, 0, 1, 0, -0.0136481, 0, 0.999907, 10.2544, 66.7789, -8.1018)
+spawn_idx = 4
+
+[node name="CollisionShape3D" parent="Checkpoints/Checkpoint3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204834, -0.695894)
+shape = SubResource("BoxShape3D_gn53e")
+
 [editable path="Checkpoints/Checkpoint2"]
+[editable path="Checkpoints/Checkpoint3"]

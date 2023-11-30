@@ -10,5 +10,5 @@ func _ready():
 	body_entered.connect(_body_entered)
 	
 	
-func _body_entered(body):
+func _body_entered(_body):
 	level.curr_checkpoint_spawn_idx = spawn_idx
