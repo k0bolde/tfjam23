@@ -8,6 +8,7 @@ var cam_tween_pos_y : Tween
 
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	cam_tween_rot_x = create_tween()
 	cam_tween_rot_x.set_loops().set_trans(Tween.TRANS_SINE)
 	cam_tween_rot_x.tween_property(cam, "rotation:x", deg_to_rad(-16), 10.0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dqxk4euww1ne6"]
+[gd_scene load_steps=30 format=3 uid="uid://dqxk4euww1ne6"]
 
 [ext_resource type="PackedScene" uid="uid://b87rmwfp3t0q3" path="res://assets/decurse.glb" id="1_pn7l6"]
 [ext_resource type="Script" path="res://src/levels/DecurseRoom.gd" id="2_peqwh"]
@@ -63,7 +63,97 @@ radius = 2.23903
 size = Vector3(4.1398, 3.30085, 3.19805)
 
 [sub_resource type="Curve3D" id="Curve3D_8i754"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4.69907, -7.3767, 15.7458, 3.76852, -0.657733, 2.17984, -3.76852, 0.657733, -2.17984, 0.748989, -6.09924, 11.6627, -1.21115, 0.715081, 4.08967, 1.21115, -0.715081, -4.08967, -13.279, -5.70349, 6.74867),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 up_vector_enabled = false
+
+[sub_resource type="Animation" id="Animation_6rcjj"]
+resource_name = "wiggle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.36711, 2.2695, -0.0870376), Vector3(-3.36711, 2.61948, -0.431024)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_003:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.018278, 0.0178875, -0.0235006)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("decursor:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.35625, 0), Vector3(0.13464, 2.48578, 0.0392013)]
+}
+
+[sub_resource type="Animation" id="Animation_ksr7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.36711, 2.2695, -0.0870376)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_003:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("decursor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.35625, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_386lr"]
+_data = {
+"RESET": SubResource("Animation_ksr7o"),
+"wiggle": SubResource("Animation_6rcjj")
+}
 
 [node name="decurse" instance=ExtResource("1_pn7l6")]
 script = ExtResource("2_peqwh")
@@ -88,6 +178,7 @@ surface_material_override/0 = ExtResource("3_8t4dy")
 surface_material_override/0 = ExtResource("5_g6ylq")
 
 [node name="Cube_003" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70613, 2.2695, -0.0870376)
 surface_material_override/0 = ExtResource("5_kexdf")
 
 [node name="Cylinder_001" parent="." index="7"]
@@ -205,6 +296,11 @@ font_size = 77
 [node name="Cutscene" parent="." index="31" instance=ExtResource("17_2urrc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17091, 7.85935, 0)
 curve = SubResource("Curve3D_8i754")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="33"]
+libraries = {
+"": SubResource("AnimationLibrary_386lr")
+}
 
 [connection signal="body_entered" from="DepositArea" to="." method="_on_deposit_area_body_entered" flags=18]
 [connection signal="body_exited" from="DepositArea" to="." method="_on_deposit_area_body_exited" flags=18]

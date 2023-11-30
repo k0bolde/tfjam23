@@ -5,7 +5,6 @@ class_name Level
 #	its own WorldEnvironment
 #	optionally a killplane
 #	optionally an IntroCutscene
-#TODO don't play intro cutscene when the level's already been visited once?
 #TODO respawn on last solid ground when hitting killplane
 
 var spawns := []

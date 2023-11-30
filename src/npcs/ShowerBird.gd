@@ -10,7 +10,7 @@ func _ready():
 				"line1": ["You’ve been cursed to look just like me. Bwaark!", "line2", 1],
 				"line2": ["Mmm… My scroll of identify told me that it was a ring of multiclass.", "line3", 1],
 				"line3": ["I suppose it was correct. We’re both level one birds now. But where did my wizard powers go?", "line4", 1],
-				"line4": ["Laying eggs sucks ass.", "line5", 1],
+				"line4": ["Laying eggs sucks ass. Just hold right click and then left click. Handy for hitting bright red targets though!", "line5", 0],
 				"line5": ["Remove curse? I can’t cast that without fingers!", "END", 0],
 				
 				}

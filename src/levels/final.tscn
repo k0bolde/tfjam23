@@ -1,0 +1,216 @@
+[gd_scene load_steps=24 format=3 uid="uid://cj3v7ynwvx7vu"]
+
+[ext_resource type="PackedScene" uid="uid://cn6bo5gq1lwne" path="res://assets/final.glb" id="1_tgha5"]
+[ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="2_brufk"]
+[ext_resource type="Script" path="res://src/levels/final.gd" id="2_nkshj"]
+[ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="2_qei04"]
+[ext_resource type="PackedScene" uid="uid://ch3ime5jlg1mo" path="res://src/EggButton.tscn" id="3_52nle"]
+[ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="3_nr8bq"]
+[ext_resource type="Material" uid="uid://cwaxspm62tnnx" path="res://assets/textures/metalplate.material" id="4_xrx56"]
+[ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="5_64dke"]
+[ext_resource type="Material" uid="uid://djb786lmy5rof" path="res://assets/textures/corrogated.material" id="6_qpt2l"]
+[ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="8_g5gk0"]
+[ext_resource type="Texture2D" uid="uid://cj1tkuufbuveh" path="res://assets/textures/IndoorEnvironmentHDRI008_1K-HDR.exr" id="9_ytauj"]
+[ext_resource type="Script" path="res://src/levels/WinArea.gd" id="12_i85vv"]
+[ext_resource type="Theme" uid="uid://ce4xoddpiisny" path="res://assets/MenuTheme.tres" id="13_440lh"]
+[ext_resource type="PackedScene" uid="uid://d1fd2k3fi0l70" path="res://src/npcs/FuckLizard.tscn" id="14_pw18s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujg0a"]
+transparency = 1
+albedo_color = Color(0.427451, 0.54902, 1, 0.615686)
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c62ck"]
+size = Vector3(153.338, 15.7147, 263.493)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3nlyf"]
+panorama = ExtResource("9_ytauj")
+
+[sub_resource type="Sky" id="Sky_s134g"]
+sky_material = SubResource("PanoramaSkyMaterial_3nlyf")
+
+[sub_resource type="Environment" id="Environment_x4vqt"]
+background_mode = 2
+sky = SubResource("Sky_s134g")
+sky_rotation = Vector3(0, -0.834267, 0)
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.26
+reflected_light_source = 1
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+glow_enabled = true
+glow_bloom = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0nhn1"]
+height = 2.77962
+radius = 1.23318
+
+[sub_resource type="Animation" id="Animation_fkk6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Suzanne:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.14572, -16.4005, -75.596)]
+}
+
+[sub_resource type="Animation" id="Animation_or8ap"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Suzanne:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-5.14572, -16.4005, -75.596), Vector3(-5.14572, -15.4131, -75.596)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mar3c"]
+_data = {
+"RESET": SubResource("Animation_fkk6i"),
+"idle": SubResource("Animation_or8ap")
+}
+
+[node name="final" instance=ExtResource("1_tgha5")]
+script = ExtResource("2_nkshj")
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_qei04")
+
+[node name="Cube_001" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.593391, 0.804915, 0, -0.804915, 0.593391, -5.15939, 0.773287, -9.54654)
+surface_material_override/0 = ExtResource("3_nr8bq")
+
+[node name="Cube_002" parent="." index="2"]
+surface_material_override/0 = ExtResource("4_xrx56")
+
+[node name="Cylinder-col" parent="." index="3"]
+surface_material_override/0 = ExtResource("5_64dke")
+
+[node name="Cone" parent="." index="4"]
+surface_material_override/0 = ExtResource("6_qpt2l")
+
+[node name="Cube-col_001" parent="." index="5"]
+surface_material_override/0 = ExtResource("4_xrx56")
+
+[node name="Cube-col_002" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ujg0a")
+
+[node name="Suzanne" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 0.841547, 0.540184, 0, -0.540184, 0.841547, -5.14572, -16.4005, -75.596)
+surface_material_override/0 = ExtResource("8_g5gk0")
+
+[node name="Door" parent="." index="8" instance=ExtResource("2_brufk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12851, 0.754541, 24.27)
+level_idx_to_load = 6
+spawn_idx = 5
+
+[node name="Spawns" type="Node3D" parent="." index="9"]
+
+[node name="Marker3D" type="Marker3D" parent="Spawns" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13231, 0.937169, 22.0545)
+
+[node name="EggButton" parent="." index="10" instance=ExtResource("3_52nle")]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 4.72003e-15, 0, -4.72003e-15, 0.465, 9.52019, -2.55081, 7.54814)
+
+[node name="Cylinder" parent="." index="11"]
+visible = false
+
+[node name="Killplane" type="Area3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.7324, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killplane" index="0"]
+shape = SubResource("BoxShape3D_c62ck")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="13"]
+environment = SubResource("Environment_x4vqt")
+
+[node name="WinArea" type="Area3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20585, -15.908, -75.4779)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_i85vv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WinArea" index="0"]
+shape = SubResource("CylinderShape3D_0nhn1")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="15"]
+transform = Transform3D(0.999269, -0.0310318, 0.0223299, 0.00426288, 0.670878, 0.741555, -0.0379924, -0.740918, 0.67052, -3.63725, -9.33466, -69.0481)
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 15.4434
+spot_angle = 27.3759
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="16"]
+transform = Transform3D(0.893262, 0, -0.449537, 0.424491, -0.32913, 0.843493, -0.147956, -0.944284, -0.294, 0, 0, 0)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="17"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_mar3c")
+}
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." index="18"]
+transform = Transform3D(0.888973, -0.0130361, -0.457773, -0.148263, 0.937568, -0.314619, 0.433295, 0.347559, 0.83154, -8.76118, -16.7895, -70.647)
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 9.41434
+spot_angle = 39.2162
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="19"]
+layer = 4
+
+[node name="Control" type="Control" parent="CanvasLayer" index="0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("13_440lh")
+text = "The End
+
+
+
+...for now"
+horizontal_alignment = 1
+
+[node name="FuckLizard" parent="." index="20" instance=ExtResource("14_pw18s")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -8.36636, 0.737725, 20.4014)

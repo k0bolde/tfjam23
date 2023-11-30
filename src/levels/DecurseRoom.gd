@@ -1,12 +1,14 @@
 extends Level
 #TODO cutscene
 #TODO test
+#FIXME why does this respawn you when you have enough orbs?
 
 @onready var exit_point = $ExitPoint
 @onready var power_label : Label3D = $PowerLabel
 @onready var cutscene = $Cutscene
 var giblets := 0
 var required_giblets := 3
+var just_decursed := false
 
 
 func __ready():
@@ -29,8 +31,11 @@ func _on_machine_area_body_entered(_body):
 	#else respawn?
 	if giblets >= required_giblets:
 		cutscene.start_cutscene()
-	else:
+		$AnimationPlayer.play("wiggle")
+	elif not just_decursed:
 		_on_killplane_body_entered(Globals.player)
+	else:
+		just_decursed = false
 
 
 func power_inserted():
@@ -53,4 +58,6 @@ func cutscene_finished():
 	Globals.player.gimbal.global_rotation = exit_point.global_rotation
 	
 	Globals.player.is_form_locked = false
+	just_decursed = true
 	Globals.player.change_form("knight")
+	$AnimationPlayer.play("RESET")

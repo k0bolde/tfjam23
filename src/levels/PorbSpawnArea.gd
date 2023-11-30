@@ -7,7 +7,7 @@ func _ready():
 	body_entered.connect(_body_entered)
 
 	
-func _body_entered(body):
+func _body_entered(_body):
 	if not porb_spawned:
 		porb_spawned = true
 		var porb = preload("res://src/porb.tscn").instantiate()

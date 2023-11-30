@@ -20,21 +20,9 @@ Pick up the crystal statue and play through a segment as a mouse before finding 
 lock you to the new form the first time you're in the new area, then when its finished, let you use your other tf items
 
 TODO:
-	animations:
-		tf for cow and bird - 120 frames
-		get porb dance for cow/bird
-	sound:
-		player actions, music, environmental sounds,
-	more bird level development
-	cow race
-		give porb when beaten
-	final level that requires cow and bird tfs
-		egg button
-		big jump that requires cow speed/milk jump
 	texture for tf cutscene - wavely glowly lines
 	level intro cutscenes - point out porbs
 	tshirt for tshirt snake
-	npc to tell the player about shooting eggs
 	playthrough test game
 	
 	STEPS TO RELEASE
@@ -42,6 +30,11 @@ TODO:
 		set main class to title
 	
 	CUT FOR TIME
+		animations:
+			tf for cow and bird - 120 frames
+			get porb dance for cow/bird
+		sound:
+			player actions, music, environmental sounds,
 		crouch & long jump & backflip?
 		shadows options & actual loading of current options
 		gamepad support

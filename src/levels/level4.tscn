@@ -70,6 +70,9 @@ environment = SubResource("Environment_h7s67")
 [node name="Cube_001" parent="." index="4"]
 surface_material_override/0 = ExtResource("4_4cwoo")
 
+[node name="Cylinder" parent="." index="14"]
+visible = false
+
 [node name="StaticBody3D" parent="floor_001" index="0"]
 collision_layer = 4
 
@@ -175,7 +178,7 @@ curve = SubResource("Curve3D_8idsy")
 script = ExtResource("6_o8po4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Racers/Racer2" index="0"]
-transform = Transform3D(-0.986, -0.00226319, -0.166723, 2.3283e-10, 0.999905, -0.0135733, 0.166739, -0.0133833, -0.985909, 0.825047, -0.30411, -5.69897)
+transform = Transform3D(-0.986, -0.00226319, -0.166723, -2.3283e-10, 0.999905, -0.0135733, 0.166739, -0.0133832, -0.985909, 0.825047, -0.30411, -5.69897)
 loop = false
 
 [node name="Cow1" parent="Racers/Racer2/PathFollow3D" index="0" node_paths=PackedStringArray("race") instance=ExtResource("8_1p883")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyqcbrxkpvmdl"]
+[gd_scene load_steps=28 format=3 uid="uid://dyqcbrxkpvmdl"]
 
 [ext_resource type="PackedScene" uid="uid://cg3j61b2pigkc" path="res://assets/level3.glb" id="1_n2lql"]
 [ext_resource type="Script" path="res://src/levels/Rooftops.gd" id="2_37at0"]
@@ -8,12 +8,14 @@
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="4_s783n"]
 [ext_resource type="Material" uid="uid://bn6rre8knl5t1" path="res://assets/textures/planks.material" id="5_geq3b"]
 [ext_resource type="Material" uid="uid://dwj7n0i87wsdy" path="res://assets/textures/floorbricks.material" id="6_t4js6"]
+[ext_resource type="Material" uid="uid://rtk5fu1j68ss" path="res://assets/textures/marble.material" id="7_tejv3"]
 [ext_resource type="Material" uid="uid://bgcwx1ifw28qr" path="res://assets/textures/matteblack.material" id="8_w3xie"]
 [ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="9_w7hyf"]
 [ext_resource type="Material" uid="uid://cwaxspm62tnnx" path="res://assets/textures/metalplate.material" id="10_7vo7s"]
 [ext_resource type="PackedScene" uid="uid://ch3ime5jlg1mo" path="res://src/EggButton.tscn" id="12_1pb4x"]
 [ext_resource type="Material" uid="uid://davtjw50v0lnl" path="res://assets/textures/cautionmetal.material" id="13_27hbh"]
 [ext_resource type="PackedScene" uid="uid://bjxr043vqguy5" path="res://src/porb.tscn" id="14_41e5e"]
+[ext_resource type="PackedScene" uid="uid://b5461tcb57ogp" path="res://src/npcs/ShowerBird.tscn" id="15_x71sr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aeh33"]
 panorama = ExtResource("2_oe1c4")
@@ -347,6 +349,9 @@ surface_material_override/0 = ExtResource("5_geq3b")
 [node name="Cylinder" parent="." index="2"]
 surface_material_override/0 = ExtResource("4_2tcwi")
 
+[node name="Cube_001" parent="." index="3"]
+surface_material_override/0 = ExtResource("4_s783n")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
 environment = SubResource("Environment_g6ox5")
 
@@ -374,6 +379,9 @@ shape = SubResource("BoxShape3D_eejaf")
 [node name="Cube" parent="." index="8"]
 surface_material_override/0 = ExtResource("4_s783n")
 
+[node name="Cube_002" parent="." index="9"]
+surface_material_override/0 = ExtResource("7_tejv3")
+
 [node name="Cube_003-col" parent="." index="10"]
 surface_material_override/0 = ExtResource("6_t4js6")
 
@@ -392,6 +400,9 @@ libraries = {
 [node name="Cylinder_002" parent="." index="14"]
 surface_material_override/0 = ExtResource("9_w7hyf")
 
+[node name="Cube_005" parent="." index="17"]
+surface_material_override/0 = ExtResource("6_t4js6")
+
 [node name="Cube_006" parent="." index="18"]
 surface_material_override/0 = ExtResource("6_t4js6")
 
@@ -401,6 +412,9 @@ surface_material_override/1 = ExtResource("6_t4js6")
 
 [node name="Cube_007" parent="." index="20"]
 surface_material_override/0 = ExtResource("6_t4js6")
+
+[node name="Cylinder_004" parent="." index="21"]
+surface_material_override/0 = ExtResource("4_s783n")
 
 [node name="Cylinder_005" parent="." index="22"]
 surface_material_override/0 = ExtResource("10_7vo7s")
@@ -423,6 +437,9 @@ enable_shadows = true
 
 [node name="EggButton" parent="." index="26" instance=ExtResource("12_1pb4x")]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 0, 1, 1, 4.37114e-08, -4.37114e-08, -58.0568, 19.1812, -2.98472)
+
+[node name="Cylinder_005_001" parent="." index="27"]
+surface_material_override/0 = ExtResource("10_7vo7s")
 
 [node name="Torus_001" parent="." index="28"]
 surface_material_override/0 = ExtResource("5_geq3b")
@@ -448,16 +465,27 @@ surface_material_override/0 = ExtResource("10_7vo7s")
 [node name="Cube_003_002" parent="." index="32"]
 surface_material_override/0 = ExtResource("6_t4js6")
 
+[node name="Cube_003_004" parent="." index="33"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
+[node name="ramp" parent="." index="34"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
 [node name="Cube_007_001" parent="." index="35"]
 surface_material_override/0 = ExtResource("5_geq3b")
 
 [node name="FerrisAnimationPlayer" type="AnimationPlayer" parent="." index="36"]
-autoplay = "spin"
 libraries = {
 "": SubResource("AnimationLibrary_obgwy")
 }
 
 [node name="Cube-col_001" parent="." index="37"]
+surface_material_override/0 = ExtResource("10_7vo7s")
+
+[node name="Cube_006_001" parent="." index="38"]
+surface_material_override/0 = ExtResource("4_s783n")
+
+[node name="Cube-col_002" parent="." index="39"]
 surface_material_override/0 = ExtResource("10_7vo7s")
 
 [node name="windmill_blades-ab" parent="windmill_bladesAnimatableBody3D" index="0"]
@@ -472,11 +500,26 @@ surface_material_override/0 = ExtResource("5_geq3b")
 [node name="windmill_blades4-ab" parent="windmill_blades4AnimatableBody3D" index="0"]
 surface_material_override/0 = ExtResource("5_geq3b")
 
+[node name="Cube-ab" parent="CubeAnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("13_27hbh")
+
+[node name="Cube2-ab" parent="Cube2AnimatableBody3D" index="0"]
+surface_material_override/0 = ExtResource("13_27hbh")
+
 [node name="porb" parent="." index="46" instance=ExtResource("14_41e5e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.1893, 148.144, -3.55873)
 
-[node name="porb2" parent="." index="47" instance=ExtResource("14_41e5e")]
-transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 3.25296, 6.17135)
+[node name="ShowerBird" parent="." index="47" instance=ExtResource("15_x71sr")]
+transform = Transform3D(0.999184, 0, -0.0403935, 0, 1, 0, 0.0403935, 0, 0.999184, -2.22262, 0.977218, 8.29493)
 
-[node name="porb3" parent="." index="48" instance=ExtResource("14_41e5e")]
-transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 2.63328, -5.87976)
+[node name="EggButton2" parent="." index="48" instance=ExtResource("12_1pb4x")]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, -166.084, 180.209, -103.487)
+
+[node name="EggButton3" parent="." index="49" instance=ExtResource("12_1pb4x")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 0, 1, 1, 4.37114e-08, -4.37114e-08, -235.424, 179.356, -103.696)
+
+[node name="porb2" parent="." index="50" instance=ExtResource("14_41e5e")]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, -2.24146, 45.2984, -73.5746)
+
+[node name="porb3" parent="." index="51" instance=ExtResource("14_41e5e")]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, -233.685, 166.824, -49.6194)

@@ -146,6 +146,12 @@ transform = Transform3D(-1, -1.10909e-07, -4.61453e-07, -4.20559e-07, -0.243493,
 [node name="HipAttachment" parent="Models/knight/Armature/Skeleton3D" index="14"]
 transform = Transform3D(-4.76837e-07, 0, 1, 0, 1, 0, -1, 0, -4.76837e-07, 0, 1.03458, 0)
 
+[node name="cowbell" parent="Models/knight/Armature/Skeleton3D/HipAttachment" index="0"]
+visible = false
+
+[node name="feather" parent="Models/knight/Armature/Skeleton3D/HipAttachment" index="1"]
+visible = false
+
 [node name="LeftHandAttachment" parent="Models/knight/Armature/Skeleton3D" index="15"]
 transform = Transform3D(0.394688, -0.806815, 0.439626, 0.917284, 0.373609, -0.137861, -0.0530201, 0.457674, 0.887538, 0.131029, 1.21822, 0.49096)
 

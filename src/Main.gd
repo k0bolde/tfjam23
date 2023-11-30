@@ -16,13 +16,14 @@ var levels := [
 	preload("res://src/levels/atrium.tscn"), #6 hub
 	preload("res://src/levels/cow_pedestal.tscn"), #7 interim room to hold forced tf items
 	preload("res://src/levels/bird_pedestal.tscn"), #8 interim room to hold forced tf items
+	preload("res://src/levels/final.tscn"), #9 final area
 	
 	]
 
 
 func _ready():
 	Globals.main = self
-	change_level(3, 0)
+	change_level(2, 0)
 	
 
 func change_level(level_idx : int, spawn_idx := 0):

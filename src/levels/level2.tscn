@@ -13,12 +13,12 @@ size = Vector3(166.285, 1, 161.214)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6bfp1"]
 panorama = ExtResource("2_u4kfs")
 
-[sub_resource type="Sky" id="Sky_s134g"]
+[sub_resource type="Sky" id="Sky_8xdmf"]
 sky_material = SubResource("PanoramaSkyMaterial_6bfp1")
 
 [sub_resource type="Environment" id="Environment_0suxt"]
 background_mode = 2
-sky = SubResource("Sky_s134g")
+sky = SubResource("Sky_8xdmf")
 sky_rotation = Vector3(0, -0.834267, 0)
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.26

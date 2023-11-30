@@ -1,4 +1,6 @@
 extends MeshInstance3D
+#TODO fix weird slide positions
+#TODO fix fading only working on the first button
 
 @onready var egg_area : Area3D = $EggArea
 var button_tween : Tween
@@ -9,7 +11,12 @@ var callback : Callable
 func _ready():
 	egg_area.body_entered.connect(_on_egg_entered)
 	egg_area.collision_mask = 16
-
+#	mesh.surface_set_material(0, mesh.surface_get_material(0).duplicate())
+	mesh.material = StandardMaterial3D.new()
+	mesh.material.albedo_color = Color.BLACK
+	mesh.material.emission_enabled = true
+	mesh.material.emission = Color.RED
+	
 	
 func _on_egg_entered(_body):
 	if not is_pressed:
