@@ -169,10 +169,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.287, -0.998699, 0.282838)
 surface_material_override/0 = ExtResource("4_skp54")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="boat" index="0"]
-autoplay = "boat idle"
 libraries = {
 "": SubResource("AnimationLibrary_wvdff")
 }
+autoplay = "boat idle"
 
 [node name="IntroCutscene" parent="." index="31" instance=ExtResource("16_nm2qn")]
 transform = Transform3D(0.503065, 0, -0.864248, 0, 1, 0, 0.864248, 0, 0.503065, 100.06, 8.19233, 20.8737)
