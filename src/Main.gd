@@ -23,7 +23,7 @@ var levels := [
 
 func _ready():
 	Globals.main = self
-	change_level(0, 0)
+	change_level(4, 0)
 	
 
 func change_level(level_idx : int, spawn_idx := 0):
@@ -35,6 +35,7 @@ func change_level(level_idx : int, spawn_idx := 0):
 	curr_level = levels[level_idx].instantiate()
 	curr_level_idx = level_idx
 	level_node.add_child(curr_level)
+	curr_level.curr_checkpoint_spawn_idx = spawn_idx
 	var spawn = curr_level.spawns[spawn_idx]
 	Globals.player.set_deferred("global_position", spawn.global_position)
 	Globals.player.set_deferred("global_rotation", spawn.global_rotation)

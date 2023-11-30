@@ -5,9 +5,11 @@ class_name Level
 #	its own WorldEnvironment
 #	optionally a killplane
 #	optionally an IntroCutscene
+#	optionally a node called Checkpoints with checkpoints in it
 #TODO respawn on last solid ground when hitting killplane
 
 var spawns := []
+var curr_checkpoint_spawn_idx := 0
 
 func _ready():
 	if has_node("Spawns"):
@@ -45,7 +47,7 @@ func _on_killplane_body_entered(body):
 	
 	
 func _on_respawn_timeout():
-	Globals.player.set_deferred("global_position", spawns[0].global_position)
+	Globals.player.set_deferred("global_position", spawns[curr_checkpoint_spawn_idx].global_position)
 	Globals.player.vel = Vector3()
-	Globals.player.global_rotation = spawns[0].global_rotation
-	Globals.player.gimbal.global_rotation = spawns[0].global_rotation
+	Globals.player.global_rotation = spawns[curr_checkpoint_spawn_idx].global_rotation
+	Globals.player.gimbal.global_rotation = spawns[curr_checkpoint_spawn_idx].global_rotation

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://fb47k3tuatm7"]
+[gd_scene load_steps=45 format=3 uid="uid://fb47k3tuatm7"]
 
 [ext_resource type="PackedScene" uid="uid://dm7it1mgf8h2j" path="res://assets/level5.glb" id="1_r2i58"]
 [ext_resource type="Script" path="res://src/levels/Level.gd" id="2_54u54"]
@@ -19,6 +19,7 @@
 [ext_resource type="Material" uid="uid://cwaxspm62tnnx" path="res://assets/textures/metalplate.material" id="15_kc2w5"]
 [ext_resource type="Material" uid="uid://rtk5fu1j68ss" path="res://assets/textures/marble.material" id="15_r35o1"]
 [ext_resource type="Material" uid="uid://bjc1h1pmxe4du" path="res://assets/textures/marbletiles.material" id="18_xvp0d"]
+[ext_resource type="PackedScene" uid="uid://ddg7ui336e0nm" path="res://src/levels/Checkpoint.tscn" id="20_jvc4g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03vhr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -525,6 +526,9 @@ _data = {
 point_count = 3
 up_vector_enabled = false
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dm6y1"]
+size = Vector3(1, 8.96301, 12.3206)
+
 [node name="level5" instance=ExtResource("1_r2i58")]
 script = ExtResource("2_54u54")
 
@@ -602,6 +606,9 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 [node name="Marker3D3" type="Marker3D" parent="Spawns" index="2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.485, 51.0932, 1.45985e-06)
 
+[node name="Marker3D4" type="Marker3D" parent="Spawns" index="3"]
+transform = Transform3D(0.997164, 0, 0.0752572, 0, 1, 0, -0.0752572, 0, 0.997164, -17.3151, 29.3869, 4.2226)
+
 [node name="Killplane" type="Area3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5568, 0)
 
@@ -639,22 +646,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57772, 0)
 shape = SubResource("CylinderShape3D_d4556")
 
 [node name="ElevatorAnimationPlayer" type="AnimationPlayer" parent="." index="27"]
-autoplay = "Up"
 libraries = {
 "": SubResource("AnimationLibrary_ikhsx")
 }
+autoplay = "Up"
 
 [node name="RotatorAnimationPlayer" type="AnimationPlayer" parent="." index="28"]
-autoplay = "rotate"
 libraries = {
 "": SubResource("AnimationLibrary_6l3ni")
 }
+autoplay = "rotate"
 
 [node name="Elevator2AnimationPlayer" type="AnimationPlayer" parent="." index="29"]
-autoplay = "move"
 libraries = {
 "": SubResource("AnimationLibrary_3k863")
 }
+autoplay = "move"
 
 [node name="Cube_001" parent="." index="30"]
 surface_material_override/0 = ExtResource("15_kc2w5")
@@ -687,16 +694,16 @@ script = ExtResource("8_x8xcu")
 script = ExtResource("8_x8xcu")
 
 [node name="ShoverAnimationPlayer" type="AnimationPlayer" parent="." index="40"]
-autoplay = "alternate"
 libraries = {
 "": SubResource("AnimationLibrary_n2ucm")
 }
+autoplay = "alternate"
 
 [node name="ShrinkerAnimationPlayer" type="AnimationPlayer" parent="." index="41"]
-autoplay = "1"
 libraries = {
 "": SubResource("AnimationLibrary_bsihe")
 }
+autoplay = "1"
 
 [node name="fallingblock_009" parent="." index="42"]
 script = ExtResource("8_x8xcu")
@@ -893,3 +900,18 @@ sync_to_physics = true
 
 [node name="movingplats6-ab" parent="movingplats6AnimatableBody3D" index="0"]
 surface_material_override/0 = ExtResource("15_r35o1")
+
+[node name="Checkpoints" type="Node3D" parent="." index="90"]
+
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("20_jvc4g")]
+transform = Transform3D(0.454519, 0, -0.890737, 0, 1, 0, 0.890737, 0, 0.454519, 16.9316, 53.6664, 2.99381)
+
+[node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("20_jvc4g")]
+transform = Transform3D(0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, 0.864494, -15.0961, 32.2086, 6.88611)
+spawn_idx = 3
+
+[node name="CollisionShape3D" parent="Checkpoints/Checkpoint2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86102e-06, 1.52203, -0.600221)
+shape = SubResource("BoxShape3D_dm6y1")
+
+[editable path="Checkpoints/Checkpoint2"]
