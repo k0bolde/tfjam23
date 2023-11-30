@@ -33,6 +33,7 @@ func _on_button_pressed():
 
 func _on_start_button_pressed():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+	Globals.level_state = {}
 	get_tree().change_scene_to_file("res://src/Main.tscn")
 
 
