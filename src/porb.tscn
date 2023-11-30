@@ -16,4 +16,5 @@ shape = SubResource("SphereShape3D_cgo76")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
 light_color = Color(0.686275, 0.141176, 1, 1)
-light_energy = 2.0
+light_energy = 4.0
+omni_range = 7.24568

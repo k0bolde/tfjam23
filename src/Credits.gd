@@ -2,6 +2,7 @@ extends Node
 
 var credits := """A TF gamejam 2023 game (https://itch.io/jam/tf23) by:
 	k0bold - a bit of everything :)
+		k0bold.com
 	Sloe - writing, planning
 
 Textures:
@@ -12,12 +13,13 @@ Textures:
 	
 Models:
 	"Simple N64 model" (https://skfb.ly/oLWZ8) by Swayne - CC-BY
+	Snake - https://quaternius.com/
 	
 Sounds:
 	
 Shaders:
 	Water: https://godotshaders.com/shader/cheap-water-shader/
-	CRT: 
+	CRT: https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
 	
 Godot Addons:
 	Jolt Physics

@@ -8,6 +8,7 @@ var camera : Camera3D
 
 @export var time_to_path := 10.0
 @export var ease_type := 0.5
+@export var cutscene_name := ""
 var is_playing := false
 var accum_delta := 0.0
 var end_callback : Callable
@@ -34,6 +35,10 @@ func stop_cutscene():
 	is_playing = false
 	accum_delta = 0.0
 	path_follow.progress_ratio = 0.0
+	if cutscene_name != "":
+		Globals.level_state[cutscene_name] = {"intro_played": true}
+	else:
+		Globals.level_state[get_parent().name]["intro_played"] = true
 	if end_callback.is_valid():
 		end_callback.call()
 

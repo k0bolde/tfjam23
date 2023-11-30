@@ -153,7 +153,7 @@ level_idx_to_load = 1
 
 [node name="Label3D" type="Label3D" parent="Doors/Door2" index="6"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.28166, -0.240264)
-text = "Secret Useless Test Level"
+text = "Useless Test Level"
 font = ExtResource("8_dhtnb")
 font_size = 72
 
@@ -201,4 +201,9 @@ font_size = 72
 surface_material_override/0 = ExtResource("4_ftywo")
 
 [node name="BarrelMan" parent="." index="23" instance=ExtResource("9_qlqam")]
-transform = Transform3D(0.342988, 0, -0.93934, 0, 1, 0, 0.93934, 0, 0.342988, -7.933, 0, -13.4141)
+transform = Transform3D(0.901757, 0, -0.432243, 0, 1, 0, 0.432243, 0, 0.901757, -9.33718, 0, 0.789844)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="BarrelMan" index="3"]
+transform = Transform3D(1, 2.98023e-08, 8.9407e-08, 0, -0.866025, 0.5, 5.96046e-08, -0.5, -0.866025, 1.90735e-06, 3.8714, -5.53813)
+spot_range = 11.1843
+spot_angle = 28.5456

@@ -42,7 +42,8 @@ func update_item():
 	
 	
 func _on_pickup_area_body_entered(body):
-	body.pickup_area_entered(form_pickup)
+	if not body.is_form_locked:
+		body.pickup_area_entered(form_pickup)
 	
 	
 func _on_pickup_area_body_exited(body):
@@ -53,6 +54,6 @@ func _on_pickup_area_body_exited(body):
 
 func form_pickup() -> Dictionary:
 	var p := {"type": item_type, "item_name": item_name, "form_name": form_name}
-	Globals.level_state[get_parent().name] = {"cursed_item_taken": true}
+	Globals.level_state[form_name] = {"cursed_item_taken": true}
 	queue_free()
 	return p

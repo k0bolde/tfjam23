@@ -21,8 +21,6 @@ lock you to the new form the first time you're in the new area, then when its fi
 
 TODO:
 	texture for tf cutscene - wavely glowly lines
-	level intro cutscenes - point out porbs
-	tshirt for tshirt snake
 	playthrough test game
 	
 	STEPS TO RELEASE
@@ -30,6 +28,7 @@ TODO:
 		set main class to title
 	
 	CUT FOR TIME
+		tshirt for tshirt snake
 		animations:
 			tf for cow and bird - 120 frames
 			get porb dance for cow/bird

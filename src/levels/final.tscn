@@ -10,16 +10,11 @@
 [ext_resource type="Material" uid="uid://b7sbbshiayppf" path="res://assets/textures/bricks.material" id="5_64dke"]
 [ext_resource type="Material" uid="uid://djb786lmy5rof" path="res://assets/textures/corrogated.material" id="6_qpt2l"]
 [ext_resource type="Material" uid="uid://dubi1sbrbreom" path="res://assets/textures/gold.tres" id="8_g5gk0"]
+[ext_resource type="Material" uid="uid://pjspskk5qryv" path="res://assets/textures/glass.material" id="8_lxe8r"]
 [ext_resource type="Texture2D" uid="uid://cj1tkuufbuveh" path="res://assets/textures/IndoorEnvironmentHDRI008_1K-HDR.exr" id="9_ytauj"]
 [ext_resource type="Script" path="res://src/levels/WinArea.gd" id="12_i85vv"]
 [ext_resource type="Theme" uid="uid://ce4xoddpiisny" path="res://assets/MenuTheme.tres" id="13_440lh"]
 [ext_resource type="PackedScene" uid="uid://d1fd2k3fi0l70" path="res://src/npcs/FuckLizard.tscn" id="14_pw18s"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujg0a"]
-transparency = 1
-albedo_color = Color(0.427451, 0.54902, 1, 0.615686)
-metallic_specular = 1.0
-roughness = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c62ck"]
 size = Vector3(153.338, 15.7147, 263.493)
@@ -108,7 +103,7 @@ surface_material_override/0 = ExtResource("6_qpt2l")
 surface_material_override/0 = ExtResource("4_xrx56")
 
 [node name="Cube-col_002" parent="." index="6"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ujg0a")
+surface_material_override/0 = ExtResource("8_lxe8r")
 
 [node name="Suzanne" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 0.841547, 0.540184, 0, -0.540184, 0.841547, -5.14572, -16.4005, -75.596)
@@ -214,3 +209,7 @@ horizontal_alignment = 1
 
 [node name="FuckLizard" parent="." index="20" instance=ExtResource("14_pw18s")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -8.36636, 0.737725, 20.4014)
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14759, 0, -20.2756)
+size = Vector3(43.2807, 54.8676, 117.793)

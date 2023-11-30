@@ -63,7 +63,7 @@ var is_form_locked := false
 @onready var curr_anim : AnimationPlayer = $Models/knight/AnimationPlayer
 var egg_scene = preload("res://src/Egg.tscn")
 var white_fade_tween : Tween
-var porbs := 3
+var porbs := 0
 
 var dialog_callable : Callable
 var curr_npc_name : String
@@ -114,8 +114,8 @@ func _ready():
 	forms["bird"]["accel"] = 0.1
 	
 	forms["knight"]["owned"] = true
-	forms["cow"]["owned"] = true
-	forms["bird"]["owned"] = true
+	forms["cow"]["owned"] = false
+	forms["bird"]["owned"] = false
 
 	change_form("knight")
 	

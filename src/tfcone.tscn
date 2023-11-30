@@ -1,6 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck14tgkjlrpti"]
+[gd_scene load_steps=5 format=3 uid="uid://ck14tgkjlrpti"]
 
 [ext_resource type="PackedScene" uid="uid://dglftfmedyk58" path="res://assets/tfcone.glb" id="1_hxuaw"]
+[ext_resource type="Texture2D" uid="uid://847ylih2jtf6" path="res://tfwaves.png" id="2_0g0xq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlori"]
+transparency = 1
+albedo_texture = ExtResource("2_0g0xq")
+metallic_specular = 0.0
+emission_enabled = true
+emission_texture = ExtResource("2_0g0xq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbl8n"]
 albedo_color = Color(0, 0, 0, 1)
@@ -14,6 +22,7 @@ bones/0/rotation = Quaternion(0.707107, 0, -0.707107, 0)
 [node name="Cone" parent="Armature/Skeleton3D" index="0"]
 layers = 2
 cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_jlori")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(0, 0, -1, 0, -1, 0, -1, 0, 0, 0, 0.255746, 0)

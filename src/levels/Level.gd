@@ -21,10 +21,16 @@ func _ready():
 		Globals.level_state[name] = {"intro_played": false}
 	elif not Globals.level_state[name].has("intro_played"):
 		Globals.level_state[name]["intro_played"] = false
-	if has_node("IntroCutscene") and not Globals.level_state[name]["intro_played"]:
-		#might be safer to delay this until the player is loaded for sure
-		$IntroCutscene.call_deferred("start_cutscene")
-		Globals.level_state[name]["intro_played"] = true
+	if has_node("IntroCutscene"):
+		var cs = get_node("IntroCutscene")
+		if cs.cutscene_name != "":
+			if not Globals.level_state.has(cs.cutscene_name):
+				Globals.level_state[cs.cutscene_name] = {"intro_played": false}
+			if not Globals.level_state[cs.cutscene_name]["intro_played"]:
+				cs.call_deferred("start_cutscene")
+		elif not Globals.level_state[name]["intro_played"]:
+			#might be safer to delay this until the player is loaded for sure
+			cs.call_deferred("start_cutscene")
 	#hacky way to have subclasses have their _ready (__ready()) called. Normally if a subclass has a _ready, this one won't be called
 	if self.has_method("__ready"):
 		call_deferred("__ready")

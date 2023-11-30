@@ -20,6 +20,7 @@ func _ready():
 func start_race():
 	if not is_race_going_on and not porb_spawned:
 		curr_checkpoint_idx = 0
+		npc_idx = 0
 		is_race_going_on = true
 		npc_racer.start_racing()
 		checkpoints[curr_checkpoint_idx + 1].activate()
@@ -37,7 +38,7 @@ func finish_race():
 	else:
 		#cow won, don't have to do anything
 		#TODO change dialogue
-		pass
+		is_race_going_on = false
 	
 
 func passed_checkpoint(rc:RaceCheckpoint, is_player:bool):
@@ -55,5 +56,5 @@ func passed_checkpoint(rc:RaceCheckpoint, is_player:bool):
 		else:
 			if idx == npc_idx + 1:
 				npc_idx += 1
-			if npc_idx == checkpoints.size() - 1:
-				finish_race()
+#			if npc_idx == checkpoints.size() - 1:
+#				finish_race()
