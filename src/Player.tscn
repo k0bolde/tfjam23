@@ -99,19 +99,19 @@ transform = Transform3D(-0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.7
 visible = false
 
 [node name="WiggleBone" parent="Models/cow/metarig/Skeleton3D" index="18"]
-transform = Transform3D(0.999534, -0.0305335, -9.90296e-05, -0.0305337, -0.999527, -0.00371978, 1.45958e-05, 0.00372111, -0.999993, -0.00708689, 1.16298, -0.853674)
+transform = Transform3D(0.999534, -0.0305335, -9.90304e-05, -0.0305337, -0.999527, -0.00371983, 1.45958e-05, 0.00372112, -0.999993, -0.00708689, 1.16298, -0.853674)
 
 [node name="WiggleBone2" parent="Models/cow/metarig/Skeleton3D" index="19"]
-transform = Transform3D(-0.259918, 0.933653, 0.246447, 0.153782, -0.211939, 0.965108, 0.953307, 0.288748, -0.0884925, 0.216061, 1.27726, 1.72009)
+transform = Transform3D(-0.259918, 0.933653, 0.246447, 0.153782, -0.211939, 0.965108, 0.953307, 0.288748, -0.0884924, 0.216061, 1.27726, 1.72009)
 
 [node name="WiggleBone3" parent="Models/cow/metarig/Skeleton3D" index="20"]
 transform = Transform3D(-0.268792, -0.944856, -0.187076, -0.137631, -0.154554, 0.978351, -0.953314, 0.28872, -0.0884988, -0.222918, 1.29067, 1.72008)
 
 [node name="WiggleBone4" parent="Models/cow/metarig/Skeleton3D" index="21"]
-transform = Transform3D(0.447967, -0.880378, 0.155759, 0.791166, 0.309215, -0.527675, 0.41639, 0.359612, 0.835043, -0.263244, 1.42501, 1.48955)
+transform = Transform3D(0.447967, -0.880378, 0.155759, 0.791167, 0.309215, -0.527675, 0.41639, 0.359613, 0.835043, -0.263244, 1.42501, 1.48955)
 
 [node name="WiggleBone5" parent="Models/cow/metarig/Skeleton3D" index="22"]
-transform = Transform3D(0.398852, 0.8976, -0.187702, -0.817035, 0.254902, -0.517183, -0.416378, 0.359638, 0.835038, 0.264519, 1.40889, 1.48956)
+transform = Transform3D(0.398852, 0.8976, -0.187701, -0.817035, 0.254902, -0.517183, -0.416378, 0.359638, 0.835038, 0.264519, 1.40889, 1.48956)
 
 [node name="HipAttachment" parent="Models/cow/metarig/Skeleton3D" index="23"]
 transform = Transform3D(0.999534, -0.000492578, -0.0305311, -0.0305351, -0.0156537, -0.999411, 1.43647e-05, 0.999877, -0.0156614, -0.00157505, 1.34417, 0.758537)
@@ -126,13 +126,13 @@ transform = Transform3D(1, 1.42109e-14, 1.66893e-06, -5.66141e-07, 0.940707, 0.3
 visible = true
 
 [node name="WiggleBone" parent="Models/bird/metarig/Skeleton3D" index="21"]
-transform = Transform3D(-0.866025, 0.5, -1.92093e-08, 6.53788e-07, 1.16788e-06, 1, 0.5, 0.866025, -2.46428e-06, 0.0754053, 1.88815, 0.450991)
+transform = Transform3D(-0.866026, 0.5, 0, 6.4075e-07, 1.07288e-06, 1, 0.5, 0.866025, -1.3113e-06, 0.0754053, 1.88815, 0.450991)
 
 [node name="WiggleBone2" parent="Models/bird/metarig/Skeleton3D" index="22"]
-transform = Transform3D(-0.866025, -0.5, 4.97086e-08, -6.83591e-07, 1.27964e-06, 1, -0.5, 0.866025, -2.57418e-06, -0.0754053, 1.88815, 0.450991)
+transform = Transform3D(-0.866025, -0.5, 2.98024e-08, -7.00355e-07, 1.3113e-06, 1, -0.5, 0.866025, -1.43051e-06, -0.0754053, 1.88815, 0.450991)
 
 [node name="WiggleBone3" parent="Models/bird/metarig/Skeleton3D" index="23"]
-transform = Transform3D(1, 8.52651e-14, 3.97904e-13, 1.0516e-12, 0.513472, 0.858108, -6.53699e-13, -0.858107, 0.51347, -4.26642e-14, 1.055, -0.240156)
+transform = Transform3D(1, -1.10091e-12, -5.66732e-13, 1.0516e-12, 0.513472, 0.858107, -6.53699e-13, -0.858108, 0.513472, -4.26642e-14, 1.055, -0.240156)
 
 [node name="knight" parent="Models" instance=ExtResource("4_ab216")]
 transform = Transform3D(-0.95, 0, -1.43446e-07, 0, 0.95, 0, 1.43446e-07, 0, -0.95, 0, 0, 0)

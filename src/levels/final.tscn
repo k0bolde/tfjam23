@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cj3v7ynwvx7vu"]
+[gd_scene load_steps=26 format=3 uid="uid://cj3v7ynwvx7vu"]
 
 [ext_resource type="PackedScene" uid="uid://cn6bo5gq1lwne" path="res://assets/final.glb" id="1_tgha5"]
 [ext_resource type="PackedScene" uid="uid://cant0y3v6awlb" path="res://src/Door.tscn" id="2_brufk"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://src/levels/WinArea.gd" id="12_i85vv"]
 [ext_resource type="Theme" uid="uid://ce4xoddpiisny" path="res://assets/MenuTheme.tres" id="13_440lh"]
 [ext_resource type="PackedScene" uid="uid://d1fd2k3fi0l70" path="res://src/npcs/FuckLizard.tscn" id="14_pw18s"]
+[ext_resource type="Material" uid="uid://bj8mf8625twxw" path="res://assets/textures/rope.material" id="16_crimv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c62ck"]
 size = Vector3(153.338, 15.7147, 263.493)
@@ -71,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-5.14572, -16.4005, -75.596), Vector3(-5.14572, -15.4131, -75.596)]
+"values": [Vector3(-5.14572, -16.4005, -98.0735), Vector3(-5.14572, -15.4131, -97.9529)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mar3c"]
@@ -79,6 +80,12 @@ _data = {
 "RESET": SubResource("Animation_fkk6i"),
 "idle": SubResource("Animation_or8ap")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmwc4"]
+transparency = 1
+albedo_color = Color(0.427451, 0.54902, 1, 0.184314)
+metallic_specular = 1.0
+roughness = 0.0
 
 [node name="final" instance=ExtResource("1_tgha5")]
 script = ExtResource("2_nkshj")
@@ -135,7 +142,7 @@ shape = SubResource("BoxShape3D_c62ck")
 environment = SubResource("Environment_x4vqt")
 
 [node name="WinArea" type="Area3D" parent="." index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20585, -15.908, -75.4779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20585, -15.908, -98.0675)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("12_i85vv")
@@ -144,7 +151,7 @@ script = ExtResource("12_i85vv")
 shape = SubResource("CylinderShape3D_0nhn1")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="15"]
-transform = Transform3D(0.999269, -0.0310318, 0.0223299, 0.00426288, 0.670878, 0.741555, -0.0379924, -0.740918, 0.67052, -3.63725, -9.33466, -69.0481)
+transform = Transform3D(0.999269, -0.0310318, 0.0223298, 0.00426288, 0.670878, 0.741555, -0.0379924, -0.740918, 0.67052, -3.63725, -9.33466, -90.8998)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 15.4434
@@ -156,13 +163,13 @@ light_energy = 0.2
 shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="17"]
-autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_mar3c")
 }
+autoplay = "idle"
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="." index="18"]
-transform = Transform3D(0.888973, -0.0130361, -0.457773, -0.148263, 0.937568, -0.314619, 0.433295, 0.347559, 0.83154, -8.76118, -16.7895, -70.647)
+transform = Transform3D(0.888973, -0.0130363, -0.457774, -0.148263, 0.937568, -0.314619, 0.433295, 0.347559, 0.83154, -8.76118, -16.7895, -92.4987)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 9.41434
@@ -179,6 +186,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" index="0"]
 layout_mode = 1
@@ -213,3 +221,9 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -8.36636, 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="." index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14759, 0, -20.2756)
 size = Vector3(43.2807, 54.8676, 117.793)
+
+[node name="Cube_003" parent="." index="22"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wmwc4")
+
+[node name="Cylinder_001" parent="Cube_003" index="0"]
+surface_material_override/0 = ExtResource("16_crimv")

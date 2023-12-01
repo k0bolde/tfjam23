@@ -102,7 +102,7 @@ func _ready():
 	forms["bird"]["speed"] = 16.0
 	
 	forms["knight"]["turn_speed"] = 0.06
-	forms["cow"]["turn_speed"] = 0.03
+	forms["cow"]["turn_speed"] = 0.5
 	forms["bird"]["turn_speed"] = 0.1
 	
 	forms["knight"]["jump_speed"] = 12.0
@@ -190,7 +190,10 @@ func _physics_process(delta):
 		player_dir.x += 0.1
 	#TODO change to lerp_angle()?
 	if input_movement_vector.length() > 0.0:
-		vdir = Globals.rotateTowards(curr_vel, player_dir, TURN_SPEED)
+		if curr_form == "cow":
+			vdir = Globals.rotateTowards(curr_vel, player_dir, TURN_SPEED * minf(0.75 / vel.length(), 0.075))
+		else:
+			vdir = Globals.rotateTowards(curr_vel, player_dir, TURN_SPEED)
 		
 
 	var target := dir * max_speed

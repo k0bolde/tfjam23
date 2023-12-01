@@ -10,3 +10,4 @@ func rotate_plat():
 	t = Globals.get_tween(t, self)
 	t.set_trans(Tween.TRANS_SINE)
 	t.tween_property($Cube_001, "rotation:x", 0, 5.0)
+	t.set_parallel().tween_property($Cube_003, "position:y", 25.0, 5.0)
